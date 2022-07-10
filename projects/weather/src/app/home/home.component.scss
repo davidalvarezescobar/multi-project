@@ -1,0 +1,7 @@
+:host {
+    display: block;
+}
+
+#searchedTerm.ng-dirty.ng-invalid {
+    border-color: red;
+}

@@ -1,0 +1,9 @@
+<label for="searchedTerm">Buscar:</label>
+<input id="searchedTerm" type="text" [formControl]="searchedTerm">
+<article *ngIf="(result$ | async) as result">
+    <h4 *ngIf="result.data as data">{{data.name}}, ({{data.region}})</h4>
+    <h4 *ngIf="result.error as error">{{error}}</h4>
+</article>
+<article *ngIf="forecast$ | async">
+
+</article>
