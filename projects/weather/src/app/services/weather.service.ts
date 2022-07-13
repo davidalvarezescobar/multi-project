@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { catchError, EMPTY, map, Observable } from 'rxjs';
 import { HttpClient } from "@angular/common/http";
 
 @Injectable({
@@ -24,6 +24,10 @@ export class WeatherService {
           return { data: locations[0] };
         }
         return { error: 'No data' };
+      }),
+      catchError((e: Error) => {
+        console.error(e.message);
+        return EMPTY;
       })
     );
   }

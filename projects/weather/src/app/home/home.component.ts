@@ -1,7 +1,9 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { EMPTY, of } from 'rxjs';
-import { catchError, debounceTime, distinctUntilChanged, share, switchMap } from 'rxjs/operators';
+import { merge, of, Subject, tap } from 'rxjs';
+import { debounceTime, distinctUntilChanged, mergeAll, mergeMap, share, switchMap, scan, take } from 'rxjs/operators';
+import { from } from 'rxjs';
+import { StoreService } from '../services/store.service';
 import { WeatherService } from '../services/weather.service';
 
 @Component({
@@ -11,41 +13,63 @@ import { WeatherService } from '../services/weather.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent implements OnInit {
-  public searchedTerm = new FormControl('', Validators.minLength(4));
-  public result$ = this.getSearchObservable();
-  public forecast$ = this.getForecastobservable();
+  private addedLocation$ = new Subject<any>();
+  public searchControl = new FormControl('', Validators.minLength(4));
+  public searchedLocation$ = this.initSearchLocation();
+  public currentForecast$ = this.initCurrentForecast();
+  public forecastList$ = this.initForecastList();
 
   constructor(
-    private readonly weatherSrv: WeatherService
+    private readonly weatherSrv: WeatherService,
+    private readonly storeSrv: StoreService
   ) { }
 
   ngOnInit(): void {
   }
 
-  private getSearchObservable() {
-    return this.searchedTerm.valueChanges.pipe(
+  private initSearchLocation() {
+    return this.searchControl.valueChanges.pipe(
       debounceTime(300),
       distinctUntilChanged(),
-      switchMap(query => this.searchTerm(query)),
+      // sólo permiten búsquedas de más de 3 caracteres, de lo contrario se borra el resultado actual con "of('')"
+      switchMap(query => query.length > 3 ? this.weatherSrv.searchLocation(query) : of('')),
       share()
     );
   }
 
-  private searchTerm(query: string) {
-    if (query.length > 3) { // sólo permite búsquedas de más de 3 caracteres
-      return this.weatherSrv.searchLocation(query).pipe(
-        catchError((e: Error) => {
-          console.error(e.message);
-          return EMPTY;
-        })
-      )
-    }
-    return of(''); // borramos resultados anteriores
+  private initCurrentForecast() {
+    return this.searchedLocation$.pipe(
+      switchMap(({ data }) => data ? this.weatherSrv.forecast(data.lat, data.lon) : of(''))
+    );
   }
 
-  private getForecastobservable() {
-    return this.result$.pipe(
-      switchMap(({ data }) => this.weatherSrv.forecast(data.lat, data.lon))
+  private initForecastList() {
+    // this.storeSrv.locations$.pipe(take(1), tap(console.log)).subscribe(locations => {
+    //   from(locations).pipe(
+    //     tap(console.log),
+    //     mergeMap((location:any) => this.weatherSrv.forecast(location.lat, location.lon))
+    //   ).subscribe(console.log);
+    // });
+    // return this.storeSrv.locations$;
+
+    const location$ = this.storeSrv.locations$.pipe(
+      take(1),
+      tap(console.log),
+      mergeAll(),
+      tap(console.log)
     );
+
+    return merge(
+      location$,
+      this.addedLocation$
+    ).pipe(
+      mergeMap((location: any) => this.weatherSrv.forecast(location.lat, location.lon)),
+      scan((acc: any[], location: any) => [...acc, location], [])      
+    );
+  }
+
+  addLocation(location: any) {
+    this.storeSrv.setLocation(location);
+    this.addedLocation$.next(location);
   }
 }

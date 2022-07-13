@@ -1,9 +1,26 @@
-<label for="searchedTerm">Buscar:</label>
-<input id="searchedTerm" type="text" [formControl]="searchedTerm">
-<article *ngIf="(result$ | async) as result">
-    <h4 *ngIf="result.data as data">{{data.name}}, ({{data.region}})</h4>
-    <h4 *ngIf="result.error as error">{{error}}</h4>
+<article>
+    <label for="searchedTerm">Buscar:</label>
+    <input id="searchedTerm" type="text" [formControl]="searchControl">
+    <main *ngIf="(searchedLocation$ | async) as location">
+        <ng-container *ngIf="location.data as data">
+            <h4>{{data.name}}, ({{data.region}})</h4>
+            <button (click)="addLocation(data)">Añadir</button>
+        </ng-container>
+        <h4 *ngIf="location.error as error">{{error}}</h4>
+    </main>
 </article>
-<article *ngIf="forecast$ | async">
-
+<article *ngIf="currentForecast$ | async as currentForecast">
+    <img [src]="currentForecast.current.condition.icon" alt="">
+    <span>{{currentForecast.current.temp_c}}°, {{currentForecast.current.condition.text}}</span>
+</article>
+<article>
+    <ul>
+        <li *ngFor="let forecast of forecastList$ | async">
+            <b>{{forecast.location.name}} </b>
+            <span *ngFor="let forecastday of forecast.forecast.forecastday">
+                <img [src]="forecastday.day.condition.icon" alt="">
+                <span>{{forecastday.day.condition.text}}, </span>
+            </span>
+        </li>
+    </ul>
 </article>
