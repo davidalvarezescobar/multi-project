@@ -1,26 +1,66 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, from, Observable, filter, of } from 'rxjs';
+import { mergeMap, scan, tap, map } from 'rxjs/operators';
+import { LocalStorageService } from './local-storage.service';
+import { Weather, Location } from './models';
+import { WeatherService } from './weather.service';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class StoreService {
-  private readonly _locations: BehaviorSubject<any[]>;
-  locations$: Observable<any[]>;
+  private readonly _store = new BehaviorSubject<Weather[]>(null);
+  weatherList$: Observable<Weather[]>;
 
-  get locations() {
-    return this._locations.getValue();
-  }
-  
-  constructor() {
-    const initialState = localStorage.getItem('locations') || '[]';
-    this._locations = new BehaviorSubject<any>(JSON.parse(initialState));
-    this.locations$ = this._locations.asObservable();
+  get weatherList() {
+    return this._store.getValue();
   }
 
-  setLocation(newLocation: any): void {
-    const updatedLocations = [...this.locations, newLocation];
-    this._locations.next(updatedLocations);
-    localStorage.setItem('locations', JSON.stringify(updatedLocations));
+  constructor(
+    private readonly localStorageSrv: LocalStorageService,
+    private readonly weatherSrv: WeatherService
+  ) {
+    this.weatherList$ = this._store.pipe(
+      tap(weatherList => {
+        if (!weatherList) {
+          this.loadWeatherList().subscribe(weatherList => this._store.next(weatherList));
+        }
+      }),
+      filter(Boolean)
+    );
+  }
+
+  loadWeatherList(): Observable<Weather[]> {
+    const storedLocations = this.localStorageSrv.getStoredLocations();
+    if (!storedLocations) {
+      return of([]);
+    }
+    return from(storedLocations).pipe(
+      mergeMap((location: Location) => this.weatherSrv.forecast(location)),
+      map(res => res.data),
+      scan((acc: Weather[], weather: Weather) => [...acc, weather], [])
+    );
+  }
+
+  addWeather(newWeather: Weather): void {
+    const idNewLocation = newWeather.location.id;
+    const weather = this.weatherList.find(w => w.location.id === idNewLocation);
+    if (!weather) {
+      // añadimos al store:
+      const updatedWeather = [...this.weatherList, newWeather];
+      this._store.next(updatedWeather);
+      // añadimos al session:
+      this.localStorageSrv.addLocation(newWeather);
+    }
+  }
+
+  removeWeather(weather: Weather) {
+    const idNewLocation = weather.location.id;
+    // borramos del store:
+    const updatedWeather = this.weatherList.filter(w => w.location.id !== idNewLocation);
+    this._store.next(updatedWeather);
+    // borramos del session:
+    
   }
 }

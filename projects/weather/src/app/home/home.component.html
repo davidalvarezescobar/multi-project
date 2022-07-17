@@ -1,18 +1,34 @@
 <article>
-    <label for="searchedTerm">Buscar:</label>
-    <input id="searchedTerm" type="text" [formControl]="searchControl">
-    <main *ngIf="(searchedLocation$ | async) as location">
-        <ng-container *ngIf="location.data as data">
-            <h4>{{data.name}}, ({{data.region}})</h4>
-            <button (click)="addLocation(data)">Añadir</button>
+    <form>
+        <label for="searchedTerm">Search location:</label>
+        <input id="searchedTerm" type="text" [formControl]="searchControl">
+    </form>
+
+    <div *ngIf="(searchLocation$ | async) as searchLocation">
+        <ng-container *ngIf="searchLocation.loading">
+            BUSCANDO...
         </ng-container>
-        <h4 *ngIf="location.error as error">{{error}}</h4>
-    </main>
+        <ng-container *ngIf="searchLocation.data as data">
+            <h5>{{data.name}}, ({{data.region}})</h5>
+            <button (click)="addWeather()">Añadir</button>
+        </ng-container>
+        <div *ngIf="searchLocation.error as error">
+            <span *ngIf="error['noData']">La ciudad {{searchControl.value}}, no ha sido encontrada</span>
+            <span *ngIf="error['http']">Se ha producido un error al buscar la ciudad, inténtalo de nuevo mas tarde</span>
+        </div>
+    </div>
+
+    <div *ngIf="currentForecast$ | async as currentForecast">
+        <ng-container *ngIf="currentForecast.data as data">
+            <img [src]="data.current.condition.icon" alt="">
+            <span>{{data.current.temp_c}}°, {{data.current.condition.text}}</span>
+        </ng-container>
+        <div *ngIf="currentForecast.error as error">
+            <span *ngIf="error['http']">Se ha producido un error al obtener la previsión, inténtalo de nuevo mas tarde</span>
+        </div>
+    </div>
 </article>
-<article *ngIf="currentForecast$ | async as currentForecast">
-    <img [src]="currentForecast.current.condition.icon" alt="">
-    <span>{{currentForecast.current.temp_c}}°, {{currentForecast.current.condition.text}}</span>
-</article>
+
 <article>
     <ul>
         <li *ngFor="let forecast of forecastList$ | async">
@@ -21,6 +37,7 @@
                 <img [src]="forecastday.day.condition.icon" alt="">
                 <span>{{forecastday.day.condition.text}}, </span>
             </span>
+            <button (click)="removeWeather(forecast)">Quitar</button>
         </li>
     </ul>
 </article>

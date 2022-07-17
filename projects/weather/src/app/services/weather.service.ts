@@ -1,6 +1,14 @@
 import { Injectable } from '@angular/core';
-import { catchError, EMPTY, map, Observable } from 'rxjs';
+import { catchError, EMPTY, map, Observable, of, startWith } from 'rxjs';
 import { HttpClient } from "@angular/common/http";
+import { Location, Weather } from './models'
+import { ValidationErrors } from '@angular/forms';
+
+export interface HttpData<T> {
+  data?: T;
+  error?: ValidationErrors;
+  loading?: boolean;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -13,32 +21,49 @@ export class WeatherService {
     private readonly http: HttpClient
   ) { }
 
-  searchLocation(query: string): Observable<any> {
+  /**
+   * Searchs location
+   * Obtiene la parte 'Location' del objeto 'Weather'
+   * @param query 
+   * @returns location 
+   */
+  searchLocation(query: string): Observable<HttpData<Location>> {
     const params = {
       key: this.APIKEY,
       q: query
     };
-    return this.http.get<any>(this.ENDPOINT + '/search.json', { params }).pipe(
-      map(locations => {
+    return this.http.get<HttpData<Location>>(this.ENDPOINT + '/search.json', { params }).pipe(
+      map((locations: any) => {
         if (locations.length) {
-          return { data: locations[0] };
+          const location = locations[0] as Location;
+          return { data: location };
         }
-        return { error: 'No data' };
+        const noData: ValidationErrors = { noData: true };
+        return { error: noData };
       }),
+      startWith({ loading: true }),
       catchError((e: Error) => {
-        console.error(e.message);
-        return EMPTY;
+        const http = { http: e.message };
+        return of({ error: http });
       })
     );
   }
 
-  forecast(lat: number, lon: number): Observable<any> {
-    // `${lat},${lon}`
+  forecast(location: Location): Observable<HttpData<Weather>> {
+    const { lat, lon } = location;
     const params = {
       key: this.APIKEY,
       days: 7,
-      q: lat + ',' + lon
+      q: `${lat},${lon}`
     };
-    return this.http.get<any>(this.ENDPOINT + '/forecast.json', { params });
+    return this.http.get<any>(this.ENDPOINT + '/forecast.json', { params }).pipe(
+      map(({ current, forecast }: any) => {
+        return { data: { current, forecast, location } };
+      }),
+      catchError((e: Error) => {
+        const http = { http: e.message };
+        return of({ error: http });
+      })
+    );
   }
 }

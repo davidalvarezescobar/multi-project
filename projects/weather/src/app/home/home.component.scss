@@ -5,3 +5,12 @@
 #searchedTerm.ng-dirty.ng-invalid {
     border-color: red;
 }
+
+ul li {
+    display: flex;
+    align-items: center;
+}
+
+button {
+    width: auto;
+}
