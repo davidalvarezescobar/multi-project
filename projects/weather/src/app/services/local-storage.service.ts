@@ -17,4 +17,14 @@ export class LocalStorageService {
     storedLocations.push(newWeather.location);
     localStorage.setItem('locations', JSON.stringify(storedLocations));
   }
+
+  removeLocation(weather: Weather) {
+    let storedLocations = this.getStoredLocations();
+    storedLocations = storedLocations.filter(l => l.id !== weather.location.id);
+    if (storedLocations.length) {
+      localStorage.setItem('locations', JSON.stringify(storedLocations));
+    } else {
+      localStorage.removeItem('locations');
+    }
+  }
 }

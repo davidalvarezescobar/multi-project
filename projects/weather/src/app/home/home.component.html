@@ -10,7 +10,7 @@
         </ng-container>
         <ng-container *ngIf="searchLocation.data as data">
             <h5>{{data.name}}, ({{data.region}})</h5>
-            <button (click)="addWeather()">Añadir</button>
+            <button id="addWeather" (click)="addWeather()">Añadir</button>
         </ng-container>
         <div *ngIf="searchLocation.error as error">
             <span *ngIf="error['noData']">La ciudad {{searchControl.value}}, no ha sido encontrada</span>
@@ -31,13 +31,13 @@
 
 <article>
     <ul>
-        <li *ngFor="let forecast of forecastList$ | async">
-            <b>{{forecast.location.name}} </b>
+        <li *ngFor="let forecast of forecastList$ | async; trackBy: trackByFn">
+            <strong>{{forecast.location.name}} </strong>
             <span *ngFor="let forecastday of forecast.forecast.forecastday">
                 <img [src]="forecastday.day.condition.icon" alt="">
                 <span>{{forecastday.day.condition.text}}, </span>
             </span>
-            <button (click)="removeWeather(forecast)">Quitar</button>
+            <button id="removeWeather" (click)="removeWeather(forecast)">Quitar</button>
         </li>
     </ul>
 </article>

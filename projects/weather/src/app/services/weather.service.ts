@@ -38,13 +38,13 @@ export class WeatherService {
           const location = locations[0] as Location;
           return { data: location };
         }
-        const noData: ValidationErrors = { noData: true };
-        return { error: noData };
+        const error: ValidationErrors = { noData: true };
+        return { error };
       }),
       startWith({ loading: true }),
       catchError((e: Error) => {
-        const http = { http: e.message };
-        return of({ error: http });
+        const error: ValidationErrors = { http: e.message };
+        return of({ error });
       })
     );
   }
@@ -61,8 +61,8 @@ export class WeatherService {
         return { data: { current, forecast, location } };
       }),
       catchError((e: Error) => {
-        const http = { http: e.message };
-        return of({ error: http });
+        const error: ValidationErrors = { http: e.message };
+        return of({ error });
       })
     );
   }

@@ -11,7 +11,7 @@ import { WeatherService } from './weather.service';
 })
 export class StoreService {
   private readonly _store = new BehaviorSubject<Weather[]>(null);
-  weatherList$: Observable<Weather[]>;
+  weatherList$ = this.initWeatherList();
 
   get weatherList() {
     return this._store.getValue();
@@ -20,11 +20,13 @@ export class StoreService {
   constructor(
     private readonly localStorageSrv: LocalStorageService,
     private readonly weatherSrv: WeatherService
-  ) {
-    this.weatherList$ = this._store.pipe(
+  ) { }
+
+  initWeatherList() {
+    return this._store.pipe(
       tap(weatherList => {
         if (!weatherList) {
-          this.loadWeatherList().subscribe(weatherList => this._store.next(weatherList));
+          this.loadWeatherList().subscribe((storeData: Weather[]) => this._store.next(storeData));
         }
       }),
       filter(Boolean)
@@ -36,7 +38,11 @@ export class StoreService {
     if (!storedLocations) {
       return of([]);
     }
+    // 'storedLocations' es un array y, mediante el operador 'from' obtengo una petición por cada uno de sus registros;
+    // la idea es hacer peticiones en paralelo sin tener que esperar a que acaben todas,
+    // e ir pintandolas en la tabla según se vayan recibiendo:
     return from(storedLocations).pipe(
+      tap(x => console.log('Stored Locations:', x)),
       mergeMap((location: Location) => this.weatherSrv.forecast(location)),
       map(res => res.data),
       scan((acc: Weather[], weather: Weather) => [...acc, weather], [])
@@ -61,6 +67,6 @@ export class StoreService {
     const updatedWeather = this.weatherList.filter(w => w.location.id !== idNewLocation);
     this._store.next(updatedWeather);
     // borramos del session:
-    
+    this.localStorageSrv.removeLocation(weather);
   }
 }
