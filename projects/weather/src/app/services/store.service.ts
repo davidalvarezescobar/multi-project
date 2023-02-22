@@ -11,7 +11,14 @@ import { WeatherService } from './weather.service';
 })
 export class StoreService {
   private readonly _store = new BehaviorSubject<Weather[]>(null);
-  weatherList$ = this.initWeatherList();
+  weatherList$ = this._store.pipe(
+    tap(weatherList => {
+      if (!weatherList) {
+        this.loadWeatherList().subscribe((storeData: Weather[]) => this._store.next(storeData));
+      }
+    }),
+    filter(Boolean)
+  );
 
   get weatherList() {
     return this._store.getValue();
@@ -22,16 +29,6 @@ export class StoreService {
     private readonly weatherSrv: WeatherService
   ) { }
 
-  initWeatherList() {
-    return this._store.pipe(
-      tap(weatherList => {
-        if (!weatherList) {
-          this.loadWeatherList().subscribe((storeData: Weather[]) => this._store.next(storeData));
-        }
-      }),
-      filter(Boolean)
-    );
-  }
 
   loadWeatherList(): Observable<Weather[]> {
     const storedLocations = this.localStorageSrv.getStoredLocations();
