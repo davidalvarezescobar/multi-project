@@ -42,7 +42,7 @@ export class StoreService {
       tap(x => console.log('Stored Locations:', x)),
       mergeMap((location: Location) => this.weatherSrv.forecast(location)),
       map(res => res.data),
-      scan((acc: Weather[], weather: Weather) => [...acc, weather], [])
+      scan((acc, weather) => [...acc, weather], [] as Weather[])
     );
   }
 
