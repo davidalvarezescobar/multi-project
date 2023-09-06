@@ -1,0 +1,34 @@
+<main>
+  <h4 class="header">Portal del soldado</h4>
+  <aside>
+    <details open>
+      <summary>Servicios</summary>
+      <ul>
+        <li routerLink="/comedor" routerLinkActive="active">Comedor</li>
+        <li>Salas</li>
+        <li>Apartamentos</li>
+        <li>Gimnasio</li>
+        <li>Biblioteca</li>
+        <li>Piscina</li>
+      </ul>
+    </details>
+    <details>
+      <summary>Control horario</summary>
+      <ul>
+        <li>Fichaje diario</li>
+        <li>Turnos</li>
+      </ul>
+    </details>
+    <details>
+      <summary>Control visitas</summary>
+      <ul>
+        <li routerLink="/visitas" routerLinkActive="active">Gestión visitas</li>
+      </ul>
+    </details>
+  </aside>
+
+  <section>
+    <router-outlet></router-outlet>
+  </section>
+
+</main>

@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+
+// modifico css según lo que aparece en: https: //picocss.com/docs/customization.html
+[data-theme="light"],
+:root:not([data-theme="dark"]) {
+    --font-size: 16px;
+}
+
+body {
+    background: rgb(237, 240, 243);
+    padding: 5px;
+    // width: 99%;
+    // margin: 0 auto;
+}
