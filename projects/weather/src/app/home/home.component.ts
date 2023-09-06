@@ -8,7 +8,7 @@ import { StoreService } from '../services/store.service';
 
 @Component({
   selector: 'app-home',
-  templateUrl: './home.component.html',
+  templateUrl: './home.component_ctx.html',
   styleUrls: ['./home.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
@@ -71,6 +71,6 @@ export class HomeComponent implements OnInit {
   }
 
   trackByFn(index, item: Weather) {
-    return item.location.name;
+    return item?.location.name;
   }
 }

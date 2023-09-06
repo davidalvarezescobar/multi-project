@@ -1,32 +1,32 @@
-<ng-container>
+<ng-container *loadData="{
+        searchLocation: searchLocation$ | async,
+        currentForecast: currentForecast$ | async
+    } as asyncData">
+
     <article>
         <form>
             <label for="searchedTerm">Search location:</label>
             <input id="searchedTerm" type="text" [formControl]="searchControl">
         </form>
-    
-        <div *ngIf="(searchLocation$ | async) as searchLocation">
-            <ng-container *ngIf="searchLocation.loading">
-                BUSCANDO...
-            </ng-container>
-            <ng-container *ngIf="searchLocation.data as data">
-                <h5>{{data.name}}, ({{data.region}})</h5>
-                <button id="addWeather" (click)="addWeather()">Añadir</button>
-            </ng-container>
-            <div *ngIf="searchLocation.error as error">
-                <span *ngIf="error['noData']">La ciudad {{searchControl.value}}, no ha sido encontrada</span>
-                <span *ngIf="error['http']">Se ha producido un error al buscar la ciudad, inténtalo de nuevo mas tarde</span>
-            </div>
+
+        <ng-container *ngIf="asyncData.searchLocation?.loading">
+            BUSCANDO...
+        </ng-container>
+        <ng-container *ngIf="asyncData.searchLocation?.data as data">
+            <h5>{{data.name}}, ({{data.region}})</h5>
+            <button id="addWeather" (click)="addWeather()">Añadir</button>
+        </ng-container>
+        <div *ngIf="asyncData.searchLocation?.error as error">
+            <span *ngIf="error['noData']">La ciudad {{searchControl.value}}, no ha sido encontrada</span>
+            <span *ngIf="error['http']">Se ha producido un error al buscar la ciudad, inténtalo de nuevo mas tarde</span>
         </div>
-    
-        <div *ngIf="currentForecast$ | async as currentForecast">
-            <ng-container *ngIf="currentForecast.data as data">
-                <img [src]="data.current.condition.icon" alt="">
-                <span>{{data.current.temp_c}}°, {{data.current.condition.text}}</span>
-            </ng-container>
-            <div *ngIf="currentForecast.error as error">
-                <span *ngIf="error['http']">Se ha producido un error al obtener la previsión, inténtalo de nuevo mas tarde</span>
-            </div>
+
+        <ng-container *ngIf="asyncData.currentForecast?.data as data">
+            <img [src]="data.current.condition.icon" alt="">
+            <span>{{data.current.temp_c}}°, {{data.current.condition.text}}</span>
+        </ng-container>
+        <div *ngIf="asyncData.currentForecast?.error as error">
+            <span *ngIf="error['http']">Se ha producido un error al obtener la previsión, inténtalo de nuevo mas tarde</span>
         </div>
     </article>
     
