@@ -1,0 +1,48 @@
+<h5>Nueva reserva de aparcamiento</h5>
+
+<form>
+    <label for="base">
+        Base:
+        <select id="base" required>
+            <option value="" selected>Seleccion una base</option>
+            <option>Los Llanos</option>
+        </select>
+    </label>
+    <label>
+        Nombre:
+        <input type="text">
+    </label>
+    <label for="fruit">
+        Aparcamiento:
+        <select id="fruit" required>
+            <option value="" selected>Selecciona ubicación</option>
+            <option>Principal</option>
+        </select>
+    </label>
+    <div class="plaza">
+        <label>
+            Plaza:
+            <input type="text" value="18C">
+        </label>
+        <a href="javascript:void(0)">Enlace a plano parking</a>
+    </div>
+    <div class="fecha-turno">
+        <label>
+            Fecha:
+            <input type="datetime-local">
+        </label>
+        <label for="fruit">
+            Turno:
+            <select id="fruit" required>
+                <option value="" selected>Selecciona turno</option>
+                <option>Mañana</option>
+                <option>Tarde</option>
+                <option>Noche</option>
+            </select>
+        </label>
+    </div>
+    <footer>
+        <a routerLink="/aparcamientos" role="button" class="outline">Volver</a>
+        <a routerLink="/aparcamientos" role="button">Guardar</a>
+    </footer>
+</form>

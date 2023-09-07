@@ -8,6 +8,13 @@ import { VisitasComponent } from './pages/visitas/visitas.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { ComedorAltaComponent } from './pages/comedor-alta/comedor-alta.component';
 import { VisitasAltaComponent } from './pages/visitas-alta/visitas-alta.component';
+import { AparcamientosComponent } from './pages/aparcamientos/aparcamientos.component';
+import { GuarderiaComponent } from './pages/guarderia/guarderia.component';
+import { LudotecaComponent } from './pages/ludoteca/ludoteca.component';
+import { SalasComponent } from './pages/salas/salas.component';
+import { ApartamentosComponent } from './pages/apartamentos/apartamentos.component';
+import { GimnasioComponent } from './pages/gimnasio/gimnasio.component';
+import { AparcamientosAltaComponent } from './pages/aparcamientos-alta/aparcamientos-alta.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +23,14 @@ import { VisitasAltaComponent } from './pages/visitas-alta/visitas-alta.componen
     VisitasComponent,
     NotFoundComponent,
     ComedorAltaComponent,
-    VisitasAltaComponent
+    VisitasAltaComponent,
+    AparcamientosComponent,
+    GuarderiaComponent,
+    LudotecaComponent,
+    SalasComponent,
+    ApartamentosComponent,
+    GimnasioComponent,
+    AparcamientosAltaComponent
   ],
   imports: [
     BrowserModule,

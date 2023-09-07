@@ -1,26 +1,68 @@
+:host {
+    display: block;
+}
+
 main {
     display: flex;
-    flex-wrap: wrap;
-    gap: 4px;
+    gap: 2px;
+    margin-top: 6px;
+}
 
-    >* {
-        background: #fff;
-        border-radius: 8px;
-        padding-left: 26px;
-        padding-right: 26px;
+header,
+aside,
+section {
+    background: #fff;
+    border-radius: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--primary-hover);
+    color: #fff;
+    padding-top: 6px;
+    padding-bottom: 8px;
+    .col-left {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        .logo-aire {
+            height: 50px;
+        }
+        .title {
+            margin: 0;
+            color: #fff;
+        }
+    }
+    .col-right {
+        display: flex;
+        align-items: center;
+        .logo-account {
+            height: 36px;
+        }
+        .user {
+            margin-left: 12px;
+            line-height: 1.2rem;
+            cursor: pointer;
+        }
+        .user-name {
+            margin: 0;
+            font-weight: 500;
+            color: #fff;
+        }
+        .salir {
+            margin-left: 30px;
+            cursor: pointer;
+        }
     }
 }
 
-h4.header {
-    width: 100%;
-    margin: 0;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    color: var(--primary-hover);
-}
 
 aside {
-    width: 220px;
+    width: 250px;
     padding-top: 25px;
     summary {
         font-weight: 500;
