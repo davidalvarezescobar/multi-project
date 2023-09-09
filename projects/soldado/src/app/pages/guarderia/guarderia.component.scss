@@ -1,0 +1,19 @@
+:host {
+    display: block;
+}
+
+.fecha-turno {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    column-gap: 40px;
+    label {
+        width: 250px;
+    }
+}
+
+footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px;
+}

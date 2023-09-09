@@ -2,13 +2,12 @@
     display: block;
 }
 
-.importe {
+.fecha-turno {
     display: flex;
     align-items: center;
-
-    a {
-        margin-top: 7px;
-        margin-left: 21px;
+    gap: 40px;
+    label {
+        width: 250px;
     }
 }
 

@@ -1,9 +1,12 @@
 <h5>Comedor</h5>
 
 <form>
-    <label>
+    <label for="base">
         Base:
-        <input type="text">
+        <select id="base" required>
+            <option value="" selected>Seleccion una base</option>
+            <option>Los Llanos</option>
+        </select>
     </label>
     <label>
         Comedor:
@@ -18,67 +21,71 @@
     </footer>
 </form>
 
-<table>
-    <thead>
-        <tr>
-        <th scope="col">Base</th>
-        <th scope="col">Comedor</th>
-        <th scope="col">Nombre Completo</th>
-        <th scope="col">Fecha</th>
-        <th scope="col">Hora</th>
-        <th scope="col">Menú</th>
-        <th scope="col">Pagado</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-        <th scope="row">Los Llanos</th>
-        <td>Cell</td>
-        <td>Cell</td>
-        <td>Cell</td>
-        <td>Cell</td>
-        <td>Cell</td>
-        <td>Cell</td>
-        </tr>
-        <tr>
-        <th scope="row">Torrejón de Ardoz</th>
-        <td>Cell</td>
-        <td>Cell</td>
-        <td>Cell</td>
-        <td>Cell</td>
-        <td>Cell</td>
-        <td>Cell</td>
-        </tr>
-        <tr>
-        <th scope="row">Zaragoza</th>
-        <td>Cell</td>
-        <td>Cell</td>
-        <td>Cell</td>
-        <td>Cell</td>
-        <td>Cell</td>
-        <td>Cell</td>
-        </tr>
-        <tr>
-        <th scope="row">Morón</th>
-        <td>Cell</td>
-        <td>Cell</td>
-        <td>Cell</td>
-        <td>Cell</td>
-        <td>Cell</td>
-        <td>Cell</td>
-        </tr>
-        <tr>
-        <th scope="row">Matacán</th>
-        <td>Cell</td>
-        <td>Cell</td>
-        <td>Cell</td>
-        <td>Cell</td>
-        <td>Cell</td>
-        <td>Cell</td>
-        </tr>
-    </tbody>
-    </table>
+<figure>
+    <table>
+        <thead>
+            <tr>
+            <th scope="col">Base</th>
+            <th scope="col">Comedor</th>
+            <th scope="col">Nombre Completo</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Hora</th>
+            <th scope="col">Menú</th>
+            <th scope="col">Pagado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <th scope="row">Los Llanos</th>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            </tr>
+            <tr>
+            <th scope="row">Torrejón de Ardoz</th>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            </tr>
+            <tr>
+            <th scope="row">Zaragoza</th>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            </tr>
+            <tr>
+            <th scope="row">Morón</th>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            </tr>
+            <tr>
+            <th scope="row">Matacán</th>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            <td>Cell</td>
+            </tr>
+        </tbody>
+        </table>
+</figure>
 
-<footer>
-    <a routerLink="/comedor/alta" role="button" type="button">Reservar</a>
-</footer>
+    <footer>
+        <a routerLink="/comedor/alta" role="button" type="button">Alta</a>
+        <a href="javascript:void(0)" role="button" type="button">Editar</a>
+        <a href="javascript:void(0)" role="button" type="button">Eliminar</a>
+    </footer>

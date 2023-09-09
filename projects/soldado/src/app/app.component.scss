@@ -1,10 +1,11 @@
 :host {
     display: block;
+    height: 100%;
 }
 
 main {
     display: flex;
-    gap: 2px;
+    gap: 4px;
     margin-top: 6px;
 }
 
@@ -62,15 +63,28 @@ header {
 
 
 aside {
-    width: 250px;
+    flex: 0 1 250px;
+    min-width: 200px;
     padding-top: 25px;
+    background: #dae5eb;
+
+    details[open] > summary {
+        color: var(--accordion-close-summary-color);
+    }
     summary {
         font-weight: 500;
     }
+    ul {
+        padding-left: 8px;
+    }
     li {
         cursor: pointer;
-        &.active {
-            color: var(--primary-hover);
+        margin-bottom: 3px;
+        border-radius: 6px;
+        &.active,
+        &.active:hover {
+            color: #fff;
+            background: #3596c3;
             font-weight: bold;
         }
         &:hover {
@@ -81,6 +95,7 @@ aside {
 
 section {
     flex: 1;
+    min-width: 0;
     padding-top: 20px;
     padding-bottom: 30px;
     margin-bottom: 0;

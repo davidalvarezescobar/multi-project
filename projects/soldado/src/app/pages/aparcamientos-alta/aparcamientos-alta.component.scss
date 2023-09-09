@@ -6,7 +6,8 @@
 .fecha-turno {
     display: flex;
     align-items: center;
-    gap: 40px;
+    flex-wrap: wrap;
+    column-gap: 40px;
     label {
         width: 250px;
     }

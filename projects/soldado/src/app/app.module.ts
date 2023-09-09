@@ -15,6 +15,11 @@ import { SalasComponent } from './pages/salas/salas.component';
 import { ApartamentosComponent } from './pages/apartamentos/apartamentos.component';
 import { GimnasioComponent } from './pages/gimnasio/gimnasio.component';
 import { AparcamientosAltaComponent } from './pages/aparcamientos-alta/aparcamientos-alta.component';
+import { GuarderiaAltaComponent } from './pages/guarderia-alta/guarderia-alta.component';
+import { LudotecaAltaComponent } from './pages/ludoteca-alta/ludoteca-alta.component';
+import { SalasAltaComponent } from './pages/salas-alta/salas-alta.component';
+import { ApartamentosAltaComponent } from './pages/apartamentos-alta/apartamentos-alta.component';
+import { GimnasioAltaComponent } from './pages/gimnasio-alta/gimnasio-alta.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +35,12 @@ import { AparcamientosAltaComponent } from './pages/aparcamientos-alta/aparcamie
     SalasComponent,
     ApartamentosComponent,
     GimnasioComponent,
-    AparcamientosAltaComponent
+    AparcamientosAltaComponent,
+    GuarderiaAltaComponent,
+    LudotecaAltaComponent,
+    SalasAltaComponent,
+    ApartamentosAltaComponent,
+    GimnasioAltaComponent
   ],
   imports: [
     BrowserModule,
