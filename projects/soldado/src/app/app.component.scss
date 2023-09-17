@@ -6,7 +6,7 @@
 main {
     display: flex;
     gap: 4px;
-    margin-top: 6px;
+    margin-top: 5px;
 }
 
 header,
@@ -20,40 +20,56 @@ section {
 
 header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     background: var(--primary-hover);
     color: #fff;
     padding-top: 6px;
     padding-bottom: 8px;
+
+    .menu {
+        display: none;
+    }
+
     .col-left {
+        flex: 1;
         display: flex;
         align-items: center;
         gap: 14px;
+
         .logo-aire {
             height: 50px;
         }
+
         .title {
             margin: 0;
             color: #fff;
         }
     }
+
     .col-right {
         display: flex;
         align-items: center;
+
         .logo-account {
             height: 36px;
         }
+
+        .user,
+        .chevron {
+            cursor: pointer;
+        }
+
         .user {
             margin-left: 12px;
             line-height: 1.2rem;
-            cursor: pointer;
         }
+
         .user-name {
             margin: 0;
             font-weight: 500;
             color: #fff;
         }
+
         .salir {
             margin-left: 30px;
             cursor: pointer;
@@ -68,25 +84,30 @@ aside {
     padding-top: 25px;
     background: #dae5eb;
 
-    details[open] > summary {
+    details[open]>summary {
         color: var(--accordion-close-summary-color);
     }
+
     summary {
         font-weight: 500;
     }
+
     ul {
         padding-left: 8px;
     }
+
     li {
         cursor: pointer;
-        margin-bottom: 3px;
+        margin-bottom: 2px;
         border-radius: 6px;
+
         &.active,
         &.active:hover {
             color: #fff;
             background: #3596c3;
             font-weight: bold;
         }
+
         &:hover {
             background: hsl(205, 20%, 94%);
         }
@@ -99,4 +120,36 @@ section {
     padding-top: 20px;
     padding-bottom: 30px;
     margin-bottom: 0;
+}
+
+
+:host(.mobile) {
+    header {
+        position: sticky;
+        top: 5px;
+        padding-top: 0;
+        padding-bottom: 0;
+
+        .menu {
+            display: block;
+            height: 40px;
+            cursor: pointer;
+        }
+
+        .col-left {
+            justify-content: center;
+        }
+
+        .title,
+        .salir {
+            display: none;
+        }
+    }
+
+    aside {
+        position: fixed;
+        top: 60px;
+        height: 100%;
+        overflow-y: auto;
+    }
 }

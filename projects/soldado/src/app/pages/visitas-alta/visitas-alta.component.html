@@ -1,6 +1,6 @@
 <h5>Nueva visita</h5>
 
-<form>
+<form #f>
     <label>
         Nombre:
         <input type="text">
@@ -24,17 +24,23 @@
             No
         </label>
     </div>
-    <label for="marca">
-        Marca:
-        <select id="marca" required>
-            <option value="" selected>Seleccion una marca</option>
-            <option>Seat</option>
-        </select>
-    </label>
-    <label>
-        Modelo:
-        <input type="text">
-    </label>
+    <div class="marca" *ngIf="f.elements[3]['checked']">
+        <label for="marca">
+            Marca:
+            <select id="marca" required>
+                <option value="" selected>Seleccion una marca</option>
+                <option>Seat</option>
+            </select>
+        </label>
+        <label>
+            Matrícula:
+            <input type="text">
+        </label>
+        <label>
+            Modelo:
+            <input type="text">
+        </label>
+    </div>
     <label>
         Motivo visita:
         <textarea name="mensaje" rows="4" cols="50"></textarea>

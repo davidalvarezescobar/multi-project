@@ -2,18 +2,18 @@
     display: block;
 }
 
-.importe {
+.fechas {
     display: flex;
     align-items: center;
-
-    a {
-        margin-top: 7px;
-        margin-left: 21px;
+    flex-wrap: wrap;
+    column-gap: 40px;
+    label {
+        width: 250px;
     }
 }
 
 footer {
     display: flex;
     justify-content: flex-end;
-    gap: 20px
+    gap: 20px;
 }

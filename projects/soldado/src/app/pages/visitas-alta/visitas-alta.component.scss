@@ -1,8 +1,14 @@
-.vehiculo {
+.vehiculo,
+.marca {
     display: flex;
     gap: 30px;
     margin-bottom: 18px;
 }
+
+.marca label {
+    flex: 1;
+}
+
 footer {
     display: flex;
     justify-content: flex-end;

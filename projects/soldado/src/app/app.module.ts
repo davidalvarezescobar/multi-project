@@ -20,6 +20,14 @@ import { LudotecaAltaComponent } from './pages/ludoteca-alta/ludoteca-alta.compo
 import { SalasAltaComponent } from './pages/salas-alta/salas-alta.component';
 import { ApartamentosAltaComponent } from './pages/apartamentos-alta/apartamentos-alta.component';
 import { GimnasioAltaComponent } from './pages/gimnasio-alta/gimnasio-alta.component';
+import { BibliotecaComponent } from './pages/biblioteca/biblioteca.component';
+import { BibliotecaAltaComponent } from './pages/biblioteca-alta/biblioteca-alta.component';
+import { PiscinaComponent } from './pages/piscina/piscina.component';
+import { PiscinaAltaComponent } from './pages/piscina-alta/piscina-alta.component';
+import { FichajeComponent } from './pages/fichaje/fichaje.component';
+import { FichajeAltaComponent } from './pages/fichaje-alta/fichaje-alta.component';
+import { TurnosComponent } from './pages/turnos/turnos.component';
+import { TurnosAltaComponent } from './pages/turnos-alta/turnos-alta.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +48,15 @@ import { GimnasioAltaComponent } from './pages/gimnasio-alta/gimnasio-alta.compo
     LudotecaAltaComponent,
     SalasAltaComponent,
     ApartamentosAltaComponent,
-    GimnasioAltaComponent
+    GimnasioAltaComponent,
+    BibliotecaComponent,
+    BibliotecaAltaComponent,
+    PiscinaComponent,
+    PiscinaAltaComponent,
+    FichajeComponent,
+    FichajeAltaComponent,
+    TurnosComponent,
+    TurnosAltaComponent
   ],
   imports: [
     BrowserModule,

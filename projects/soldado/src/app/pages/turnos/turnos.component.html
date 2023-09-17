@@ -1,0 +1,119 @@
+<h5>Turnos</h5>
+
+<form>
+    <label for="base">
+        Base:
+        <select id="base" required>
+            <option value="" selected>Selecciona una base</option>
+            <option>Los Llanos</option>
+        </select>
+    </label>
+    <label for="sala">
+        Servicio:
+        <select id="sala" required>
+            <option value="" selected>Selecciona un servicio</option>
+            <option>Patrulla Águila</option>
+            <option>Patrulla Flecha</option>
+        </select>
+    </label>
+    <div class="fechas">
+        <label>
+            Fecha desde:
+            <input type="date">
+        </label>
+        <label>
+            Fecha hasta:
+            <input type="date">
+        </label>
+    </div>
+    <footer>
+        <a href="javascript:void(0)" role="button" type="button">Buscar</a>
+    </footer>
+</form>
+
+<figure>
+    <table>
+        <thead>
+            <tr>
+            <th scope="col">Base</th>
+            <th scope="col">Servicio</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Lunes</th>
+            <th scope="col">Martes</th>
+            <th scope="col">Miércoles</th>
+            <th scope="col">Jueves</th>
+            <th scope="col">Viernes</th>
+            <th scope="col">Sábado</th>
+            <th scope="col">Domingo</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <th scope="row">San Javier</th>
+            <td>Patrulla Águila</td>
+            <td>Piloto Cell1</td>
+            <td>Mañana</td>
+            <td>Tarde</td>
+            <td>Noche</td>
+            <td>Libre</td>
+            <td>Mañana</td>
+            <td>Tarde</td>
+            <td>Noche</td>
+            </tr>
+            <tr>
+            <th scope="row">San Javier</th>
+            <td>Patrulla Águila</td>
+            <td>Piloto Cell2</td>
+            <td>Tarde</td>
+            <td>Noche</td>
+            <td>Libre</td>
+            <td>Mañana</td>
+            <td>Tarde</td>
+            <td>Noche</td>
+            <td>Libre</td>
+            </tr>
+            <tr>
+            <th scope="row">San Javier</th>
+            <td>Patrulla Águila</td>
+            <td>Piloto Cell3</td>
+            <td>Noche</td>
+            <td>Libre</td>
+            <td>Mañana</td>
+            <td>Tarde</td>
+            <td>Noche</td>
+            <td>Libre</td>
+            <td>Mañana</td>
+            </tr>
+            <tr>
+            <th scope="row">San Javier</th>
+            <td>Patrulla Águila</td>
+            <td>Piloto Cell4</td>
+            <td>Libre</td>
+            <td>Mañana</td>
+            <td>Tarde</td>
+            <td>Noche</td>
+            <td>Libre</td>
+            <td>Mañana</td>
+            <td>Tarde</td>
+            </tr>
+            <tr>
+            <th scope="row">San Javier</th>
+            <td>Patrulla Águila</td>
+            <td>Piloto Cell5</td>
+            <td>Mañana</td>
+            <td>Tarde</td>
+            <td>Noche</td>
+            <td>Libre</td>
+            <td>Mañana</td>
+            <td>Tarde</td>
+            <td>Noche</td>
+            </tr>
+        </tbody>
+        </table>
+</figure>
+
+<footer>
+    <a routerLink="/turnos/alta" role="button" type="button">Alta</a>
+    <a href="javascript:void(0)" role="button" type="button">Editar</a>
+    <a href="javascript:void(0)" role="button" type="button">Eliminar</a>
+</footer>

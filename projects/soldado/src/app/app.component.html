@@ -1,4 +1,5 @@
 <header>
+  <img class="menu" src="/assets/white-menu.png" alt="logo-aire" (click)="showMenu=true">
   <div class="col-left">
     <img class="logo-aire" src="/assets/logo-aire.png" alt="logo-aire">
     <h4 class="title">Portal de la Base</h4>
@@ -10,16 +11,18 @@
       <small>Manager</small>
     </div>
     <img class="chevron" src="/assets/down_chevron.svg" alt="chevron"/>
-    <img class="salir" src="/assets/logout.svg" alt="logout" />
-    &nbsp;Salir
+    <div class="salir">
+      <img src="/assets/logout.svg" alt="logout" />
+      &nbsp;Salir
+    </div>
   </div>
 </header>
 
 <main>
-  <aside>
-    <details open>
+  <aside *ngIf="showMenu">
+    <details routerLinkActive="active" #servicios [attr.open]="servicios.classList.contains('active') ? '' : null">
       <summary>Servicios</summary>
-      <ul>
+      <ul (click)="hideMenu()">
         <li routerLink="/comedor" routerLinkActive="active">Comedor</li>
         <li routerLink="/aparcamientos" routerLinkActive="active">Aparcamientos</li>
         <li routerLink="/guarderia" routerLinkActive="active">Guardería</li>
@@ -27,26 +30,26 @@
         <li routerLink="/salas" routerLinkActive="active">Salas</li>
         <li routerLink="/apartamentos" routerLinkActive="active">Apartamentos</li>
         <li routerLink="/gimnasio" routerLinkActive="active">Gimnasio</li>
-        <li>Biblioteca</li>
-        <li>Piscina</li>
+        <li routerLink="/biblioteca" routerLinkActive="active">Biblioteca</li>
+        <li routerLink="/piscina" routerLinkActive="active">Piscina</li>
       </ul>
     </details>
-    <details>
+    <details routerLinkActive="active" #horario [attr.open]="horario.classList.contains('active') ? '' : null">
       <summary>Control horario</summary>
-      <ul>
-        <li>Fichaje diario</li>
-        <li>Turnos</li>
+      <ul (click)="hideMenu()">
+        <li routerLink="/fichaje" routerLinkActive="active">Fichaje diario</li>
+        <li routerLink="/turnos" routerLinkActive="active">Turnos</li>
       </ul>
     </details>
-    <details>
+    <details routerLinkActive="active" #visitas [attr.open]="visitas.classList.contains('active') ? '' : null">
       <summary>Control visitas</summary>
-      <ul>
+      <ul (click)="hideMenu()">
         <li routerLink="/visitas" routerLinkActive="active">Gestión visitas</li>
       </ul>
     </details>
   </aside>
 
-  <section>
+  <section (click)="hideMenu()">
     <router-outlet></router-outlet>
   </section>
 </main>
