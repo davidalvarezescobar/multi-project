@@ -1,35 +1,37 @@
 <h5>Nueva reserva de comedor</h5>
 
 <form>
-    <label for="base">
-        Base:
-        <select id="base" required>
-            <option value="" selected>Seleccion una base</option>
-            <option>Los Llanos</option>
-        </select>
-    </label>
-    <label>
-        Nombre:
-        <input type="text">
-    </label>
-    <label for="fruit">
-        Menú:
-        <select id="fruit" required>
-            <option value="" selected>Selecciona menú</option>
-            <option>Menú 1</option>
-        </select>
-    </label>
-    <label>
-        Fecha:
-        <input type="datetime-local">
-    </label>
-    <div class="importe">
-        <label>
-            Importe:
-            <input type="text" value="12 €" readonly aria-invalid="false">
+    <fieldset>
+        <label for="base">
+            Base:
+            <select id="base" required>
+                <option value="" selected>Seleccion una base</option>
+                <option>Los Llanos</option>
+            </select>
         </label>
-        <a href="javascript:void(0)" role="button" type="button">Pagar</a>
-    </div>
+        <label>
+            Nombre:
+            <input type="text">
+        </label>
+        <label for="fruit">
+            Menú:
+            <select id="fruit" required>
+                <option value="" selected>Selecciona menú</option>
+                <option>Menú 1</option>
+            </select>
+        </label>
+        <label>
+            Fecha:
+            <input type="datetime-local">
+        </label>
+        <div class="importe">
+            <label>
+                Importe:
+                <input type="text" value="12 €" readonly aria-invalid="false">
+            </label>
+            <a href="javascript:void(0)" role="button" type="button">Pagar</a>
+        </div>
+    </fieldset>
     <footer>
         <a routerLink="/comedor" role="button" class="outline">Volver</a>
         <a routerLink="/comedor" role="button">Guardar</a>

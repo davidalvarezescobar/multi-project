@@ -1,36 +1,38 @@
 <h5>Nueva reserva de apartamento</h5>
 
 <form>
-    <label for="base">
-        Base:
-        <select id="base" required>
-            <option value="" selected>Seleccion una base</option>
-            <option>Los Llanos</option>
-        </select>
-    </label>
-    <label for="fruit">
-        Apartamento:
-        <select id="fruit" required>
-            <option value="" selected>Selecciona apartamento</option>
-            <option>Apartamento 1</option>
-            <option>Apartamento 2</option>
-        </select>
-    </label>
-    <label>
-        Nombre:
-        <input type="text">
-    </label>
-    <label>
-        Fecha:
-        <input type="datetime-local">
-    </label>
-    <div class="ocupantes">
-        <label>
-            Ocupantes:
-            <input type="text" value="3" readonly aria-invalid="false">
+    <fieldset>
+        <label for="base">
+            Base:
+            <select id="base" required>
+                <option value="" selected>Seleccion una base</option>
+                <option>Los Llanos</option>
+            </select>
         </label>
-        <a href="javascript:void(0)" role="button" type="button">Pagar</a>
-    </div>
+        <label for="fruit">
+            Apartamento:
+            <select id="fruit" required>
+                <option value="" selected>Selecciona apartamento</option>
+                <option>Apartamento 1</option>
+                <option>Apartamento 2</option>
+            </select>
+        </label>
+        <label>
+            Nombre:
+            <input type="text">
+        </label>
+        <label>
+            Fecha:
+            <input type="datetime-local">
+        </label>
+        <div class="ocupantes">
+            <label>
+                Ocupantes:
+                <input type="text" value="3" readonly aria-invalid="false">
+            </label>
+            <a href="javascript:void(0)" role="button" type="button">Pagar</a>
+        </div>
+    </fieldset>
     <footer>
         <a routerLink="/apartamentos" role="button" class="outline">Volver</a>
         <a routerLink="/apartamentos" role="button">Guardar</a>

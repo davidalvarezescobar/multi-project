@@ -1,40 +1,41 @@
 <h5>Nuevo turno</h5>
 
 <form>
-    <label for="base">
-        Base:
-        <select id="base" required>
-            <option value="" selected>Seleccion una base</option>
-            <option>Los Llanos</option>
-        </select>
-    </label>
-    <label for="servicio">
-        Servicio:
-        <select id="servicio" required>
-            <option value="" selected>Selecciona un servicio</option>
-            <option>Patrulla Águila</option>
-            <option>Patrulla Flecha</option>
-        </select>
-    </label>
-    <label>
-        Nombre:
-        <input type="text">
-    </label>
-    <label for="turno">
-        Turno:
-        <select id="turno" required>
-            <option value="" selected>Selecciona un turno</option>
-            <option>Mañana</option>
-            <option>Tarde</option>
-            <option>Noche</option>
-            <option>Libre</option>
-        </select>
-    </label>
-    <label>
-        Fecha:
-        <input type="date">
-    </label>
-    
+    <fieldset>
+        <label for="base">
+            Base:
+            <select id="base" required>
+                <option value="" selected>Seleccion una base</option>
+                <option>Los Llanos</option>
+            </select>
+        </label>
+        <label for="servicio">
+            Servicio:
+            <select id="servicio" required>
+                <option value="" selected>Selecciona un servicio</option>
+                <option>Patrulla Águila</option>
+                <option>Patrulla Flecha</option>
+            </select>
+        </label>
+        <label>
+            Nombre:
+            <input type="text">
+        </label>
+        <label for="turno">
+            Turno:
+            <select id="turno" required>
+                <option value="" selected>Selecciona un turno</option>
+                <option>Mañana</option>
+                <option>Tarde</option>
+                <option>Noche</option>
+                <option>Libre</option>
+            </select>
+        </label>
+        <label>
+            Fecha:
+            <input type="date">
+        </label>
+    </fieldset>
     <footer>
         <a routerLink="/turnos" role="button" class="outline">Volver</a>
         <a routerLink="/turnos" role="button">Guardar</a>

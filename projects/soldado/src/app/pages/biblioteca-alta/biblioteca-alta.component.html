@@ -1,21 +1,23 @@
 <h5>Nueva reserva de biblioteca</h5>
 
 <form>
-    <label for="base">
-        Base:
-        <select id="base" required>
-            <option value="" selected>Seleccion una base</option>
-            <option>Los Llanos</option>
-        </select>
-    </label>
-    <label>
-        Nombre:
-        <input type="text">
-    </label>
-    <label>
-        Fecha:
-        <input type="datetime-local">
-    </label>
+    <fieldset>
+        <label for="base">
+            Base:
+            <select id="base" required>
+                <option value="" selected>Seleccion una base</option>
+                <option>Los Llanos</option>
+            </select>
+        </label>
+        <label>
+            Nombre:
+            <input type="text">
+        </label>
+        <label>
+            Fecha:
+            <input type="datetime-local">
+        </label>
+    </fieldset>
     <footer>
         <a routerLink="/biblioteca" role="button" class="outline">Volver</a>
         <a routerLink="/biblioteca" role="button">Guardar</a>

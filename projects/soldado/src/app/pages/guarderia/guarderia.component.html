@@ -1,32 +1,34 @@
 <h5>Guardería</h5>
 
 <form>
-    <label for="base">
-        Base:
-        <select id="base" required>
-            <option value="" selected>Seleccion una base</option>
-            <option>Los Llanos</option>
-        </select>
-    </label>
-    <label>
-        Nombre padre/madre:
-        <input type="text">
-    </label>
-    <div class="fecha-turno">
-        <label>
-            Fecha:
-            <input type="datetime-local">
-        </label>
-        <label for="fruit">
-            Turno:
-            <select id="fruit" required>
-                <option value="" selected>Selecciona turno</option>
-                <option>Día completo</option>
-                <option>Mañana</option>
-                <option>Tarde</option>
+    <fieldset>
+        <label for="base">
+            Base:
+            <select id="base" required>
+                <option value="" selected>Seleccion una base</option>
+                <option>Los Llanos</option>
             </select>
         </label>
-    </div>
+        <label>
+            Nombre padre/madre:
+            <input type="text">
+        </label>
+        <div class="fecha-turno">
+            <label>
+                Fecha:
+                <input type="datetime-local">
+            </label>
+            <label for="fruit">
+                Turno:
+                <select id="fruit" required>
+                    <option value="" selected>Selecciona turno</option>
+                    <option>Día completo</option>
+                    <option>Mañana</option>
+                    <option>Tarde</option>
+                </select>
+            </label>
+        </div>
+    </fieldset>
     <footer>
         <a href="javascript:void(0)" role="button" type="button">Buscar</a>
     </footer>
@@ -36,55 +38,55 @@
     <table>
         <thead>
             <tr>
-            <th scope="col">Base</th>
-            <th scope="col">Nombre padre/madre</th>
-            <th scope="col">Nombre niño/a</th>
-            <th scope="col">Fecha</th>
-            <th scope="col">Turno</th>
+                <th scope="col">Base</th>
+                <th scope="col">Nombre padre/madre</th>
+                <th scope="col">Nombre niño/a</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Turno</th>
             </tr>
         </thead>
         <tbody>
             <tr>
-            <th scope="row">Los Llanos</th>
-            <td>Cell</td>
-            <td>Cell</td>
-            <td>Cell</td>
-            <td>Cell</td>
+                <th scope="row">Los Llanos</th>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
             </tr>
             <tr>
-            <th scope="row">Torrejón de Ardoz</th>
-            <td>Cell</td>
-            <td>Cell</td>
-            <td>Cell</td>
-            <td>Cell</td>
+                <th scope="row">Torrejón de Ardoz</th>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
             </tr>
             <tr>
-            <th scope="row">Zaragoza</th>
-            <td>Cell</td>
-            <td>Cell</td>
-            <td>Cell</td>
-            <td>Cell</td>
+                <th scope="row">Zaragoza</th>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
             </tr>
             <tr>
-            <th scope="row">Morón</th>
-            <td>Cell</td>
-            <td>Cell</td>
-            <td>Cell</td>
-            <td>Cell</td>
+                <th scope="row">Morón</th>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
             </tr>
             <tr>
-            <th scope="row">Matacán</th>
-            <td>Cell</td>
-            <td>Cell</td>
-            <td>Cell</td>
-            <td>Cell</td>
+                <th scope="row">Matacán</th>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
+                <td>Cell</td>
             </tr>
         </tbody>
-        </table>
+    </table>
 </figure>
 
-    <footer>
-        <a routerLink="/guarderia/alta" role="button" type="button">Alta</a>
-        <a href="javascript:void(0)" role="button" type="button">Editar</a>
-        <a href="javascript:void(0)" role="button" type="button">Eliminar</a>
-    </footer>
+<footer>
+    <a routerLink="/guarderia/alta" role="button" type="button">Alta</a>
+    <a href="javascript:void(0)" role="button" type="button">Editar</a>
+    <a href="javascript:void(0)" role="button" type="button">Eliminar</a>
+</footer>

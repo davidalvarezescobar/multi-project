@@ -1,38 +1,40 @@
 <h5>Alta de fichaje diario</h5>
 
 <form>
-    <label>
-        Nombre:
-        <input type="text">
-    </label>
-    <label>
-        Fecha:
-        <input type="date">
-    </label>
-    <div class="horas">
+    <fieldset>
         <label>
-            Hora de entrada:
-            <input type="time">
+            Nombre:
+            <input type="text">
         </label>
         <label>
-            Hora de salida:
-            <input type="time">
+            Fecha:
+            <input type="date">
         </label>
-    </div>
-    <div class="horas">
+        <div class="horas">
+            <label>
+                Hora de entrada:
+                <input type="time">
+            </label>
+            <label>
+                Hora de salida:
+                <input type="time">
+            </label>
+        </div>
+        <div class="horas">
+            <label>
+                Tiempo trabajado:
+                <input type="time">
+            </label>
+            <label>
+                Pausas:
+                <input type="time">
+            </label>
+        </div>
         <label>
-            Tiempo trabajado:
-            <input type="time">
+            Notas:
+            <textarea name="mensaje" rows="4" cols="50"></textarea>
         </label>
-        <label>
-            Pausas:
-            <input type="time">
-        </label>
-    </div>
-    <label>
-        Notas:
-        <textarea name="mensaje" rows="4" cols="50"></textarea>
-    </label>
+    </fieldset>
     <footer>
         <a routerLink="/fichaje" role="button" class="outline">Volver</a>
         <a routerLink="/fichaje" role="button">Guardar</a>
