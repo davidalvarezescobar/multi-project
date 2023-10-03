@@ -12,4 +12,12 @@ export class AparcamientosAltaComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  open(modal) {
+    modal.showModal();
+  }
+
+  close(modal) {
+    modal.close();
+  }
+
 }

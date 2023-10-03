@@ -45,8 +45,13 @@ form {
 h5 {
     color: var(--primary-hover)
 }
+
 thead {
     th {
         font-weight: 500;
     }
+}
+
+label.short {
+    width: 250px;
 }

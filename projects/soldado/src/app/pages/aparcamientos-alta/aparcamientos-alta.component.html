@@ -25,10 +25,11 @@
                 Plaza:
                 <input type="text" value="18C">
             </label>
-            <a href="javascript:void(0)">Enlace a plano parking</a>
+            <a (click)="open(modal)" href="javascript:void(0)">Enlace a plano parking</a>
+
         </div>
         <div class="fecha-turno">
-            <label>
+            <label class="short">
                 Fecha:
                 <input type="datetime-local">
             </label>
@@ -48,3 +49,10 @@
         <a routerLink="/aparcamientos" role="button">Guardar</a>
     </footer>
 </form>
+
+<dialog #modal>
+    <div class="content">
+
+        <button (click)="close(modal)">Cerrar</button>
+    </div>
+</dialog>

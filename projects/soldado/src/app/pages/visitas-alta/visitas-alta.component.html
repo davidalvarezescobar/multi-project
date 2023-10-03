@@ -1,52 +1,51 @@
 <h5>Nueva visita</h5>
 
 <form #f>
-    <fieldset>
+    <label>
+        Nombre:
+        <input type="text">
+    </label>
+    <label>
+        Apellidos:
+        <input type="text">
+    </label>
+    <label class="short">
+        Fecha Entrada:
+        <input type="datetime-local">
+    </label>
+    <legend>Vehículo:</legend>
+    <div class="vehiculo">
+        <label for="small">
+            <input type="radio" id="small" name="vehiculo" value="S" checked>
+            Sí
+        </label>
+        <label for="medium">
+            <input type="radio" id="medium" name="vehiculo" value="N">
+            No
+        </label>
+    </div>
+    <div class="marca" *ngIf="f.elements[3]['checked']">
+        <label for="marca">
+            Marca:
+            <select id="marca" required>
+                <option value="" selected>Seleccion una marca</option>
+                <option>Seat</option>
+            </select>
+        </label>
         <label>
-            Nombre:
+            Matrícula:
             <input type="text">
         </label>
         <label>
-            Apellidos:
+            Modelo:
             <input type="text">
         </label>
-        <label>
-            Fecha Entrada:
-            <input type="datetime-local">
-        </label>
-        <legend>Vehículo:</legend>
-        <div class="vehiculo">
-            <label for="small">
-                <input type="radio" id="small" name="vehiculo" value="S" checked>
-                Sí
-            </label>
-            <label for="medium">
-                <input type="radio" id="medium" name="vehiculo" value="N">
-                No
-            </label>
-        </div>
-        <div class="marca" *ngIf="f.elements[3]['checked']">
-            <label for="marca">
-                Marca:
-                <select id="marca" required>
-                    <option value="" selected>Seleccion una marca</option>
-                    <option>Seat</option>
-                </select>
-            </label>
-            <label>
-                Matrícula:
-                <input type="text">
-            </label>
-            <label>
-                Modelo:
-                <input type="text">
-            </label>
-        </div>
-        <label>
-            Motivo visita:
-            <textarea name="mensaje" rows="4" cols="50"></textarea>
-        </label>
-    </fieldset>
+    </div>
+    <label>
+        Motivo visita:
+        <textarea name="mensaje" rows="4" cols="50"></textarea>
+    </label>
+
     <footer>
         <a routerLink="/visitas" role="button" class="outline">Volver</a>
         <a routerLink="/visitas" role="button">Guardar</a>
