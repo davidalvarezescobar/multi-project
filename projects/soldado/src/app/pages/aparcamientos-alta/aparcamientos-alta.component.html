@@ -13,7 +13,7 @@
             Nombre:
             <input type="text">
         </label>
-        <label for="fruit">
+        <label class="short" for="fruit">
             Aparcamiento:
             <select id="fruit" required>
                 <option value="" selected>Selecciona ubicación</option>
@@ -26,7 +26,6 @@
                 <input type="text" value="18C">
             </label>
             <a (click)="open(modal)" href="javascript:void(0)">Enlace a plano parking</a>
-
         </div>
         <div class="fecha-turno">
             <label class="short">
@@ -52,7 +51,7 @@
 
 <dialog #modal>
     <div class="content">
-
+        <img src="../../../assets/parking.jpg" alt="parking">
         <button (click)="close(modal)">Cerrar</button>
     </div>
 </dialog>
