@@ -28,6 +28,9 @@ import { FichajeComponent } from './pages/fichaje/fichaje.component';
 import { FichajeAltaComponent } from './pages/fichaje-alta/fichaje-alta.component';
 import { TurnosComponent } from './pages/turnos/turnos.component';
 import { TurnosAltaComponent } from './pages/turnos-alta/turnos-alta.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ComedorFilterPipe } from './pipes/comedor-filter.pipe';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -56,11 +59,14 @@ import { TurnosAltaComponent } from './pages/turnos-alta/turnos-alta.component';
     FichajeComponent,
     FichajeAltaComponent,
     TurnosComponent,
-    TurnosAltaComponent
+    TurnosAltaComponent,
+    ComedorFilterPipe
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

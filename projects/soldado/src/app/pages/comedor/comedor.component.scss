@@ -2,6 +2,25 @@
     display: block;
 }
 
+.comedor {
+    width: 540px;
+}
+
+.fechas {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    column-gap: 40px;
+
+    label {
+        width: 250px;
+    }
+}
+
+button {
+    width: auto;
+}
+
 footer {
     display: flex;
     justify-content: flex-end;

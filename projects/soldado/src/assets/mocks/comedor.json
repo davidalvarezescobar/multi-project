@@ -1,0 +1,32 @@
+[
+    {
+        "comedor": "Principal",
+        "fecha": "2022-02-14T13:30",
+        "pagado": true
+    },
+    {
+        "comedor": "Cantina",
+        "fecha": "2023-03-15T13:30",
+        "pagado": false
+    },
+    {
+        "comedor": "Cantina",
+        "fecha": "2023-04-16T13:30",
+        "pagado": true
+    },
+    {
+        "comedor": "Edificio 2",
+        "fecha": "2024-05-21T14:00",
+        "pagado": true
+    },
+    {
+        "comedor": "Edificio 2",
+        "fecha": "2024-06-22T14:30",
+        "pagado": true
+    },
+    {
+        "comedor": "Edificio 2",
+        "fecha": "2024-07-22T14:30",
+        "pagado": true
+    }
+]

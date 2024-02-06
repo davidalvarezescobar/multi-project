@@ -2,24 +2,32 @@
 
 <form>
     <fieldset>
-        <label for="base">
-            Base:
-            <select id="base" required>
-                <option value="" selected>Seleccion una base</option>
-                <option>Los Llanos</option>
+        <label class="comedor">
+            Comedor:
+            <select id="base" #comedor [value]="filterTmp?.comedor ?? ''"
+                (change)="comedorFilterChanged(comedor.value)">
+                <option value="" selected>Selecciona un comedor</option>
+                <option>Principal</option>
+                <option>Cantina</option>
+                <option>Edificio 2</option>
             </select>
         </label>
-        <label>
-            Comedor:
-            <input type="text">
-        </label>
-        <label class="short">
-            Fecha:
-            <input type="datetime-local">
-        </label>
+        <div class="fechas">
+            <label class="short">
+                Fecha desde:
+                <input #fdesde type="datetime-local" [value]="filterTmp?.fdesde"
+                    (change)="fechaFilterChanged('fdesde', fdesde.value)">
+            </label>
+            <label class="short">
+                Fecha hasta:
+                <input #fhasta type="datetime-local" [value]="filterTmp?.fhasta"
+                    (change)="fechaFilterChanged('fhasta', fhasta.value)">
+            </label>
+        </div>
     </fieldset>
     <footer>
-        <a href="javascript:void(0)" role="button" type="button">Buscar</a>
+        <button type="button" (click)="borrar()">Borrar búsqueda</button>
+        <button type="button" (click)="buscar()">Buscar</button>
     </footer>
 </form>
 
@@ -27,67 +35,25 @@
     <table>
         <thead>
             <tr>
-                <th scope="col">Base</th>
                 <th scope="col">Comedor</th>
-                <th scope="col">Nombre Completo</th>
                 <th scope="col">Fecha</th>
                 <th scope="col">Hora</th>
-                <th scope="col">Menú</th>
                 <th scope="col">Pagado</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">Los Llanos</th>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-            </tr>
-            <tr>
-                <th scope="row">Torrejón de Ardoz</th>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-            </tr>
-            <tr>
-                <th scope="row">Zaragoza</th>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-            </tr>
-            <tr>
-                <th scope="row">Morón</th>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-            </tr>
-            <tr>
-                <th scope="row">Matacán</th>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
+            <tr *ngFor="let reg of comedorList$ | async | comedorFilter:filterApplied">
+                <td>{{reg.comedor}}</td>
+                <td>{{reg.fecha | date:'dd-MM-yyyy'}}</td>
+                <td>{{reg.fecha | date:'HH:mm'}}</td>
+                <td><input type="checkbox" id="switch" [checked]="reg.pagado" name="switch" role="switch" disabled></td>
             </tr>
         </tbody>
     </table>
 </figure>
 
 <footer>
-    <a routerLink="/comedor/alta" role="button" type="button">Alta</a>
-    <a href="javascript:void(0)" role="button" type="button">Editar</a>
     <a href="javascript:void(0)" role="button" type="button">Eliminar</a>
+    <a href="javascript:void(0)" role="button" type="button">Editar</a>
+    <a routerLink="/comedor/alta" role="button" type="button">Alta</a>
 </footer>

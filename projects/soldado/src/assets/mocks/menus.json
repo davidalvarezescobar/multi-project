@@ -1,0 +1,31 @@
+{
+    "platosPrincipal": [
+        "Croquetas",
+        "Alubias a la riojana",
+        "Filete de ternera con patatas",
+        "Paella de mariscos"
+    ],
+    "platosSegundo": [
+        "Salmón al horno con verduras",
+        "Pollo a la parrilla con ensalada",
+        "Pasta carbonara"
+    ],
+    "bebidas": [
+        "Agua mineral",
+        "Refresco de cola",
+        "Vino tinto",
+        "Cerveza artesanal"
+    ],
+    "postres": [
+        "Tarta de chocolate",
+        "Helado de vainilla con salsa de fresa",
+        "Flan casero",
+        "Frutas frescas"
+    ],
+    "cafes": [
+        "Café con leche",
+        "Cortado",
+        "Té",
+        "Manzanilla"
+    ]
+}

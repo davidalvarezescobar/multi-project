@@ -2,6 +2,18 @@
     display: block;
 }
 
+.comedor {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    column-gap: 40px;
+
+    label {
+        width: 250px;
+    }
+}
+
+
 .importe {
     display: flex;
     align-items: center;
@@ -16,4 +28,35 @@ footer {
     display: flex;
     justify-content: flex-end;
     gap: 20px
+}
+
+fieldset {
+    border-radius: 8px;
+    padding: revert;
+    border: 1px solid var(--primary-hover);
+}
+
+legend {
+    padding: 0 6px;
+    font-weight: 700;
+}
+
+dialog {
+    article {
+        width: 80%;
+    }
+    form {
+        display: grid;
+        gap: 10px;
+        grid-template-columns: repeat(auto-fit, minmax( min(100%, 300px), 1fr ));
+        margin: 0;
+    }
+    .clear {
+        display: inline-block;
+        font-weight: 600;
+        margin-bottom: 25px;
+    }
+    footer {
+        margin-top: 0;
+    }
 }
