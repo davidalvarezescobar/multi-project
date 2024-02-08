@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, from, of } from 'rxjs';
 import { HttpApiService } from './http-api.service';
 
 @Injectable({
@@ -18,5 +18,9 @@ export class MenuStoreService {
       this.http.requestListaMenus().subscribe(data => this._menus$.next(data));
     }
     return this.menus$;
+  }
+
+  loadIntolerancias() {
+    return of(['Celíaco', 'Lactosa', 'Marisco']);
   }
 }

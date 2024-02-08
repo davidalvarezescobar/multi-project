@@ -3,10 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ComedorComponent } from './pages/comedor/comedor.component';
+import { ComedorHistoricoComponent } from './pages/comedor-historico/comedor-historico.component';
 import { VisitasComponent } from './pages/visitas/visitas.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
-import { ComedorAltaComponent } from './pages/comedor-alta/comedor-alta.component';
+import { ComedorAltaComponent } from './pages/comedor/comedor.component';
 import { VisitasAltaComponent } from './pages/visitas-alta/visitas-alta.component';
 import { AparcamientosComponent } from './pages/aparcamientos/aparcamientos.component';
 import { GuarderiaComponent } from './pages/guarderia/guarderia.component';
@@ -35,7 +35,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
-    ComedorComponent,
+    ComedorHistoricoComponent,
     VisitasComponent,
     NotFoundComponent,
     ComedorAltaComponent,

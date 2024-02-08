@@ -1,0 +1,68 @@
+<h5>Histórico reservas de comedor</h5>
+
+<form>
+    <fieldset>
+        <label class="comedor">
+            Comedor:
+            <select id="base" #comedor [value]="filterTmp?.comedor ?? ''"
+                (change)="comedorFilterChanged(comedor.value)">
+                <option value="" selected>Selecciona un comedor</option>
+                <option>Principal</option>
+                <option>Cantina</option>
+                <option>Edificio 2</option>
+            </select>
+        </label>
+        <div class="fechas">
+            <label class="short">
+                Fecha desde:
+                <input #fdesde type="date" [value]="filterTmp?.fdesde"
+                    (change)="fechaFilterChanged('fdesde', fdesde.value)">
+            </label>
+            <label class="short">
+                Fecha hasta:
+                <input #fhasta type="date" [value]="filterTmp?.fhasta"
+                    (change)="fechaFilterChanged('fhasta', fhasta.value)">
+            </label>
+        </div>
+    </fieldset>
+    <footer>
+        <button type="button" (click)="borrar()">Borrar búsqueda</button>
+        <button type="button" (click)="buscar()">Buscar</button>
+    </footer>
+</form>
+
+<figure>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Comedor</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Plato principal</th>
+                <th scope="col">Segundo plato</th>
+                <th scope="col">Postre</th>
+                <th style="text-align: center;" scope="col">Pagado</th>
+                <th style="text-align: center;" scope="col">QR</th>
+                <th style="text-align: center;" scope="col">Cancelar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let reg of comedorList$ | async | comedorFilter:filterApplied">
+                <td>{{reg.comedor}}</td>
+                <td>{{reg.fecha | date:'dd-MM-yyyy'}}</td>
+                <td>{{reg.principal}}</td>
+                <td>{{reg.segundo}}</td>
+                <td>{{reg.postre}}</td>
+                <td style="text-align: center;">
+                    <i *ngIf="reg.pagado" class="fa-regular fa-circle-check fa-lg"></i>
+                    <i *ngIf="!reg.pagado" class="fa-regular fa-circle fa-lg"></i>
+                </td>
+                <td style="cursor: pointer; text-align: center;"><i class="fa-solid fa-qrcode fa-lg"></i></td>
+                <td style="cursor: pointer; text-align: center;"><i class="fa-solid fa-trash fa-lg"></i></td>
+            </tr>
+        </tbody>
+    </table>
+</figure>
+
+<footer>
+    <a routerLink="/comedor" role="button" type="button">Alta</a>
+</footer>

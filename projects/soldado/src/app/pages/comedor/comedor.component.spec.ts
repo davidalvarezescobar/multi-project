@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ComedorComponent } from './comedor.component';
+import { ComedorAltaComponent } from './comedor.component';
 
-describe('ComedorComponent', () => {
-  let component: ComedorComponent;
-  let fixture: ComponentFixture<ComedorComponent>;
+describe('ComedorAltaComponent', () => {
+  let component: ComedorAltaComponent;
+  let fixture: ComponentFixture<ComedorAltaComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ComedorComponent ]
+      declarations: [ ComedorAltaComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ComedorComponent);
+    fixture = TestBed.createComponent(ComedorAltaComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

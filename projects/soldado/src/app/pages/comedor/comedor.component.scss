@@ -2,11 +2,18 @@
     display: block;
 }
 
-.comedor {
-    width: 540px;
+section {
+    margin-bottom: 32px;
 }
 
-.fechas {
+.comedor-container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.comedor {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -15,15 +22,83 @@
     label {
         width: 250px;
     }
+
+    .outline {
+        margin-top: 6px;
+    }
 }
 
-button {
-    width: auto;
-}
 
-footer {
+.importe {
     display: flex;
-    justify-content: flex-end;
-    flex-wrap: wrap;
+    align-items: center;
+    column-gap: 40px;
+
+    a {
+        margin-top: 7px;
+    }
+}
+
+fieldset {
+    border-radius: 8px;
+    padding: revert;
+    border: 1px solid var(--primary-hover);
+}
+
+legend {
+    padding: 0 6px;
+    font-weight: 700;
+}
+
+.platos {
+    display: grid;
+    gap: 1vw;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    margin: 0;
+    position: relative;
+}
+
+.intolerancias {
+    display: flex;
+    align-items: center;
     gap: 20px;
+    &__elegidas {
+        margin-top: 4px;
+        display: flex;
+        gap: 20px;
+        & .outline {
+            cursor: default;
+        }
+    }
+}
+
+dialog {
+    .close {
+        cursor: pointer;
+    }
+
+    article {
+        width: 80%;
+    }
+    
+    .pagos {
+        margin-top: 18px;
+        display: flex;
+        gap: 25px;
+    }
+
+    .qr {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+.importe-pagado {
+    display: flex;
+    flex-direction: column;
+    width: 70px;
+    &__check {
+        width: 42px;
+        padding-inline-end: 0 !important;
+    }
 }

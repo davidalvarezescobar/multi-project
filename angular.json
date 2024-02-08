@@ -140,7 +140,8 @@
               "projects/soldado/src/assets"
             ],
             "styles": [
-              "./node_modules/@picocss/pico/css/pico.classless.min.css",
+              "./node_modules/@picocss/pico/css/pico.min.css",
+              "./node_modules/@fortawesome/fontawesome-free/css/all.css",
               "projects/soldado/src/styles.scss"
             ],
             "scripts": []

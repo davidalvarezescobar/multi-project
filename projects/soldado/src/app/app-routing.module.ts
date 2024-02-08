@@ -6,8 +6,8 @@ import { ApartamentosAltaComponent } from './pages/apartamentos-alta/apartamento
 import { ApartamentosComponent } from './pages/apartamentos/apartamentos.component';
 import { BibliotecaAltaComponent } from './pages/biblioteca-alta/biblioteca-alta.component';
 import { BibliotecaComponent } from './pages/biblioteca/biblioteca.component';
-import { ComedorAltaComponent } from './pages/comedor-alta/comedor-alta.component';
-import { ComedorComponent } from './pages/comedor/comedor.component';
+import { ComedorAltaComponent } from './pages/comedor/comedor.component';
+import { ComedorHistoricoComponent } from './pages/comedor-historico/comedor-historico.component';
 import { FichajeAltaComponent } from './pages/fichaje-alta/fichaje-alta.component';
 import { FichajeComponent } from './pages/fichaje/fichaje.component';
 import { GimnasioAltaComponent } from './pages/gimnasio-alta/gimnasio-alta.component';
@@ -27,8 +27,8 @@ import { VisitasAltaComponent } from './pages/visitas-alta/visitas-alta.componen
 import { VisitasComponent } from './pages/visitas/visitas.component';
 
 const routes: Routes = [
-  { path: 'comedor',  component: ComedorComponent },
-  { path: 'comedor/alta',  component: ComedorAltaComponent },
+  { path: 'comedor/historico',  component: ComedorHistoricoComponent },
+  { path: 'comedor',  component: ComedorAltaComponent },
   { path: 'aparcamientos',  component: AparcamientosComponent },
   { path: 'aparcamientos/alta',  component: AparcamientosAltaComponent },
   { path: 'guarderia',  component: GuarderiaComponent },
@@ -51,7 +51,6 @@ const routes: Routes = [
   { path: 'fichaje/alta',  component: FichajeAltaComponent },
   { path: 'turnos',  component: TurnosComponent },
   { path: 'turnos/alta',  component: TurnosAltaComponent },
-  { path: '',   redirectTo: '/comedor', pathMatch: 'full' },
   { path: '',   redirectTo: '/comedor', pathMatch: 'full' },
   { path: '**', component: NotFoundComponent }
 ];

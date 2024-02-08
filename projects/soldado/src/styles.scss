@@ -53,6 +53,11 @@ thead {
     }
 }
 
-label.short {
-    width: 250px;
+label{
+    &.short {
+        width: 250px;
+    }
+    &.very-short {
+        width: 110px;
+    }
 }

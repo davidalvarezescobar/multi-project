@@ -1,46 +1,112 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
+import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { ComedorStoreService } from '../../services/comedor-store.service';
-
-interface Filter {
-  comedor?: string; fdesde?: string; fhasta?: string 
-}
+import { MenuStoreService } from '../../services/menu-store.service';
 
 @Component({
   selector: 'app-comedor',
   templateUrl: './comedor.component.html',
   styleUrls: ['./comedor.component.scss']
 })
-export class ComedorComponent implements OnInit {
-  comedorList$: Observable<any>;
-  filterApplied: Filter;
-  filterTmp: Filter;
+export class ComedorAltaComponent implements OnInit {
+  menuList$: Observable<any>;
+  intorelancias$: Observable<any>
+  showModal = false;
+  form: FormGroup;
+  isLoading: boolean | null = null;
+  
 
   constructor(
-    readonly store: ComedorStoreService
+    readonly store: MenuStoreService,
+    readonly comedorStore: ComedorStoreService,
+    readonly fb: FormBuilder,
+    readonly el: ElementRef
   ) { }
 
   ngOnInit(): void {
-    this.comedorList$ = this.store.loadListaComedor();
+    this.menuList$ = this.store.loadListaMenu();
+    this.intorelancias$ = this.store.loadIntolerancias();
+    this.buildForm();
   }
 
-  comedorFilterChanged(selectedComedor) {
-    if (selectedComedor) {
-      this.filterTmp = {comedor:selectedComedor};
-    } else {
-      delete this.filterTmp?.comedor;
+  openModal() {
+    this.showModal = true;
+  }
+
+  closeModal() {
+    this.showModal = false;
+  }
+
+  buildForm() {
+    this.form = this.fb.group({
+      comedor: this.fb.control('', {nonNullable:true}),
+      fecha: this.fb.control(''),
+      principal: this.fb.control(''),
+      segundo: this.fb.control(''),
+      postre: this.fb.control(''),
+      intorelancias: this.fb.array([]),
+      precioMenu: this.fb.control(0, {nonNullable:true}),
+      pagado: this.fb.control(false)
+    });
+
+    this.form.get('principal').valueChanges.subscribe(() => this.calculateTotalAmount());
+    this.form.get('segundo').valueChanges.subscribe(() => this.calculateTotalAmount());
+  }
+
+  get intolerancias() {
+    return this.form.get('intorelancias') as FormArray;
+  }
+
+  onSelectIntolerancia(intolerancia: string) {
+    const index = this.intolerancias.value.indexOf(intolerancia);
+    if (!!~index) { // si es true, o sea, si existe: lo quitamos
+      this.intolerancias.removeAt(index);
+    } else { // si es false, o sea, si no existe: lo añadimos
+      this.intolerancias.push(new FormControl(intolerancia));
     }
   }
 
-  fechaFilterChanged(fname, fvalue) {
-    this.filterTmp = {...this.filterTmp, [fname]:fvalue};
+  calculateTotalAmount() {
+    const principalSelected = !!this.form.get('principal').value;
+    const segundoSelected = !!this.form.get('segundo').value;
+
+    if (principalSelected && segundoSelected) {
+      this.form.patchValue({precioMenu: 12}); // Precio si se seleccionan ambos
+    } else if (principalSelected || segundoSelected) {
+      this.form.patchValue({precioMenu: 10}); // Precio si se selecciona solo uno
+    }
   }
 
-  buscar() {
-    this.filterApplied = {...this.filterTmp};
+  pagar(pagado: boolean) {
+    if (pagado) {
+      this.isLoading = true;
+      setTimeout(() => {
+        this.isLoading = null;
+        this.closeModal();
+        this.form.patchValue({pagado: true});
+        this.comedorStore.addReservaComedor(this.form.value);
+      }, 2000);
+    } else {
+      this.closeModal();
+      this.comedorStore.addReservaComedor(this.form.value);
+    }
   }
 
-  borrar() {
-    this.filterApplied = this.filterTmp = null;
+  resetForm() {
+    while (this.intolerancias.length) {
+      this.intolerancias.removeAt(0);
+    }
+    this.form.reset();
+
+    const checkboxes = this.el.nativeElement.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach((checkbox) => {
+      checkbox.checked = false;
+    });
+
+  }
+
+  get pagado() {
+    return this.form.value.pagado;
   }
 }
