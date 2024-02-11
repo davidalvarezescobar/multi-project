@@ -1,0 +1,46 @@
+<h5>Menú del {{today | date:'EEEE, d \'de\' MMMM \'de\' y' }}</h5>
+
+<section class="historico">
+    <a routerLink="/comedor/historico-admin" role="button" type="button">Histórico</a>
+</section>
+
+<figure>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Plato principal</th>
+                <th scope="col">Segundo plato</th>
+                <th scope="col">Postre</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let group of menuArray; let i=index" [formGroup]="group">
+                <td>
+                    <input *ngIf="isEditar" placeholder="Introduce principal" formControlName="principal">
+                    <span *ngIf="!isEditar">{{menuForm.value[i].principal}}</span>
+                </td>
+                <td>
+                    <input *ngIf="isEditar" placeholder="Introduce segundo" formControlName="segundo">
+                    <span *ngIf="!isEditar">{{menuForm.value[i].segundo}}</span>
+                </td>
+                <td>
+                    <input *ngIf="isEditar" placeholder="Introduce postre" formControlName="postre">
+                    <span *ngIf="!isEditar">{{menuForm.value[i].postre}}</span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</figure>
+
+<section>
+    <label class="very-short">
+        Importe menú:
+        <input *ngIf="isEditar" #precio type="text" [value]="precioMenu" (input)="precioMenu = precio.value" [readonly]="!isEditar">
+        <span *ngIf="!isEditar">{{precioMenu}} €</span>
+    </label>
+</section>
+
+<footer>
+    <a href="javascript:void(0)" role="button" type="button" (click)="editar()">Editar</a>
+    <a href="javascript:void(0)" role="button" type="button" (click)="guardar()">Guardar</a>
+</footer>

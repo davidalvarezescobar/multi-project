@@ -18,15 +18,15 @@ export class ComedorAltaComponent implements OnInit {
   
 
   constructor(
-    readonly store: MenuStoreService,
+    readonly menuStore: MenuStoreService,
     readonly comedorStore: ComedorStoreService,
     readonly fb: FormBuilder,
     readonly el: ElementRef
   ) { }
 
   ngOnInit(): void {
-    this.menuList$ = this.store.loadListaMenu();
-    this.intorelancias$ = this.store.loadIntolerancias();
+    this.menuList$ = this.menuStore.loadListaMenu();
+    this.intorelancias$ = this.menuStore.loadIntolerancias();
     this.buildForm();
   }
 
@@ -47,7 +47,7 @@ export class ComedorAltaComponent implements OnInit {
       postre: this.fb.control(''),
       intorelancias: this.fb.array([]),
       precioMenu: this.fb.control(0, {nonNullable:true}),
-      pagado: this.fb.control(false)
+      pagado: this.fb.control('')
     });
 
     this.form.get('principal').valueChanges.subscribe(() => this.calculateTotalAmount());
@@ -89,6 +89,7 @@ export class ComedorAltaComponent implements OnInit {
       }, 2000);
     } else {
       this.closeModal();
+      this.form.patchValue({pagado: false});
       this.comedorStore.addReservaComedor(this.form.value);
     }
   }

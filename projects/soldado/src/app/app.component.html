@@ -6,11 +6,13 @@
   </div>
   <div class="col-right">
     <img class="logo-account" src="/assets/account.svg" alt="account"/>
-    <div class="user">
-      <p class="user-name">Celes</p>
-      <small>Manager</small>
-    </div>
-    <img class="chevron" src="/assets/down_chevron.svg" alt="chevron"/>
+    <details role="list" dir="rtl" #combo>
+      <summary aria-haspopup="listbox" role="link">{{currUser | async}}</summary>
+      <ul role="listbox">
+        <li *ngFor="let user of users" (click)="changeUser(user); combo.open=false"><a>{{user}}</a></li>
+      </ul>
+    </details>
+
     <div class="salir">
       <img src="/assets/logout.svg" alt="logout" />
       &nbsp;Salir
@@ -23,7 +25,8 @@
     <details routerLinkActive="active" #servicios [attr.open]="servicios.classList.contains('active') ? '' : null">
       <summary>Servicios</summary>
       <ul (click)="hideMenu()">
-        <li routerLink="/comedor" routerLinkActive="active">Comedor</li>
+        <li routerLink="/comedor" routerLinkActive="active" accessControl="User">Comedor</li>
+        <li routerLink="/comedor-admin" routerLinkActive="active" accessControl="Admin">Comedor</li>
         <li routerLink="/aparcamientos" routerLinkActive="active">Aparcamientos</li>
         <li routerLink="/guarderia" routerLinkActive="active">Guardería</li>
         <li routerLink="/ludoteca" routerLinkActive="active">Ludoteca</li>

@@ -25,10 +25,14 @@ import { TurnosAltaComponent } from './pages/turnos-alta/turnos-alta.component';
 import { TurnosComponent } from './pages/turnos/turnos.component';
 import { VisitasAltaComponent } from './pages/visitas-alta/visitas-alta.component';
 import { VisitasComponent } from './pages/visitas/visitas.component';
+import { ComedorGuard } from './guards/comedor.guard';
+import { ComedorAdminComponent } from './pages/comedor-admin/comedor-admin.component';
+import { ComedorAdminGuard } from './guards/comedor-admin.guard';
 
 const routes: Routes = [
   { path: 'comedor/historico',  component: ComedorHistoricoComponent },
-  { path: 'comedor',  component: ComedorAltaComponent },
+  { path: 'comedor',  component: ComedorAltaComponent, canActivate: [ComedorGuard]},
+  { path: 'comedor-admin',  component: ComedorAdminComponent, canActivate: [ComedorAdminGuard]},
   { path: 'aparcamientos',  component: AparcamientosComponent },
   { path: 'aparcamientos/alta',  component: AparcamientosAltaComponent },
   { path: 'guarderia',  component: GuarderiaComponent },

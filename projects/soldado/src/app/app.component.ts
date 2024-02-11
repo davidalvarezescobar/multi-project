@@ -1,4 +1,5 @@
 import { Component, HostBinding, HostListener, OnInit } from '@angular/core';
+import { LoginService } from './services/login.service';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,8 @@ import { Component, HostBinding, HostListener, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   title = 'soldado';
   showMenu: boolean;
+  users = ['User', 'Admin'];
+  currUser = this.loginSrv.user$;
   
   @HostBinding('class.mobile') isMobile: boolean = false;
   @HostListener('window:resize', ['$event'])
@@ -15,6 +18,11 @@ export class AppComponent implements OnInit {
     this.checkScreenSize();
   };
   
+
+  constructor(
+    readonly loginSrv: LoginService
+  ) { }
+
   ngOnInit(): void {
     this.checkScreenSize();
   }
@@ -32,5 +40,9 @@ export class AppComponent implements OnInit {
     if (this.isMobile) {
       this.showMenu = false;
     }
+  }
+
+  changeUser(newUser: string) {
+    this.loginSrv.updateUser(newUser);
   }
 }

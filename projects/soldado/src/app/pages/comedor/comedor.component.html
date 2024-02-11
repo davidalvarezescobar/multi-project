@@ -23,10 +23,10 @@
         </div>
     </section>
     <section class="platos" *ngIf="menuList$ | async as menuList">
-        <ng-container *ngIf="!pagado">
+        <ng-container *ngIf="pagado === ''">
             <fieldset>
                 <legend>Plato principal</legend>
-                <ng-container *ngFor="let principal of menuList['platosPrincipal']; let i=index">
+                <ng-container *ngFor="let principal of menuList['principal']; let i=index">
                     <label for="principal{{i}}">
                         <input type="radio" id="principal{{i}}" name="principal" formControlName="principal"
                             [value]="principal">
@@ -36,7 +36,7 @@
             </fieldset>
             <fieldset>
                 <legend>Plato segundo</legend>
-                <ng-container *ngFor="let segundo of menuList['platosSegundo']; let i=index">
+                <ng-container *ngFor="let segundo of menuList['segundo']; let i=index">
                     <label for="segundo{{i}}">
                         <input type="radio" id="segundo{{i}}" name="segundo" formControlName="segundo"
                             [value]="segundo">
@@ -46,7 +46,7 @@
             </fieldset>
             <fieldset>
                 <legend>Postre</legend>
-                <ng-container *ngFor="let postre of menuList['postres']; let i=index">
+                <ng-container *ngFor="let postre of menuList['postre']; let i=index">
                     <label for="postre{{i}}">
                         <input type="radio" id="postre{{i}}" name="postre" formControlName="postre" [value]="postre">
                         {{postre}}
@@ -55,7 +55,7 @@
             </fieldset>
         </ng-container>
         <!-- separador -->
-        <figure *ngIf="pagado">
+        <figure *ngIf="pagado !== ''">
             <fieldset>
                 <legend>Menú</legend>
                 <table>
@@ -102,7 +102,7 @@
             Importe menú:
             <input type="text" [value]="form.value.precioMenu + ' €'" readonly>
         </label>
-        <label class="importe-pagado" *ngIf="pagado">
+        <label class="importe-pagado" *ngIf="pagado !== ''">
             Pagado:
             <input type="text" class="importe-pagado__check" readonly [attr.aria-invalid]="!pagado">
         </label>

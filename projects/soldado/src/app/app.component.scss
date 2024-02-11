@@ -52,28 +52,36 @@ header {
 
         .logo-account {
             height: 36px;
-        }
-
-        .user,
-        .chevron {
-            cursor: pointer;
-        }
-
-        .user {
-            margin-left: 12px;
-            line-height: 1.2rem;
-        }
-
-        .user-name {
-            margin: 0;
-            font-weight: 500;
-            color: #fff;
+            margin-right: 6px;
         }
 
         .salir {
             margin-left: 30px;
             cursor: pointer;
         }
+    }
+
+    details {
+        margin: 0;
+        height: 16px;
+    }
+    
+    details[role=list] summary::after {
+        background-image: url(/assets/down_chevron.svg);
+        position: relative;
+        top: -2px;
+        right: -6px;
+        background-size: 28px;
+        background-position: center;
+    }
+    
+    details[role=list] summary+ul {
+        width: 100px;
+        top: 25px;
+    }
+
+    summary {
+        color: #fff;
     }
 }
 
