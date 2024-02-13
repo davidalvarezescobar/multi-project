@@ -28,9 +28,11 @@ import { VisitasComponent } from './pages/visitas/visitas.component';
 import { ComedorGuard } from './guards/comedor.guard';
 import { ComedorAdminComponent } from './pages/comedor-admin/comedor-admin.component';
 import { ComedorAdminGuard } from './guards/comedor-admin.guard';
+import { ComedorHistoricoAdminComponent } from './pages/comedor-historico-admin/comedor-historico-admin.component';
 
 const routes: Routes = [
-  { path: 'comedor/historico',  component: ComedorHistoricoComponent },
+  { path: 'comedor/historico',  component: ComedorHistoricoComponent, canActivate: [ComedorGuard] },
+  { path: 'comedor-admin/historico',  component: ComedorHistoricoAdminComponent, canActivate: [ComedorAdminGuard] },
   { path: 'comedor',  component: ComedorAltaComponent, canActivate: [ComedorGuard]},
   { path: 'comedor-admin',  component: ComedorAdminComponent, canActivate: [ComedorAdminGuard]},
   { path: 'aparcamientos',  component: AparcamientosComponent },

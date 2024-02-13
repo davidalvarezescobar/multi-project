@@ -35,6 +35,7 @@ import { TurnosComponent } from './pages/turnos/turnos.component';
 import { VisitasAltaComponent } from './pages/visitas-alta/visitas-alta.component';
 import { VisitasComponent } from './pages/visitas/visitas.component';
 import { ComedorFilterPipe } from './pipes/comedor-filter.pipe';
+import { ComedorHistoricoAdminComponent } from './pages/comedor-historico-admin/comedor-historico-admin.component';
 
 registerLocaleData(es);
 
@@ -68,7 +69,8 @@ registerLocaleData(es);
     TurnosAltaComponent,
     ComedorFilterPipe,
     ComedorAdminComponent,
-    AccessControlDirective
+    AccessControlDirective,
+    ComedorHistoricoAdminComponent
   ],
   imports: [
     BrowserModule,
