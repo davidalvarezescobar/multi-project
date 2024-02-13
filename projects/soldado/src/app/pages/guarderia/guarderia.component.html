@@ -1,4 +1,4 @@
-<h5>Guardería</h5>
+<h5>Guardería {{tipoUsuario}}</h5>
 
 <div *ngIf="ventana === 'historial'">
     <fieldset>
@@ -72,7 +72,7 @@
                         <option *ngFor="let name of nombres" [value]="name" [selected]="reserva.nombre === name">{{ name }}</option>
                     </select>
                 </label>
-                <a href="javascript:void(0)" *ngIf="tipoUsuario === 'padres'" (click)="setVentana('historial')" role="button" type="button">Historial</a>
+                <a href="javascript:void(0)" *ngIf="tipoUsuario === 'User'" (click)="setVentana('historial')" role="button" type="button">Historial</a>
             </div>
             <div class="fecha-turno">
                 <label class="short">

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { GuarderiaService } from '../../services/guarderia-service';
+import { LoginService } from '../../services/login.service';
 
 @Component({
   selector: 'app-guarderia',
@@ -8,7 +9,7 @@ import { GuarderiaService } from '../../services/guarderia-service';
   styleUrls: ['./guarderia.component.scss']
 })
 export class GuarderiaComponent implements OnInit {
-  tipoUsuario: string = "monitor";
+  tipoUsuario: string;
   ventana: string;
   ventanaDatos: string;
   alergiasSeleccionadas: boolean[] = [];
@@ -16,6 +17,8 @@ export class GuarderiaComponent implements OnInit {
   borrar = false;
 
   data$: Observable<any>;
+  login$: Observable<any>;
+
   nombres: string[];
   estados: string[];
   turnos: string[];
@@ -25,10 +28,16 @@ export class GuarderiaComponent implements OnInit {
   reserva: any;
 
   constructor(
-    readonly data: GuarderiaService
+    readonly data: GuarderiaService,
+    readonly loginSrv: LoginService
   ) { }
 
   ngOnInit(): void {
+    this.loginSrv.user$.subscribe(user => {
+      this.tipoUsuario = user
+    });
+
+    console.log(this.tipoUsuario)
     this.data$ = this.data.loadGuarderiaDatos();
     this.data$.subscribe(
       datos => {
@@ -43,9 +52,9 @@ export class GuarderiaComponent implements OnInit {
       });
 
 
-    if (this.tipoUsuario == "monitor") {
+    if (this.tipoUsuario == "Admin") {
       this.setVentana("historial")
-    } else if (this.tipoUsuario == "padres") {
+    } else if (this.tipoUsuario == "User") {
       this.setVentana("datos")
       setTimeout(() => {
         this.padresDatos()
@@ -103,11 +112,11 @@ export class GuarderiaComponent implements OnInit {
   setEditReserva(reserva: any) {
     this.reserva = reserva;
     this.setVentana("datos");
-    if (this.tipoUsuario === "monitor") {
+    if (this.tipoUsuario === "Admin") {
       setTimeout(() => {
         this.monitorDatos();
       }, 1);
-    } else if (this.tipoUsuario === "padres") {
+    } else if (this.tipoUsuario === "User") {
       setTimeout(() => {
         this.padresDatos()
       }, 1);

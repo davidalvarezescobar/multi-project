@@ -18,4 +18,8 @@ export class HttpApiService {
   requestListaMenus() {
     return this.http.get('../../assets/mocks/menus.json');
   }
+  
+   requestGuarderidatosa() {
+    return this.http.get('../../assets/mocks/guarderia.json');
+  }
 }
