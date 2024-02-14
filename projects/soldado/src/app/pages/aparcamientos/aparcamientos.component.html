@@ -15,12 +15,68 @@
             <fieldset>
                 <label>A:</label>
                 <input type="time" name="time" aria-label="Time" />
-            </fieldset>   
+            </fieldset>
         </div>
     </form>
 </section>
 
+<nav class="mapa"><a href="javascript:void(0)" (click)="openModal()">Ver mapa de plazas</a></nav>
+
 <figure>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Aparcamiento</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="row">Aparcamiento 1<input type="radio" name="Aparcamiento1" /></th>
+
+            </tr>
+            <tr>
+                <th scope="row">Aparcamiento 2<input type="radio" name="Aparcamiento2" /></th>
+
+            </tr>
+            <tr>
+                <th scope="row">Aparcamiento 3<input type="radio" name="Aparcamiento3" /></th>
+
+            </tr>
+            <tr>
+                <th scope="row">Aparcamiento 4<input type="radio" name="Aparcamiento4" /></th>
+
+            </tr>
+        </tbody>
+    </table>
+    <label>
+        Plaza
+        <select>
+            <option value="" disabled selected>Selecciona una plaza</option>
+            <option>Plaza 1</option>
+            <option>Plaza 2</option>
+            <option>Plaza 3</option>
+            <option>Plaza 4</option>
+            <option>Plaza 5</option>
+            <option>Plaza 6</option>
+            <option>Plaza 7</option>
+            <option>Plaza 8</option>
+        </select>
+    </label>
+</figure>
+
+
+<!-- Modal de mapa -->
+<dialog id="modal-pago" [attr.open]="showModal">
+    <article>
+        <header>
+            <a (click)="closeModal()" aria-label="Close" class="close"></a>
+            <span>Plano aparcamiento</span>
+        </header>
+        <img src="assets/aparcamiento.png" alt="Mi imagen PNG">
+    </article>
+</dialog>
+
+<!-- <figure>
     <table>
         <thead>
             <tr>
@@ -81,4 +137,4 @@
     <a routerLink="/aparcamientos/alta" role="button" type="button">Alta</a>
     <a href="javascript:void(0)" role="button" type="button">Editar</a>
     <a href="javascript:void(0)" role="button" type="button">Eliminar</a>
-</footer>
+</footer> -->

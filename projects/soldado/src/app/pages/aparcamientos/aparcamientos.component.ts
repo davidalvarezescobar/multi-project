@@ -1,15 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-aparcamientos',
   templateUrl: './aparcamientos.component.html',
   styleUrls: ['./aparcamientos.component.scss']
 })
-export class AparcamientosComponent implements OnInit {
+export class AparcamientosComponent {
+  showModal = false;
 
-  constructor() { }
+  openModal() {
+    this.showModal = true;
+  }
 
-  ngOnInit(): void {
+  closeModal() {
+    this.showModal = false;
   }
 
 }
