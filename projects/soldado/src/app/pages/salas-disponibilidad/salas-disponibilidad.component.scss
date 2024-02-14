@@ -41,24 +41,17 @@
 input[type=date] {
     max-width: 15rem;
 }
-
-.group-input-container {
+.selector-container {
     display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-}
+    gap: 2rem;
 
-.group-input-container a {
-    height: 3rem;
+}
+.selector-container a {
+    flex: 1;
 }
 
 .footer-buttons {
     display: flex;
     justify-content: flex-end;
     gap: 20px;
-}
-th {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }

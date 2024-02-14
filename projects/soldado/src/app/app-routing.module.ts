@@ -29,6 +29,7 @@ import { ComedorGuard } from './guards/comedor.guard';
 import { ComedorAdminComponent } from './pages/comedor-admin/comedor-admin.component';
 import { ComedorAdminGuard } from './guards/comedor-admin.guard';
 import { ComedorHistoricoAdminComponent } from './pages/comedor-historico-admin/comedor-historico-admin.component';
+import { SalasDisponibilidadComponent } from './pages/salas-disponibilidad/salas-disponibilidad.component';
 
 const routes: Routes = [
   { path: 'comedor/historico',  component: ComedorHistoricoComponent, canActivate: [ComedorGuard] },
@@ -43,6 +44,7 @@ const routes: Routes = [
   { path: 'ludoteca/alta',  component: LudotecaAltaComponent },
   { path: 'salas',  component: SalasComponent },
   { path: 'salas/alta',  component: SalasAltaComponent },
+  { path: 'salas/disponibilidad',  component: SalasDisponibilidadComponent },
   { path: 'apartamentos',  component: ApartamentosComponent },
   { path: 'apartamentos/alta',  component: ApartamentosAltaComponent },
   { path: 'gimnasio',  component: GimnasioComponent },
