@@ -47,6 +47,7 @@
         </thead>
         <tbody>
             <tr *ngFor="let reg of comedorList$ | async | comedorFilter:filterApplied">
+                {{reg | json}}
                 <td>{{reg.comedor}}</td>
                 <td>{{reg.fecha | date:'dd-MM-yyyy'}}</td>
                 <td>{{reg.principal}}</td>
@@ -56,7 +57,7 @@
                     <i *ngIf="reg.pagado" class="fa-regular fa-circle-check fa-lg"></i>
                     <i *ngIf="!reg.pagado" class="fa-regular fa-circle fa-lg"></i>
                 </td>
-                <td style="cursor: pointer; text-align: center;"><i class="fa-solid fa-qrcode fa-lg"></i></td>
+                <td style="cursor: pointer; text-align: center;" (click)="openModal()"><i class="fa-solid fa-qrcode fa-lg"></i></td>
                 <td style="cursor: pointer; text-align: center;"><i class="fa-solid fa-trash fa-lg"></i></td>
             </tr>
         </tbody>
@@ -66,3 +67,17 @@
 <footer>
     <a routerLink="/comedor" role="button" type="button">Alta</a>
 </footer>
+
+
+<!-- Modal de QR -->
+<dialog id="modal-pago" [attr.open]="showModal">
+    <article>
+        <header>
+            <a (click)="closeModal()" aria-label="Close" class="close"></a>
+            <span>Código QR</span>
+        </header>
+        <div class="qr">
+            <img src="assets/QR.png" alt="Mi imagen PNG">
+        </div>
+    </article>
+</dialog>

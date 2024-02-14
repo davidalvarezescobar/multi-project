@@ -1,1 +1,39 @@
-<p>comedor-historico-admin works!</p>
+<h5>Peticiones de día</h5>
+
+<figure>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Comedor</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Plato principal</th>
+                <th scope="col">Segundo plato</th>
+                <th scope="col">Postre</th>
+                <th style="text-align: center;" scope="col">Pagado</th>
+                <th style="text-align: center;" scope="col">Recibido</th>
+                <th style="text-align: center;" scope="col">Entregado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let reg of peticionesList">
+                <td>{{reg.comedor}}</td>
+                <td>{{reg.fecha | date:'dd-MM-yyyy'}}</td>
+                <td>{{reg.principal}}</td>
+                <td>{{reg.segundo}}</td>
+                <td>{{reg.postre}}</td>
+                <td style="text-align: center;">
+                    <i *ngIf="reg.pagado" class="fa-regular fa-circle-check fa-lg"></i>
+                    <i *ngIf="!reg.pagado" class="fa-regular fa-circle fa-lg"></i>
+                </td>
+                <td style="text-align: center;">
+                    <i *ngIf="reg.recibido" class="fa-regular fa-square-check fa-lg"></i>
+                    <i *ngIf="!reg.recibido" class="fa-regular fa-square fa-lg"></i>
+                </td>
+                <td style="text-align: center;">
+                    <i *ngIf="reg.entregado" class="fa-regular fa-square-check fa-lg"></i>
+                    <i *ngIf="!reg.entregado" class="fa-regular fa-square fa-lg"></i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</figure>

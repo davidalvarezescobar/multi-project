@@ -15,6 +15,7 @@ export class ComedorHistoricoComponent implements OnInit {
   comedorList$: Observable<any>;
   filterApplied: Filter;
   filterTmp: Filter;
+  showModal = false;
 
   constructor(
     readonly store: ComedorStoreService
@@ -42,5 +43,13 @@ export class ComedorHistoricoComponent implements OnInit {
 
   borrar() {
     this.filterApplied = this.filterTmp = null;
+  }
+
+  openModal() {
+    this.showModal = true;
+  }
+
+  closeModal() {
+    this.showModal = false;
   }
 }
