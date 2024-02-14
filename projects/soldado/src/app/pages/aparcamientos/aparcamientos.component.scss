@@ -2,8 +2,47 @@
     display: block;
 }
 
+.calendar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+form {
+    flex: 1;
+    margin: 0;
+    max-width: 350px;
+
+    fieldset {
+        display: flex;
+        align-items: center;
+        flex: 1;
+    }
+
+    label {
+        min-width: 38px;
+        margin-right: 8px;
+        text-align: right;
+    }
+
+    .hours {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+}
+
 footer {
     display: flex;
     justify-content: flex-end;
     gap: 20px;
+}
+
+.ico-calendar {
+    background-image: url("../../../assets/calendar.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: inline-block;
+    width: 90px;
+    height: 90px;
 }

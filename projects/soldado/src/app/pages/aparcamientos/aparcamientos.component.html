@@ -1,27 +1,24 @@
 <h5>Aparcamientos</h5>
 
-<form>
-    <fieldset>
-        <label for="base">
-            Base:
-            <select id="base" required>
-                <option value="" selected>Seleccion una base</option>
-                <option>Los Llanos</option>
-            </select>
-        </label>
-        <label>
-            Aparcamiento:
-            <input type="text">
-        </label>
-        <label class="short">
-            Fecha:
-            <input type="datetime-local">
-        </label>
-    </fieldset>
-    <footer>
-        <a href="javascript:void(0)" role="button" type="button">Buscar</a>
-    </footer>
-</form>
+<section class="calendar">
+    <i class="ico-calendar"></i>
+    <form>
+        <fieldset>
+            <label for="date">Base:</label>
+            <input type="date" name="date" aria-label="Date" />
+        </fieldset>
+        <div class="hours">
+            <fieldset>
+                <label>De:</label>
+                <input type="time" name="time" aria-label="Time" />
+            </fieldset>
+            <fieldset>
+                <label>A:</label>
+                <input type="time" name="time" aria-label="Time" />
+            </fieldset>   
+        </div>
+    </form>
+</section>
 
 <figure>
     <table>
