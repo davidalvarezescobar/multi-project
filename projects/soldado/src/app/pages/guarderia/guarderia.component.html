@@ -1,4 +1,4 @@
-<h5>Guardería {{tipoUsuario}}</h5>
+<h5>Guardería</h5>
 
 <div *ngIf="ventana === 'historial'">
     <fieldset>
@@ -188,7 +188,7 @@
                         <div class="enlaces-container">
                             <a href="javascript:void(0)" [hidden]="!alergiasSeleccionadas[i]"
                                 *ngFor="let alergia of alergias; let i = index" role="button"
-                                [ngClass]="{'selected': alergiasSeleccionadas[i]}" class="outline">{{alergia}}</a>
+                                 class="outline">{{alergia}}</a>
                         </div>
                         <input type="text" class="otras-alergias" *ngIf="alergiasSeleccionadas[alergias.indexOf('Otros')]"
                             placeholder="Escriba las otras alergias">
@@ -221,7 +221,10 @@
     <article>
         <div class="modal-borrar-container">
             <strong>¿Seguro que quiere cancelar la reserva?.</strong><br><br>
-            <a href="javascript:void(0)" (click)="closeModalBorrar()" role="button" type="button">Borrar</a>
+            <div class="botones-modal-borrar-container">
+                <a href="javascript:void(0)" (click)="closeModalBorrar()" role="button" type="button">Volver</a>
+                <a href="javascript:void(0)" (click)="closeModalBorrar()" role="button" type="button">Borrar</a>
+            </div>
         </div>
     </article>
 </dialog>

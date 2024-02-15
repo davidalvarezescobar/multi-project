@@ -1,0 +1,137 @@
+:host {
+    display: block;
+}
+
+.fecha-turno {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 40px;
+    label {
+        width: 250px;
+    }
+}
+
+.caja-herramientas{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 40px;
+    label {
+        width: 250px;
+    }
+}
+
+.Semaforo-Historico{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 40px;
+    label {
+        width: 250px;
+    }
+}
+
+.tablas-herramientas-container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 80px;
+
+}
+
+.tablas-herramientas {
+    width: 50%;
+}
+
+
+.cabecera-herramientas-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.cabecera-herramientas-container a{
+    height: 75%;
+    width: 20%;
+    border-radius: 0;
+    margin-top: -0.75%;
+}
+
+.guardar-verificacion-button{
+  display: block;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 20px
+}
+
+.modal-container {
+    text-align: center;
+}
+
+.botones-modal-container{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px
+}
+
+.fa-triangle-exclamation{
+    color: #ffea00;
+}
+
+.fa-check{
+    color: #0bad33;;
+}
+
+.columna-herramientas {
+    text-align: center;
+}
+
+.checkbox-column-herramientas {
+    background-color:  red;
+  }
+
+  .checkbox-column-herramientas:checked {
+    background-color:  green;
+  }
+
+  .tablas-hitorico-herramientas {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tablas-hitorico-herramientas th,
+.tablas-hitorico-herramientas td {
+    text-align: center;
+    padding: 8px;
+}
+
+.herramientas-error td{
+    color: red;
+  }
+
+  .semaforo-historico-green {
+    color:  green;
+  }
+
+  .semaforo-historico-red {
+    color:  red;
+  }
+
+  .semaforo-inventario-green {
+    color:  green;
+  }
+
+  .semaforo-inventario-red {
+    color:  red;
+  }

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GuarderiaAltaComponent } from './guarderia-alta.component';
+import { HerramientasComponent } from './herramientas.component';
 
-describe('GuarderiaAltaComponent', () => {
-  let component: GuarderiaAltaComponent;
-  let fixture: ComponentFixture<GuarderiaAltaComponent>;
+describe('HerramientasComponent', () => {
+  let component: HerramientasComponent;
+  let fixture: ComponentFixture<HerramientasComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GuarderiaAltaComponent ]
+      declarations: [ HerramientasComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GuarderiaAltaComponent);
+    fixture = TestBed.createComponent(HerramientasComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { GuarderiaService } from '../../services/guarderia-service';
 import { LoginService } from '../../services/login.service';
 
@@ -16,9 +15,6 @@ export class GuarderiaComponent implements OnInit {
   guardar = false;
   borrar = false;
 
-  data$: Observable<any>;
-  login$: Observable<any>;
-
   nombres: string[];
   estados: string[];
   turnos: string[];
@@ -28,7 +24,7 @@ export class GuarderiaComponent implements OnInit {
   reserva: any;
 
   constructor(
-    readonly data: GuarderiaService,
+    readonly dataSrv: GuarderiaService,
     readonly loginSrv: LoginService
   ) { }
 
@@ -37,9 +33,7 @@ export class GuarderiaComponent implements OnInit {
       this.tipoUsuario = user
     });
 
-    console.log(this.tipoUsuario)
-    this.data$ = this.data.loadGuarderiaDatos();
-    this.data$.subscribe(
+    this.dataSrv.loadGuarderiaDatos().subscribe(
       datos => {
         this.nombres = datos?.nombres;
         this.estados = datos?.estados;
@@ -68,7 +62,6 @@ export class GuarderiaComponent implements OnInit {
 
   monitorDatos() {
     this.ventanaDatos = "monitor";
-    console.log(document.getElementById("monitorDatos"))
     document.getElementById("monitorDatos").style.backgroundColor = "#3596c3";
     document.getElementById("monitorDatos").style.color = "white";
     document.getElementById("monitorDatos").style.borderBottom = "1px solid #3596c3";

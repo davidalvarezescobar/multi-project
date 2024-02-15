@@ -15,7 +15,7 @@ export class GuarderiaService {
 
   loadGuarderiaDatos() {
     if (!this._guarderia$.value) {
-      this.http.requestGuarderidatosa().subscribe(data => this._guarderia$.next(data));
+      this.http.requestGuarderiaDatos().subscribe(data => this._guarderia$.next(data));
     }
     return this.guarderia$;
   }

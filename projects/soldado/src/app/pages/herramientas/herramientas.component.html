@@ -1,0 +1,173 @@
+<div class="cabecera-herramientas-container">
+    <h5>Inventario de herramientas</h5>
+    <a href="javascript:void(0)" role="button" type="button" (click)="setVentana('historial')"
+        *ngIf="ventana === 'inventario'">Historial</a>
+    <a href="javascript:void(0)" role="button" type="button" (click)="setVentana('inventario')"
+        *ngIf="ventana === 'historial' && tipoUsuario == 'User'">Volver</a>
+</div>
+
+<div *ngIf="ventana === 'inventario'">
+    <div>
+        <div class="fecha-turno">
+            <label class="short">
+                <strong>Fecha:</strong>
+                <input type="datetime-local" [value]="fechaActual">
+            </label>
+            <label for="turno">
+                <strong>Turno:</strong>
+                <select id="turno" required>
+                    <option value="" selected>Selecciona turno</option>
+                    <option *ngFor="let turno of turnos">{{ turno }}</option>
+                </select>
+            </label>
+        </div>
+        <div class="caja-herramientas">
+            <label>
+                <strong>Caja de herramietnas:</strong>
+                <select id="caja" required>
+                    <option value="" selected>Selecciona una caja</option>
+                    <option *ngFor="let caja of cajas">{{ caja }}</option>
+                </select>
+            </label>
+            <i class="semaforo-inventario-green fa-solid fa-circle fa-2xl" *ngIf="semaforoInventario"></i>
+            <i class="semaforo-inventario-red fa-solid fa-circle fa-2xl" *ngIf="!semaforoInventario"></i>
+        </div>
+
+        <div class="tablas-herramientas-container">
+            <table class="tablas-herramientas">
+                <thead>
+                    <tr>
+                        <th scope="col">Herramienta</th>
+                        <th scope="col">Verificacion entrada: {{horaEntrada}}</th>
+                        <th scope="col">Verificacion salida: {{horaActual}}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let herramientaEntrada of herramientasEntrada" [class.herramientas-error]="!herramientaEntrada.guardado">
+                        <td>{{ herramientaEntrada.nombre }}</td>
+                        <td class="columna-herramientas"><input type="checkbox" class="checkbox-column-herramientas"
+                                min="0" max="20" [checked]="herramientaEntrada.guardado" disabled></td>
+                        <td class="columna-herramientas"><input type="checkbox" #salidaCheckbox
+                                class="checkbox-column-herramientas"
+                                (change)="cSalidaChange(salidaCheckbox.checked, herramientaEntrada.nombre)"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <a href="javascript:void(0)" class="guardar-verificacion-button" (click)="openModalVerificacion()" role="button"
+        type="button">Guardar verificacion</a>
+
+
+    <dialog id="modal-guardar" [attr.open]="verificacion">
+        <article>
+            <div class="modal-container">
+                <div *ngIf="combrobarDatos()">
+                    <i class="fa-solid fa-check fa-2xl" style="color: #0bad33;"></i><br><br>
+                </div>
+                <div *ngIf="!combrobarDatos()">
+                    <i class="fa-solid fa-triangle-exclamation fa-2xl" style="color: #ffea00;"></i><br><br>
+                </div>
+                <strong>{{resultadoVerificacion}}</strong><br><br>
+                <div class="botones-modal-container">
+                    <a href="javascript:void(0)" (click)="closeModalVerificacion()" role="button"
+                        type="button">Volver</a>
+                    <a href="javascript:void(0)" (click)="closeModalVerificacion()" id="botonConfirmacion" role="button"
+                        type="button">Confirmar</a>
+                </div>
+                <div [hidden]="!objetoRecuperado">
+                    <br>
+                    <textarea id="observacionesRecuperacion" class="observacionesRecuperacion"
+                        placeholder="Escriba aqui que ocurrio con el material recuperado" cols="50"></textarea>
+                </div>
+            </div>
+        </article>
+    </dialog>
+</div>
+
+<div *ngIf="ventana === 'historial'">
+    <div>
+        <div class="fecha-turno">
+            <label class="short">
+                <strong>Fecha:</strong>
+                <input type="datetime-local" [value]="fechaActual">
+            </label>
+            <label for="turno">
+                <strong>Turno:</strong>
+                <select id="turno" required>
+                    <option value="" selected>Selecciona turno</option>
+                    <option *ngFor="let turno of turnos">{{ turno }}</option>
+                </select>
+            </label>
+            <label>
+                <strong>Caja de herramietnas:</strong>
+                <select id="caja" required>
+                    <option value="" selected>Selecciona una caja</option>
+                    <option *ngFor="let caja of cajas">{{ caja }}</option>
+                </select>
+            </label>
+        </div>
+        <div class="fecha-turno">
+            <label>
+                <strong>Incidencias:  </strong>
+                <input type="checkbox" id="incidencias-historico" name="incidencias-historico">
+            </label>
+            <label>
+                <strong>Conformidad:  </strong>
+                <input type="checkbox" id="conformidad-historico" name="conformidad-historico">
+            </label>
+            <a href="javascript:void(0)" role="button" type="button">Buscas</a>
+        </div>
+        <br>
+        <div class="Semaforo-Historico">
+            <i class="semaforo-historico-green fa-solid fa-circle fa-2xl" *ngIf="semaforoHistorial"></i>
+            <i class="semaforo-historico-red fa-solid fa-circle fa-2xl" *ngIf="!semaforoHistorial"></i>
+        </div>
+        <br>
+    </div>
+
+    <div class="tablas-herramientas-container">
+        <table class="tablas-hitorico-herramientas">
+            <thead>
+                <tr>
+                    <th scope="col">Turno</th>
+                    <th scope="col">Cajon</th>
+                    <th scope="col">Herramientas</th>
+                    <th scope="col" *ngIf="tipoUsuario != 'User'">Operario</th>
+                    <th scope="col">Oficial al mando</th>
+                    <th scope="col">Hora inventario entrada</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Hora inventario salida</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Observaciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let fila of historialHerramietnas" [class.herramientas-error]="!fila.estadoSalida || !fila.estadoEntrada">
+                    <td>{{ fila.turno }}</td>
+                    <td>{{ fila.cajon }}</td>
+                    <td>{{ fila.herramienta }}</td>
+                    <td *ngIf="tipoUsuario != 'User'">{{ fila.operario }}</td>
+                    <td>{{ fila.oficial_al_mando }}</td>
+                    <td>{{ fila.hora_inventario_entrada }}</td>
+                    <td><input type="checkbox" class="checkbox-column-herramientas" min="0" max="20"
+                        [checked]="fila.estadoEntrada" disabled></td>
+                    <td>{{ fila.hora_inventario_salida }}</td>
+                    <td><input type="checkbox" class="checkbox-column-herramientas" min="0" max="20"
+                            [checked]="fila.estadoSalida" disabled></td>
+                    <td><a href="javascript:void(0)" *ngIf="fila.observacionIncidencia != ''" role="button"
+                            type="button" class="fa-regular fa-eye"
+                            (click)="openModalObservacion(fila.observacionIncidencia)"></a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <dialog id="modal-guardar" [attr.open]="modalObservacion">
+        <article>
+            <div class="modal-container">
+                <strong>{{observacionIncidencia}}</strong><br><br>
+                <a href="javascript:void(0)" (click)="closeModalObservacion()" role="button" type="button">Volver</a>
+            </div>
+        </article>
+    </dialog>
+</div>

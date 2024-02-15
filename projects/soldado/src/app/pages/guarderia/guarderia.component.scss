@@ -90,6 +90,14 @@ footer {
     border-color: #3596c3;
 }
 
+.botones-modal-borrar-container{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px
+}
+
 .alergias-comentario-container {
     display: flex;
     flex-wrap: wrap;

@@ -50,6 +50,12 @@
         <li routerLink="/visitas" routerLinkActive="active">Gestión visitas</li>
       </ul>
     </details>
+    <details routerLinkActive="active" #taller [attr.open]="taller.classList.contains('active') ? '' : null">
+      <summary>Taller</summary>
+      <ul (click)="hideMenu()">
+        <li routerLink="/herramientas" routerLinkActive="active">Herramientas</li>
+      </ul>
+    </details>
   </aside>
 
   <section (click)="hideMenu()">

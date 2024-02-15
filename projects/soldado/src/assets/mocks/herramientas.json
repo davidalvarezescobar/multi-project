@@ -1,0 +1,241 @@
+{
+    "horaEntrada": "08:30",
+    "turnos": [
+        "Mañana",
+        "Tarde",
+        "Noche"
+    ],
+    "cajas": [
+        "Caja 1",
+        "Caja 2",
+        "Caja 2"
+    ],
+    "herramientas": [
+        {
+            "nombre": "Destornillador",
+            "guardado": false
+        },
+        {
+            "nombre": "Martillo",
+            "guardado": true
+        },
+        {
+            "nombre": "Llave ajustable",
+            "guardado": true
+        },
+        {
+            "nombre": "Alicates de punta",
+            "guardado": true
+        },
+        {
+            "nombre": "Sierra de mano",
+            "guardado": true
+        },
+        {
+            "nombre": "Cinta métrica",
+            "guardado": true
+        },
+        {
+            "nombre": "Nivel de burbuja",
+            "guardado": true
+        },
+        {
+            "nombre": "Llave inglesa",
+            "guardado": true
+        },
+        {
+            "nombre": "Cuchillo de uso general",
+            "guardado": true
+        },
+        {
+            "nombre": "Linterna de trabajo",
+            "guardado": true
+        },
+        {
+            "nombre": "Taladro eléctrico",
+            "guardado": true
+        }
+    ],
+    "historialHerramientas": [
+        {
+            "turno": "Mañana",
+            "cajon": "Cajón 1",
+            "herramienta": "Destornillador",
+            "operario": "Juan",
+            "oficial_al_mando": "Pedro",
+            "hora_inventario_entrada": "08:00",
+            "estadoEntrada": true,
+            "hora_inventario_salida": "12:00",
+            "estadoSalida": false,
+            "observacionIncidencia": ""
+        },
+        {
+            "turno": "Tarde",
+            "cajon": "Cajón 2",
+            "herramienta": "Martillo",
+            "operario": "Luis",
+            "oficial_al_mando": "Ana",
+            "hora_inventario_entrada": "14:00",
+            "estadoEntrada": false,
+            "hora_inventario_salida": "18:00",
+            "estadoSalida": true,
+            "observacionIncidencia": "Pedro se dejo el martillo dentro del asiento del copiloto."
+        },
+        {
+            "turno": "Noche",
+            "cajon": "Cajón 3",
+            "herramienta": "Llave ajustable",
+            "operario": "María",
+            "oficial_al_mando": "Sofía",
+            "hora_inventario_entrada": "20:00",
+            "estadoEntrada": true,
+            "hora_inventario_salida": "00:00",
+            "estadoSalida": true,
+            "observacionIncidencia": ""
+        },
+        {
+            "turno": "Mañana",
+            "cajon": "Cajón 1",
+            "herramienta": "Alicates de punta",
+            "operario": "Pablo",
+            "oficial_al_mando": "Pedro",
+            "hora_inventario_entrada": "08:00",
+            "estadoEntrada": true,
+            "hora_inventario_salida": "12:00",
+            "estadoSalida": true,
+            "observacionIncidencia": ""
+        },
+        {
+            "turno": "Tarde",
+            "cajon": "Cajón 2",
+            "herramienta": "Sierra de mano",
+            "operario": "Laura",
+            "oficial_al_mando": "Ana",
+            "hora_inventario_entrada": "14:00",
+            "estadoEntrada": true,
+            "hora_inventario_salida": "18:00",
+            "estadoSalida": true,
+            "observacionIncidencia": ""
+        },
+        {
+            "turno": "Noche",
+            "cajon": "Cajón 3",
+            "herramienta": "Cinta métrica",
+            "operario": "Raúl",
+            "oficial_al_mando": "Sofía",
+            "hora_inventario_entrada": "20:00",
+            "estadoEntrada": true,
+            "hora_inventario_salida": "00:00",
+            "estadoSalida": true,
+            "observacionIncidencia": ""
+        },
+        {
+            "turno": "Mañana",
+            "cajon": "Cajón 1",
+            "herramienta": "Nivel de burbuja",
+            "operario": "Elena",
+            "oficial_al_mando": "Pedro",
+            "hora_inventario_entrada": "08:00",
+            "estadoEntrada": true,
+            "hora_inventario_salida": "12:00",
+            "estadoSalida": true,
+            "observacionIncidencia": ""
+        },
+        {
+            "turno": "Tarde",
+            "cajon": "Cajón 2",
+            "herramienta": "Llave inglesa",
+            "operario": "Diego",
+            "oficial_al_mando": "Ana",
+            "hora_inventario_entrada": "14:00",
+            "estadoEntrada": true,
+            "hora_inventario_salida": "18:00",
+            "estadoSalida": true,
+            "observacionIncidencia": ""
+        },
+        {
+            "turno": "Noche",
+            "cajon": "Cajón 3",
+            "herramienta": "Cuchillo de uso general",
+            "operario": "Sara",
+            "oficial_al_mando": "Sofía",
+            "hora_inventario_entrada": "20:00",
+            "estadoEntrada": true,
+            "hora_inventario_salida": "00:00",
+            "estadoSalida": true,
+            "observacionIncidencia": ""
+        },
+        {
+            "turno": "Mañana",
+            "cajon": "Cajón 1",
+            "herramienta": "Linterna de trabajo",
+            "operario": "Hugo",
+            "oficial_al_mando": "Pedro",
+            "hora_inventario_entrada": "08:00",
+            "estadoEntrada": true,
+            "hora_inventario_salida": "12:00",
+            "estadoSalida": true,
+            "observacionIncidencia": ""
+        },
+        {
+            "turno": "Tarde",
+            "cajon": "Cajón 2",
+            "herramienta": "Taladro eléctrico",
+            "operario": "Ana",
+            "oficial_al_mando": "Ana",
+            "hora_inventario_entrada": "14:00",
+            "estadoEntrada": true,
+            "hora_inventario_salida": "18:00",
+            "estadoSalida": true,
+            "observacionIncidencia": ""
+        },
+        {
+            "turno": "Noche",
+            "cajon": "Cajón 3",
+            "herramienta": "Destornillador",
+            "operario": "Carlos",
+            "oficial_al_mando": "Sofía",
+            "hora_inventario_entrada": "20:00",
+            "estadoEntrada": true,
+            "hora_inventario_salida": "00:00",
+            "estadoSalida": true,
+            "observacionIncidencia": ""
+        },
+        {
+            "turno": "Mañana",
+            "cajon": "Cajón 1",
+            "herramienta": "Martillo",
+            "operario": "Fernanda",
+            "oficial_al_mando": "Pedro",
+            "hora_inventario_entrada": "08:00",
+            "estadoEntrada": true,
+            "hora_inventario_salida": "12:00",
+            "estadoSalida": true,
+            "observacionIncidencia": ""
+        },
+        {
+            "turno": "Tarde",
+            "cajon": "Cajón 2",
+            "herramienta": "Llave ajustable",
+            "operario": "Pablo",
+            "oficial_al_mando": "Ana",
+            "hora_inventario_entrada": "14:00",
+            "estadoEntrada": true,
+            "hora_inventario_salida": "18:00",
+            "estadoSalida": true,
+            "observacionIncidencia": ""
+        },
+        {
+            "turno": "Noche",
+            "cajon": "Cajón 3",
+            "herramienta": "Alicates de punta",
+            "operario": "María",
+            "oficial_al_mando": "Sofía",
+            "hora_inventario_entrada": "20:00",
+            "estadoEntrada": true,
+            "hora_inventario_salida": "00:00",
+            "estadoSalida": true,
+            "observacionIncidencia": ""
+        }
+    ]
+}
