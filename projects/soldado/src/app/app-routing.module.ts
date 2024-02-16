@@ -25,6 +25,7 @@ import { PiscinaAltaComponent } from './pages/piscina-alta/piscina-alta.componen
 import { PiscinaComponent } from './pages/piscina/piscina.component';
 import { SalasAltaComponent } from './pages/salas-alta/salas-alta.component';
 import { SalasDisponibilidadComponent } from './pages/salas-disponibilidad/salas-disponibilidad.component';
+import { SalasHistoricoComponent } from './pages/salas-historico/salas-historico.component';
 import { SalasComponent } from './pages/salas/salas.component';
 import { TurnosAltaComponent } from './pages/turnos-alta/turnos-alta.component';
 import { TurnosComponent } from './pages/turnos/turnos.component';
@@ -45,6 +46,7 @@ const routes: Routes = [
   { path: 'salas',  component: SalasComponent },
   { path: 'salas/alta',  component: SalasAltaComponent },
   { path: 'salas/disponibilidad',  component: SalasDisponibilidadComponent },
+  { path: 'salas/listado',  component: SalasHistoricoComponent },
   { path: 'apartamentos',  component: ApartamentosComponent },
   { path: 'apartamentos/alta',  component: ApartamentosAltaComponent },
   { path: 'gimnasio',  component: GimnasioComponent },

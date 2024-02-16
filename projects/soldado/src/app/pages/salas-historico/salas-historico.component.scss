@@ -1,0 +1,13 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: .8rem;
+}
+.date-search-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+td {
+    cursor: pointer;
+}

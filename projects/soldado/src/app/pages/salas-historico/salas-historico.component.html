@@ -1,0 +1,48 @@
+<div class="form-container">
+    <label>
+        Pabellón:
+        <select>
+            <option value="" disabled selected>Selecciona un pabellón</option>
+            <option>Pabellón 1</option>
+            <option>Pabellón 2</option>
+            <option>Pabellón 3</option>
+        </select>
+    </label>
+    <label>
+        Sala:
+        <select>
+            <option value="" disabled selected>Selecciona una sala</option>
+            <option>Sala 1</option>
+            <option>Sala 2</option>
+            <option>Sala 3</option>
+        </select>
+    </label>
+    <div class="date-search-container">
+        <label>
+            Fecha:
+            <input type="date">
+        </label>
+        <a href="javascript:void(0)" role="button" type="button">Buscar</a>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Pabellón</th>
+                <th scope="col">Sala</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Hora desde</th>
+                <th scope="col">Hora hasta</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of rows" (click)="rowClick()">
+                <td scope="row">{{item.pabellon}}</td>
+                <td>{{item.sala}}</td>
+                <td>{{item.fecha}}</td>
+                <td>{{item.horaDesde}}</td>
+                <td>{{item.horaHasta}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

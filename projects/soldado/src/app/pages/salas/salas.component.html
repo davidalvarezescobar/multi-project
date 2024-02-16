@@ -2,91 +2,110 @@
 
 <div class="main-container">
     <div class="date-container">
-        <svg xmlns="http://www.w3.org/2000/svg" height="100" width="100" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#000000" d="M128 0c17.7 0 32 14.3 32 32V64H288V32c0-17.7 14.3-32 32-32s32 14.3 32 32V64h48c26.5 0 48 21.5 48 48v48H0V112C0 85.5 21.5 64 48 64H96V32c0-17.7 14.3-32 32-32zM0 192H448V464c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V192zm64 80v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm128 0v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H208c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V272c0-8.8-7.2-16-16-16H336zM64 400v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H80c-8.8 0-16 7.2-16 16zm144-16c-8.8 0-16 7.2-16 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H208zm112 16v32c0 8.8 7.2 16 16 16h32c8.8 0 16-7.2 16-16V400c0-8.8-7.2-16-16-16H336c-8.8 0-16 7.2-16 16z"/></svg>
+        <i class="ico-calendar"></i>
+
+        <div class="date-form-container">
+            <div class="grid-date-container">
+                <label class="day-label">Día:</label>
+                <input class="day-input" type="date" name="date" aria-label="Date" />
+
+
+                <label class="hour-from-label">De:</label>
+                <input class="hour-from-input" type="time" name="time" aria-label="Time" />
+
+                <label class="hour-to-label">A:</label>
+                <input class="hour-to-input" type="time" name="time" aria-label="Time" />
+
+            </div>
+            
+            <a routerLink="/salas/listado" href="javascript:void(0)" role="button" type="button">Histórico</a>
+        </div>
+    </div>
+    <fieldset>
         
-        <div>
-            <div class="input-container">
-                <label>Día:</label>
-                <input type="date" name="date" aria-label="Date" />
-            </div>
-            <div class="group-input-container">
-                <div class="input-container">
-                    <label>De:</label>
-                    <input type="time" name="time" aria-label="Time" />
-                </div>
-    
-                <div class="input-container">
-                    <label>A:</label>
-                    <input type="time" name="time" aria-label="Time" />
-                </div>
-                <a routerLink="/salas/disponibilidad" href="javascript:void(0)" role="button" type="button">Disponibilidad</a>
-            </div>
-        </div>
-    </div>
-    <div class="table-form-container">
-        <div class="table-container">
-            <figure>
-                <table>
-                    <thead>
-                        <tr>
-                            <th scope="col">Pabellon</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">Pabellon 1<input type="radio" name="pabellon" /></th>
-                            
-                        </tr>
-                        <tr>
-                            <th scope="row">Pabellon 2<input type="radio" name="pabellon" /></th>
-                            
-                        </tr>
-                        <tr>
-                            <th scope="row">Pabellon 3<input type="radio" name="pabellon" /></th>
-                            
-                        </tr>
-                        <tr>
-                            <th scope="row">Pabellon 4<input type="radio" name="pabellon" /></th>
-                            
-                        </tr>
-                    </tbody>
-                </table>
-            </figure>
-            <figure>
-                <table>
-                    <thead>
-                        <tr>
-                            <th scope="col">Sala</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">Sala 1<input type="radio" name="sala" /></th>
-                            
-                        </tr>
-                        <tr>
-                            <th scope="row">Sala 2<input type="radio" name="sala" /></th>
-                            
-                        </tr>
-                        <tr>
-                            <th scope="row">Sala 3<input type="radio" name="sala" /></th>
-                            
-                        </tr>
-                        <tr>
-                            <th scope="row">Sala 4<input type="radio" name="sala" /></th>
-                            
-                        </tr>
-                    </tbody>
-                </table>
-            </figure>
-        </div>
-    
-        <div class="footer-buttons">
-            <a href="javascript:void(0)" role="button" type="button">Histórico</a>
-            <a href="javascript:void(0)" role="button" type="button">Reservar</a>
-        </div>
-    </div>
+        <label htmlFor="Proyector"><input type="checkbox" id="Proyector" name="Proyector" />Proyector</label>
+        
+        <label htmlFor="tv"><input type="checkbox" id="tv" name="tv" />TV</label>
+        
+        <label htmlFor="camaraconf"><input type="checkbox" id="camaraconf" name="camaraconf" />Cámara Conferencia</label>
+        
+        <label htmlFor="telefono"><input type="checkbox" id="telefono" name="telefono" />Teléfono</label>
+        
+        <label htmlFor="pc"><input type="checkbox" id="pc" name="pc" />PC/Portátil</label>
+    </fieldset>
 </div>
+<div class="table-form-container">
+    <div class="table-container">
+        <figure>
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">Pabellon</th>
+                        <th scope="col">Sala</th>
+                        <th scope="col">Capacidad</th>
+                        <th scope="col">Proyector</th>
+                        <th scope="col">PC</th>
+                        <th scope="col">Disponibilidad</th>
+                        <th scope="col">Reservar</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td scope="row">Pabellon 1</td>
+                        <td scope="row">Sala 2</td>
+                        <td scope="row">75</td>
+                        <td scope="row">Si</td>
+                        <td scope="row">Si</td>
+                        <td scope="row"><a routerLink="/salas/disponibilidad" href="javascript:void(0)" role="button"
+                                type="button">Ver</a>
+                        </td>
+                        <td scope="row"><a routerLink="/salas/disponibilidad" href="javascript:void(0)" role="button"
+                                type="button">Reservar</a>
+                        </td>
 
+                    </tr>
+                    <tr>
+                        <td scope="row">Pabellon 1</td>
+                        <td scope="row">Sala 3</td>
+                        <td scope="row">150</td>
+                        <td scope="row">No</td>
+                        <td scope="row">Si</td>
+                        <td scope="row"><a routerLink="/salas/disponibilidad" href="javascript:void(0)" role="button"
+                                type="button">Ver</a>
+                        </td>
+                        <td scope="row"><a routerLink="/salas/disponibilidad" href="javascript:void(0)" role="button"
+                                type="button">Reservar</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="row">Pabellon 2</td>
+                        <td scope="row">Sala 1</td>
+                        <td scope="row">150</td>
+                        <td scope="row">Si</td>
+                        <td scope="row">Si</td>
+                        <td scope="row"><a routerLink="/salas/disponibilidad" href="javascript:void(0)" role="button"
+                                type="button">Ver</a>
+                        </td>
+                        <td scope="row"><a routerLink="/salas/disponibilidad" href="javascript:void(0)" role="button"
+                                type="button">Reservar</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td scope="row">Pabellon 2</td>
+                        <td scope="row">Sala 2</td>
+                        <td scope="row">90</td>
+                        <td scope="row">No</td>
+                        <td scope="row">No</td>
+                        <td scope="row"><a routerLink="/salas/disponibilidad" href="javascript:void(0)" role="button"
+                                type="button">Ver</a>
+                        </td>
+                        <td scope="row"><a routerLink="/salas/disponibilidad" href="javascript:void(0)" role="button"
+                                type="button">Reservar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </figure>
+    </div>
 
-
+</div>

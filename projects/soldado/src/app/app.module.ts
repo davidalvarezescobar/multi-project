@@ -37,6 +37,7 @@ import { TurnosComponent } from './pages/turnos/turnos.component';
 import { VisitasAltaComponent } from './pages/visitas-alta/visitas-alta.component';
 import { VisitasComponent } from './pages/visitas/visitas.component';
 import { ComedorFilterPipe } from './pipes/comedor-filter.pipe';
+import { SalasHistoricoComponent } from './pages/salas-historico/salas-historico.component';
 
 registerLocaleData(es);
 
@@ -52,6 +53,7 @@ registerLocaleData(es);
     GuarderiaComponent,
     LudotecaComponent,
     SalasComponent,
+    SalasHistoricoComponent,
     SalasDisponibilidadComponent,
     ApartamentosComponent,
     GimnasioComponent,
