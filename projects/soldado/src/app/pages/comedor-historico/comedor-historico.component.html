@@ -47,7 +47,6 @@
         </thead>
         <tbody>
             <tr *ngFor="let reg of comedorList$ | async | comedorFilter:filterApplied">
-                {{reg | json}}
                 <td>{{reg.comedor}}</td>
                 <td>{{reg.fecha | date:'dd-MM-yyyy'}}</td>
                 <td>{{reg.principal}}</td>
