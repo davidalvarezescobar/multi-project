@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { HerramientasService } from './herramientas-service';
+import { CartasService } from './cartas-service';
 
-describe('HerramientasService', () => {
-  let service: HerramientasService;
+describe('CartasService', () => {
+  let service: CartasService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(HerramientasService);
+    service = TestBed.inject(CartasService);
   });
 
   it('should be created', () => {

@@ -1,0 +1,35 @@
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 110%;
+}
+
+.card {
+    width: 10%;
+    height: 100%;
+    border-color: #838383;
+    margin-right: 10%;
+    margin-left: 10%;
+    margin-top: 4%;
+    border: 5px solid black;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.card:hover {
+    background-color: #f0f0f0;
+    cursor: pointer;
+}
+
+.headCard {
+    width: 100%;
+    height: auto;
+    max-height: 80px;
+}
+
+#serviceName {
+    font-size: 16px;
+    font-weight: bold;
+}

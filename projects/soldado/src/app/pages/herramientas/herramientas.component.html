@@ -25,7 +25,6 @@
             <label>
                 <strong>Caja de herramietnas:</strong>
                 <select id="caja" required>
-                    <option value="" selected>Selecciona una caja</option>
                     <option *ngFor="let caja of cajas">{{ caja }}</option>
                 </select>
             </label>
@@ -43,23 +42,53 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let herramientaEntrada of herramientasEntrada" [class.herramientas-error]="!herramientaEntrada.guardado">
-                        <td>{{ herramientaEntrada.nombre }}</td>
-                        <td class="columna-herramientas"><input type="checkbox" class="checkbox-column-herramientas"
-                                min="0" max="20" [checked]="herramientaEntrada.guardado" disabled></td>
-                        <td class="columna-herramientas"><input type="checkbox" #salidaCheckbox
-                                class="checkbox-column-herramientas"
-                                (change)="cSalidaChange(salidaCheckbox.checked, herramientaEntrada.nombre)"></td>
+                    <tr *ngFor="let herramienta of herramientas"
+                        [class.herramientas-error]="!herramienta.cEntrada && !herramienta.cSalida">
+                        <td>{{ herramienta.nombre }}</td>
+                        <td class="columna-herramientas">
+                            <input type="checkbox" #entradaCheckbox class="checkbox-column-herramientas"
+                                [checked]="herramienta.cEntrada"
+                                (change)="cEntradaChange(entradaCheckbox.checked, herramienta.nombre)">
+                        </td>
+                        <td class="columna-herramientas">
+                            <input type="checkbox" #salidaCheckbox class="checkbox-column-herramientas"
+                                [checked]="herramienta.cSalida"
+                                (change)="cSalidaChange(salidaCheckbox.checked, herramienta.nombre)">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>""</td>
+                        <td><a href="javascript:void(0)" class="guardar-verificacion-button" (click)="openModalVerificacionEntrada()" role="button"
+                            type="button">Guardar entrada</a></td>
+                        <td><a href="javascript:void(0)" class="guardar-verificacion-button" (click)="openModalVerificacionSalida()" role="button"
+                            type="button">Guardar salida</a></td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
-    <a href="javascript:void(0)" class="guardar-verificacion-button" (click)="openModalVerificacion()" role="button"
-        type="button">Guardar verificacion</a>
 
+    <dialog id="modal-guardar" [attr.open]="vEntrada">
+        <article>
+            <div class="modal-container">
+                <div *ngIf="combrobarDatos()">
+                    <i class="fa-solid fa-check fa-2xl"></i><br><br>
+                </div>
+                <div *ngIf="!combrobarDatos()">
+                    <i class="fa-solid fa-triangle-exclamation fa-2xl"></i><br><br>
+                </div>
+                <strong>{{resultadoVerificacion}}</strong><br><br>
+                <div class="botones-modal-container">
+                    <a href="javascript:void(0)" (click)="closeModalVerificacionEntrada()" role="button"
+                        type="button">Volver</a>
+                    <a href="javascript:void(0)" (click)="closeModalVerificacionEntrada()" id="botonConfirmacion" role="button"
+                        type="button">Confirmar</a>
+                </div>
+            </div>
+        </article>
+    </dialog>
 
-    <dialog id="modal-guardar" [attr.open]="verificacion">
+    <dialog id="modal-guardar" [attr.open]="vSalida">
         <article>
             <div class="modal-container">
                 <div *ngIf="combrobarDatos()">
@@ -70,9 +99,9 @@
                 </div>
                 <strong>{{resultadoVerificacion}}</strong><br><br>
                 <div class="botones-modal-container">
-                    <a href="javascript:void(0)" (click)="closeModalVerificacion()" role="button"
+                    <a href="javascript:void(0)" (click)="closeModalVerificacionSalida()" role="button"
                         type="button">Volver</a>
-                    <a href="javascript:void(0)" (click)="closeModalVerificacion()" id="botonConfirmacion" role="button"
+                    <a href="javascript:void(0)" (click)="closeModalVerificacionSalida()" id="botonConfirmacion" role="button"
                         type="button">Confirmar</a>
                 </div>
                 <div [hidden]="!objetoRecuperado">
@@ -109,11 +138,11 @@
         </div>
         <div class="fecha-turno">
             <label>
-                <strong>Incidencias:  </strong>
+                <strong>Incidencias: </strong>
                 <input type="checkbox" id="incidencias-historico" name="incidencias-historico">
             </label>
             <label>
-                <strong>Conformidad:  </strong>
+                <strong>Conformidad: </strong>
                 <input type="checkbox" id="conformidad-historico" name="conformidad-historico">
             </label>
             <a href="javascript:void(0)" role="button" type="button">Buscas</a>
@@ -143,20 +172,20 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let fila of historialHerramietnas" [class.herramientas-error]="!fila.estadoSalida || !fila.estadoEntrada">
+                <tr *ngFor="let fila of historialHerramietnas"
+                    [class.herramientas-error]="!fila.estadoSalida || !fila.estadoEntrada">
                     <td>{{ fila.turno }}</td>
                     <td>{{ fila.cajon }}</td>
                     <td>{{ fila.herramienta }}</td>
                     <td *ngIf="tipoUsuario != 'User'">{{ fila.operario }}</td>
                     <td>{{ fila.oficial_al_mando }}</td>
                     <td>{{ fila.hora_inventario_entrada }}</td>
-                    <td><input type="checkbox" class="checkbox-column-herramientas" min="0" max="20"
-                        [checked]="fila.estadoEntrada" disabled></td>
+                    <td><input type="checkbox" class="checkbox-column-herramientas-historial" min="0" max="20"
+                            [checked]="fila.estadoEntrada"></td>
                     <td>{{ fila.hora_inventario_salida }}</td>
-                    <td><input type="checkbox" class="checkbox-column-herramientas" min="0" max="20"
-                            [checked]="fila.estadoSalida" disabled></td>
-                    <td><a href="javascript:void(0)" *ngIf="fila.observacionIncidencia != ''" role="button"
-                            type="button" class="fa-regular fa-eye"
+                    <td><input type="checkbox" class="checkbox-column-herramientas-historial" min="0" max="20"
+                            [checked]="fila.estadoSalida" ></td>
+                    <td><a href="javascript:void(0)" role="button" type="button" class="fa-regular fa-eye"
                             (click)="openModalObservacion(fila.observacionIncidencia)"></a></td>
                 </tr>
             </tbody>

@@ -1,61 +1,8 @@
 {
     "horaEntrada": "08:30",
-    "turnos": [
-        "Mañana",
-        "Tarde",
-        "Noche"
-    ],
-    "cajas": [
-        "Caja 1",
-        "Caja 2",
-        "Caja 2"
-    ],
-    "herramientas": [
-        {
-            "nombre": "Destornillador",
-            "guardado": false
-        },
-        {
-            "nombre": "Martillo",
-            "guardado": true
-        },
-        {
-            "nombre": "Llave ajustable",
-            "guardado": true
-        },
-        {
-            "nombre": "Alicates de punta",
-            "guardado": true
-        },
-        {
-            "nombre": "Sierra de mano",
-            "guardado": true
-        },
-        {
-            "nombre": "Cinta métrica",
-            "guardado": true
-        },
-        {
-            "nombre": "Nivel de burbuja",
-            "guardado": true
-        },
-        {
-            "nombre": "Llave inglesa",
-            "guardado": true
-        },
-        {
-            "nombre": "Cuchillo de uso general",
-            "guardado": true
-        },
-        {
-            "nombre": "Linterna de trabajo",
-            "guardado": true
-        },
-        {
-            "nombre": "Taladro eléctrico",
-            "guardado": true
-        }
-    ],
+    "turnos": ["Mañana", "Tarde", "Noche"],
+    "cajas": ["Caja 1", "Caja 2", "Caja 2"],
+    "nombre": ["Destornillador", "Martillo", "Llave ajustable", "Alicates de punta", "Sierra de mano", "Cinta métrica", "Nivel de burbuja", "Llave inglesa", "Cuchillo de uso general", "Linterna de trabajo", "Taladro eléctrico"],
     "historialHerramientas": [
         {
             "turno": "Mañana",

@@ -8,28 +8,31 @@
     flex-wrap: wrap;
     justify-content: center;
     column-gap: 40px;
+
     label {
         width: 250px;
     }
 }
 
-.caja-herramientas{
+.caja-herramientas {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     justify-content: center;
     column-gap: 40px;
+
     label {
         width: 250px;
     }
 }
 
-.Semaforo-Historico{
+.Semaforo-Historico {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     justify-content: center;
     column-gap: 40px;
+
     label {
         width: 250px;
     }
@@ -54,17 +57,17 @@
     justify-content: space-between;
 }
 
-.cabecera-herramientas-container a{
+.cabecera-herramientas-container a {
     height: 75%;
     width: 20%;
     border-radius: 0;
     margin-top: -0.75%;
 }
 
-.guardar-verificacion-button{
-  display: block;
-  width: fit-content;
-  margin: 0 auto;
+.guardar-verificacion-button {
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
 }
 
 footer {
@@ -77,7 +80,7 @@ footer {
     text-align: center;
 }
 
-.botones-modal-container{
+.botones-modal-container {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -85,12 +88,13 @@ footer {
     gap: 20px
 }
 
-.fa-triangle-exclamation{
+.fa-triangle-exclamation {
     color: #ffea00;
 }
 
-.fa-check{
-    color: #0bad33;;
+.fa-check {
+    color: #0bad33;
+    ;
 }
 
 .columna-herramientas {
@@ -98,14 +102,26 @@ footer {
 }
 
 .checkbox-column-herramientas {
-    background-color:  red;
-  }
+    background-color: red;
+}
 
-  .checkbox-column-herramientas:checked {
-    background-color:  green;
-  }
+.checkbox-column-herramientas:checked {
+    background-color: green;
+}
 
-  .tablas-hitorico-herramientas {
+.checkbox-column-herramientas-historial {
+    background-color: red;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+.checkbox-column-herramientas-historial:checked {
+    background-color: green;
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+.tablas-hitorico-herramientas {
     width: 100%;
     border-collapse: collapse;
 }
@@ -116,22 +132,22 @@ footer {
     padding: 8px;
 }
 
-.herramientas-error td{
+.herramientas-error td {
     color: red;
-  }
+}
 
-  .semaforo-historico-green {
-    color:  green;
-  }
+.semaforo-historico-green {
+    color: green;
+}
 
-  .semaforo-historico-red {
-    color:  red;
-  }
+.semaforo-historico-red {
+    color: red;
+}
 
-  .semaforo-inventario-green {
-    color:  green;
-  }
+.semaforo-inventario-green {
+    color: green;
+}
 
-  .semaforo-inventario-red {
-    color:  red;
-  }
+.semaforo-inventario-red {
+    color: red;
+}

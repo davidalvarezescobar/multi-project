@@ -1,8 +1,8 @@
 <header>
   <img class="menu" src="/assets/white-menu.png" alt="logo-aire" (click)="showMenu=true">
   <div class="col-left">
-    <img class="logo-aire" src="/assets/logo-aire.png" alt="logo-aire">
-    <h4 class="title">Portal de la Base</h4>
+    <img class="logo-aire" routerLink="/" src="/assets/logo-aire.png" alt="logo-aire">
+    <h4 class="title" routerLink="/">Portal de la Base</h4>
   </div>
   <div class="col-right">
     <img class="logo-account" src="/assets/account.svg" alt="account"/>
@@ -37,6 +37,12 @@
         <li routerLink="/piscina" routerLinkActive="active">Piscina</li>
       </ul>
     </details>
+    <details routerLinkActive="active" #taller [attr.open]="taller.classList.contains('active') ? '' : null">
+      <summary>Mantenimiento</summary>
+      <ul (click)="hideMenu()">
+        <li routerLink="/herramientas" routerLinkActive="active">Talleres</li>
+      </ul>
+    </details>
     <details routerLinkActive="active" #horario [attr.open]="horario.classList.contains('active') ? '' : null">
       <summary>Control horario</summary>
       <ul (click)="hideMenu()">
@@ -48,12 +54,6 @@
       <summary>Control visitas</summary>
       <ul (click)="hideMenu()">
         <li routerLink="/visitas" routerLinkActive="active">Gestión visitas</li>
-      </ul>
-    </details>
-    <details routerLinkActive="active" #taller [attr.open]="taller.classList.contains('active') ? '' : null">
-      <summary>Taller</summary>
-      <ul (click)="hideMenu()">
-        <li routerLink="/herramientas" routerLinkActive="active">Herramientas</li>
       </ul>
     </details>
   </aside>

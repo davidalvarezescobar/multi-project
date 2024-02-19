@@ -8,6 +8,7 @@ import { ApartamentosAltaComponent } from './pages/apartamentos-alta/apartamento
 import { ApartamentosComponent } from './pages/apartamentos/apartamentos.component';
 import { BibliotecaAltaComponent } from './pages/biblioteca-alta/biblioteca-alta.component';
 import { BibliotecaComponent } from './pages/biblioteca/biblioteca.component';
+import { CartasComponent } from './pages/cartas/cartas.component';
 import { ComedorAdminComponent } from './pages/comedor-admin/comedor-admin.component';
 import { ComedorHistoricoAdminComponent } from './pages/comedor-historico-admin/comedor-historico-admin.component';
 import { ComedorHistoricoComponent } from './pages/comedor-historico/comedor-historico.component';
@@ -61,7 +62,7 @@ const routes: Routes = [
   { path: 'fichaje/alta',  component: FichajeAltaComponent },
   { path: 'turnos',  component: TurnosComponent },
   { path: 'turnos/alta',  component: TurnosAltaComponent },
-  { path: '',   redirectTo: '/comedor', pathMatch: 'full' },
+  { path: '',   component: CartasComponent},
   { path: '**', component: NotFoundComponent }
 ];
 

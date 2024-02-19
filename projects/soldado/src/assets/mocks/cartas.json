@@ -1,0 +1,39 @@
+{
+    "quickServices": [
+        {
+            "nombre": "Guarderia",
+            "url": "/guarderia",
+            "image": "guarderia.png"
+        },
+        {
+            "nombre": "Herramientas",
+            "url": "/herramientas",
+            "image": "herramientas.png"
+        },
+        {
+            "nombre": "Ludoteca",
+            "url": "/ludoteca",
+            "image": "ludoteca.png"
+        },
+        {
+            "nombre": "Comedor",
+            "url": "/comedor",
+            "image": "comedor.png"
+        },
+        {
+            "nombre": "Aparcamientos",
+            "url": "/aparcamientos",
+            "image": "aparcamientos.png"
+        },
+        {
+            "nombre": "Salas",
+            "url": "/salas",
+            "image": "salas.png"
+        },
+        {
+            "nombre": "Gimnasio",
+            "url": "/gimnasio",
+            "image": "gimnasio.png"
+        }
+    ]
+}

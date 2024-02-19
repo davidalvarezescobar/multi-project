@@ -14,6 +14,7 @@ import { ApartamentosAltaComponent } from './pages/apartamentos-alta/apartamento
 import { ApartamentosComponent } from './pages/apartamentos/apartamentos.component';
 import { BibliotecaAltaComponent } from './pages/biblioteca-alta/biblioteca-alta.component';
 import { BibliotecaComponent } from './pages/biblioteca/biblioteca.component';
+import { CartasComponent } from './pages/cartas/cartas.component';
 import { ComedorAdminComponent } from './pages/comedor-admin/comedor-admin.component';
 import { ComedorHistoricoAdminComponent } from './pages/comedor-historico-admin/comedor-historico-admin.component';
 import { ComedorHistoricoComponent } from './pages/comedor-historico/comedor-historico.component';
@@ -31,13 +32,13 @@ import { PiscinaAltaComponent } from './pages/piscina-alta/piscina-alta.componen
 import { PiscinaComponent } from './pages/piscina/piscina.component';
 import { SalasAltaComponent } from './pages/salas-alta/salas-alta.component';
 import { SalasDisponibilidadComponent } from './pages/salas-disponibilidad/salas-disponibilidad.component';
+import { SalasHistoricoComponent } from './pages/salas-historico/salas-historico.component';
 import { SalasComponent } from './pages/salas/salas.component';
 import { TurnosAltaComponent } from './pages/turnos-alta/turnos-alta.component';
 import { TurnosComponent } from './pages/turnos/turnos.component';
 import { VisitasAltaComponent } from './pages/visitas-alta/visitas-alta.component';
 import { VisitasComponent } from './pages/visitas/visitas.component';
 import { ComedorFilterPipe } from './pipes/comedor-filter.pipe';
-import { SalasHistoricoComponent } from './pages/salas-historico/salas-historico.component';
 
 registerLocaleData(es);
 
@@ -74,6 +75,7 @@ registerLocaleData(es);
     ComedorFilterPipe,
     ComedorAdminComponent,
     AccessControlDirective,
+    CartasComponent,
     ComedorHistoricoAdminComponent
   ],
   imports: [

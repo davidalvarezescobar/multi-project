@@ -3,7 +3,7 @@ import { HerramientasService } from '../../services/herramientas-service';
 import { LoginService } from '../../services/login.service';
 
 @Component({
-  selector: 'app-guarderia-alta',
+  selector: 'app-herramientas',
   templateUrl: './herramientas.component.html',
   styleUrls: ['./herramientas.component.scss']
 })
@@ -12,16 +12,16 @@ export class HerramientasComponent implements OnInit {
   ventana: string;
   horaActual: string;
   fechaActual: string;
-  verificacion: boolean = false;
+  vEntrada: boolean = false;
+  vSalida: boolean = false;
   modalObservacion: boolean = false;
   resultadoVerificacion: string;
-  checks: boolean[];
   objetoRecuperado: boolean = false;
   observacionIncidencia: string;
   semaforoInventario: boolean;
   semaforoHistorial: boolean;
 
-  herramientasEntrada: { nombre: string, guardado: boolean }[];
+  herramientas:[{ nombre: string, cEntrada: boolean, cSalida: boolean}];
   historialHerramietnas: any[];
   horaEntrada: string
   turnos: string[];
@@ -47,16 +47,11 @@ export class HerramientasComponent implements OnInit {
 
     this.dataSrv.loadHerramientasDatos().subscribe(
       herramientas => {
-        this.herramientasEntrada = herramientas?.herramientas;
+        this.herramientas = herramientas?.nombre.map(nombre=> { return {nombre:nombre, cEntrada: true, cSalida: true}});
         this.historialHerramietnas = herramientas?.historialHerramientas
         this.horaEntrada = herramientas?.horaEntrada;
         this.turnos = herramientas?.turnos;
         this.cajas = herramientas?.cajas;
-
-        for (let i = 0; i < (herramientas?.herramientas.length || 0); i++) {
-          this.checks.push(false);
-        }
-        this.resetChecks()
         this.setSemaforoHistorialIncidencia();
         this.setSemaforoUserIncidencia();
       });
@@ -70,19 +65,47 @@ export class HerramientasComponent implements OnInit {
     }
   }
 
-  cSalidaChange(check: boolean, herramientaEntrada: string) {
-    for (let i = 0; i < this.herramientasEntrada.length; i++) {
-      if (this.herramientasEntrada[i].nombre == herramientaEntrada) {
-        this.checks[i] = check
+  cEntradaChange(check: boolean, herramientaEntrada: string) {
+    for (let i = 0; i < this.herramientas.length; i++) {
+      if (this.herramientas[i].nombre == herramientaEntrada) {
+        this.herramientas[i].cEntrada = check
         this.setSemaforoUserIncidencia()
         return
       }
     }
   }
 
-  openModalVerificacion() {
-    for (let i = 0; i < this.herramientasEntrada.length; i++) {
-      if (!this.herramientasEntrada[i].guardado && this.checks[i]) {
+  cSalidaChange(check: boolean, herramientaEntrada: string) {
+    for (let i = 0; i < this.herramientas.length; i++) {
+      if (this.herramientas[i].nombre == herramientaEntrada) {
+        this.herramientas[i].cSalida = check
+        this.setSemaforoUserIncidencia()
+        return
+      }
+    }
+  }
+
+  openModalVerificacionEntrada(){
+    if (this.semaforoInventario) {
+      this.resultadoVerificacion = "Todos los materiales han sido devueltos"
+      document.getElementById("botonConfirmacion").style.backgroundColor = "#3596c3";
+      document.getElementById("botonConfirmacion").style.borderColor = "#3596c3";
+      this.vEntrada = true
+    } else {
+      this.resultadoVerificacion = "Faltan materiales"
+      document.getElementById("botonConfirmacion").style.backgroundColor = "red";
+      document.getElementById("botonConfirmacion").style.borderColor = "red";
+      this.vEntrada = true
+    }
+  }
+
+  closeModalVerificacionEntrada() {
+    this.vEntrada = false
+  }
+
+  openModalVerificacionSalida() {
+    for (let i = 0; i < this.herramientas.length; i++) {
+      if (!this.herramientas[i].cEntrada && this.herramientas[i].cSalida) {
         this.objetoRecuperado = true
         break
       }
@@ -92,23 +115,23 @@ export class HerramientasComponent implements OnInit {
       this.resultadoVerificacion = "Todos los materiales han sido devueltos"
       document.getElementById("botonConfirmacion").style.backgroundColor = "#3596c3";
       document.getElementById("botonConfirmacion").style.borderColor = "#3596c3";
-      this.verificacion = true
+      this.vSalida = true
     } else {
       this.resultadoVerificacion = "Faltan materiales"
       document.getElementById("botonConfirmacion").style.backgroundColor = "red";
       document.getElementById("botonConfirmacion").style.borderColor = "red";
-      this.verificacion = true
+      this.vSalida = true
     }
   }
 
-  closeModalVerificacion() {
-    this.verificacion = false
+  closeModalVerificacionSalida() {
+    this.vSalida = false
     this.objetoRecuperado = false
   }
 
   setSemaforoUserIncidencia() {
-    for (let i = 0; i < this.checks.length; i++) {
-      if (!this.checks[i]) {
+    for (let i = 0; i < this.herramientas.length; i++) {
+      if (!this.herramientas[i].cEntrada || !this.herramientas[i].cSalida) {
         this.semaforoInventario = false
         return
       }
@@ -128,7 +151,6 @@ export class HerramientasComponent implements OnInit {
 
   setVentana(ventana: string) {
     this.ventana = ventana
-    this.resetChecks()
     this.setSemaforoHistorialIncidencia();
     this.setSemaforoUserIncidencia();
   }
@@ -140,12 +162,5 @@ export class HerramientasComponent implements OnInit {
 
   closeModalObservacion() {
     this.modalObservacion = false;
-  }
-
-  resetChecks(){
-    this.checks = [];
-    for (let i = 0; i < (this.herramientasEntrada.length); i++) {
-      this.checks.push(false);
-    }
   }
 }
