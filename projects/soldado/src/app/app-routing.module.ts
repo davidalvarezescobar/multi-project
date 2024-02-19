@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ComedorAdminGuard } from './guards/comedor-admin.guard';
 import { ComedorGuard } from './guards/comedor.guard';
+import { DatosAdminGuard } from './guards/datos-admin.guard';
+import { DatosGuard } from './guards/datos.guard';
 import { AparcamientosAltaComponent } from './pages/aparcamientos-alta/aparcamientos-alta.component';
 import { AparcamientosComponent } from './pages/aparcamientos/aparcamientos.component';
 import { ApartamentosAltaComponent } from './pages/apartamentos-alta/apartamentos-alta.component';
@@ -13,6 +15,8 @@ import { ComedorAdminComponent } from './pages/comedor-admin/comedor-admin.compo
 import { ComedorHistoricoAdminComponent } from './pages/comedor-historico-admin/comedor-historico-admin.component';
 import { ComedorHistoricoComponent } from './pages/comedor-historico/comedor-historico.component';
 import { ComedorAltaComponent } from './pages/comedor/comedor.component';
+import { DatosAdminComponent } from './pages/datos-admin/datos-admin.component';
+import { DatosComponent } from './pages/datos/datos.component';
 import { FichajeAltaComponent } from './pages/fichaje-alta/fichaje-alta.component';
 import { FichajeComponent } from './pages/fichaje/fichaje.component';
 import { GimnasioAltaComponent } from './pages/gimnasio-alta/gimnasio-alta.component';
@@ -62,6 +66,8 @@ const routes: Routes = [
   { path: 'fichaje/alta',  component: FichajeAltaComponent },
   { path: 'turnos',  component: TurnosComponent },
   { path: 'turnos/alta',  component: TurnosAltaComponent },
+  { path: 'datos',  component: DatosComponent, canActivate: [DatosGuard]},
+  { path: 'datos-admin',  component: DatosAdminComponent, canActivate: [DatosAdminGuard]},
   { path: '',   component: CartasComponent},
   { path: '**', component: NotFoundComponent }
 ];

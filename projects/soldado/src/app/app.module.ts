@@ -19,6 +19,8 @@ import { ComedorAdminComponent } from './pages/comedor-admin/comedor-admin.compo
 import { ComedorHistoricoAdminComponent } from './pages/comedor-historico-admin/comedor-historico-admin.component';
 import { ComedorHistoricoComponent } from './pages/comedor-historico/comedor-historico.component';
 import { ComedorAltaComponent } from './pages/comedor/comedor.component';
+import { DatosAdminComponent } from './pages/datos-admin/datos-admin.component';
+import { DatosComponent } from './pages/datos/datos.component';
 import { FichajeAltaComponent } from './pages/fichaje-alta/fichaje-alta.component';
 import { FichajeComponent } from './pages/fichaje/fichaje.component';
 import { GimnasioAltaComponent } from './pages/gimnasio-alta/gimnasio-alta.component';
@@ -76,6 +78,8 @@ registerLocaleData(es);
     ComedorAdminComponent,
     AccessControlDirective,
     CartasComponent,
+    DatosComponent,
+    DatosAdminComponent,
     ComedorHistoricoAdminComponent
   ],
   imports: [
