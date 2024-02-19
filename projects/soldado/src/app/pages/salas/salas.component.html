@@ -17,20 +17,21 @@
                 <input class="hour-to-input" type="time" name="time" aria-label="Time" />
 
             </div>
-            
+
             <a routerLink="/salas/listado" href="javascript:void(0)" role="button" type="button">Histórico</a>
         </div>
     </div>
     <fieldset>
-        
+
         <label htmlFor="Proyector"><input type="checkbox" id="Proyector" name="Proyector" />Proyector</label>
-        
+
         <label htmlFor="tv"><input type="checkbox" id="tv" name="tv" />TV</label>
-        
-        <label htmlFor="camaraconf"><input type="checkbox" id="camaraconf" name="camaraconf" />Cámara Conferencia</label>
-        
+
+        <label htmlFor="camaraconf"><input type="checkbox" id="camaraconf" name="camaraconf" />Cámara
+            Conferencia</label>
+
         <label htmlFor="telefono"><input type="checkbox" id="telefono" name="telefono" />Teléfono</label>
-        
+
         <label htmlFor="pc"><input type="checkbox" id="pc" name="pc" />PC/Portátil</label>
     </fieldset>
 </div>
@@ -46,81 +47,30 @@
                         <th scope="col">Capacidad</th>
                         <th scope="col">Proyector</th>
                         <th scope="col">PC</th>
+                        <th scope="col">Cámara</th>
+                        <th scope="col">Teléfono</th>
                         <th scope="col">Disponibilidad</th>
                         <th scope="col">Reservar</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td scope="row"><i class="fa-solid fa-circle" style="color: #fd1c54;"></i></td>
-                        <td scope="row">Pabellon 1</td>
-                        <td scope="row">Sala 2</td>
-                        <td scope="row">75</td>
-                        <td scope="row">Si</td>
-                        <td scope="row">Si</td>
+                    <tr *ngFor="let sala of salas">
+                        <td scope="row"><i class="fa-solid fa-circle"
+                                [ngStyle]="{'color': sala.capacidad <100 ? '#fd1c54' : '#1cfdb9'}"></i></td>
+                        <td scope="row">{{sala.pabellon}}</td>
+                        <td scope="row">{{sala.sala}}</td>
+                        <td scope="row">{{sala.capacidad}}</td>
+                        <td scope="row">{{sala.proyector}}</td>
+                        <td scope="row">{{sala.pc}}</td>
+                        <td scope="row">{{sala.camaraConf}}</td>
+                        <td scope="row">{{sala.telefono}}</td>
                         <td scope="row"><a routerLink="/salas/disponibilidad" href="javascript:void(0)" role="button"
                                 type="button">Ver</a>
                         </td>
-                        <td scope="row"><a routerLink="/salas/disponibilidad" href="javascript:void(0)" role="button"
-                                type="button">Reservar</a>
+                        <td scope="row"><a href="javascript:void(0)" role="button"
+                                (click)="openModal()" type="button">Reservar</a>
                         </td>
 
-                    </tr>
-                    <tr>
-                        <td scope="row"><i class="fa-solid fa-circle" style="color: #1cfdb9;"></i></td>
-                        <td scope="row">Pabellon 1</td>
-                        <td scope="row">Sala 3</td>
-                        <td scope="row">150</td>
-                        <td scope="row">No</td>
-                        <td scope="row">Si</td>
-                        <td scope="row"><a routerLink="/salas/disponibilidad" href="javascript:void(0)" role="button"
-                                type="button">Ver</a>
-                        </td>
-                        <td scope="row"><a routerLink="/salas/disponibilidad" href="javascript:void(0)" role="button"
-                                type="button">Reservar</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="row"><i class="fa-solid fa-circle" style="color: #1cfdb9;"></i></td>
-                        <td scope="row">Pabellon 1</td>
-                        <td scope="row">Sala 3</td>
-                        <td scope="row">150</td>
-                        <td scope="row">No</td>
-                        <td scope="row">Si</td>
-                        <td scope="row"><a routerLink="/salas/disponibilidad" href="javascript:void(0)" role="button"
-                                type="button">Ver</a>
-                        </td>
-                        <td scope="row"><a routerLink="/salas/disponibilidad" href="javascript:void(0)" role="button"
-                                type="button">Reservar</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="row"><i class="fa-solid fa-circle" style="color: #fd1c54;"></i></td>
-                        <td scope="row">Pabellon 2</td>
-                        <td scope="row">Sala 1</td>
-                        <td scope="row">150</td>
-                        <td scope="row">Si</td>
-                        <td scope="row">Si</td>
-                        <td scope="row"><a routerLink="/salas/disponibilidad" href="javascript:void(0)" role="button"
-                                type="button">Ver</a>
-                        </td>
-                        <td scope="row"><a routerLink="/salas/disponibilidad" href="javascript:void(0)" role="button"
-                                type="button">Reservar</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td scope="row"><i class="fa-solid fa-circle" style="color: #1cfdb9;"></i></td>
-                        <td scope="row">Pabellon 2</td>
-                        <td scope="row">Sala 2</td>
-                        <td scope="row">90</td>
-                        <td scope="row">No</td>
-                        <td scope="row">No</td>
-                        <td scope="row"><a routerLink="/salas/disponibilidad" href="javascript:void(0)" role="button"
-                                type="button">Ver</a>
-                        </td>
-                        <td scope="row"><a routerLink="/salas/disponibilidad" href="javascript:void(0)" role="button"
-                                type="button">Reservar</a>
-                        </td>
                     </tr>
                 </tbody>
             </table>
@@ -128,3 +78,13 @@
     </div>
 
 </div>
+<!-- Modal de pago -->
+<dialog id="modal-pago" [attr.open]="showModal">
+    <article>
+        <header>
+            <a (click)="closeModal()" aria-label="Close" class="close"></a>
+            <span>Reservar sala</span>
+        </header>
+        <a href="javascript:void(0)" *ngIf="isLoading" aria-busy="true">Reservando sala, por favor espere...</a>
+    </article>
+</dialog>

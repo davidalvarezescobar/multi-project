@@ -10,6 +10,7 @@ import { LoginService } from '../../services/login.service';
 export class SalasHistoricoComponent implements OnInit {
 
   tipoUsuario = '';
+  showModal = false;
   constructor(private router: Router,
     private loginSrv: LoginService) {}
   ngOnInit(): void {
@@ -62,5 +63,12 @@ export class SalasHistoricoComponent implements OnInit {
 
   rowClick() {
     this.router.navigateByUrl('/salas');
+  }
+  closeModal() {
+    this.showModal = false;
+  }
+  openModal(event:any) {
+    event.stopPropagation();
+    this.showModal = true;
   }
 }

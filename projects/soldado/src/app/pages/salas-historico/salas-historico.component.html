@@ -34,6 +34,7 @@
                 <th scope="col">Fecha</th>
                 <th scope="col">Hora desde</th>
                 <th scope="col">Hora hasta</th>
+                <th scope="col">QR</th>
             </tr>
         </thead>
         <tbody>
@@ -44,7 +45,21 @@
                 <td>{{item.fecha}}</td>
                 <td>{{item.horaDesde}}</td>
                 <td>{{item.horaHasta}}</td>
+                <td style="cursor: pointer;" (click)="openModal($event)"><i class="fa-solid fa-qrcode fa-lg"></i></td>
             </tr>
         </tbody>
     </table>
 </div>
+
+<!-- Modal de QR -->
+<dialog id="modal-pago" [attr.open]="showModal">
+    <article>
+        <header>
+            <a (click)="closeModal()" aria-label="Close" class="close"></a>
+            <span>Código QR</span>
+        </header>
+        <div class="qr">
+            <img src="assets/QR.png" alt="Mi imagen PNG">
+        </div>
+    </article>
+</dialog>
