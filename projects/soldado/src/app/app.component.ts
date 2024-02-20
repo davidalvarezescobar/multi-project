@@ -11,6 +11,7 @@ export class AppComponent implements OnInit {
   showMenu: boolean;
   users = ['User', 'Admin'];
   currUser = this.loginSrv.user$;
+  showDatos: boolean = false;
   
   @HostBinding('class.mobile') isMobile: boolean = false;
   @HostListener('window:resize', ['$event'])

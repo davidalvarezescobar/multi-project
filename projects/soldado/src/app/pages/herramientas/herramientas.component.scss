@@ -1,55 +1,47 @@
-:host {
-    display: block;
+.semaforo-herramientas,
+.boton-historial{
+    text-align: center;
 }
 
-.fecha-turno {
+.caja-incidencias-conformidad{
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    justify-content: center;
     column-gap: 40px;
+}
+.fecha-semaforo{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+    flex-wrap: wrap;
 
     label {
         width: 250px;
     }
 }
 
-.caja-herramientas {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: center;
-    column-gap: 40px;
-
-    label {
-        width: 250px;
-    }
-}
-
-.Semaforo-Historico {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: center;
-    column-gap: 40px;
-
-    label {
-        width: 250px;
-    }
+.semaforo-historico-container{
+    margin-right: 2.5%;
 }
 
 .tablas-herramientas-container {
     display: flex;
-    align-items: center;
-    flex-wrap: wrap;
     justify-content: center;
+    flex-wrap: wrap;
     column-gap: 80px;
 
 }
 
 .tablas-herramientas {
-    width: 50%;
+    width: auto;
+    max-width: 100%;
+    overflow-x: auto;
 }
+
+.cabeceras th {
+    border-bottom: 0;
+    padding: 5px 10px;
+  }
 
 
 .cabecera-herramientas-container {

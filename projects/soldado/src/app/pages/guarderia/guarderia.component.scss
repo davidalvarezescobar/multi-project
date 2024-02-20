@@ -20,29 +20,29 @@ footer {
     margin-top: 5px;
 }
 
-.fa-solid{
+.fa-solid {
     border-radius: 0;
 }
 
-.fa-pen-to-square{
+.fa-pen-to-square {
     color: #ffffff;
 }
 
-.fa-trash-can{
+.fa-trash-can {
     border-color: red;
     background-color: red;
     color: #000000;
 }
 
 .fa-trash-can:hover {
-    background-color: rgb(219, 0, 0); 
+    background-color: rgb(219, 0, 0);
 }
 
 .nombre {
     width: 42%;
 }
 
-.nombre-historico-container{
+.nombre-historico-container {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -64,19 +64,11 @@ footer {
 .datos-Extra-container {
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
-    justify-content: flex-start;
     column-gap: 40px;
-    margin-left: 15px;
-
-    label {
-        width: 250px;
+    margin-left: 3%;
+    a {
+        margin-top: 7px;
     }
-}
-
-.siesta-container,
-.pis-container {
-    margin-right: -15%
 }
 
 .padres-button,
@@ -85,12 +77,12 @@ footer {
 }
 
 .padres-data-container,
-.monitor-data-container{
+.monitor-data-container {
     border: 1px solid #ccc;
     border-color: #3596c3;
 }
 
-.botones-modal-borrar-container{
+.botones-modal-borrar-container {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
@@ -100,47 +92,39 @@ footer {
 
 .alergias-comentario-container {
     display: flex;
-    flex-wrap: wrap;
-    column-gap: 40px;
-    margin-top: 1%;
-    margin-left: 1%;
-    label {
-        width: 250px;
+    align-items: center;
+    margin-left: 3%;
+    margin-top: 5px;
+    gap: 20px;
+
+    &__elegidas {
+        margin-top: 4px;
+        display: flex;
+        gap: 20px;
+
+        & .outline {
+            cursor: default;
+        }
     }
 }
 
-.alergias-seleccionadas-container {
-    max-width: 17%;
-}
-
-.alergias-seleccionadas-container a {
-    margin-top: 1px;
-    margin-left: 1%;
-    cursor: none;
-}
-
 .observaciones {
-    width: 97%;
-    height: 100px;
+    width: 35%;
 }
 
 .observaciones-container {
     margin-left: 3%;
 }
 
-.otras-alergias {
-    margin-top: 5px;
-}
-
-.alergias{
-width: 30%;
-}
-
-.modal-container{
+.modal-container {
     text-align: center;
 }
 
-.alergias-intolerancias-list{
-    min-width: 300px;
-    display: inline-block;
+.persona-autorizada {
+    width: 200%;
+}
+
+.pis-siesta-checkbox[disabled] {
+    opacity: 1;
+    background-color: #3596c3;
 }
