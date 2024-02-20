@@ -2,7 +2,7 @@
   <img class="menu" src="/assets/white-menu.png" alt="logo-aire" (click)="showMenu=true">
   <div class="col-left">
     <img class="logo-aire" routerLink="/" src="/assets/logo-aire.png" alt="logo-aire">
-    <h4 class="title" routerLink="/">Portal de la Base</h4>
+    <h4 class="title" routerLink="/">Maestranza Aérea de Albacete</h4>
   </div>
   <div class="col-right">
     <img class="logo-account" src="/assets/account.svg" alt="account"/>
@@ -10,6 +10,7 @@
       <summary aria-haspopup="listbox" role="link">{{currUser | async}}</summary>
       <ul role="listbox">
         <li *ngFor="let user of users" (click)="changeUser(user); combo.open=false"><a>{{user}}</a></li>
+        <li routerLink="/datos">Datos</li>
       </ul>
     </details>
 
