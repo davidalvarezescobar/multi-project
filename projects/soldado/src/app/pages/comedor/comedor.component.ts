@@ -39,15 +39,15 @@ export class ComedorAltaComponent implements OnInit {
   }
 
   buildForm() {
-    this.form = this.fb.group({
-      comedor: this.fb.control('', {nonNullable:true}),
-      fecha: this.fb.control(''),
-      principal: this.fb.control(''),
-      segundo: this.fb.control(''),
-      postre: this.fb.control(''),
+    this.form = this.fb.nonNullable.group({
+      comedor: [''],
+      fecha: [''],
+      principal: [''],
+      segundo: [''],
+      postre: [''],
       intorelancias: this.fb.array([]),
-      precioMenu: this.fb.control(0, {nonNullable:true}),
-      pagado: this.fb.control('')
+      precioMenu: [0],
+      pagado: ['']
     });
 
     this.form.get('principal').valueChanges.subscribe(() => this.calculateTotalAmount());

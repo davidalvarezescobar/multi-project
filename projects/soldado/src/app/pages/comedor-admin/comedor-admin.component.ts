@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-comedor-admin',
@@ -7,7 +7,7 @@ import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./comedor-admin.component.scss']
 })
 export class ComedorAdminComponent implements OnInit {
-  today = new Date();
+  today = new FormControl(new Date().toISOString().slice(0, 10));
   tablaMenus = [
     { principal: '', segundo: '', postre: '' },
     { principal: '', segundo: '', postre: '' },

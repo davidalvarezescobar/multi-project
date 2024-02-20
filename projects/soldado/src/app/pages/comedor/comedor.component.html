@@ -1,4 +1,4 @@
-<h5>Nueva reserva de comedor</h5>
+<h5>Peticiones de menú</h5>
 
 <form [formGroup]="form">
     <section class="comedor-container">
@@ -22,6 +22,7 @@
             <a href="javascript:void(0)" role="button" type="button" (click)="resetForm()"><i class="fa-solid fa-repeat fa-sm"></i>&nbsp;Alta</a>
         </div>
     </section>
+
     <section class="platos" *ngIf="menuList$ | async as menuList">
         <ng-container *ngIf="pagado === ''">
             <fieldset>

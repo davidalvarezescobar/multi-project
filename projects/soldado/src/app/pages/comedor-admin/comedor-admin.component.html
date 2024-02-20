@@ -1,6 +1,10 @@
-<h5>Menú del {{today | date:'EEEE, d \'de\' MMMM \'de\' y' }}</h5>
+<h5>Menú del día:&nbsp; {{today.value | date:'EEEE, d \'de\' MMMM \'de\' y' }}</h5>
 
 <section class="historico">
+    <label class="short">
+        Fecha:
+        <input type="date" [formControl]="today" name="today">
+    </label>
     <a routerLink="/comedor-admin/historico" role="button" type="button">Histórico</a>
 </section>
 
