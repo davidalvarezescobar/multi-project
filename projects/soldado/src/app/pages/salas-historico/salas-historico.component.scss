@@ -2,12 +2,22 @@
     display: flex;
     flex-direction: column;
     gap: .8rem;
+    & .selector {
+        max-width: 30rem;
+    }
 }
 .date-search-container {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: end;
+    flex-wrap: wrap;
 }
 td {
     cursor: pointer;
+}
+label {
+    margin: 0;
+}
+input {
+    margin: 0;
 }

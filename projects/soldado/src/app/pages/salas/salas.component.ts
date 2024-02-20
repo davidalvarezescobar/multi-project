@@ -6,8 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./salas.component.scss']
 })
 export class SalasComponent implements OnInit {
-  showModal = false;
-  isLoading: boolean | null = null;
 
   salas: any = [
     {
@@ -76,18 +74,6 @@ export class SalasComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  openModal() {
-    this.showModal = true;
-    this.isLoading = true;
-    setTimeout(() => {
-      this.isLoading = null;
-      this.closeModal();
-    }, 2000);
-
-  }
-
-  closeModal() {
-    this.showModal = false;
-  }
+  
 
 }

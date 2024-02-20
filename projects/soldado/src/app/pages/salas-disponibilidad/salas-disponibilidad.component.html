@@ -3,8 +3,8 @@
 <div class="main-container">
     <div class="date-container">
         <div class="input-container">
-            <input type="date" name="date" aria-label="Date" />
-           </div>
+            <input type="date" name="date" value="2024-03-06" aria-label="Date" />
+        </div>
     </div>
     <div class="selector-container">
         <div class="sala-title-container">
@@ -17,105 +17,51 @@
             <div class="resources"><i class="fa-solid fa-camera"></i>Cámara conferencia: Si</div>
             <div class="resources"><i class="fa-solid fa-phone"></i>Teléfono: Si</div>
         </div>
-        
+
     </div>
     <div class="table-form-container">
-        <table>
-            <thead>
-                <tr>
-                    <th scope="col"></th>
-                    <th scope="col">Hora</th>
-                    <th scope="col">Estado</th>
-                    <th scope="col">Usuario</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">08:00 - 09:00</th>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th scope="row">09:00 - 10:00</th>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th scope="row">10:00 - 11:00</th>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th scope="row">11:00 - 12:00</th>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th scope="row">12:00 - 13:00</th>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th scope="row">13:00 - 14:00</th>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th scope="row">14:00 - 15:00</th>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th scope="row">15:00 - 16:00</th>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th scope="row">16:00 - 17:00</th>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th scope="row">17:00 - 18:00</th>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th scope="row">18:00 - 19:00</th>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th scope="row">19:00 - 20:00</th>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th scope="row">20:00 - 21:00</th>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th scope="row">21:00 - 22:00</th>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th scope="row">22:00 - 23:00</th>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th scope="row">23:00 - 00:00</th>
-                    <td></td>
-                    <td></td>
-                </tr>
-            </tbody>
+        <figure>
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col">Hora</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Usuario</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let reserva of reservasDisponibles">
+                        <th scope="row"><input *ngIf="reserva.disponible" type="checkbox"></th>
+                        <th scope="row">{{reserva.horaDesde}} - {{reserva.horaHasta}}</th>
+                        <td scope="row"><i class="fa-solid fa-circle"
+                                [ngStyle]="{'color': reserva.disponible ? '#1cfdb9' : '#fd1c54'}"></i></td>
+                        <td>{{reserva.usuario}}</td>
+                    </tr>
+                </tbody>
 
-        </table>
+            </table>
+        </figure>
 
         <div class="footer-buttons">
             <a routerLink="/salas" href="javascript:void(0)" role="button" type="button">Volver</a>
+            <a (click)="openModal()" href="javascript:void(0)" role="button" type="button">Reservar</a>
         </div>
     </div>
 </div>
+<!-- Modal de pago -->
+<dialog id="modal-pago" [attr.open]="showModal">
+    <article>
+        <header>
+            <a (click)="closeModal()" aria-label="Close" class="close"></a>
+            <span>Reservar sala</span>
+        </header>
+        <div>
+            <span>Horario: </span>
+        </div>
+        <div>
+            <a (click)="confirmarReserva()" href="javascript:void(0)" role="button" type="button">Confirmar</a>
+        </div>
+        <a href="javascript:void(0)" *ngIf="isLoading" aria-busy="true">Reservando sala, por favor espere...</a>
+    </article>
+</dialog>

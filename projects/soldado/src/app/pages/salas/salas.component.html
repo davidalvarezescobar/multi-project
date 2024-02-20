@@ -74,13 +74,3 @@
     </div>
 
 </div>
-<!-- Modal de pago -->
-<dialog id="modal-pago" [attr.open]="showModal">
-    <article>
-        <header>
-            <a (click)="closeModal()" aria-label="Close" class="close"></a>
-            <span>Reservar sala</span>
-        </header>
-        <a href="javascript:void(0)" *ngIf="isLoading" aria-busy="true">Reservando sala, por favor espere...</a>
-    </article>
-</dialog>
