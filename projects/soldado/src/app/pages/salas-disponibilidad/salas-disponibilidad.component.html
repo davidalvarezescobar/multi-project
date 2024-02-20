@@ -51,17 +51,17 @@
 </div>
 <!-- Modal de pago -->
 <dialog id="modal-pago" [attr.open]="showModal">
-    <article>
+    <article class="modal-container">
         <header>
             <a (click)="closeModal()" aria-label="Close" class="close"></a>
             <span>Reservar sala</span>
         </header>
-        <div>
-            <span>Horario: </span>
+        <div class="modal-data">
+            <p>Horario: 10:00 - 11:00</p>
         </div>
-        <div>
-            <a (click)="confirmarReserva()" href="javascript:void(0)" role="button" type="button">Confirmar</a>
-        </div>
-        <a href="javascript:void(0)" *ngIf="isLoading" aria-busy="true">Reservando sala, por favor espere...</a>
+        <a *ngIf="!isLoading" (click)="confirmarReserva()" href="javascript:void(0)" role="button"
+            type="button">Confirmar</a>
+
+        <a *ngIf="isLoading" href="javascript:void(0)" aria-busy="true">Reservando sala, por favor espere...</a>
     </article>
 </dialog>
