@@ -19,6 +19,9 @@
     flex-direction: column;
     gap: 2rem;
     width: 100%;
+    & figure {
+        max-height: 20rem;
+    }
 }
 
 .table-container {

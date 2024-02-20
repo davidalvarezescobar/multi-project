@@ -2,13 +2,16 @@
     display: block;
 }
 
+form {
+    max-width: 41rem;
+}
 .fechas {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    column-gap: 40px;
+    column-gap: 1rem;
     label {
-        width: 250px;
+        width: 20rem;
     }
 }
 
