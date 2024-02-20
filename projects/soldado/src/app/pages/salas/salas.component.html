@@ -1,4 +1,4 @@
-<h5>Salas</h5>
+<h5>Salas: Petición de reserva</h5>
 
 <div class="main-container">
     <div class="date-container">
@@ -41,16 +41,12 @@
             <table>
                 <thead>
                     <tr>
-                        <th scope="col"></th>
+                        <th scope="col">Estado</th>
                         <th scope="col">Pabellon</th>
                         <th scope="col">Sala</th>
                         <th scope="col">Capacidad</th>
-                        <th scope="col">Proyector</th>
-                        <th scope="col">PC</th>
-                        <th scope="col">Cámara</th>
-                        <th scope="col">Teléfono</th>
+                        <th scope="col">Recursos</th>
                         <th scope="col">Disponibilidad</th>
-                        <th scope="col">Reservar</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -60,17 +56,17 @@
                         <td scope="row">{{sala.pabellon}}</td>
                         <td scope="row">{{sala.sala}}</td>
                         <td scope="row">{{sala.capacidad}}</td>
-                        <td scope="row">{{sala.proyector}}</td>
-                        <td scope="row">{{sala.pc}}</td>
-                        <td scope="row">{{sala.camaraConf}}</td>
-                        <td scope="row">{{sala.telefono}}</td>
+                        <td scope="row">
+                            <a class="anchor-tooltip" *ngIf="sala.proyector" data-tooltip="Proyector" ><i class="fa-solid fa-camera"></i></a>
+                            <a class="anchor-tooltip" *ngIf="sala.tv" data-tooltip="TV" ><i class="fa-solid fa-tv"></i></a>
+                            <a class="anchor-tooltip" *ngIf="sala.camaraConf" data-tooltip="Cámara Conferencia" ><i class="fa-solid fa-camera"></i></a>
+                            <a class="anchor-tooltip" *ngIf="sala.telefono" data-tooltip="Teléfono" ><i class="fa-solid fa-phone"></i></a>
+                            <a class="anchor-tooltip" *ngIf="sala.pc" data-tooltip="PC" ><i class="fa-solid fa-laptop"></i></a>
+
+                        </td>
                         <td scope="row"><a routerLink="/salas/disponibilidad" href="javascript:void(0)" role="button"
                                 type="button">Ver</a>
                         </td>
-                        <td scope="row"><a href="javascript:void(0)" role="button"
-                                (click)="openModal()" type="button">Reservar</a>
-                        </td>
-
                     </tr>
                 </tbody>
             </table>

@@ -14,61 +14,61 @@ export class SalasComponent implements OnInit {
       pabellon: 'Pabellon 1',
       sala: 'Sala 1',
       capacidad: 75,
-      proyector: 'Si',
-      pc: 'Si',
-      tv: 'Si',
-      camaraConf: 'Si',
-      telefono: 'Si'
+      proyector: true,
+      pc: true,
+      tv: true,
+      camaraConf: true,
+      telefono: true
     },
     {
       pabellon: 'Pabellon 1',
       sala: 'Sala 2',
       capacidad: 150,
-      proyector: 'Si',
-      pc: 'Si',
-      tv: 'No',
-      camaraConf: 'Si',
-      telefono: 'Si'
+      proyector: true,
+      pc: true,
+      tv: false,
+      camaraConf: true,
+      telefono: true
     },
     {
       pabellon: 'Pabellon 1',
       sala: 'Sala 3',
       capacidad: 75,
-      proyector: 'Si',
-      pc: 'Si',
-      tv: 'Si',
-      camaraConf: 'Si',
-      telefono: 'No'
+      proyector: true,
+      pc: true,
+      tv: true,
+      camaraConf: true,
+      telefono: false
     },
     {
       pabellon: 'Pabellon 2',
       sala: 'Sala 1',
       capacidad: 200,
-      proyector: 'Si',
-      pc: 'Si',
-      tv: 'Si',
-      camaraConf: 'Si',
-      telefono: 'Si'
+      proyector: true,
+      pc: true,
+      tv: true,
+      camaraConf: true,
+      telefono: true
     },
     {
       pabellon: 'Pabellon 2',
       sala: 'Sala 2',
       capacidad: 105,
-      proyector: 'Si',
-      pc: 'Si',
-      tv: 'Si',
-      camaraConf: 'No',
-      telefono: 'No'
+      proyector: true,
+      pc: true,
+      tv: true,
+      camaraConf: false,
+      telefono: false
     },
     {
       pabellon: 'Pabellon 3',
       sala: 'Sala 1',
       capacidad: 75,
-      proyector: 'Si',
-      pc: 'Si',
-      tv: 'Si',
-      camaraConf: 'Si',
-      telefono: 'Si'
+      proyector: true,
+      pc: true,
+      tv: true,
+      camaraConf: true,
+      telefono: true
     }
   ]
   constructor() { }

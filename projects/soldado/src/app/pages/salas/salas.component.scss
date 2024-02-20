@@ -104,3 +104,11 @@ fieldset{
     gap: 1rem;
     flex-wrap: wrap;
 }
+.anchor-tooltip {
+    color: inherit;
+    text-decoration: none;
+    margin-right: .3rem;
+}
+.anchor-tooltip:last-of-type {
+    margin-right: 0;
+}
