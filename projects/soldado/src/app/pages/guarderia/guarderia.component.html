@@ -1,10 +1,11 @@
-<h5>Guardería</h5>
+<h5 *ngIf="ventana === 'datos'">Guardería: Registro de información diaria</h5>
+<h5 *ngIf="ventana === 'historial'">Guardería: Histórico de información diaria</h5>
 
 <div *ngIf="ventana === 'historial'">
     <fieldset>
         <form>
             <label for="nombre">
-                Nombre:
+                Nombre del niño/a:
                 <br>
                 <select class="nombre" id="nombre" required>
                     <option value="" selected>Selecciona nombre</option>
@@ -37,10 +38,15 @@
             <table>
                 <thead>
                     <tr>
-                        <th scope="col">Nombre niño/a</th>
-                        <th scope="col">Fecha entrada</th>
+                        <th scope="col">Nombre del niño/a</th>
+                        <th scope="col">Fecha</th>
                         <th scope="col">Turno</th>
-                        <th scope="col">Estado</th>
+                        <th scope="col">Desayuno</th>
+                        <th scope="col">Comida</th>
+                        <th scope="col">Merienda</th>
+                        <th scope="col">Deposiciones</th>
+                        <th scope="col">Pis</th>
+                        <th scope="col">Siesta</th>
                         <th scope="col">Editar/Borrar</th>
                     </tr>
                 </thead>
@@ -49,9 +55,16 @@
                         <th scope="row">{{reserva.nombre}}</th>
                         <td>{{reserva.fechaEntrada}}</td>
                         <td>{{reserva.turno}}</td>
-                        <td>{{reserva.estado}}</td>
-                        <td><a href="javascript:void(0)" (click)="setEditReserva(reserva)" role="button"
-                                type="button" class="fa-solid fa-pen-to-square" style="color: #ffffff;"></a>
+                        <td>{{reserva.desayuno}}</td>
+                        <td>{{reserva.almuerzo}}</td>
+                        <td>{{reserva.merienda}}</td>
+                        <td>{{reserva.deposiciones}}</td>
+                        <td><input type="checkbox" class="pis-siesta-checkbox" id="pis" name="pis"
+                                [checked]="reserva.pis" disabled></td>
+                        <td><input type="checkbox" class="pis-siesta-checkbox" id="siesta" name="siesta"
+                                [checked]="reserva.siesta" disabled></td>
+                        <td><a href="javascript:void(0)" (click)="setEditReserva(reserva)" role="button" type="button"
+                                class="fa-solid fa-pen-to-square" style="color: #ffffff;"></a>
                             <a href="javascript:void(0)" (click)="openModalBorrar()" role="button"
                                 class="fa-solid fa-trash-can"></a>
                         </td>
@@ -67,12 +80,12 @@
         <fieldset>
             <div class="nombre-historico-container">
                 <label class="nombre" for="nombre">
-                    Nombre:
+                    Nombre del niño/a:
                     <select id="nombre" required>
-                        <option *ngFor="let name of nombres" [value]="name" [selected]="reserva.nombre === name">{{ name }}</option>
+                        <option *ngFor="let name of nombres" [value]="name" [selected]="reserva.nombre === name">{{ name
+                            }}</option>
                     </select>
                 </label>
-                <a href="javascript:void(0)" *ngIf="tipoUsuario === 'User'" (click)="setVentana('historial')" role="button" type="button">Historial</a>
             </div>
             <div class="fecha-turno">
                 <label class="short">
@@ -89,66 +102,78 @@
                     <input type="checkbox" id="autorizacion_recogida" name="autorizacion_recogida"
                         [checked]="reserva.autorizacion === true">
                     Autorización Recogida
-                    <input type="text" id="nombre" name="nombre" placeholder="Introduzca su nombre"
-                        [value]="reserva.autorizado">
+                    <input type="text" id="nombre" class="persona-autorizada" name="nombre"
+                        placeholder="Introduzca su nombre" [value]="reserva.autorizado">
                 </label>
             </div>
-    
+
             <a href="javascript:void(0)" (click)="monitorDatos()" id="monitorDatos" role="button" class="monitor-button"
                 type="button">Monitor</a>
             <a href="javascript:void(0)" (click)="padresDatos()" id="padresDatos" role="button" class="padres-button"
                 type="button">Padres</a>
             <div class="monitor-data-container" *ngIf="ventanaDatos === 'monitor'">
-                <table>
-                    <thead>
-                        <tr>
-                            <th scope="col">Alimentación</th>
-                            <th scope="col">Nada</th>
-                            <th scope="col">Poco</th>
-                            <th scope="col">Bastante</th>
-                            <th scope="col">Todo</th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Desayuno</td>
-                            <td><input type="radio" name="desayuno" value="nada" [checked]="reserva.desayuno === 'Nada'">
-                            </td>
-                            <td><input type="radio" name="desayuno" value="poco" [checked]="reserva.desayuno === 'Poco'">
-                            </td>
-                            <td><input type="radio" name="desayuno" value="bastante"
-                                    [checked]="reserva.desayuno === 'Bastante'"></td>
-                            <td><input type="radio" name="desayuno" value="todo" [checked]="reserva.desayuno === 'Todo'">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Almuerzo</td>
-                            <td><input type="radio" name="almuerzo" value="nada" [checked]="reserva.almuerzo=== 'Nada'">
-                            </td>
-                            <td><input type="radio" name="almuerzo" value="poco" [checked]="reserva.almuerzo === 'Poco'">
-                            </td>
-                            <td><input type="radio" name="almuerzo" value="bastante"
-                                    [checked]="reserva.almuerzo === 'Bastante'"></td>
-                            <td><input type="radio" name="almuerzo" value="todo" [checked]="reserva.almuerzo === 'Todo'">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Merienda</td>
-                            <td><input type="radio" name="merienda" value="nada" [checked]="reserva.merienda === 'Nada'">
-                            </td>
-                            <td><input type="radio" name="merienda" value="poco" [checked]="reserva.merienda === 'Poco'">
-                            </td>
-                            <td><input type="radio" name="merienda" value="bastante"
-                                    [checked]="reserva.merienda === 'Bastante'"></td>
-                            <td><input type="radio" name="merienda" value="todo" [checked]="reserva.merienda === 'Todo'">
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                <figure>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th scope="col">Alimentación</th>
+                                <th scope="col">Nada</th>
+                                <th scope="col">Poco</th>
+                                <th scope="col">Bastante</th>
+                                <th scope="col">Todo</th>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Desayuno</td>
+                                <td><input type="radio" name="desayuno" value="nada"
+                                        [checked]="reserva.desayuno === 'Nada'">
+                                </td>
+                                <td><input type="radio" name="desayuno" value="poco"
+                                        [checked]="reserva.desayuno === 'Poco'">
+                                </td>
+                                <td><input type="radio" name="desayuno" value="bastante"
+                                        [checked]="reserva.desayuno === 'Bastante'"></td>
+                                <td><input type="radio" name="desayuno" value="todo"
+                                        [checked]="reserva.desayuno === 'Todo'">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Almuerzo</td>
+                                <td><input type="radio" name="almuerzo" value="nada"
+                                        [checked]="reserva.almuerzo=== 'Nada'">
+                                </td>
+                                <td><input type="radio" name="almuerzo" value="poco"
+                                        [checked]="reserva.almuerzo === 'Poco'">
+                                </td>
+                                <td><input type="radio" name="almuerzo" value="bastante"
+                                        [checked]="reserva.almuerzo === 'Bastante'"></td>
+                                <td><input type="radio" name="almuerzo" value="todo"
+                                        [checked]="reserva.almuerzo === 'Todo'">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Merienda</td>
+                                <td><input type="radio" name="merienda" value="nada"
+                                        [checked]="reserva.merienda === 'Nada'">
+                                </td>
+                                <td><input type="radio" name="merienda" value="poco"
+                                        [checked]="reserva.merienda === 'Poco'">
+                                </td>
+                                <td><input type="radio" name="merienda" value="bastante"
+                                        [checked]="reserva.merienda === 'Bastante'"></td>
+                                <td><input type="radio" name="merienda" value="todo"
+                                        [checked]="reserva.merienda === 'Todo'">
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </figure>
                 <div class="datos-Extra-container">
                     <div class="deposiciones-container">
                         <label for="deposiciones">Deposiciones_</label>
                         <select id="deposiciones" [value]="reserva.deposiciones">
-                            <option *ngFor="let deposicion of deposiciones" [value]="deposicion" [selected]="reserva.deposiciones === deposicion">{{ deposicion }}</option>
+                            <option *ngFor="let deposicion of deposiciones" [value]="deposicion"
+                                [selected]="reserva.deposiciones === deposicion">{{ deposicion }}</option>
                         </select>
                     </div>
                     <div class="pis-container">
@@ -166,43 +191,41 @@
                     </div>
                 </div>
             </div>
-    
+
             <div class="padres-data-container" *ngIf="ventanaDatos === 'padres'">
                 <div class="alergias-comentario-container">
-                    <div class="alergias">
+                    <label>
                         Alergias/Intolerancias:
-                        <details role="list" >
-                            <summary class="alergias-intolerancias-list" aria-haspopup="listbox">Selecciona Alergias/Intolerancias</summary>
+                        <details role="list">
+                            <summary aria-haspopup="listbox">Selecciona
+                                Alergias/Intolerancias</summary>
                             <ul role="listbox">
                                 <li *ngFor="let alergia of alergias; let i = index">
                                     <label>
-                                        <input type="checkbox" aria-label="intolerancias" (change)="toggleVisibilidad(i)" [checked]="alergiasSeleccionadas[i]">
+                                        <input type="checkbox" aria-label="intolerancias"
+                                            (change)="toggleVisibilidad(i)" [checked]="alergiasSeleccionadas[i]">
                                         {{alergia}}
                                     </label>
                                 </li>
                             </ul>
                         </details>
+                    </label>
+
+                    <div class="alergias-comentario-container__elegidas">
+                        <a href="javascript:void(0)" [hidden]="!alergiasSeleccionadas[i]"
+                            *ngFor="let alergia of alergias; let i = index" role="button"
+                            class="outline">{{alergia}}</a>
                     </div>
-    
-                    <div class="alergias-seleccionadas-container">
-                        <div class="enlaces-container">
-                            <a href="javascript:void(0)" [hidden]="!alergiasSeleccionadas[i]"
-                                *ngFor="let alergia of alergias; let i = index" role="button"
-                                 class="outline">{{alergia}}</a>
-                        </div>
-                        <input type="text" class="otras-alergias" *ngIf="alergiasSeleccionadas[alergias.indexOf('Otros')]"
-                            placeholder="Escriba las otras alergias">
-                    </div>
-    
-                    <div class="observaciones-container">
-                        <label for="observaciones">Observaciones:</label>
-                        <textarea id="observaciones" class="observaciones" name="observaciones" rows="3"
-                            cols="50" [value]="reserva.observacionesPadre"></textarea>
-                    </div>
+                </div>
+
+                <div class="observaciones-container">
+                    <label for="observaciones">Observaciones:</label>
+                    <textarea id="observaciones" class="observaciones" name="observaciones" rows="3" cols="50"
+                        [value]="reserva.observacionesPadre"></textarea>
                 </div>
             </div>
             <footer>
-                <a href="javascript:void(0)" *ngIf="tipoUsuario === 'monitor'" (click)="setVentana('historial')" role="button" type="button">Volver</a>
+                <a href="javascript:void(0)" (click)="setVentana('historial')" role="button" type="button">Histórico</a>
                 <a href="javascript:void(0)" (click)="openModalGuardar()" role="button" type="button">Guardar</a>
             </footer>
         </fieldset>

@@ -9,8 +9,8 @@
     <details role="list" dir="rtl" #combo>
       <summary aria-haspopup="listbox" role="link">{{currUser | async}}</summary>
       <ul role="listbox">
-        <li *ngFor="let user of users" (click)="changeUser(user); combo.open=false"><a>{{user}}</a></li>
-        <li routerLink="/datos">Datos</li>
+        <li *ngFor="let user of users" (click)="changeUser(user); combo.open=false" ><a>{{user}}</a></li>
+        <li routerLink="/datos"><a>Datos</a></li>
       </ul>
     </details>
 
