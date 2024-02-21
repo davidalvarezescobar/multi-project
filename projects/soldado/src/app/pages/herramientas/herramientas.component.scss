@@ -1,12 +1,16 @@
-.semaforo-herramientas,
 .boton-historial{
+    margin-right: 57px;
+    text-align: center;
+}
+
+.semaforo-herramientas{
+    margin-right: 66px;
     text-align: center;
 }
 
 .inventario-container{
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 }
 
@@ -66,6 +70,12 @@
     & figure {
         max-height: 20rem;
     }
+}
+
+.caja-incidencias-conformidad-botones{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
 }
 
 .tablas-herramientas-historico-container {

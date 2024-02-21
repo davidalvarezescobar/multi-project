@@ -36,44 +36,46 @@
             </footer>
         </form>
 
-        <figure>
-            <table>
-                <thead>
-                    <tr>
-                        <th scope="col">Nombre del niño/a</th>
-                        <th scope="col">Fecha</th>
-                        <th scope="col">Turno</th>
-                        <th scope="col">Desayuno</th>
-                        <th scope="col">Comida</th>
-                        <th scope="col">Merienda</th>
-                        <th scope="col">Deposiciones</th>
-                        <th scope="col">Pis</th>
-                        <th scope="col">Siesta</th>
-                        <th scope="col">Editar/Borrar</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let reserva of reservas">
-                        <th scope="row">{{reserva.nombre}}</th>
-                        <td>{{reserva.fechaEntrada}}</td>
-                        <td>{{reserva.turno}}</td>
-                        <td>{{reserva.desayuno}}</td>
-                        <td>{{reserva.almuerzo}}</td>
-                        <td>{{reserva.merienda}}</td>
-                        <td>{{reserva.deposiciones}}</td>
-                        <td><input type="checkbox" class="pis-siesta-checkbox" id="pis" name="pis"
-                                [checked]="reserva.pis" disabled></td>
-                        <td><input type="checkbox" class="pis-siesta-checkbox" id="siesta" name="siesta"
-                                [checked]="reserva.siesta" disabled></td>
-                        <td><a href="javascript:void(0)" (click)="setEditReserva(reserva)" role="button" type="button"
-                                class="fa-solid fa-pen-to-square" style="color: #ffffff;"></a>
-                            <a href="javascript:void(0)" (click)="openModalBorrar()" role="button"
-                                class="fa-solid fa-trash-can"></a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </figure>
+        <div class="lista-historial">
+            <figure>
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Nombre del niño/a</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Turno</th>
+                            <th scope="col">Desayuno</th>
+                            <th scope="col">Comida</th>
+                            <th scope="col">Merienda</th>
+                            <th scope="col">Deposiciones</th>
+                            <th scope="col">Pis</th>
+                            <th scope="col">Siesta</th>
+                            <th scope="col">Editar/Borrar</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let reserva of reservas">
+                            <th scope="row">{{reserva.nombre}}</th>
+                            <td>{{reserva.fechaEntrada}}</td>
+                            <td>{{reserva.turno}}</td>
+                            <td>{{reserva.desayuno}}</td>
+                            <td>{{reserva.almuerzo}}</td>
+                            <td>{{reserva.merienda}}</td>
+                            <td>{{reserva.deposiciones}}</td>
+                            <td><input type="checkbox" class="pis-siesta-checkbox" id="pis" name="pis"
+                                    [checked]="reserva.pis" disabled></td>
+                            <td><input type="checkbox" class="pis-siesta-checkbox" id="siesta" name="siesta"
+                                    [checked]="reserva.siesta" disabled></td>
+                            <td><a href="javascript:void(0)" (click)="setEditReserva(reserva)" role="button"
+                                    type="button" class="fa-solid fa-pen-to-square" style="color: #ffffff;"></a>
+                                <a href="javascript:void(0)" (click)="openModalBorrar()" role="button"
+                                    class="fa-solid fa-trash-can"></a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </figure>
+        </div>
     </div>
 
     <div *ngIf="ventana === 'datos'">
@@ -235,10 +237,10 @@
                     </div>
                 </div>
                 <footer>
-                    <a href="javascript:void(0)" *ngIf="tipoUsuario=='Admin'" (click)="setVentana('historial')" role="button"
-                        type="button">Volver</a>
-                    <a href="javascript:void(0)" *ngIf="tipoUsuario=='User'" (click)="setVentana('historial')" role="button"
-                        type="button">Histórico</a>
+                    <a href="javascript:void(0)" *ngIf="tipoUsuario=='Admin'" (click)="setVentana('historial')"
+                        role="button" type="button">Volver</a>
+                    <a href="javascript:void(0)" *ngIf="tipoUsuario=='User'" (click)="setVentana('historial')"
+                        role="button" type="button">Histórico</a>
                     <a href="javascript:void(0)" (click)="openModalGuardar()" role="button" type="button">Guardar</a>
                 </footer>
             </fieldset>

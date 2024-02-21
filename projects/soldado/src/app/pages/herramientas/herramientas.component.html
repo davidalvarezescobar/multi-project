@@ -2,7 +2,7 @@
     <h5 *ngIf="ventana === 'inventario'">Inventario de herramientas para control de FOD</h5>
 </div>
 
-<div>
+<fieldset>
     <div *ngIf="ventana === 'inventario'">
         <div class="inventario-container">
             <div class="fecha-semaforo-inventario">
@@ -95,29 +95,31 @@
                         <option *ngFor="let turno of turnos">{{ turno }}</option>
                     </select>
                 </label>
-                <div class="caja-incidencias-conformidad">
-                    <label class="short">
-                        <strong>Caja de herramietnas:</strong>
-                        <select id="caja" required>
-                            <option value="" selected>Selecciona una caja</option>
-                            <option *ngFor="let caja of cajas">{{ caja }}</option>
-                        </select>
-                    </label>
-                    <label>
-                        <strong>Incidencias: </strong>
-                        <input type="checkbox" id="incidencias-historico" name="incidencias-historico">
-                    </label>
-                    <label>
-                        <strong>Conformidad: </strong>
-                        <input type="checkbox" id="conformidad-historico" name="conformidad-historico">
-                    </label>
+                <div class="caja-incidencias-conformidad-botones">
+                    <div class="caja-incidencias-conformidad">
+                        <label class="short">
+                            <strong>Caja de herramietnas:</strong>
+                            <select id="caja" required>
+                                <option value="" selected>Selecciona una caja</option>
+                                <option *ngFor="let caja of cajas">{{ caja }}</option>
+                            </select>
+                        </label>
+                        <label>
+                            <strong>Incidencias: </strong>
+                            <input type="checkbox" id="incidencias-historico" name="incidencias-historico">
+                        </label>
+                        <label>
+                            <strong>Conformidad: </strong>
+                            <input type="checkbox" id="conformidad-historico" name="conformidad-historico">
+                        </label>
+                    </div>
+                    <div>
+                        <a href="javascript:void(0)" role="button" type="button">Buscar</a>
+                        <a href="javascript:void(0)" role="button" type="button" (click)="setVentana('inventario')"
+                            *ngIf="tipoUsuario == 'User'">Volver</a>
+                    </div>
                 </div>
             </div>
-            <footer>
-                <a href="javascript:void(0)" role="button" type="button">Buscar</a>
-                <a href="javascript:void(0)" role="button" type="button" (click)="setVentana('inventario')"
-                    *ngIf="tipoUsuario == 'User'">Volver</a>
-            </footer>
         </div>
 
         <div class="tablas-herramientas-historico-container">
@@ -159,7 +161,7 @@
             </figure>
         </div>
     </div>
-</div>
+</fieldset>
 
 <dialog id="modal-guardar" [attr.open]="vEntrada">
     <article>

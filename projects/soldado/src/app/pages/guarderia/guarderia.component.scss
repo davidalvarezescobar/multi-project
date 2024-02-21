@@ -111,6 +111,15 @@ footer {
     }
 }
 
+.lista-historial {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    & figure {
+        max-height: 20rem;
+    }
+}
+
 .observaciones-Monitor {
     width: 90%;
 }
