@@ -20,7 +20,7 @@ form {
     }
 
     label {
-        min-width: 38px;
+        min-width: 48px;
         margin-right: 8px;
         text-align: right;
     }
@@ -28,7 +28,7 @@ form {
     .hours {
         display: flex;
         flex-wrap: wrap;
-        gap: 10px;
+        gap: 20px;
     }
 }
 
@@ -68,6 +68,7 @@ figure {
 
 dialog {
     article {
+        position: relative;
         padding-bottom: 10px;
         min-width: 80%;
     }
@@ -80,6 +81,17 @@ dialog {
         a {
             margin-top: 4px;
         }
+    }
+
+    img {
+        cursor: pointer;
+    }
+
+    b {
+        position: absolute;
+        top: 60%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 }
 
@@ -96,4 +108,8 @@ footer {
     display: inline-block;
     width: 90px;
     height: 90px;
+}
+
+.opacity {
+    opacity: 0.2;
 }

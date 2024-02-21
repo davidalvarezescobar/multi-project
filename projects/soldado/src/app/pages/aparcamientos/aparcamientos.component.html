@@ -1,68 +1,51 @@
 <h5>Aparcamientos</h5>
 
-<section class="calendar">
-    <i class="ico-calendar"></i>
-    <form>
-        <fieldset>
-            <label for="date">Base:</label>
-            <input type="date" name="date" aria-label="Date" />
-        </fieldset>
-        <div class="hours">
+<ng-container [formGroup]="form">
+    <section class="calendar">
+        <i class="ico-calendar"></i>
+        <form>
             <fieldset>
-                <label>De:</label>
-                <input type="time" name="time" aria-label="Time" />
+                <label for="date">Fecha:</label>
+                <input type="date" name="date" aria-label="Date" formControlName="fecha"/>
             </fieldset>
-            <fieldset>
-                <label>A:</label>
-                <input type="time" name="time" aria-label="Time" />
-            </fieldset>
-        </div>
-    </form>
-</section>
-
-<nav class="mapa"><a href="javascript:void(0)" (click)="openModal()">Ver mapa de plazas</a></nav>
-
-<figure>
-    <table>
-        <thead>
-            <tr>
-                <th scope="col">Aparcamiento</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">Aparcamiento 1<input type="radio" name="Aparcamiento" /></th>
-
-            </tr>
-            <tr>
-                <th scope="row">Aparcamiento 2<input type="radio" name="Aparcamiento" /></th>
-
-            </tr>
-            <tr>
-                <th scope="row">Aparcamiento 3<input type="radio" name="Aparcamiento" /></th>
-
-            </tr>
-            <tr>
-                <th scope="row">Aparcamiento 4<input type="radio" name="Aparcamiento" /></th>
-
-            </tr>
-        </tbody>
-    </table>
-    <label>
-        Plaza
-        <select>
-            <option value="" disabled selected>Selecciona una plaza</option>
-            <option>Plaza 1</option>
-            <option>Plaza 2</option>
-            <option>Plaza 3</option>
-            <option>Plaza 4</option>
-            <option>Plaza 5</option>
-            <option>Plaza 6</option>
-            <option>Plaza 7</option>
-            <option>Plaza 8</option>
-        </select>
-    </label>
-</figure>
+            <div class="hours">
+                <fieldset>
+                    <label>Desde:</label>
+                    <input type="time" name="time" aria-label="Time" />
+                </fieldset>
+                <fieldset>
+                    <label>Hasta:</label>
+                    <input type="time" name="time" aria-label="Time" />
+                </fieldset>
+            </div>
+        </form>
+    </section>
+    
+    <nav class="mapa"><a href="javascript:void(0)" (click)="openModal()">Ver mapa de plazas</a></nav>
+    
+    <figure>
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Aparcamiento</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let aparcamiento of aparcamientos">
+                    <th scope="row">{{aparcamiento}}<input type="radio" name="aparcamiento" formControlName="aparcamiento"
+                            [value]="aparcamiento" /></th>
+                </tr>
+            </tbody>
+        </table>
+        <label>
+            Plaza
+            <select formControlName="plaza">
+                <option value="" disabled selected>Selecciona una plaza</option>
+                <option *ngFor="let plaza of plazas" [value]="plaza">{{plaza}}</option>
+            </select>
+        </label>
+    </figure>
+</ng-container>
 
 
 <!-- Modal de mapa -->
@@ -72,7 +55,8 @@
             <a (click)="closeModal()" aria-label="Close" class="close"></a>
             <span>Plano aparcamiento</span>
         </header>
-        <img src="assets/aparcamiento.png" alt="Mi imagen PNG">
+        <img [class.opacity]="isReservando" src="assets/aparcamiento.png" alt="Mi imagen PNG" (click)="selectPlaza()">
+        <b [attr.aria-busy]="isReservando" *ngIf="isReservando">Reservando {{form.value.aparcamiento}}, {{form.value.plaza}}</b>
     </article>
 </dialog>
 
