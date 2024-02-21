@@ -30,6 +30,11 @@
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
+    max-width: 50rem;
+    justify-content: space-between;
+    & a {
+        height: 2.8rem;
+    }
 }
 
 

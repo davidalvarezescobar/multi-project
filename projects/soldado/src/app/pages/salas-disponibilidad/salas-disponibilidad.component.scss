@@ -8,6 +8,7 @@
     flex-direction: column;
     gap: 1rem;
 }
+
 .resources {
     display: flex;
     align-items: center;
@@ -19,6 +20,7 @@
     flex-direction: column;
     gap: 2rem;
     width: 100%;
+
     & figure {
         max-height: 20rem;
     }
@@ -27,8 +29,9 @@
 .table-container {
     display: flex;
     gap: 2rem;
-    
+
 }
+
 .table-container figure {
     flex: 1;
 }
@@ -51,33 +54,70 @@
 input[type=date] {
     max-width: 15rem;
 }
+
 .selector-container {
     display: flex;
     flex-direction: column;
 
 }
+
 .selector-container h3 {
     flex: 1;
 }
+
 .sala-title-container {
     display: flex;
     gap: 2rem;
 }
-.resources-container{
+
+.resources-container {
     display: flex;
     gap: 2rem;
     flex-wrap: wrap;
 }
+
 .footer-buttons {
     display: flex;
     align-items: center;
     gap: 1rem;
     justify-content: end;
 }
+
 .modal-container {
     width: 80%;
     max-width: 40rem;
+
     & .modal-data {
         margin-bottom: 1rem;
+
+        & .title-container {
+            display: flex;
+            gap: 1rem;
+        }
+        .icon-container {
+            margin-bottom: 1rem;
+            & .anchor-tooltip {
+                color: inherit;
+                text-decoration: none;
+                margin-right: .3rem;
+                margin-bottom: 1rem;
+            }
+    
+            & .anchor-tooltip:last-of-type {
+                margin-right: 0;
+            }
+        }
+
+        
     }
+
+    & .footer {
+        display: flex;
+        justify-content: end;
+    }
+
+}
+
+article>header {
+    margin-bottom: 1rem;
 }
