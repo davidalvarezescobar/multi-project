@@ -2,51 +2,49 @@
     <h5 *ngIf="ventana === 'inventario'">Inventario de herramientas para control de FOD</h5>
 </div>
 
-<figure>
-    <div>
-        <div *ngIf="ventana === 'inventario'">
-            <div>
-                <div class="tablas-herramientas-container">
+<div>
+    <div *ngIf="ventana === 'inventario'">
+        <div class="inventario-container">
+            <div class="fecha-semaforo-inventario">
+                <label class="short">
+                    <strong>Fecha:</strong>
+                    <input type="datetime-local" [value]="fechaActual">
+                </label>
+                <div class="semaforo-herramientas">
+                    <i class="semaforo-inventario-green fa-solid fa-circle" *ngIf="semaforoInventario"></i>
+                    <i class="semaforo-inventario-red fa-solid fa-circle" *ngIf="!semaforoInventario"></i>
+                </div>
+            </div>
+
+            <div class="turno-inventario">
+                <label for="turno" class="short">
+                    <strong>Turno:</strong>
+                    <select id="turno" required>
+                        <option value="" selected>Selecciona turno</option>
+                        <option *ngFor="let turno of turnos">{{ turno }}</option>
+                    </select>
+                </label>
+            </div>
+
+            <div class="caja-historico-inventario">
+                <label class="short">
+                    <strong>Caja de herramietnas:</strong>
+                    <select id="caja" required>
+                        <option *ngFor="let caja of cajas">{{ caja }}</option>
+                    </select>
+                </label>
+                <a href="javascript:void(0)" role="button" class="boton-historial" type="button"
+                    (click)="setVentana('historial')">Historico</a>
+            </div>
+
+            <div class="tablas-herramientas-container">
+                <figure>
                     <table class="tablas-herramientas">
                         <thead>
-                            <tr class="cabeceras">
-                                <th scope="col"><label class="short">
-                                        <strong>Fecha:</strong>
-                                        <input type="datetime-local" [value]="fechaActual">
-                                    </label></th>
-                                <th scope="col"></th>
-                                <th scope="col" class="semaforo-herramientas"><i
-                                        class="semaforo-inventario-green fa-solid fa-circle fa-2xl"
-                                        *ngIf="semaforoInventario"></i> <i
-                                        class="semaforo-inventario-red fa-solid fa-circle fa-2xl"
-                                        *ngIf="!semaforoInventario"></i></th>
-                            </tr>
-                            <tr class="cabeceras">
-                                <th scope="col"><label for="turno">
-                                        <strong>Turno:</strong>
-                                        <select id="turno" required>
-                                            <option value="" selected>Selecciona turno</option>
-                                            <option *ngFor="let turno of turnos">{{ turno }}</option>
-                                        </select>
-                                    </label></th>
-                                <th scope="col"></th>
-                                <th scope="col"></th>
-                            </tr>
-                            <tr class="cabeceras">
-                                <th scope="col"><label>
-                                        <strong>Caja de herramietnas:</strong>
-                                        <select id="caja" required>
-                                            <option *ngFor="let caja of cajas">{{ caja }}</option>
-                                        </select>
-                                    </label></th>
-                                <th scope="col"></th>
-                                <th scope="col" class="boton-historial"> <a href="javascript:void(0)" role="button"
-                                        type="button" (click)="setVentana('historial')">Historico</a></th>
-                            </tr>
                             <tr>
                                 <th scope="col">Herramienta</th>
-                                <th scope="col">Verificacion entrada: <strong>{{horaEntrada}}h</strong></th>
-                                <th scope="col">Verificacion salida: <strong>{{horaActual}}h</strong></th>
+                                <th scope="col">Entrada: <strong>{{horaEntrada}}h</strong></th>
+                                <th scope="col">Salida: <strong>{{horaActual}}h</strong></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -64,67 +62,66 @@
                                         (change)="cSalidaChange(salidaCheckbox.checked, herramienta.nombre)">
                                 </td>
                             </tr>
-                            <tr>
-                                <td></td>
-                                <td><a href="javascript:void(0)" class="guardar-verificacion-button"
-                                        (click)="openModalVerificacionEntrada()" role="button" type="button">Guardar</a>
-                                </td>
-                                <td><a href="javascript:void(0)" class="guardar-verificacion-button"
-                                        (click)="openModalVerificacionSalida()" role="button" type="button">Guardar</a>
-                                </td>
-                            </tr>
                         </tbody>
                     </table>
-                </div>
+                </figure>
+            </div>
+            <div class="botones-guardar-inventario">
+                <a href="javascript:void(0)"
+                    (click)="openModalVerificacionEntrada()" role="button" type="button">Guardar</a>
+                <a href="javascript:void(0)"
+                    (click)="openModalVerificacionSalida()" role="button" type="button">Guardar</a>
             </div>
         </div>
+    </div>
 
-        <div *ngIf="ventana === 'historial'">
-            <div>
-                <div class="Filtros-container">
-                    <div class="fecha-semaforo">
-                        <label class="short">
-                            <strong>Fecha:</strong>
-                            <input type="datetime-local" [value]="fechaActual">
-                        </label>
-                        <div class="semaforo-historico-container">
-                            <i class="semaforo-historico-green fa-solid fa-circle fa-2xl" *ngIf="semaforoHistorial"></i>
-                            <i class="semaforo-historico-red fa-solid fa-circle fa-2xl" *ngIf="!semaforoHistorial"></i>
-                        </div>
-                    </div>
+    <div *ngIf="ventana === 'historial'">
+        <div>
+            <div class="Filtros-container">
+                <div class="fecha-semaforo-historial">
                     <label class="short">
-                        <strong>Turno:</strong>
-                        <select id="turno" required>
-                            <option value="" selected>Selecciona turno</option>
-                            <option *ngFor="let turno of turnos">{{ turno }}</option>
-                        </select>
+                        <strong>Fecha:</strong>
+                        <input type="datetime-local" [value]="fechaActual">
                     </label>
-                    <div class="caja-incidencias-conformidad">
-                        <label class="short">
-                            <strong>Caja de herramietnas:</strong>
-                            <select id="caja" required>
-                                <option value="" selected>Selecciona una caja</option>
-                                <option *ngFor="let caja of cajas">{{ caja }}</option>
-                            </select>
-                        </label>
-                        <label>
-                            <strong>Incidencias: </strong>
-                            <input type="checkbox" id="incidencias-historico" name="incidencias-historico">
-                        </label>
-                        <label>
-                            <strong>Conformidad: </strong>
-                            <input type="checkbox" id="conformidad-historico" name="conformidad-historico">
-                        </label>
+                    <div class="semaforo-historico-container">
+                        <i class="semaforo-historico-green fa-solid fa-circle fa-2xl" *ngIf="semaforoHistorial"></i>
+                        <i class="semaforo-historico-red fa-solid fa-circle fa-2xl" *ngIf="!semaforoHistorial"></i>
                     </div>
                 </div>
-                <footer>
-                    <a href="javascript:void(0)" role="button" type="button">Buscar</a>
-                    <a href="javascript:void(0)" role="button" type="button" (click)="setVentana('inventario')"
-                        *ngIf="tipoUsuario == 'User'">Volver</a>
-                </footer>
+                <label class="short">
+                    <strong>Turno:</strong>
+                    <select id="turno" required>
+                        <option value="" selected>Selecciona turno</option>
+                        <option *ngFor="let turno of turnos">{{ turno }}</option>
+                    </select>
+                </label>
+                <div class="caja-incidencias-conformidad">
+                    <label class="short">
+                        <strong>Caja de herramietnas:</strong>
+                        <select id="caja" required>
+                            <option value="" selected>Selecciona una caja</option>
+                            <option *ngFor="let caja of cajas">{{ caja }}</option>
+                        </select>
+                    </label>
+                    <label>
+                        <strong>Incidencias: </strong>
+                        <input type="checkbox" id="incidencias-historico" name="incidencias-historico">
+                    </label>
+                    <label>
+                        <strong>Conformidad: </strong>
+                        <input type="checkbox" id="conformidad-historico" name="conformidad-historico">
+                    </label>
+                </div>
             </div>
+            <footer>
+                <a href="javascript:void(0)" role="button" type="button">Buscar</a>
+                <a href="javascript:void(0)" role="button" type="button" (click)="setVentana('inventario')"
+                    *ngIf="tipoUsuario == 'User'">Volver</a>
+            </footer>
+        </div>
 
-            <div class="tablas-herramientas-container">
+        <div class="tablas-herramientas-historico-container">
+            <figure>
                 <table class="tablas-hitorico-herramientas">
                     <thead>
                         <tr>
@@ -159,10 +156,10 @@
                         </tr>
                     </tbody>
                 </table>
-            </div>
+            </figure>
         </div>
     </div>
-</figure>
+</div>
 
 <dialog id="modal-guardar" [attr.open]="vEntrada">
     <article>

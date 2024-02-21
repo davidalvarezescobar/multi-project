@@ -2,12 +2,12 @@
 
 <form>
     <fieldset>
-        <label>
-            Nombre:
+        <label class="visitante">
+            Visitante:
             <input type="text">
         </label>
-        <label>
-            Apellidos:
+        <label class="visitante">
+            Persona visitada::
             <input type="text">
         </label>
         <label class="short">
@@ -28,46 +28,22 @@
     <table>
         <thead>
             <tr>
-                <th scope="col">Nombre</th>
-                <th scope="col">Apellidos</th>
-                <th scope="col">Fecha entrada</th>
-                <th scope="col">Fecha Salida</th>
+                <th scope="col">Nombre del visitante</th>
+                <th scope="col">Nombre de la persona visitada</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Vehiculo</th>
                 <th scope="col">Modelo</th>
-                <th scope="col">Matrícula</th>
+                <th scope="col">Matricula</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <th scope="row">Cell</th>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-            </tr>
-            <tr>
-                <th scope="row">Cell</th>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-            </tr>
-            <tr>
-                <th scope="row">Cell</th>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-            </tr>
-            <tr>
-                <th scope="row">Cell</th>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
+            <tr *ngFor="let visita of visitas">
+                <td><input type="text" [value]="visita.nombre_visitante" [readonly]="tipoUsuario=='User'" class="tabla-input"></td>
+                <td><input type="text" [value]="visita.nombre_visitado" [readonly]="tipoUsuario=='User'" class="tabla-input"></td>
+                <td><input type="text" [value]="visita.fecha" [readonly]="tipoUsuario=='User'" class="tabla-input"></td>
+                <td><input type="checkbox" [checked]="visita.vehiculo" [disabled]="tipoUsuario=='User'"></td>
+                <td><input type="text" [value]="visita.modelo" [readonly]="tipoUsuario=='User'" class="tabla-input"></td>
+                <td><input type="text" [value]="visita.matricula" [readonly]="tipoUsuario=='User'" class="tabla-input"></td>
             </tr>
         </tbody>
     </table>

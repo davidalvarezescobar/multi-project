@@ -1,11 +1,13 @@
 .card-container {
     display: flex;
+    justify-content: center;
     flex-wrap: wrap;
-    width: 110%;
+    overflow-x: auto;
+    white-space: nowrap;
 }
 
 .card {
-    width: 10%;
+    width: 150px;
     height: 100%;
     border-color: #838383;
     margin-right: 10%;

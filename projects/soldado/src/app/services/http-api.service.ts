@@ -29,4 +29,8 @@ export class HttpApiService {
   requestCartasDatos() {
     return this.http.get('../../assets/mocks/cartas.json');
   }
+
+  requestVisitasDatos() {
+    return this.http.get('../../assets/mocks/visitas.json');
+  }
 }
