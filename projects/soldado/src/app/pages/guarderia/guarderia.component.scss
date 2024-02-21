@@ -76,10 +76,12 @@ footer {
     border-radius: 0;
 }
 
-.padres-data-container,
 .monitor-data-container {
-    border: 1px solid #ccc;
-    border-color: #3596c3;
+    border: 1px solid #3596c3;
+}
+
+.padres-data-container {
+    border: 1px solid #3596c3;
 }
 
 .botones-modal-borrar-container {
@@ -90,12 +92,13 @@ footer {
     gap: 20px
 }
 
-.alergias-comentario-container {
+.alergias-container {
     display: flex;
     align-items: center;
     margin-left: 3%;
     margin-top: 5px;
     gap: 20px;
+    min-width: 100%;
 
     &__elegidas {
         margin-top: 4px;
@@ -108,8 +111,16 @@ footer {
     }
 }
 
+.observaciones-Monitor {
+    width: 90%;
+}
+
+.observaciones-Monitor-container {
+    margin-left: 3%;
+}
+
 .observaciones {
-    width: 35%;
+    width: 90%;
 }
 
 .observaciones-container {
