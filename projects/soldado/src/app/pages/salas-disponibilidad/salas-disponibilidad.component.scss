@@ -95,7 +95,9 @@ input[type=date] {
             gap: 1rem;
         }
         .icon-container {
-            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: .3rem;
             & .anchor-tooltip {
                 color: inherit;
                 text-decoration: none;
@@ -120,4 +122,52 @@ input[type=date] {
 
 article>header {
     margin-bottom: 1rem;
+}
+.projector {
+    background-image: url("../../../assets/projector.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: inline-block;
+    width: 23px;
+    height: 23px;
+}
+.tv {
+    background-image: url("../../../assets/tv.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: inline-block;
+    width: 23px;
+    height: 23px;
+}
+.camera-video {
+    background-image: url("../../../assets/camera-video.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: inline-block;
+    width: 23px;
+    height: 23px;
+}
+.phone {
+    background-image: url("../../../assets/phone.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: inline-block;
+    width: 23px;
+    height: 23px;
+}
+.laptop {
+    background-image: url("../../../assets/laptop.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: inline-block;
+    width: 23px;
+    height: 23px;
+}
+.eye {
+    background-image: url("../../../assets/eye.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: inline-block;
+    width: 35px;
+    height: 35px;
 }

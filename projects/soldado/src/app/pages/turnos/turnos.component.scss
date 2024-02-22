@@ -2,21 +2,32 @@
     display: block;
 }
 
-form {
-    max-width: 41rem;
-}
-.fechas {
+fieldset {
     display: flex;
-    align-items: center;
+    justify-content: space-between;
+    align-items: end;
     flex-wrap: wrap;
-    column-gap: 1rem;
-    label {
-        width: 20rem;
+    gap: 1rem;
+
+    & .fechas {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+
+        label {
+            width: 20rem;
+        }
+    }
+    & a {
+        height: 2.8rem;
     }
 }
 
-footer {
-    display: flex;
-    justify-content: flex-end;
-    gap: 20px;
+
+input{
+    margin-bottom: 0;
+}
+label {
+    margin-bottom: 0;
 }

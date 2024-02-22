@@ -100,6 +100,16 @@ fieldset{
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
+    justify-content: space-between;
+    & .resources-filter {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+    & a {
+        height: 2.8rem;
+    }
 }
 .anchor-tooltip {
     color: inherit;
@@ -108,4 +118,59 @@ fieldset{
 }
 .anchor-tooltip:last-of-type {
     margin-right: 0;
+}
+
+.align-center {
+    text-align: center;
+}
+.p-1 {
+    padding: 1rem;
+}
+.projector {
+    background-image: url("../../../assets/projector.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: inline-block;
+    width: 23px;
+    height: 23px;
+}
+.tv {
+    background-image: url("../../../assets/tv.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: inline-block;
+    width: 23px;
+    height: 23px;
+}
+.camera-video {
+    background-image: url("../../../assets/camera-video.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: inline-block;
+    width: 23px;
+    height: 23px;
+}
+.phone {
+    background-image: url("../../../assets/phone.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: inline-block;
+    width: 23px;
+    height: 23px;
+}
+.laptop {
+    background-image: url("../../../assets/laptop.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: inline-block;
+    width: 23px;
+    height: 23px;
+}
+.eye {
+    background-image: url("../../../assets/eye.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: inline-block;
+    width: 35px;
+    height: 35px;
 }
