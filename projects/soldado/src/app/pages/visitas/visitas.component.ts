@@ -8,6 +8,8 @@ import { VisitasService } from '../../services/visitas.service';
   styleUrls: ['./visitas.component.scss']
 })
 export class VisitasComponent implements OnInit {
+  showModal:boolean =false;
+
   tipoUsuario: string;
   visitas: any[];
   constructor(readonly dataSrv: VisitasService,
@@ -23,5 +25,13 @@ export class VisitasComponent implements OnInit {
         this.visitas = datos?.visitas;
         console.log(datos?.visitas)
       });
+  }
+
+  openModal(){
+    this.showModal = true
+  }
+
+  closeModal(){
+    this.showModal = false
   }
 }

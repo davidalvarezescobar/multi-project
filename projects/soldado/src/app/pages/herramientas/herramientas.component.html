@@ -1,5 +1,6 @@
 <div class="cabecera-herramientas-container">
     <h5 *ngIf="ventana === 'inventario'">Inventario de herramientas para control de FOD</h5>
+    <h5 *ngIf="ventana === 'historial'">Histórico de inventario de herramientas para control de FOD</h5>
 </div>
 
 <fieldset>
@@ -28,7 +29,7 @@
 
             <div class="caja-historico-inventario">
                 <label class="short">
-                    <strong>Caja de herramietnas:</strong>
+                    <strong>Caja de herramientas:</strong>
                     <select id="caja" required>
                         <option *ngFor="let caja of cajas">{{ caja }}</option>
                     </select>
@@ -67,10 +68,10 @@
                 </figure>
             </div>
             <div class="botones-guardar-inventario">
-                <a href="javascript:void(0)"
-                    (click)="openModalVerificacionEntrada()" role="button" type="button">Guardar</a>
-                <a href="javascript:void(0)"
-                    (click)="openModalVerificacionSalida()" role="button" type="button">Guardar</a>
+                <a href="javascript:void(0)" (click)="openModalVerificacionEntrada()" role="button"
+                    type="button">Guardar</a>
+                <a href="javascript:void(0)" (click)="openModalVerificacionSalida()" role="button"
+                    type="button">Guardar</a>
             </div>
         </div>
     </div>
@@ -98,7 +99,7 @@
                 <div class="caja-incidencias-conformidad-botones">
                     <div class="caja-incidencias-conformidad">
                         <label class="short">
-                            <strong>Caja de herramietnas:</strong>
+                            <strong>Caja de herramientas:</strong>
                             <select id="caja" required>
                                 <option value="" selected>Selecciona una caja</option>
                                 <option *ngFor="let caja of cajas">{{ caja }}</option>
@@ -153,8 +154,9 @@
                             <td>{{ fila.hora_inventario_salida }}</td>
                             <td><input type="checkbox" class="checkbox-column-herramientas-historial" min="0" max="20"
                                     [checked]="fila.estadoSalida"></td>
-                            <td><a href="javascript:void(0)" role="button" type="button" class="fa-regular fa-eye"
-                                    (click)="openModalObservacion(fila.observacionIncidencia)"></a></td>
+                            <td><a href="javascript:void(0)"
+                                    (click)="openModalObservacion(fila.observacionIncidencia)"><i class="eye"></i></a>
+                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -211,7 +213,7 @@
 <dialog id="modal-guardar" [attr.open]="modalObservacion">
     <article>
         <div class="modal-container">
-            <strong>{{observacionIncidencia}}</strong><br><br>
+            <strong *ngIf="observacionIncidencia != ''">{{observacionIncidencia}}<br><br></strong>
             <a href="javascript:void(0)" (click)="closeModalObservacion()" role="button" type="button">Volver</a>
         </div>
     </article>

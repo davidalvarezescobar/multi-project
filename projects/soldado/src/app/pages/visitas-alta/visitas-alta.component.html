@@ -1,53 +1,67 @@
 <h5>Nueva visita</h5>
 
-<form #f>
-    <label>
+<form>
+<div class="nombre-apellido-container">
+    <label class="short">
         Nombre:
         <input type="text">
     </label>
-    <label>
-        Apellidos:
+    <label class="short">
+        Apellido 1:
         <input type="text">
     </label>
     <label class="short">
-        Fecha Entrada:
-        <input type="datetime-local">
+        Apellido 2:
+        <input type="text">
     </label>
-    <legend>Vehículo:</legend>
-    <div class="vehiculo">
-        <label for="small">
-            <input type="radio" id="small" name="vehiculo" value="S" checked>
-            Sí
-        </label>
-        <label for="medium">
-            <input type="radio" id="medium" name="vehiculo" value="N">
-            No
-        </label>
-    </div>
-    <div class="marca" *ngIf="f.elements[3]['checked']">
-        <label for="marca">
-            Marca:
-            <select id="marca" required>
-                <option value="" selected>Seleccion una marca</option>
-                <option>Seat</option>
-            </select>
-        </label>
-        <label>
-            Matrícula:
-            <input type="text">
-        </label>
-        <label>
-            Modelo:
-            <input type="text">
-        </label>
-    </div>
-    <label>
-        Motivo visita:
-        <textarea name="mensaje" rows="4" cols="50"></textarea>
-    </label>
+</div>
 
-    <footer>
-        <a routerLink="/visitas" role="button" class="outline">Volver</a>
-        <a routerLink="/visitas" role="button">Guardar</a>
-    </footer>
+<label class="short">
+    Persona visitada:
+    <input style="width: 216.5%;" type="text">
+</label>
+
+<label class="short">
+    Fecha Entrada:
+    <input type="datetime-local">
+</label>
+
+<legend>Vehículo:</legend>
+<div class="vehiculo">
+    <label for="small">
+        <input type="radio" id="small" name="vehiculo" value="S" (click)="setVehiculo(true)">
+        Sí
+    </label>
+    <label for="medium">
+        <input type="radio" id="medium" name="vehiculo" value="N" (click)="setVehiculo(false)">
+        No
+    </label>
+</div>
+
+<div class="marca" *ngIf="vehiculo">
+    <label for="marca">
+        Marca:
+        <select id="marca" required>
+            <option value="" selected>Seleccion una marca</option>
+            <option>Seat</option>
+        </select>
+    </label>
+    <label>
+        Matrícula:
+        <input type="text">
+    </label>
+    <label>
+        Modelo:
+        <input type="text">
+    </label>
+</div>
+<label>
+    Motivo visita:
+    <textarea name="mensaje" rows="4" cols="50"></textarea>
+</label>
+
+<footer>
+    <a routerLink="/visitas" role="button" class="outline">Volver</a>
+    <a routerLink="/visitas" role="button">Guardar</a>
+</footer>
 </form>

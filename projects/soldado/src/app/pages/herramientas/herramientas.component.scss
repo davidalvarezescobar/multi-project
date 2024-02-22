@@ -187,3 +187,12 @@ footer {
     font-size: 5em;
     color: red;
 }
+
+.eye {
+    background-image: url("../../../assets/eye.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+}

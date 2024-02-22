@@ -8,12 +8,14 @@ import { LoginService } from '../../services/login.service';
   styleUrls: ['./guarderia.component.scss']
 })
 export class GuarderiaComponent implements OnInit {
-  tipoUsuario: string;
-  ventana: string;
-  ventanaDatos: string;
-  alergiasSeleccionadas: boolean[] = [];
-  guardar = false;
-  borrar = false;
+  fechaActual: string = new Date().toISOString().slice(0, 16);  //fecha actual
+  tipoUsuario: string;  //si es admin o user
+  ventana: string;  //controla el cambio de ventana y en cual estas
+  ventanaDatos: string; //controla si estas viendo la parte de Monitor y Padres de la ventana datos
+  nuevaReserva = true; //controla si estamos creando una nueva reserva o no.
+  alergiasSeleccionadas: boolean[] = [];   //Son las alergias que se seleccionan
+  guardar = false;  //bandera para el modal de guardar datos
+  borrar = false;   //bandera para el modal de borrar datos
 
   nombres: string[];
   estados: string[];
@@ -41,10 +43,7 @@ export class GuarderiaComponent implements OnInit {
         this.deposiciones = datos?.deposiciones;
         this.alergias = datos?.alergias;
         this.reservas = datos?.reservas;
-        this.reserva = datos?.reservas[0];
-        this.alergiasSeleccionadas = [datos?.reservas[0].alergiaLeche, datos?.reservas[0].alergiaHuevo, datos?.reservas[0].alergiaGluten, datos?.reservas[0].alergiaMarisco, datos?.reservas[0].alergiaLatex, datos?.reservas[0].alergiaOtros]
-      });
-
+        });
 
     if (this.tipoUsuario == "Admin") {
       this.setVentana("historial")
@@ -52,7 +51,7 @@ export class GuarderiaComponent implements OnInit {
       this.setVentana("datos")
       setTimeout(() => {
         this.padresDatos()
-      }, 1);
+      }, 10);
     }
   }
 
@@ -102,8 +101,20 @@ export class GuarderiaComponent implements OnInit {
     this.borrar = false;
   }
 
+  setNewReserva(){
+    this.nuevaReserva = true
+    this.reserva = undefined;
+    this.alergiasSeleccionadas = []
+    this.setVentana("datos");
+      setTimeout(() => {
+        this.padresDatos()
+      }, 1);
+  }
+
   setEditReserva(reserva: any) {
+    this.nuevaReserva = false
     this.reserva = reserva;
+    this.alergiasSeleccionadas = [reserva.alergiaLeche, reserva.alergiaHuevo, reserva.alergiaGluten, reserva.alergiaMarisco, reserva.alergiaLatex, reserva.alergiaOtros]
     this.setVentana("datos");
     if (this.tipoUsuario === "Admin") {
       setTimeout(() => {
@@ -116,5 +127,26 @@ export class GuarderiaComponent implements OnInit {
     } else {
       console.log("Hubo algún error");
     }
+  }
+
+  formatDateDDMMYYYY(fecha: string): string {
+    const fechaSinTiempo = fecha.split('T')[0];
+    const partesFecha = fechaSinTiempo.split('-');
+    const dia = partesFecha[2];
+    const mes = partesFecha[1];
+    const año = partesFecha[0];
+    console.log(`${año}-${mes}-${dia}`)
+    return `${año}-${mes}-${dia}`;
+  }
+  formatDateDDMMYYYYHHMM(fecha: string): string {
+    const partes = fecha.split('T');
+    const fechaPartes = partes[0].split('-');
+    const dia = fechaPartes[0];
+    const mes = fechaPartes[1];
+    const año = fechaPartes[2];
+    const horaPartes = partes[1].split(':');
+    const hora = horaPartes[0];
+    const minutos = horaPartes[1];
+    return `${año}-${mes}-${dia} ${hora}:${minutos}`;
   }
 }

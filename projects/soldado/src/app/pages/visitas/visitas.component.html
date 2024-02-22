@@ -24,31 +24,54 @@
     </footer>
 </form>
 
-<figure>
-    <table>
-        <thead>
-            <tr>
-                <th scope="col">Nombre del visitante</th>
-                <th scope="col">Nombre de la persona visitada</th>
-                <th scope="col">Fecha</th>
-                <th scope="col">Vehiculo</th>
-                <th scope="col">Modelo</th>
-                <th scope="col">Matricula</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let visita of visitas">
-                <td><input type="text" [value]="visita.nombre_visitante" [readonly]="tipoUsuario=='User'" class="tabla-input"></td>
-                <td><input type="text" [value]="visita.nombre_visitado" [readonly]="tipoUsuario=='User'" class="tabla-input"></td>
-                <td><input type="text" [value]="visita.fecha" [readonly]="tipoUsuario=='User'" class="tabla-input"></td>
-                <td><input type="checkbox" [checked]="visita.vehiculo" [disabled]="tipoUsuario=='User'"></td>
-                <td><input type="text" [value]="visita.modelo" [readonly]="tipoUsuario=='User'" class="tabla-input"></td>
-                <td><input type="text" [value]="visita.matricula" [readonly]="tipoUsuario=='User'" class="tabla-input"></td>
-            </tr>
-        </tbody>
-    </table>
-</figure>
+<div class="tabla-historico-visitas">
+    <figure>
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col">Nombre del visitante</th>
+                    <th scope="col">Nombre de la persona visitada</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Vehiculo</th>
+                    <th scope="col">Modelo</th>
+                    <th scope="col">Matricula</th>
+                    <th scope="col">QR</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let visita of visitas">
+                    <td><input type="text" [value]="visita.nombre_visitante" [readonly]="tipoUsuario=='User'"
+                            class="tabla-input"></td>
+                    <td><input type="text" [value]="visita.nombre_visitado" [readonly]="tipoUsuario=='User'"
+                            class="tabla-input"></td>
+                    <td><input type="text" [value]="visita.fecha" [readonly]="tipoUsuario=='User'" class="tabla-input">
+                    </td>
+                    <td><input type="checkbox" [checked]="visita.vehiculo" [disabled]="tipoUsuario=='User'"></td>
+                    <td><input type="text" [value]="visita.modelo" [readonly]="tipoUsuario=='User'" class="tabla-input">
+                    </td>
+                    <td><input type="text" [value]="visita.matricula" [readonly]="tipoUsuario=='User'"
+                            class="tabla-input"></td>
+                    <td style="cursor: pointer; text-align: center;" (click)="openModal()"><i
+                            class="fa-solid fa-qrcode fa-lg"></i></td>
+                </tr>
+            </tbody>
+        </table>
+    </figure>
+</div>
 
 <footer>
     <a routerLink="/visitas/alta" role="button" type="button">Nueva visita</a>
 </footer>
+
+<!-- Modal de QR -->
+<dialog id="modal-pago" [attr.open]="showModal">
+    <article>
+        <header>
+            <a (click)="closeModal()" aria-label="Close" class="close"></a>
+            <span>Código QR</span>
+        </header>
+        <div class="qr">
+            <img src="assets/QR.png" alt="Mi imagen PNG">
+        </div>
+    </article>
+</dialog>

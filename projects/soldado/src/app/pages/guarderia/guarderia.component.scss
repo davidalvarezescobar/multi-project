@@ -20,24 +20,6 @@ footer {
     margin-top: 5px;
 }
 
-.fa-solid {
-    border-radius: 0;
-}
-
-.fa-pen-to-square {
-    color: #ffffff;
-}
-
-.fa-trash-can {
-    border-color: red;
-    background-color: red;
-    color: #000000;
-}
-
-.fa-trash-can:hover {
-    background-color: rgb(219, 0, 0);
-}
-
 .nombre {
     width: 42%;
 }
@@ -114,6 +96,9 @@ footer {
 .lista-historial {
     display: flex;
     flex-direction: column;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     gap: 2rem;
     & figure {
         max-height: 20rem;
@@ -147,4 +132,22 @@ footer {
 .pis-siesta-checkbox[disabled] {
     opacity: 1;
     background-color: #3596c3;
+}
+
+.pencil {
+    background-image: url("../../../assets/pencil-square.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: inline-block;
+    width: 33px;
+    height: 33px;
+}
+
+.trash {
+    background-image: url("../../../assets/trash3.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: inline-block;
+    width: 33px;
+    height: 33px;
 }

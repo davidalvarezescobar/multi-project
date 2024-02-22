@@ -16,11 +16,11 @@
                 <div class="fecha-turno">
                     <label class="short">
                         Desde:
-                        <input type="datetime-local">
+                        <input type="date" [value]="formatDateDDMMYYYY(fechaActual)">
                     </label>
                     <label class="short">
                         Hasta:
-                        <input type="datetime-local">
+                        <input type="date" [value]="formatDateDDMMYYYY(fechaActual)">
                     </label>
                     <label for="fruit">
                         Turno:
@@ -32,6 +32,8 @@
                 </div>
             </fieldset>
             <footer>
+                <a href="javascript:void(0)" (click)="setNewReserva()" *ngIf="tipoUsuario=='User'" role="button"
+                    type="button">Guardar</a>
                 <a href="javascript:void(0)" role="button" type="button">Buscar</a>
             </footer>
         </form>
@@ -41,7 +43,7 @@
                 <table>
                     <thead>
                         <tr>
-                            <th scope="col">Nombre del niño/a</th>
+                            <th scope="col">Nombre del niño/a:</th>
                             <th scope="col">Fecha</th>
                             <th scope="col">Turno</th>
                             <th scope="col">Desayuno</th>
@@ -50,13 +52,14 @@
                             <th scope="col">Deposiciones</th>
                             <th scope="col">Pis</th>
                             <th scope="col">Siesta</th>
-                            <th scope="col">Editar/Borrar</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let reserva of reservas">
                             <th scope="row">{{reserva.nombre}}</th>
-                            <td>{{reserva.fechaEntrada}}</td>
+                            <td>{{formatDateDDMMYYYY(reserva.fechaEntrada)}}</td>
                             <td>{{reserva.turno}}</td>
                             <td>{{reserva.desayuno}}</td>
                             <td>{{reserva.almuerzo}}</td>
@@ -66,10 +69,9 @@
                                     [checked]="reserva.pis" disabled></td>
                             <td><input type="checkbox" class="pis-siesta-checkbox" id="siesta" name="siesta"
                                     [checked]="reserva.siesta" disabled></td>
-                            <td><a href="javascript:void(0)" (click)="setEditReserva(reserva)" role="button"
-                                    type="button" class="fa-solid fa-pen-to-square" style="color: #ffffff;"></a>
-                                <a href="javascript:void(0)" (click)="openModalBorrar()" role="button"
-                                    class="fa-solid fa-trash-can"></a>
+                            <td><a href="javascript:void(0)" (click)="setEditReserva(reserva)"><i
+                                        class="pencil"></i></a></td>
+                            <td> <a href="javascript:void(0)" (click)="openModalBorrar()"><i class="trash"></i></a>
                             </td>
                         </tr>
                     </tbody>
@@ -85,34 +87,37 @@
                     <label class="nombre" for="nombre">
                         Nombre del niño/a:
                         <select id="nombre" required>
-                            <option *ngFor="let name of nombres" [value]="name" [selected]="reserva.nombre === name">{{
-                                name
-                                }}</option>
+                            <!--[disabled]="tipoUsuario == 'Admin' || reserva?.estado=='Recogido' || reserva?.estado=='En guardería'"-->
+                            <option>Selecciona un nombre</option>
+                            <option *ngFor="let name of nombres" [value]="name" [selected]="reserva?.nombre === name">
+                                {{name}}</option>
                         </select>
                     </label>
                 </div>
                 <div class="fecha-turno">
                     <label class="short">
                         Fecha de entrada:
-                        <input type="datetime-local" [value]="reserva.fechaEntrada">
+                        <input type="datetime-local"
+                            [value]="reserva ? formatDateDDMMYYYYHHMM(reserva.fechaEntrada) : fechaActual">
                     </label>
                     <label for="fruit">
                         Turno:
-                        <select id="fruit" required [value]="reserva.turno">
+                        <select id="fruit" required [value]="reserva?.turno">
+                            <option>Selecciona un turno</option>
                             <option *ngFor="let turno of turnos" [value]="turno">{{ turno }}</option>
                         </select>
                     </label>
                     <label for="autorizacion_recogida">
                         <input type="checkbox" id="autorizacion_recogida" name="autorizacion_recogida"
-                            [checked]="reserva.autorizacion === true">
+                            [checked]="reserva?.autorizacion === true">
                         Autorización Recogida
                         <input type="text" id="nombre" class="persona-autorizada" name="nombre"
-                            placeholder="Introduzca su nombre" [value]="reserva.autorizado">
+                            placeholder="Introduzca su nombre" [value]="reserva?.autorizado">
                     </label>
                 </div>
 
-                <a href="javascript:void(0)" (click)="monitorDatos()" id="monitorDatos" role="button"
-                    class="monitor-button" type="button">Monitor</a>
+                <a href="javascript:void(0)" *ngIf="!nuevaReserva" (click)="monitorDatos()" id="monitorDatos"
+                    role="button" class="monitor-button" type="button">Monitor</a>
                 <a href="javascript:void(0)" (click)="padresDatos()" id="padresDatos" role="button"
                     class="padres-button" type="button">Padres</a>
                 <div class="monitor-data-container" *ngIf="ventanaDatos === 'monitor'">
@@ -131,43 +136,43 @@
                                     <tr>
                                         <td>Desayuno</td>
                                         <td><input type="radio" name="desayuno" value="nada"
-                                                [checked]="reserva.desayuno === 'Nada'">
+                                                [checked]="reserva?.desayuno === 'Nada'">
                                         </td>
                                         <td><input type="radio" name="desayuno" value="poco"
-                                                [checked]="reserva.desayuno === 'Poco'">
+                                                [checked]="reserva?.desayuno === 'Poco'">
                                         </td>
                                         <td><input type="radio" name="desayuno" value="bastante"
-                                                [checked]="reserva.desayuno === 'Bastante'"></td>
+                                                [checked]="reserva?.desayuno === 'Bastante'"></td>
                                         <td><input type="radio" name="desayuno" value="todo"
-                                                [checked]="reserva.desayuno === 'Todo'">
+                                                [checked]="reserva?.desayuno === 'Todo'">
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Almuerzo</td>
                                         <td><input type="radio" name="almuerzo" value="nada"
-                                                [checked]="reserva.almuerzo=== 'Nada'">
+                                                [checked]="reserva?.almuerzo=== 'Nada'">
                                         </td>
                                         <td><input type="radio" name="almuerzo" value="poco"
-                                                [checked]="reserva.almuerzo === 'Poco'">
+                                                [checked]="reserva?.almuerzo === 'Poco'">
                                         </td>
                                         <td><input type="radio" name="almuerzo" value="bastante"
-                                                [checked]="reserva.almuerzo === 'Bastante'"></td>
+                                                [checked]="reserva?.almuerzo === 'Bastante'"></td>
                                         <td><input type="radio" name="almuerzo" value="todo"
-                                                [checked]="reserva.almuerzo === 'Todo'">
+                                                [checked]="reserva?.almuerzo === 'Todo'">
                                         </td>
                                     </tr>
                                     <tr>
                                         <td>Merienda</td>
                                         <td><input type="radio" name="merienda" value="nada"
-                                                [checked]="reserva.merienda === 'Nada'">
+                                                [checked]="reserva?.merienda === 'Nada'">
                                         </td>
                                         <td><input type="radio" name="merienda" value="poco"
-                                                [checked]="reserva.merienda === 'Poco'">
+                                                [checked]="reserva?.merienda === 'Poco'">
                                         </td>
                                         <td><input type="radio" name="merienda" value="bastante"
-                                                [checked]="reserva.merienda === 'Bastante'"></td>
+                                                [checked]="reserva?.merienda === 'Bastante'"></td>
                                         <td><input type="radio" name="merienda" value="todo"
-                                                [checked]="reserva.merienda === 'Todo'">
+                                                [checked]="reserva?.merienda === 'Todo'">
                                         </td>
                                     </tr>
                                 </tbody>
@@ -175,8 +180,8 @@
                         </figure>
                         <div class="datos-Extra-container">
                             <div class="deposiciones-container">
-                                <label for="deposiciones">Deposiciones_</label>
-                                <select id="deposiciones" [value]="reserva.deposiciones">
+                                <label for="deposiciones">Deposiciones</label>
+                                <select id="deposiciones" [value]="reserva?.deposiciones">
                                     <option *ngFor="let deposicion of deposiciones" [value]="deposicion"
                                         [selected]="reserva.deposiciones === deposicion">{{ deposicion }}</option>
                                 </select>
@@ -184,32 +189,32 @@
                             <div class="pis-container">
                                 <label>
                                     Pis
-                                    <input type="checkbox" id="pis" name="pis" [checked]="reserva.pis">
+                                    <input type="checkbox" id="pis" name="pis" [checked]="reserva?.pis">
                                 </label>
                             </div>
                             <div class="siesta-container">
                                 <label>
                                     Siesta
-                                    <input type="checkbox" id="siesta" name="siesta" [checked]="reserva.siesta">
+                                    <input type="checkbox" id="siesta" name="siesta" [checked]="reserva?.siesta">
                                 </label>
                             </div>
                         </div>
                         <div class="observaciones-Monitor-container">
                             <label for="observaciones-Monitor">Observaciones:</label>
                             <textarea id="observaciones-Monitor" class="observaciones-Monitor"
-                                [value]="reserva.observacionesMonitora" name="observaciones-Monitor"
+                                [value]="reserva?.observacionesMonitora" name="observaciones-Monitor"
                                 cols="50"></textarea>
                         </div>
                     </div>
                 </div>
 
-                <div class="padres-data-container" *ngIf="ventanaDatos === 'padres'">
+                <div class="padres-data-container" *ngIf="ventanaDatos == 'padres'">
                     <div class="alergias-container">
                         <label>
-                            Alergias/Intolerancias:
+                            Intolerancias:
                             <details role="list">
                                 <summary aria-haspopup="listbox">
-                                    Alergias/Intolerancias</summary>
+                                    Intolerancias</summary>
                                 <ul role="listbox">
                                     <li *ngFor="let alergia of alergias; let i = index">
                                         <label>
@@ -232,15 +237,15 @@
                     <div class="observaciones-container">
                         <label for="observaciones">Observaciones:</label>
                         <textarea id="observaciones" class="observaciones" name="observaciones" rows="3" cols="50"
-                            [value]="reserva.observacionesPadre"></textarea>
+                            [value]="reserva?.observacionesPadre"></textarea>
 
                     </div>
                 </div>
                 <footer>
-                    <a href="javascript:void(0)" *ngIf="tipoUsuario=='Admin'" (click)="setVentana('historial')"
-                        role="button" type="button">Volver</a>
-                    <a href="javascript:void(0)" *ngIf="tipoUsuario=='User'" (click)="setVentana('historial')"
-                        role="button" type="button">Histórico</a>
+                    <a href="javascript:void(0)" *ngIf="!nuevaReserva" (click)="setVentana('historial')" role="button"
+                        type="button">Volver</a>
+                    <a href="javascript:void(0)" *ngIf="nuevaReserva" (click)="setVentana('historial')" role="button"
+                        type="button">Histórico</a>
                     <a href="javascript:void(0)" (click)="openModalGuardar()" role="button" type="button">Guardar</a>
                 </footer>
             </fieldset>

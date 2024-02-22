@@ -18,3 +18,15 @@ footer {
     margin: 0;
     width: 100%;
 }
+
+.tabla-historico-visitas{
+    display: flex;
+    flex-direction: column;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    gap: 2rem;
+    & figure {
+        max-height: 20rem;
+    }
+}
