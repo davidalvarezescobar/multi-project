@@ -1,0 +1,54 @@
+<h5>Piscina: Histórico de peticiones</h5>
+
+<form>
+    <fieldset>
+        <div class="fechas">
+            <label class="selector">
+                Piscina:
+                <select>
+                    <option value="" disabled selected>Selecciona una piscina</option>
+                    <option *ngFor="let piscina of piscinas">{{piscina}}</option>
+                </select>
+            </label>
+            <label class="short">
+                Fecha hasta:
+                <input type="date">
+            </label>
+        </div>
+        <a href="javascript:void(0)" role="button" type="button">Buscar</a>
+    </fieldset>
+</form>
+
+<figure>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Piscina</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">QR</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of rows">
+                <td scope="row">{{row.ubicacion}}</td>
+                <td scope="row">{{row.fecha}}</td>
+                <td scope="row" (click)="openModal($event)"><i class="fa-solid fa-qrcode fa-lg"></i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</figure>
+
+
+<!-- Modal de QR -->
+<dialog id="modal-pago" [attr.open]="showModal">
+    <article>
+        <header>
+            <a (click)="closeModal()" aria-label="Close" class="close"></a>
+            <span>Código QR</span>
+        </header>
+        <div class="qr">
+            <img src="assets/QR.png" alt="Mi imagen PNG">
+        </div>
+    </article>
+</dialog>

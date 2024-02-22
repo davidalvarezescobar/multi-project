@@ -1,10 +1,25 @@
-:host {
-    display: block;
-}
-
-footer {
+.form-container {
     display: flex;
-    justify-content: flex-end;
+    flex-direction: column;
+    gap: .8rem;
+    & .selector {
+        max-width: 30rem;
+    }
+}
+.date-search-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
     flex-wrap: wrap;
-    gap: 20px;
+    max-width: 30rem;
+    gap: 1rem;
+}
+td {
+    cursor: pointer;
+}
+label {
+    margin: 0;
+}
+input {
+    margin: 0;
 }

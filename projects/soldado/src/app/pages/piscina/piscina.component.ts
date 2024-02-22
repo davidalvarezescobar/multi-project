@@ -12,4 +12,12 @@ export class PiscinaComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  piscinas: any = [
+    {
+      nombre: 'Maestranza'
+    },
+    {
+      nombre: 'Base'
+    }
+  ]
 }

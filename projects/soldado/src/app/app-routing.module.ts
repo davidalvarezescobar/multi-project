@@ -27,6 +27,7 @@ import { LudotecaAltaComponent } from './pages/ludoteca-alta/ludoteca-alta.compo
 import { LudotecaComponent } from './pages/ludoteca/ludoteca.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { PiscinaAltaComponent } from './pages/piscina-alta/piscina-alta.component';
+import { PiscinaHistoricoComponent } from './pages/piscina-historico/piscina-historico.component';
 import { PiscinaComponent } from './pages/piscina/piscina.component';
 import { SalasAltaComponent } from './pages/salas-alta/salas-alta.component';
 import { SalasDisponibilidadComponent } from './pages/salas-disponibilidad/salas-disponibilidad.component';
@@ -59,6 +60,7 @@ const routes: Routes = [
   { path: 'biblioteca',  component: BibliotecaComponent },
   { path: 'biblioteca/alta',  component: BibliotecaAltaComponent },
   { path: 'piscina',  component: PiscinaComponent },
+  { path: 'piscina/historico',  component: PiscinaHistoricoComponent },
   { path: 'piscina/alta',  component: PiscinaAltaComponent },
   { path: 'visitas',  component: VisitasComponent },
   { path: 'visitas/alta',  component: VisitasAltaComponent },
