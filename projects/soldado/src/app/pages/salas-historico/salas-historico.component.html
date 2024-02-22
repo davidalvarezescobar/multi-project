@@ -13,9 +13,7 @@
         Sala:
         <select>
             <option value="" disabled selected>Selecciona una sala</option>
-            <option>Sala 1</option>
-            <option>Sala 2</option>
-            <option>Sala 3</option>
+            <option *ngFor="let row of rows">{{row.sala}}</option>
         </select>
     </label>
     <div class="date-search-container">
