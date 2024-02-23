@@ -5,15 +5,15 @@
     <div *ngIf="ventana === 'historial'">
         <form>
             <fieldset>
-                <label for="nombre">
-                    Nombre del niño/a:
-                    <br>
-                    <select class="nombre" id="nombre" required>
-                        <option value="" selected>Selecciona nombre</option>
-                        <option *ngFor="let name of nombres" [value]="name">{{ name }}</option>
-                    </select>
-                </label>
                 <div class="fecha-turno">
+                    <label for="nombre">
+                        Nombre del niño/a:
+                        <br>
+                        <select id="nombre" required>
+                            <option value="" selected>Selecciona nombre</option>
+                            <option *ngFor="let name of nombres" [value]="name">{{ name }}</option>
+                        </select>
+                    </label>
                     <label class="short">
                         Desde:
                         <input type="date" [value]="formatDateDDMMYYYY(fechaActual)">
@@ -29,13 +29,9 @@
                             <option *ngFor="let turno of turnos" [value]="turno">{{ turno }}</option>
                         </select>
                     </label>
+                    <a style="margin-top: 8px;" href="javascript:void(0)" role="button" type="button">Buscar</a>
                 </div>
             </fieldset>
-            <footer>
-                <a href="javascript:void(0)" (click)="setNewReserva()" *ngIf="tipoUsuario=='User'" role="button"
-                    type="button">Nueva reserva</a>
-                <a href="javascript:void(0)" role="button" type="button">Buscar</a>
-            </footer>
         </form>
 
         <div class="lista-historial">
@@ -43,7 +39,7 @@
                 <table>
                     <thead>
                         <tr>
-                            <th scope="col">Nombre del niño/a:</th>
+                            <th scope="col">Niño/a:</th>
                             <th scope="col">Fecha</th>
                             <th scope="col">Turno</th>
                             <th scope="col">Desayuno</th>
@@ -81,8 +77,8 @@
     </div>
 
     <div *ngIf="ventana === 'datos'">
-        <div class="nombre-historico-container">
-            <label class="nombre" for="nombre">
+        <div class="fecha-turno">
+            <label for="nombre">
                 Nombre del niño/a:
                 <select id="nombre" required>
                     <option>Selecciona un nombre</option>
@@ -90,8 +86,6 @@
                         {{name}}</option>
                 </select>
             </label>
-        </div>
-        <div class="fecha-turno">
             <label class="short">
                 Fecha de entrada:
                 <input type="datetime-local"
@@ -179,8 +173,9 @@
                 <div class="deposiciones-container">
                     <label for="deposiciones">Deposiciones:</label>
                     <select id="deposiciones" [value]="reserva?.deposiciones">
+                        <option value="" selected>Tipo deposicion</option>
                         <option *ngFor="let deposicion of deposiciones" [value]="deposicion"
-                            [selected]="reserva.deposiciones === deposicion">{{ deposicion }}</option>
+                            [selected]="reserva?.deposiciones === deposicion">{{ deposicion }}</option>
                     </select>
                 </div>
                 <div class="pis-container">

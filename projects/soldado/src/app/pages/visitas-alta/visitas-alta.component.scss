@@ -1,12 +1,7 @@
-.vehiculo,
-.marca {
+.vehiculo {
     display: flex;
     gap: 30px;
     margin-bottom: 18px;
-}
-
-.marca label {
-    flex: 1;
 }
 
 footer {
@@ -15,7 +10,8 @@ footer {
     gap: 22px
 }
 
-.nombre-apellido-container {
+.nombre-apellido-container,
+.marca {
     display: flex;
     align-items: center;
     flex-wrap: wrap;

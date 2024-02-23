@@ -3,11 +3,6 @@ footer {
     justify-content: flex-end;
 }
 
-.visitante,
-.persona-visitada{
-    width: 40%;
-}
-
 .tabla-input {
     border: none;
     background-color: transparent;
@@ -31,14 +26,7 @@ footer {
     }
 }
 
-.nombres {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    column-gap: 40px;
-}
-
-.matricula-fecha-boton {
+.filtros {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
