@@ -33,7 +33,7 @@
             </fieldset>
             <footer>
                 <a href="javascript:void(0)" (click)="setNewReserva()" *ngIf="tipoUsuario=='User'" role="button"
-                    type="button">Guardar</a>
+                    type="button">Nueva reserva</a>
                 <a href="javascript:void(0)" role="button" type="button">Buscar</a>
             </footer>
         </form>
@@ -116,7 +116,7 @@
                     </label>
                 </div>
 
-                <a href="javascript:void(0)" *ngIf="!nuevaReserva" (click)="monitorDatos()" id="monitorDatos"
+                <a href="javascript:void(0)" (click)="monitorDatos()" id="monitorDatos"
                     role="button" class="monitor-button" type="button">Monitor</a>
                 <a href="javascript:void(0)" (click)="padresDatos()" id="padresDatos" role="button"
                     class="padres-button" type="button">Padres</a>
@@ -178,9 +178,10 @@
                                 </tbody>
                             </table>
                         </figure>
+                    </div>
                         <div class="datos-Extra-container">
                             <div class="deposiciones-container">
-                                <label for="deposiciones">Deposiciones</label>
+                                <label for="deposiciones">Deposiciones:</label>
                                 <select id="deposiciones" [value]="reserva?.deposiciones">
                                     <option *ngFor="let deposicion of deposiciones" [value]="deposicion"
                                         [selected]="reserva.deposiciones === deposicion">{{ deposicion }}</option>
@@ -188,13 +189,13 @@
                             </div>
                             <div class="pis-container">
                                 <label>
-                                    Pis
+                                    Pis:
                                     <input type="checkbox" id="pis" name="pis" [checked]="reserva?.pis">
                                 </label>
                             </div>
                             <div class="siesta-container">
                                 <label>
-                                    Siesta
+                                    Siesta:
                                     <input type="checkbox" id="siesta" name="siesta" [checked]="reserva?.siesta">
                                 </label>
                             </div>
@@ -205,7 +206,6 @@
                                 [value]="reserva?.observacionesMonitora" name="observaciones-Monitor"
                                 cols="50"></textarea>
                         </div>
-                    </div>
                 </div>
 
                 <div class="padres-data-container" *ngIf="ventanaDatos == 'padres'">

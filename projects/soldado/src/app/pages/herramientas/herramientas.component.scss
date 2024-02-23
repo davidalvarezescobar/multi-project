@@ -58,10 +58,6 @@
     width: 480px;
 }
 
-.semaforo-historico-container{
-    margin-right: 2.5%;
-}
-
 .tablas-herramientas-container {
     width: 510px;
     display: flex;
@@ -156,8 +152,9 @@ footer {
 }
 
 .tablas-hitorico-herramientas {
-    width: 100%;
-    border-collapse: collapse;
+    white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
 }
 
 .tablas-hitorico-herramientas th,
@@ -171,10 +168,12 @@ footer {
 }
 
 .semaforo-historico-green {
+    font-size: 5em;
     color: green;
 }
 
 .semaforo-historico-red {
+    font-size: 5em;
     color: red;
 }
 

@@ -5,7 +5,7 @@ footer {
 
 .visitante,
 .persona-visitada{
-    width: 50%;
+    width: 40%;
 }
 
 .tabla-input {
@@ -29,4 +29,18 @@ footer {
     & figure {
         max-height: 20rem;
     }
+}
+
+.nombres {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    column-gap: 40px;
+}
+
+.matricula-fecha-boton {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    column-gap: 40px;
 }

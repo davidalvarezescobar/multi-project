@@ -84,7 +84,7 @@
                         <strong>Fecha:</strong>
                         <input type="datetime-local" [value]="fechaActual">
                     </label>
-                    <div class="semaforo-historico-container">
+                    <div>
                         <i class="semaforo-historico-green fa-solid fa-circle fa-2xl" *ngIf="semaforoHistorial"></i>
                         <i class="semaforo-historico-red fa-solid fa-circle fa-2xl" *ngIf="!semaforoHistorial"></i>
                     </div>
@@ -116,8 +116,6 @@
                     </div>
                     <div>
                         <a href="javascript:void(0)" role="button" type="button">Buscar</a>
-                        <a href="javascript:void(0)" role="button" type="button" (click)="setVentana('inventario')"
-                            *ngIf="tipoUsuario == 'User'">Volver</a>
                     </div>
                 </div>
             </div>
@@ -132,10 +130,10 @@
                             <th scope="col">Cajon</th>
                             <th scope="col">Herramientas</th>
                             <th scope="col" *ngIf="tipoUsuario != 'User'">Operario</th>
-                            <th scope="col">Oficial al mando</th>
-                            <th scope="col">Hora inventario entrada</th>
+                            <th scope="col">Oficial</th>
+                            <th scope="col">Hora entrada</th>
                             <th scope="col">Estado</th>
-                            <th scope="col">Hora inventario salida</th>
+                            <th scope="col">Hora salida</th>
                             <th scope="col">Estado</th>
                             <th scope="col">Observaciones</th>
                         </tr>
@@ -162,6 +160,10 @@
                 </table>
             </figure>
         </div>
+        <footer>
+            <a href="javascript:void(0)" role="button" type="button" (click)="setVentana('inventario')"
+            *ngIf="tipoUsuario == 'User'">Volver</a>
+        </footer>
     </div>
 </fieldset>
 
