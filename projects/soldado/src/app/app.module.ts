@@ -42,6 +42,7 @@ import { VisitasAltaComponent } from './pages/visitas-alta/visitas-alta.componen
 import { VisitasComponent } from './pages/visitas/visitas.component';
 import { ComedorFilterPipe } from './pipes/comedor-filter.pipe';
 import { PiscinaHistoricoComponent } from './pages/piscina-historico/piscina-historico.component';
+import { AparcamientosAdminComponent } from './pages/aparcamientos-admin/aparcamientos-admin.component';
 
 registerLocaleData(es);
 
@@ -82,7 +83,8 @@ registerLocaleData(es);
     CartasComponent,
     DatosComponent,
     DatosAdminComponent,
-    ComedorHistoricoAdminComponent
+    ComedorHistoricoAdminComponent,
+    AparcamientosAdminComponent
   ],
   imports: [
     BrowserModule,

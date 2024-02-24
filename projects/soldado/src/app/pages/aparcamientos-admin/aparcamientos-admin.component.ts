@@ -1,17 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ComedorStoreService } from '../../services/comedor-store.service';
-
-export interface Filter {
-  comedor?: string; fdesde?: string; fhasta?: string 
-}
+import { Filter } from '../comedor-historico/comedor-historico.component';
 
 @Component({
-  selector: 'app-comedor-historico',
-  templateUrl: './comedor-historico.component.html',
-  styleUrls: ['./comedor-historico.component.scss']
+  selector: 'app-aparcamientos-admin',
+  templateUrl: './aparcamientos-admin.component.html',
+  styleUrls: ['./aparcamientos-admin.component.scss']
 })
-export class ComedorHistoricoComponent implements OnInit {
+export class AparcamientosAdminComponent {
   comedorList$: Observable<any>;
   filterApplied: Filter;
   filterTmp: Filter;
@@ -43,13 +40,5 @@ export class ComedorHistoricoComponent implements OnInit {
 
   borrar() {
     this.filterApplied = this.filterTmp = null;
-  }
-
-  openModal() {
-    this.showModal = true;
-  }
-
-  closeModal() {
-    this.showModal = false;
   }
 }

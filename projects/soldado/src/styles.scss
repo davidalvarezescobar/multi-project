@@ -67,3 +67,7 @@ dialog .close {
     cursor: pointer;
 }
 
+button:active,
+a:active {
+    transform: scale(0.96);
+}

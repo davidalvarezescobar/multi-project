@@ -46,7 +46,7 @@ export class AparcamientosComponent implements OnInit {
     setTimeout(() => {
       this.isReservando = false;
       this.closeModal();
-    }, 2000);
+    }, 1500);
   }
 
 }

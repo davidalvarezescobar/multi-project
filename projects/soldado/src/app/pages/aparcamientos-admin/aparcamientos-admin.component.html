@@ -1,0 +1,75 @@
+<h5>Histórico de reservas de aparcamiento</h5>
+
+<form>
+    <fieldset>
+        <label class="comedor">
+            Nombre:
+            <select id="base" #comedor [value]="filterTmp?.comedor ?? ''"
+                (change)="comedorFilterChanged(comedor.value)">
+                <option value="" selected>Selecciona un nombre</option>
+                <option>Alferez Juan</option>
+                <option>Capitán Pedro</option>
+                <option>Teniente Miguel</option>
+            </select>
+        </label>
+        <label class="comedor">
+            Aparcamiento:
+            <select id="base" #comedor [value]="filterTmp?.comedor ?? ''"
+                (change)="comedorFilterChanged(comedor.value)">
+                <option value="" selected>Selecciona un aparcamiento</option>
+                <option>Aparcamiento 1</option>
+                <option>Aparcamiento 2</option>
+                <option>Aparcamiento 3</option>
+            </select>
+        </label>
+        <label class="comedor">
+            Plaza:
+            <select id="base" #comedor [value]="filterTmp?.comedor ?? ''"
+                (change)="comedorFilterChanged(comedor.value)">
+                <option value="" selected>Selecciona una plaza</option>
+                <option>Plaza 10</option>
+                <option>Plaza 11</option>
+                <option>Plaza 12</option>
+            </select>
+        </label>
+        <div class="fechas">
+            <label class="short">
+                Fecha desde:
+                <input #fdesde type="date" [value]="filterTmp?.fdesde"
+                    (change)="fechaFilterChanged('fdesde', fdesde.value)">
+            </label>
+            <label class="short">
+                Fecha hasta:
+                <input #fhasta type="date" [value]="filterTmp?.fhasta"
+                    (change)="fechaFilterChanged('fhasta', fhasta.value)">
+            </label>
+        </div>
+    </fieldset>
+    <footer>
+        <button type="button" (click)="borrar()">Borrar búsqueda</button>
+        <button type="button" (click)="buscar()">Buscar</button>
+    </footer>
+</form>
+
+<figure>
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Aparcamiento</th>
+                <th scope="col">Plaza</th>
+                <th scope="col">Desde</th>
+                <th scope="col">Hasta</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let reg of comedorList$ | async | comedorFilter:filterApplied">
+                <td>{{reg.comedor}}</td>
+                <td>{{reg.fecha | date:'dd-MM-yyyy'}}</td>
+                <td>{{reg.principal}}</td>
+                <td>{{reg.segundo}}</td>
+                <td>{{reg.postre}}</td>
+            </tr>
+        </tbody>
+    </table>
+</figure>

@@ -59,10 +59,17 @@ figure {
         min-width: 230px;
         font-weight: 500;
         margin: 7px 0;
+        position: relative;
     }
 
     select {
         margin-top: 9px;
+    }
+
+    .guardar {
+        position: absolute;
+        bottom: 14px;
+        right: 2px;
     }
 }
 

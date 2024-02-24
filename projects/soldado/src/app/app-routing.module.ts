@@ -1,9 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AparcamientosAdminGuard } from './guards/aparcamientos-admin.guard';
+import { AparcamientosGuard } from './guards/aparcamientos.guard';
 import { ComedorAdminGuard } from './guards/comedor-admin.guard';
 import { ComedorGuard } from './guards/comedor.guard';
 import { DatosAdminGuard } from './guards/datos-admin.guard';
 import { DatosGuard } from './guards/datos.guard';
+import { AparcamientosAdminComponent } from './pages/aparcamientos-admin/aparcamientos-admin.component';
 import { AparcamientosAltaComponent } from './pages/aparcamientos-alta/aparcamientos-alta.component';
 import { AparcamientosComponent } from './pages/aparcamientos/aparcamientos.component';
 import { ApartamentosAltaComponent } from './pages/apartamentos-alta/apartamentos-alta.component';
@@ -43,7 +46,8 @@ const routes: Routes = [
   { path: 'comedor-admin/historico',  component: ComedorHistoricoAdminComponent, canActivate: [ComedorAdminGuard] },
   { path: 'comedor',  component: ComedorAltaComponent, canActivate: [ComedorGuard]},
   { path: 'comedor-admin',  component: ComedorAdminComponent, canActivate: [ComedorAdminGuard]},
-  { path: 'aparcamientos',  component: AparcamientosComponent },
+  { path: 'aparcamientos',  component: AparcamientosComponent, canActivate: [AparcamientosGuard] },
+  { path: 'aparcamientos-admin',  component: AparcamientosAdminComponent, canActivate: [AparcamientosAdminGuard] },
   { path: 'aparcamientos/alta',  component: AparcamientosAltaComponent },
   { path: 'guarderia',  component: GuarderiaComponent },
   { path: 'herramientas',  component: HerramientasComponent },
