@@ -7,9 +7,13 @@
             <select id="base" #comedor [value]="filterTmp?.comedor ?? ''"
                 (change)="comedorFilterChanged(comedor.value)">
                 <option value="" selected>Selecciona un nombre</option>
-                <option>Alferez Juan</option>
-                <option>Capitán Pedro</option>
-                <option>Teniente Miguel</option>
+                <option>Alferez Pedro</option>
+                <option>Capitán Juan</option>
+                <option>Comandante Mariano</option>
+                <option>Mayor José</option>
+                <option>Sargento Luis</option>
+                <option>Teniente Dan</option>
+                <option>Teniente O'Neil</option>
             </select>
         </label>
         <label class="comedor">
@@ -32,15 +36,20 @@
                 <option>Plaza 12</option>
             </select>
         </label>
-        <div class="fechas">
+        <label class="short">
+            Fecha:
+            <input #fdesde type="date" [value]="filterTmp?.fdesde"
+                (change)="fechaFilterChanged('fdesde', fdesde.value)">
+        </label>
+        <div class="horas">
             <label class="short">
-                Fecha desde:
-                <input #fdesde type="date" [value]="filterTmp?.fdesde"
+                Hora desde:
+                <input #fdesde type="time" [value]="filterTmp?.fdesde"
                     (change)="fechaFilterChanged('fdesde', fdesde.value)">
             </label>
             <label class="short">
-                Fecha hasta:
-                <input #fhasta type="date" [value]="filterTmp?.fhasta"
+                Hora hasta:
+                <input #fhasta type="time" [value]="filterTmp?.fhasta"
                     (change)="fechaFilterChanged('fhasta', fhasta.value)">
             </label>
         </div>
@@ -58,17 +67,19 @@
                 <th scope="col">Nombre</th>
                 <th scope="col">Aparcamiento</th>
                 <th scope="col">Plaza</th>
+                <th scope="col">Fecha</th>
                 <th scope="col">Desde</th>
                 <th scope="col">Hasta</th>
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let reg of comedorList$ | async | comedorFilter:filterApplied">
-                <td>{{reg.comedor}}</td>
-                <td>{{reg.fecha | date:'dd-MM-yyyy'}}</td>
-                <td>{{reg.principal}}</td>
-                <td>{{reg.segundo}}</td>
-                <td>{{reg.postre}}</td>
+            <tr *ngFor="let reg of parkingList$ | async">
+                <td>{{reg.nombre}}</td>
+                <td>{{reg.aparcamiento}}</td>
+                <td>{{reg.plaza}}</td>
+                <td>{{reg.fecha}}</td>
+                <td>{{reg.desde}}</td>
+                <td>{{reg.hasta}}</td>
             </tr>
         </tbody>
     </table>

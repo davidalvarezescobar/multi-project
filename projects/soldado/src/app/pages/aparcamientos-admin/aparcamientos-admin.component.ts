@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
+import { AparcamientosStoreService } from '../../services/aparcamientos-store.service';
 import { ComedorStoreService } from '../../services/comedor-store.service';
 import { Filter } from '../comedor-historico/comedor-historico.component';
 
@@ -9,17 +10,17 @@ import { Filter } from '../comedor-historico/comedor-historico.component';
   styleUrls: ['./aparcamientos-admin.component.scss']
 })
 export class AparcamientosAdminComponent {
-  comedorList$: Observable<any>;
+  parkingList$: Observable<any>;
   filterApplied: Filter;
   filterTmp: Filter;
   showModal = false;
 
   constructor(
-    readonly store: ComedorStoreService
+    readonly store: AparcamientosStoreService
   ) { }
 
   ngOnInit(): void {
-    this.comedorList$ = this.store.loadListaComedor();
+    this.parkingList$ = this.store.loadListaAparcamientos();
   }
 
   comedorFilterChanged(selectedComedor) {

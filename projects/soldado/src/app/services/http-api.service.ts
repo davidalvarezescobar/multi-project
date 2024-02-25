@@ -33,4 +33,8 @@ export class HttpApiService {
   requestVisitasDatos() {
     return this.http.get('../../assets/mocks/visitas.json');
   }
+
+  requestListaAparcamientos() {
+    return this.http.get('../../assets/mocks/aparcamientos.json');
+  }
 }

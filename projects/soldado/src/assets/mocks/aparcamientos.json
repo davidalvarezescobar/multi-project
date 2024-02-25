@@ -1,0 +1,58 @@
+[
+    {
+        "nombre": "Capitán Juan",
+        "aparcamiento": "Aparcamiento 1",
+        "plaza": 10,
+        "fecha": "2024-02-25",
+        "desde": "09:00",
+        "hasta": "12:00"
+    },
+    {
+        "nombre": "Alferez Pedro",
+        "aparcamiento": "Aparcamiento 2",
+        "plaza": 10,
+        "fecha": "2024-02-25",
+        "desde": "10:00",
+        "hasta": "13:00"
+    },
+    {
+        "nombre": "Sargento Luis",
+        "aparcamiento": "Aparcamiento 1",
+        "plaza": 11,
+        "fecha": "2024-02-25",
+        "desde": "11:00",
+        "hasta": "14:00"
+    },
+    {
+        "nombre": "Comandante Mariano",
+        "aparcamiento": "Aparcamiento 2",
+        "plaza": 11,
+        "fecha": "2024-02-25",
+        "desde": "12:00",
+        "hasta": "15:00"
+    },
+    {
+        "nombre": "Teniente O'Neil",
+        "aparcamiento": "Aparcamiento 3",
+        "plaza": 11,
+        "fecha": "2024-02-25",
+        "desde": "13:00",
+        "hasta": "16:00"
+    },
+    {
+        "nombre": "Mayor José",
+        "aparcamiento": "Aparcamiento 2",
+        "plaza": 12,
+        "fecha": "2024-02-25",
+        "desde": "14:00",
+        "hasta": "17:00"
+    },
+    {
+        "nombre": "Teniente Dan",
+        "aparcamiento": "Aparcamiento 3",
+        "plaza": 12,
+        "fecha": "2024-02-25",
+        "desde": "15:00",
+        "hasta": "18:00"
+    }
+]
