@@ -1,76 +1,76 @@
-<div class="cabecera-herramientas-container">
+<<div class="cabecera-herramientas-container">
     <h5 *ngIf="ventana === 'inventario'">Inventario de herramientas para control de FOD</h5>
     <h5 *ngIf="ventana === 'historial'">Histórico de inventario de herramientas para control de FOD</h5>
-</div>
+    </div>
 
-<fieldset>
     <div *ngIf="ventana === 'inventario'">
         <div class="filtros-semaforo">
-    <div class="filtros fecha-turno-caja">
-        <label class="short">
-            <strong>Fecha:</strong>
-            <input type="date" [value]="formatDateDDMMYYYY(fechaActual)">
-        </label>
+            <div class="filtros fecha-turno-caja">
+                <label class="short">
+                    <strong>Fecha:</strong>
+                    <input type="date" [value]="formatDateDDMMYYYY(fechaActual)">
+                </label>
 
-        <label for="turno" class="short">
-            <strong>Turno:</strong>
-            <select id="turno" required>
-                <option value="" selected>Selecciona turno</option>
-                <option *ngFor="let turno of turnos">{{ turno }}</option>
-            </select>
-        </label>
+                <label for="turno" class="short">
+                    <strong>Turno:</strong>
+                    <select id="turno" required>
+                        <option value="" selected>Selecciona turno</option>
+                        <option *ngFor="let turno of turnos">{{ turno }}</option>
+                    </select>
+                </label>
 
-        <label class="short">
-            <strong>Cajon de herramientas:</strong>
-            <select id="caja" required>
-                <option *ngFor="let caja of cajas">{{ caja }}</option>
-            </select>
-        </label>
+                <label class="short">
+                    <strong>Cajon de herramientas:</strong>
+                    <select id="caja" required>
+                        <option *ngFor="let caja of cajas">{{ caja }}</option>
+                    </select>
+                </label>
 
-        <a href="javascript:void(0)" role="button" type="button" (click)="setVentana('historial')">Historico</a>
-    </div>
-    <div class="semaforo">
-        <i class="semaforo-inventario-green fa-solid fa-circle" *ngIf="semaforoInventario"></i>
-        <i class="semaforo-inventario-red fa-solid fa-circle" *ngIf="!semaforoInventario"></i>
-    </div>
-</div>
-
-        <div style="margin-top: 5px;">
-            <div class="tablas-herramientas">
-                <figure>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th scope="col">Herramienta</th>
-                                <th scope="col">Entrada: <strong>{{horaEntrada}}h</strong></th>
-                                <th scope="col">Salida: <strong>{{horaActual}}h</strong></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr *ngFor="let herramienta of herramientas"
-                                [class.herramientas-error]="!herramienta.cEntrada && !herramienta.cSalida">
-                                <td>{{ herramienta.nombre }}</td>
-                                <td>
-                                    <input type="checkbox" #entradaCheckbox class="checkbox-column-herramientas"
-                                        [checked]="herramienta.cEntrada"
-                                        (change)="cEntradaChange(entradaCheckbox.checked, herramienta.nombre)">
-                                </td>
-                                <td>
-                                    <input type="checkbox" #salidaCheckbox class="checkbox-column-herramientas"
-                                        [checked]="herramienta.cSalida"
-                                        (change)="cSalidaChange(salidaCheckbox.checked, herramienta.nombre)">
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </figure>
+                <a style="margin-top: 6px;" href="javascript:void(0)" role="button" type="button"
+                    (click)="setVentana('historial')">Historico</a>
             </div>
-            <div class="botones-guardar-inventario">
-                <a href="javascript:void(0)" (click)="openModalVerificacionEntrada()" role="button"
-                    type="button">Guardar</a>
-                <a href="javascript:void(0)" (click)="openModalVerificacionSalida()" role="button"
-                    type="button">Guardar</a>
+            <div class="semaforo">
+                <i class="semaforo-inventario-green fa-solid fa-circle" *ngIf="semaforoInventario"></i>
+                <i class="semaforo-inventario-red fa-solid fa-circle" *ngIf="!semaforoInventario"></i>
             </div>
+        </div>
+
+        <div class="tablas-herramientas">
+            <figure>
+                <table>
+                    <thead>
+                        <tr>
+                            <th scope="col">Herramienta</th>
+                            <th scope="col">Entrada: <strong>{{horaEntrada}}h</strong></th>
+                            <th scope="col">Salida: <strong>{{horaActual}}h</strong></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let herramienta of herramientas"
+                            [class.herramientas-error]="!herramienta.cEntrada && !herramienta.cSalida">
+                            <td>{{ herramienta.nombre }}</td>
+                            <td>
+                                <input type="checkbox" #entradaCheckbox class="checkbox-column-herramientas"
+                                    [checked]="herramienta.cEntrada"
+                                    (change)="cEntradaChange(entradaCheckbox.checked, herramienta.nombre)">
+                            </td>
+                            <td>
+                                <input type="checkbox" #salidaCheckbox class="checkbox-column-herramientas"
+                                    [checked]="herramienta.cSalida"
+                                    (change)="cSalidaChange(salidaCheckbox.checked, herramienta.nombre)">
+                            </td>
+                        </tr>
+
+                        <tr class="guardar-herramientas">
+                            <td></td>
+                            <td><a href="javascript:void(0)" (click)="openModalVerificacionEntrada()" role="button"
+                                    type="button">Guardar</a></td>
+                            <td><a href="javascript:void(0)" (click)="openModalVerificacionSalida()" role="button"
+                                    type="button">Guardar</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </figure>
         </div>
     </div>
 
@@ -163,68 +163,67 @@
                 *ngIf="tipoUsuario == 'User'">Volver</a>
         </footer>
     </div>
-</fieldset>
 
-<dialog id="modal-guardar" [attr.open]="vEntrada">
-    <article>
-        <a (click)="closeModalVerificacionEntrada()" aria-label="Close" class="close"></a>
-        <div class="modal-container">
-            <div *ngIf="combrobarDatos()">
-                <i class="fa-solid fa-check fa-2xl"></i><br><br>
+    <dialog id="modal-guardar" [attr.open]="vEntrada">
+        <article>
+            <a (click)="closeModalVerificacionEntrada()" aria-label="Close" class="close"></a>
+            <div class="modal-container">
+                <div *ngIf="combrobarDatos()">
+                    <i class="fa-solid fa-check fa-2xl"></i><br><br>
+                </div>
+                <div *ngIf="!combrobarDatos()">
+                    <i class="fa-solid fa-triangle-exclamation fa-2xl"></i><br><br>
+                </div>
+                <strong>{{resultadoVerificacion}}</strong><br><br>
+                <div class="botones-modal-container">
+                    <a href="javascript:void(0)" (click)="closeModalVerificacionEntrada()" role="button"
+                        type="button">Volver</a>
+                    <a href="javascript:void(0)" (click)="guardarDatosEntradaModal()" id="botonEntradaConfirmacion"
+                        role="button" type="button">Confirmar</a>
+                </div>
             </div>
-            <div *ngIf="!combrobarDatos()">
-                <i class="fa-solid fa-triangle-exclamation fa-2xl"></i><br><br>
-            </div>
-            <strong>{{resultadoVerificacion}}</strong><br><br>
-            <div class="botones-modal-container">
-                <a href="javascript:void(0)" (click)="closeModalVerificacionEntrada()" role="button"
-                    type="button">Volver</a>
-                <a href="javascript:void(0)" (click)="guardarDatosEntradaModal()" id="botonEntradaConfirmacion"
-                    role="button" type="button">Confirmar</a>
-            </div>
-        </div>
-    </article>
-</dialog>
+        </article>
+    </dialog>
 
-<dialog id="modal-guardar" [attr.open]="vSalida">
-    <article>
-        <a (click)="closeModalVerificacionSalida()" aria-label="Close" class="close"></a>
-        <div class="modal-container">
-            <div *ngIf="combrobarDatos()">
-                <i class="fa-solid fa-check fa-2xl" style="color: #0bad33;"></i><br><br>
+    <dialog id="modal-guardar" [attr.open]="vSalida">
+        <article>
+            <a (click)="closeModalVerificacionSalida()" aria-label="Close" class="close"></a>
+            <div class="modal-container">
+                <div *ngIf="combrobarDatos()">
+                    <i class="fa-solid fa-check fa-2xl" style="color: #0bad33;"></i><br><br>
+                </div>
+                <div *ngIf="!combrobarDatos()">
+                    <i class="fa-solid fa-triangle-exclamation fa-2xl" style="color: #ffea00;"></i><br><br>
+                </div>
+                <strong>{{resultadoVerificacion}}</strong><br><br>
+                <div class="botones-modal-container">
+                    <a href="javascript:void(0)" (click)="closeModalVerificacionSalida()" role="button"
+                        type="button">Volver</a>
+                    <a href="javascript:void(0)" (click)="guardarDatosSalidaModal()" id="botonSalidaConfirmacion"
+                        role="button" type="button">Confirmar</a>
+                </div>
+                <div [hidden]="!objetoRecuperado">
+                    <br>
+                    <textarea id="observacionesRecuperacion" class="observacionesRecuperacion"
+                        placeholder="Escriba aqui que ocurrio con el material recuperado" cols="50"></textarea>
+                </div>
             </div>
-            <div *ngIf="!combrobarDatos()">
-                <i class="fa-solid fa-triangle-exclamation fa-2xl" style="color: #ffea00;"></i><br><br>
-            </div>
-            <strong>{{resultadoVerificacion}}</strong><br><br>
-            <div class="botones-modal-container">
-                <a href="javascript:void(0)" (click)="closeModalVerificacionSalida()" role="button"
-                    type="button">Volver</a>
-                <a href="javascript:void(0)" (click)="guardarDatosSalidaModal()" id="botonSalidaConfirmacion"
-                    role="button" type="button">Confirmar</a>
-            </div>
-            <div [hidden]="!objetoRecuperado">
-                <br>
-                <textarea id="observacionesRecuperacion" class="observacionesRecuperacion"
-                    placeholder="Escriba aqui que ocurrio con el material recuperado" cols="50"></textarea>
-            </div>
-        </div>
-    </article>
-</dialog>
+        </article>
+    </dialog>
 
-<dialog id="modal-guardar" [attr.open]="cambiosGuardados">
-    <article>
-        <a (click)="closeModalGuardarCambio()" aria-label="Close" class="close"></a>
-        <strong>Se ha registrado la información de inventario de herramientas</strong>
-    </article>
-</dialog>
+    <dialog id="modal-guardar" [attr.open]="cambiosGuardados">
+        <article>
+            <a (click)="closeModalGuardarCambio()" aria-label="Close" class="close"></a>
+            <strong>Se ha registrado la información de inventario de herramientas</strong>
+        </article>
+    </dialog>
 
-<dialog id="modal-guardar" [attr.open]="modalObservacion">
-    <article>
-        <a (click)="closeModalObservacion()" aria-label="Close" class="close"></a>
-        <div class="modal-container">
-            <strong *ngIf="observacionIncidencia != ''">{{observacionIncidencia}}<br><br></strong>
-            <a href="javascript:void(0)" (click)="closeModalObservacion()" role="button" type="button">Volver</a>
-        </div>
-    </article>
-</dialog>
+    <dialog id="modal-guardar" [attr.open]="modalObservacion">
+        <article>
+            <a (click)="closeModalObservacion()" aria-label="Close" class="close"></a>
+            <div class="modal-container">
+                <strong *ngIf="observacionIncidencia != ''">{{observacionIncidencia}}<br><br></strong>
+                <a href="javascript:void(0)" (click)="closeModalObservacion()" role="button" type="button">Volver</a>
+            </div>
+        </article>
+    </dialog>

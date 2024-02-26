@@ -14,16 +14,17 @@
     margin-bottom: 5px;
 }
 
-.caja-incidencias-conformidad{
+.caja-incidencias-conformidad {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
     column-gap: 40px;
 }
-.fecha-semaforo-historial{
+
+.fecha-semaforo-historial {
     display: flex;
     align-items: center;
-    justify-content:space-between;
+    justify-content: space-between;
     flex-wrap: wrap;
 
     label {
@@ -31,13 +32,19 @@
     }
 }
 
-.tablas-herramientas{
+.guardar-herramientas {
+    position: sticky;
+    bottom: 0;
+    background-color: white;
+}
+
+.tablas-herramientas {
     display: flex;
     flex-direction: column;
-
     gap: 2rem;
+    margin-top: 5px;
     & figure {
-        max-height: 20rem;
+        max-height: 20em;
     }
 }
 
@@ -47,21 +54,16 @@
     padding: 8px;
 }
 
-.botones-guardar-inventario{
+.caja-incidencias-conformidad-botones {
     display: flex;
     align-items: center;
-    justify-content:center;
-}
-
-.caja-incidencias-conformidad-botones{
-    display: flex;
-    align-items: center;
-    justify-content:space-between;
+    justify-content: space-between;
 }
 
 .tablas-herramientas-historico-container {
     display: flex;
     flex-direction: column;
+
     & figure {
         max-height: 20rem;
     }
@@ -128,8 +130,8 @@ footer {
 
 .tablas-hitorico-herramientas {
     white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .tablas-hitorico-herramientas th,
