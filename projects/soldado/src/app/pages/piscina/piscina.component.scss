@@ -23,3 +23,39 @@ label {
 input {
     margin: 0;
 }
+.modal-container {
+  width: 80%;
+  max-width: 40rem;
+
+  & .modal-data {
+      margin-bottom: 1rem;
+
+      & .title-container {
+          display: flex;
+          gap: 1rem;
+      }
+      .icon-container {
+          display: flex;
+          align-items: center;
+          gap: .3rem;
+          & .anchor-tooltip {
+              color: inherit;
+              text-decoration: none;
+              margin-right: .3rem;
+              margin-bottom: 1rem;
+          }
+
+          & .anchor-tooltip:last-of-type {
+              margin-right: 0;
+          }
+      }
+
+
+  }
+
+  & .footer {
+      display: flex;
+      justify-content: end;
+  }
+
+}
