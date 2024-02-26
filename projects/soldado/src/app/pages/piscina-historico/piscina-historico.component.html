@@ -25,15 +25,27 @@
             <tr>
                 <th scope="col">Piscina</th>
                 <th scope="col">Fecha</th>
-                <th scope="col">QR</th>
+                <th *ngIf="tipoUsuario!=='Admin'" scope="col">QR</th>
+                <ng-container *ngIf="tipoUsuario==='Admin'">
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Entrada</th>
+                    <th scope="col">Salida</th>
+                </ng-container>
+                
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let row of rows">
                 <td scope="row">{{row.ubicacion}}</td>
                 <td scope="row">{{row.fecha}}</td>
-                <td scope="row" (click)="openModal($event)"><i class="fa-solid fa-qrcode fa-lg"></i>
+                <td *ngIf="tipoUsuario!=='Admin'" scope="row" (click)="openModal($event)"><i class="fa-solid fa-qrcode fa-lg"></i>
                 </td>
+                <ng-container *ngIf="tipoUsuario==='Admin'">
+                    <td scope="row">{{row.nombre}}</td>
+                    <td scope="row">{{row.horaEntrada}}</td>
+                    <td scope="row">{{row.horaSalida}}</td>
+                </ng-container>
+                
             </tr>
         </tbody>
     </table>
