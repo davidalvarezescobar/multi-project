@@ -67,8 +67,6 @@
                                     [checked]="reserva.siesta" disabled></td>
                             <td><a href="javascript:void(0)" (click)="setEditReserva(reserva)"><i
                                         class="pencil"></i></a></td>
-                            <td> <a href="javascript:void(0)" (click)="openModalBorrar()"><i class="trash"></i></a>
-                            </td>
                         </tr>
                     </tbody>
                 </table>
@@ -242,20 +240,10 @@
 
 <dialog id="modal-guardar" [attr.open]="guardar">
     <article>
+        <a (click)="closeModalGuardar()" aria-label="Close" class="close"></a>
         <div class="modal-container">
             <strong>Datos guardados.</strong><br><br>
             <a href="javascript:void(0)" (click)="closeModalGuardar()" role="button" type="button">Volver</a>
-        </div>
-    </article>
-</dialog>
-<dialog id="modal-guardar" [attr.open]="borrar">
-    <article>
-        <div class="modal-borrar-container">
-            <strong>¿Seguro que quiere cancelar la reserva?.</strong><br><br>
-            <div class="botones-modal-borrar-container">
-                <a href="javascript:void(0)" (click)="closeModalBorrar()" role="button" type="button">Volver</a>
-                <a href="javascript:void(0)" (click)="closeModalBorrar()" role="button" type="button">Borrar</a>
-            </div>
         </div>
     </article>
 </dialog>

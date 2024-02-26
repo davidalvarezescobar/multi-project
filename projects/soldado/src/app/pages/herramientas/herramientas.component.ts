@@ -14,6 +14,7 @@ export class HerramientasComponent implements OnInit {
   fechaActual: string;
   vEntrada: boolean = false;
   vSalida: boolean = false;
+  cambiosGuardados: boolean = false;
   modalObservacion: boolean = false;
   resultadoVerificacion: string;
   objetoRecuperado: boolean = false;
@@ -88,13 +89,13 @@ export class HerramientasComponent implements OnInit {
   openModalVerificacionEntrada(){
     if (this.semaforoInventario) {
       this.resultadoVerificacion = "Todos los materiales han sido devueltos"
-      document.getElementById("botonConfirmacion").style.backgroundColor = "#3596c3";
-      document.getElementById("botonConfirmacion").style.borderColor = "#3596c3";
+      document.getElementById("botonEntradaConfirmacion").style.backgroundColor = "#3596c3";
+      document.getElementById("botonEntradaConfirmacion").style.borderColor = "#3596c3";
       this.vEntrada = true
     } else {
-      this.resultadoVerificacion = "Faltan materiales"
-      document.getElementById("botonConfirmacion").style.backgroundColor = "red";
-      document.getElementById("botonConfirmacion").style.borderColor = "red";
+      this.resultadoVerificacion = "Atención, incidencias encontradas con el inventario de herramientas"
+      document.getElementById("botonEntradaConfirmacion").style.backgroundColor = "red";
+      document.getElementById("botonEntradaConfirmacion").style.borderColor = "red";
       this.vEntrada = true
     }
   }
@@ -113,13 +114,13 @@ export class HerramientasComponent implements OnInit {
 
     if (this.semaforoInventario) {
       this.resultadoVerificacion = "Todos los materiales han sido devueltos"
-      document.getElementById("botonConfirmacion").style.backgroundColor = "#3596c3";
-      document.getElementById("botonConfirmacion").style.borderColor = "#3596c3";
+      document.getElementById("botonSalidaConfirmacion").style.backgroundColor = "#3596c3";
+      document.getElementById("botonSalidaConfirmacion").style.borderColor = "#3596c3";
       this.vSalida = true
     } else {
-      this.resultadoVerificacion = "Faltan materiales"
-      document.getElementById("botonConfirmacion").style.backgroundColor = "red";
-      document.getElementById("botonConfirmacion").style.borderColor = "red";
+      this.resultadoVerificacion = "Atención, incidencias encontradas con el inventario de herramientas"
+      document.getElementById("botonSalidaConfirmacion").style.backgroundColor = "red";
+      document.getElementById("botonSalidaConfirmacion").style.borderColor = "red";
       this.vSalida = true
     }
   }
@@ -127,6 +128,35 @@ export class HerramientasComponent implements OnInit {
   closeModalVerificacionSalida() {
     this.vSalida = false
     this.objetoRecuperado = false
+  }
+
+  openModalObservacion(observacionIncidencia: string) {
+    this.observacionIncidencia = observacionIncidencia
+    this.modalObservacion = true;
+  }
+
+  closeModalObservacion() {
+    this.modalObservacion = false;
+  }
+
+  openModalGuardarCambio() {
+    console.log("hola")
+    this.cambiosGuardados = true;
+  }
+
+  closeModalGuardarCambio() {
+    this.cambiosGuardados = false;
+  }
+
+  guardarDatosEntradaModal(){
+    this.closeModalVerificacionEntrada()
+    console.log("hola")
+    this.openModalGuardarCambio()
+  }
+
+  guardarDatosSalidaModal(){
+    this.closeModalVerificacionSalida()
+    this.openModalGuardarCambio()
   }
 
   setSemaforoUserIncidencia() {
@@ -155,12 +185,12 @@ export class HerramientasComponent implements OnInit {
     this.setSemaforoUserIncidencia();
   }
 
-  openModalObservacion(observacionIncidencia: string) {
-    this.observacionIncidencia = observacionIncidencia
-    this.modalObservacion = true;
-  }
-
-  closeModalObservacion() {
-    this.modalObservacion = false;
+  formatDateDDMMYYYY(fecha: string): string {
+    const fechaSinTiempo = fecha.split('T')[0];
+    const partesFecha = fechaSinTiempo.split('-');
+    const dia = partesFecha[2];
+    const mes = partesFecha[1];
+    const año = partesFecha[0];
+    return `${año}-${mes}-${dia}`;
   }
 }

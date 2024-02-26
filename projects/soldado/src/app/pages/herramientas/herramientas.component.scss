@@ -1,17 +1,17 @@
-.boton-historial{
-    margin-right: 57px;
-    text-align: center;
-}
-
-.semaforo-herramientas{
-    margin-right: 66px;
-    text-align: center;
-}
-
-.inventario-container{
+.filtros-semaforo {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+}
+
+.filtros {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    column-gap: 40px;
+    width: 80%;
+    margin-bottom: 5px;
 }
 
 .caja-incidencias-conformidad{
@@ -31,41 +31,26 @@
     }
 }
 
-.fecha-semaforo-inventario{
+.tablas-herramientas{
     display: flex;
-    align-items: center;
-    justify-content:space-between;
-    width: 480px;
+    flex-direction: column;
+
+    gap: 2rem;
+    & figure {
+        max-height: 20rem;
+    }
+}
+
+.tablas-herramientas th,
+.tablas-herramientas td {
+    text-align: center;
+    padding: 8px;
 }
 
 .botones-guardar-inventario{
     display: flex;
     align-items: center;
-    justify-content:flex-end;
-    width: 360px;
-    gap: 52px;
-}
-
-.caja-historico-inventario{
-    display: flex;
-    align-items: center;
-    justify-content:space-between;
-    width: 480px;
-}
-
-.turno-inventario{
-    display: flex;
-    width: 480px;
-}
-
-.tablas-herramientas-container {
-    width: 510px;
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    & figure {
-        max-height: 20rem;
-    }
+    justify-content:center;
 }
 
 .caja-incidencias-conformidad-botones{
@@ -77,15 +62,9 @@
 .tablas-herramientas-historico-container {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    width: 100%;
     & figure {
         max-height: 20rem;
     }
-}
-
-.tablas-herramientas {
-    width: auto;
 }
 
 .cabecera-herramientas-container {
@@ -125,10 +104,6 @@ footer {
 .fa-check {
     color: #0bad33;
     ;
-}
-
-.columna-herramientas {
-    text-align: center;
 }
 
 .checkbox-column-herramientas {
