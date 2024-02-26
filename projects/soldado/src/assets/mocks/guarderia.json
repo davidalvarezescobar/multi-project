@@ -3,11 +3,6 @@
         "Paco",
         "Lucia"
     ],
-    "estados": [
-        "En espera",
-        "En guardería",
-        "Recogido"
-    ],
     "turnos": [
         "Mañana",
         "Tarde",
@@ -50,9 +45,7 @@
         {
             "nombre": "Paco",
             "fechaEntrada": "21-02-2024T08:00",
-            "fechaSalida": "21-02-2024T12:00",
             "turno": "Mañana",
-            "estado": "En guardería",
             "autorizacion": true,
             "autorizado": "Pedro",
             "desayuno": "Bastante",
@@ -75,9 +68,7 @@
         {
             "nombre": "Lucia",
             "fechaEntrada": "21-02-2024T07:30",
-            "fechaSalida": "21-02-2024T17:00",
             "turno": "Día completo",
-            "estado": "Recogido",
             "autorizacion": true,
             "autorizado": "Ana",
             "desayuno": "Todo",
@@ -100,9 +91,7 @@
         {
             "nombre": "Paco",
             "fechaEntrada": "21-02-2024T08:00",
-            "fechaSalida": "21-02-2024T16:00",
             "turno": "Día completo",
-            "estado": "En guardería",
             "autorizacion": true,
             "autorizado": "María",
             "desayuno": "Poco",
@@ -125,9 +114,7 @@
         {
             "nombre": "Lucia",
             "fechaEntrada": "21-02-2024T09:00",
-            "fechaSalida": "21-02-2024T13:00",
             "turno": "Mañana",
-            "estado": "En guardería",
             "autorizacion": true,
             "autorizado": "Ana",
             "desayuno": "Nada",
@@ -150,9 +137,7 @@
         {
             "nombre": "Paco",
             "fechaEntrada": "21-02-2024T13:00",
-            "fechaSalida": "21-02-2024T17:00",
             "turno": "Tarde",
-            "estado": "En espera",
             "autorizacion": false,
             "autorizado": "",
             "desayuno": "Todo",
@@ -175,9 +160,7 @@
         {
             "nombre": "Lucia",
             "fechaEntrada": "21-02-2024T08:00",
-            "fechaSalida": "21-02-2024T12:00",
             "turno": "Mañana",
-            "estado": "En guardería",
             "autorizacion": true,
             "autorizado": "Pedro",
             "desayuno": "Bastante",
@@ -200,9 +183,7 @@
         {
             "nombre": "Paco",
             "fechaEntrada": "21-02-2024T08:00",
-            "fechaSalida": "21-02-2024T13:00",
             "turno": "Mañana",
-            "estado": "En guardería",
             "autorizacion": true,
             "autorizado": "María",
             "desayuno": "Bastante",
@@ -225,9 +206,7 @@
         {
             "nombre": "Lucia",
             "fechaEntrada": "21-02-2024T13:30",
-            "fechaSalida": "21-02-2024T17:00",
             "turno": "Tarde",
-            "estado": "En espera",
             "autorizacion": true,
             "autorizado": "Juan",
             "desayuno": "Nada",
@@ -250,9 +229,7 @@
         {
             "nombre": "Paco",
             "fechaEntrada": "21-02-2024T12:30",
-            "fechaSalida": "21-02-2024T17:00",
             "turno": "Tarde",
-            "estado": "En espera",
             "autorizacion": false,
             "autorizado": "",
             "desayuno": "Todo",
@@ -275,9 +252,7 @@
         {
             "nombre": "Lucia",
             "fechaEntrada": "21-02-2024T09:30",
-            "fechaSalida": "21-02-2024T14:00",
             "turno": "Mañana",
-            "estado": "En espera",
             "autorizacion": true,
             "autorizado": "Ana",
             "desayuno": "Bastante",
@@ -300,9 +275,7 @@
         {
             "nombre": "Paco",
             "fechaEntrada": "21-02-2024T08:00",
-            "fechaSalida": "21-02-2024T13:00",
             "turno": "Mañana",
-            "estado": "En guardería",
             "autorizacion": true,
             "autorizado": "María",
             "desayuno": "Bastante",
@@ -325,9 +298,7 @@
         {
             "nombre": "Lucia",
             "fechaEntrada": "21-02-2024T13:30",
-            "fechaSalida": "21-02-2024T17:00",
             "turno": "Tarde",
-            "estado": "En espera",
             "autorizacion": true,
             "autorizado": "Juan",
             "desayuno": "Nada",
@@ -350,9 +321,7 @@
         {
             "nombre": "Paco",
             "fechaEntrada": "21-02-2024T12:30",
-            "fechaSalida": "21-02-2024T17:00",
             "turno": "Tarde",
-            "estado": "En espera",
             "autorizacion": false,
             "autorizado": "",
             "desayuno": "Todo",
@@ -375,9 +344,7 @@
         {
             "nombre": "Lucia",
             "fechaEntrada": "21-02-2024T09:30",
-            "fechaSalida": "21-02-2024T14:00",
             "turno": "Mañana",
-            "estado": "En espera",
             "autorizacion": true,
             "autorizado": "Ana",
             "desayuno": "Bastante",
@@ -400,9 +367,7 @@
         {
             "nombre": "Paco",
             "fechaEntrada": "21-02-2024T14:00",
-            "fechaSalida": "21-02-2024T18:00",
             "turno": "Tarde",
-            "estado": "En espera",
             "autorizacion": false,
             "autorizado": "",
             "desayuno": "Todo",
@@ -425,9 +390,7 @@
         {
             "nombre": "Lucia",
             "fechaEntrada": "21-02-2024T10:00",
-            "fechaSalida": "21-02-2024T12:00",
             "turno": "Mañana",
-            "estado": "En guardería",
             "autorizacion": true,
             "autorizado": "Pedro",
             "desayuno": "Bastante",

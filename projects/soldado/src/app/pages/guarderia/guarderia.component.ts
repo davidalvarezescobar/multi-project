@@ -15,7 +15,6 @@ export class GuarderiaComponent implements OnInit {
   nuevaReserva = true; //controla si estamos creando una nueva reserva o no.
   alergiasSeleccionadas: boolean[] = [];   //Son las alergias que se seleccionan
   guardar = false;  //bandera para el modal de guardar datos
-  borrar = false;   //bandera para el modal de borrar datos
 
   nombres: string[];
   estados: string[];
@@ -91,14 +90,6 @@ export class GuarderiaComponent implements OnInit {
 
   toggleVisibilidad(index: number) {
     this.alergiasSeleccionadas[index] = !this.alergiasSeleccionadas[index];
-  }
-
-  openModalBorrar() {
-    this.borrar = true;
-  }
-
-  closeModalBorrar() {
-    this.borrar = false;
   }
 
   setNewReserva(){
