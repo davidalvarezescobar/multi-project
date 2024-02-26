@@ -5,7 +5,7 @@
         Fecha:
         <input type="date" [formControl]="today" name="today">
     </label>
-    <a routerLink="/comedor-admin/historico" role="button" type="button">Histórico</a>
+    <!-- <a routerLink="/comedor-admin/historico" role="button" type="button">Peticiones</a> -->
 </section>
 
 <figure>
@@ -45,6 +45,7 @@
 </section>
 
 <footer>
+    <a routerLink="/comedor-admin/historico" role="button" type="button">Peticiones</a>
     <a href="javascript:void(0)" role="button" type="button" (click)="editar()">Editar</a>
     <a href="javascript:void(0)" role="button" type="button" (click)="guardar()">Guardar</a>
 </footer>

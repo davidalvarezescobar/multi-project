@@ -4,17 +4,7 @@
     <fieldset>
         <label class="comedor">
             Nombre:
-            <select id="base" #comedor [value]="filterTmp?.comedor ?? ''"
-                (change)="comedorFilterChanged(comedor.value)">
-                <option value="" selected>Selecciona un nombre</option>
-                <option>Alferez Pedro</option>
-                <option>Capitán Juan</option>
-                <option>Comandante Mariano</option>
-                <option>Mayor José</option>
-                <option>Sargento Luis</option>
-                <option>Teniente Dan</option>
-                <option>Teniente O'Neil</option>
-            </select>
+            <input type="text">
         </label>
         <label class="comedor">
             Aparcamiento:
@@ -41,18 +31,6 @@
             <input #fdesde type="date" [value]="filterTmp?.fdesde"
                 (change)="fechaFilterChanged('fdesde', fdesde.value)">
         </label>
-        <div class="horas">
-            <label class="short">
-                Hora desde:
-                <input #fdesde type="time" [value]="filterTmp?.fdesde"
-                    (change)="fechaFilterChanged('fdesde', fdesde.value)">
-            </label>
-            <label class="short">
-                Hora hasta:
-                <input #fhasta type="time" [value]="filterTmp?.fhasta"
-                    (change)="fechaFilterChanged('fhasta', fhasta.value)">
-            </label>
-        </div>
     </fieldset>
     <footer>
         <button type="button" (click)="borrar()">Borrar búsqueda</button>

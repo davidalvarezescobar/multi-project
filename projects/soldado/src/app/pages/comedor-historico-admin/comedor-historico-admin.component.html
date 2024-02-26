@@ -5,6 +5,7 @@
         <thead>
             <tr>
                 <th scope="col">Comedor</th>
+                <th scope="col">Peticionario</th>
                 <th scope="col">Fecha</th>
                 <th scope="col">Plato principal</th>
                 <th scope="col">Segundo plato</th>
@@ -17,6 +18,7 @@
         <tbody>
             <tr *ngFor="let reg of peticionesList">
                 <td>{{reg.comedor}}</td>
+                <td>{{reg.peticionario}}</td>
                 <td>{{reg.fecha | date:'dd-MM-yyyy'}}</td>
                 <td>{{reg.principal}}</td>
                 <td>{{reg.segundo}}</td>
