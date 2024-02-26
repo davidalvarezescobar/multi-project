@@ -40,6 +40,7 @@ import { TurnosAltaComponent } from './pages/turnos-alta/turnos-alta.component';
 import { TurnosComponent } from './pages/turnos/turnos.component';
 import { VisitasAltaComponent } from './pages/visitas-alta/visitas-alta.component';
 import { VisitasComponent } from './pages/visitas/visitas.component';
+import { SocorristaComponent } from './pages/socorrista/socorrista.component';
 
 const routes: Routes = [
   { path: 'comedor/historico',  component: ComedorHistoricoComponent, canActivate: [ComedorGuard] },
@@ -66,6 +67,7 @@ const routes: Routes = [
   { path: 'piscina',  component: PiscinaComponent },
   { path: 'piscina/historico',  component: PiscinaHistoricoComponent },
   { path: 'piscina/alta',  component: PiscinaAltaComponent },
+  { path: 'socorrista',  component: SocorristaComponent },
   { path: 'visitas',  component: VisitasComponent },
   { path: 'visitas/alta',  component: VisitasAltaComponent },
   { path: 'fichaje',  component: FichajeComponent },

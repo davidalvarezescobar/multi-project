@@ -1,0 +1,107 @@
+<h5>Piscina: Histórico de peticiones</h5>
+
+<form>
+  <fieldset>
+    <div class="fechas">
+      <label class="selector">
+        Piscina:
+        <select>
+          <option value="" disabled selected>Selecciona una piscina</option>
+          <option *ngFor="let piscina of piscinas">{{ piscina }}</option>
+        </select>
+      </label>
+      <label class="short">
+        Fecha:
+        <input type="date" />
+      </label>
+      <label>
+        Hora entrada
+        <input type="time" name="time" aria-label="Time" />
+      </label>
+      <label>
+        Hora salida
+        <input type="time" name="time" aria-label="Time" />
+      </label>
+    </div>
+  </fieldset>
+</form>
+
+<section>
+  <div class="checkbox-container">
+    <label htmlFor="Proyector"
+      >Limpieza entorno:
+      <input type="checkbox" id="Proyector" name="Proyector" /></label
+    ><label htmlFor="Proyector"
+      >Limpiafondos:<input
+        type="checkbox"
+        id="Proyector"
+        name="Proyector" /></label
+    ><label htmlFor="Proyector"
+      >Cesped:<input
+        type="checkbox"
+        id="Proyector"
+        name="Proyector" /></label
+    ><label htmlFor="Proyector"
+      >Botiquín:<input type="checkbox" id="Proyector" name="Proyector"
+    /></label>
+  </div>
+  <div class="checkbox-container">
+    <label htmlFor="Proyector"
+      >Nivel Agua:
+      <input type="checkbox" id="Proyector" name="Proyector" /></label
+    ><label htmlFor="Proyector"
+      >Nivel cloro:<input
+        type="checkbox"
+        id="Proyector"
+        name="Proyector" /></label
+    ><label htmlFor="Proyector"
+      >Nivel PH:<input
+        type="checkbox"
+        id="Proyector"
+        name="Proyector" /></label
+    ><label htmlFor="Proyector"
+      >Botellas Cloro:<input type="checkbox" id="Proyector" name="Proyector"
+    /></label>
+  </div>
+</section>
+<section class="observaciones-container">
+  <label for="observaciones">Observaciones:</label>
+  <textarea
+  name="observaciones"
+  aria-label="Observaciones"
+>
+</textarea>
+</section>
+<section class="footer">
+  <a
+      href="javascript:void(0)"
+      role="button"
+      type="button"
+      >Histórico</a
+    >
+    <a (click)="openModal()"
+      href="javascript:void(0)"
+      role="button"
+      type="button"
+      >Guardar</a
+    >
+</section>
+<dialog id="modal-pago" [attr.open]="showModal">
+  <article class="modal-container">
+      <header>
+          <a (click)="closeModal()" aria-label="Close" class="close"></a>
+          <span>Registro de tareas</span>
+      </header>
+      <div class="modal-data">
+          <div class="title-container">
+              <h4>Registro de tareas guardado correctamente</h4>
+          </div>
+      </div>
+      <div class="footer">
+          <a  (click)="continuar()" href="javascript:void(0)" role="button"
+              type="button">Continuar</a>
+
+      </div>
+
+  </article>
+</dialog>
