@@ -44,6 +44,7 @@ import { ComedorFilterPipe } from './pipes/comedor-filter.pipe';
 import { PiscinaHistoricoComponent } from './pages/piscina-historico/piscina-historico.component';
 import { AparcamientosAdminComponent } from './pages/aparcamientos-admin/aparcamientos-admin.component';
 import { SocorristaComponent } from './pages/socorrista/socorrista.component';
+import { SocorristaHistoricoComponent } from './pages/socorrista-historico/socorrista-historico.component';
 
 registerLocaleData(es);
 
@@ -75,6 +76,7 @@ registerLocaleData(es);
     PiscinaAltaComponent,
     PiscinaHistoricoComponent,
     SocorristaComponent,
+    SocorristaHistoricoComponent,
     FichajeComponent,
     FichajeAltaComponent,
     TurnosComponent,

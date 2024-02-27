@@ -1,0 +1,63 @@
+<h5>Piscina: Histórico información Socorrista</h5>
+<details>
+  <summary>Filtros</summary>
+  <form>
+    <fieldset>
+      <div class="fechas">
+        <label class="selector">
+          Piscina:
+          <select>
+            <option value="" disabled selected>Selecciona una piscina</option>
+            <option *ngFor="let piscina of piscinas">{{ piscina }}</option>
+          </select>
+        </label>
+        <label class="short">
+          Fecha hasta:
+          <input type="date" />
+        </label>
+      </div>
+      <a href="javascript:void(0)" role="button" type="button">Buscar</a>
+    </fieldset>
+  </form>
+</details>
+
+
+<figure>
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Piscina</th>
+        <th scope="col">Fecha</th>
+        <th scope="col">Entrada</th>
+        <th scope="col">Salida</th>
+        <th class="align-center" scope="col">Entorno</th>
+        <th class="align-center" scope="col">Limpiafondos</th>
+        <th class="align-center" scope="col">Césped</th>
+        <th class="align-center" scope="col">Botiquín</th>
+        <th class="align-center" scope="col">Nivel Agua</th>
+        <th class="align-center" scope="col">Nivel Cloro</th>
+        <th class="align-center" scope="col">Nivel PH</th>
+        <th class="align-center" scope="col">Botellas</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let row of rows">
+        <td scope="row">{{ row.ubicacion }}</td>
+        <td scope="row">{{ row.fecha }}</td>
+        <td scope="row">{{ row.horaEntrada }}</td>
+        <td scope="row">{{ row.horaSalida }}</td>
+        <td class="align-center" scope="row"><i *ngIf="row.entorno" class="fa-solid fa-check"></i></td>
+        <td class="align-center" scope="row"><i *ngIf="row.limpiafondos" class="fa-solid fa-check"></i></td>
+        <td class="align-center" scope="row"><i *ngIf="row.cesped" class="fa-solid fa-check"></i></td>
+        <td class="align-center" scope="row"><i *ngIf="row.botiquin" class="fa-solid fa-check"></i></td>
+        <td class="align-center" scope="row"><i *ngIf="row.nivelAgua" class="fa-solid fa-check"></i></td>
+        <td class="align-center" scope="row"><i *ngIf="row.nivelCloro" class="fa-solid fa-check"></i></td>
+        <td class="align-center" scope="row"><i *ngIf="row.nivelph" class="fa-solid fa-check"></i></td>
+        <td class="align-center" scope="row">19</td>
+
+
+      </tr>
+    </tbody>
+  </table>
+</figure>

@@ -1,0 +1,45 @@
+:host {
+  display: block;
+}
+
+fieldset {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  & .fechas {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+
+      label {
+          width: 20rem;
+      }
+  }
+  & a {
+      height: 2.8rem;
+  }
+}
+figure {
+  max-height: 20rem;
+}
+input{
+  margin-bottom: 0;
+}
+label {
+  margin-bottom: 0;
+}
+select {
+  margin-bottom: 0;
+}
+details {
+  background: #e1e1e152;
+  padding: 0.5rem;
+  border-radius: 4px;
+}
+.align-center {
+  text-align: center;
+}
