@@ -3,11 +3,11 @@
 <form>
     <fieldset>
         <div class="filtros">
-            <label>
+            <label *ngIf="tipoUsuario=='Admin'">
                 Visitante:
                 <input type="text">
             </label>
-            <label *ngIf="tipoUsuario=='Admin'">
+            <label>
                 Destino:
                 <input type="text">
             </label>
@@ -30,8 +30,8 @@
         <table>
             <thead>
                 <tr>
-                    <th scope="col">Visitante</th>
-                    <th scope="col" *ngIf="tipoUsuario=='Admin'">Destino</th>
+                    <th scope="col" *ngIf="tipoUsuario=='Admin'">Visitante</th>
+                    <th scope="col">Destino</th>
                     <th scope="col">Fecha</th>
                     <th scope="col">Vehiculo</th>
                     <th scope="col">Modelo</th>
@@ -61,7 +61,7 @@
 </div>
 
 <footer>
-    <a routerLink="/visitas/alta" role="button" type="button">Nueva visita</a>
+    <a *ngIf="tipoUsuario=='User'" routerLink="/visitas/alta" role="button" type="button">Nueva visita</a>
 </footer>
 
 <!-- Modal de QR -->

@@ -90,6 +90,7 @@ export class HerramientasComponent implements OnInit {
   closeModalGuardarCambioEntrada() {
     this.horaEntrada = new Date().toISOString().slice(11, 16);
     this.momentoActivo = "Salida"
+    this.cSalida = this.cEntrada
     this.setSemaforoUserIncidencia(this.cSalida)
     this.cambiosGuardadosEntrada = false;
   }
