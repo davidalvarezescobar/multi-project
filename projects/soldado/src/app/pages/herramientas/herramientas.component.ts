@@ -10,21 +10,25 @@ import { LoginService } from '../../services/login.service';
 export class HerramientasComponent implements OnInit {
   tipoUsuario: string;
   ventana: string;
-  horaActual: string;
+  horaEntrada: string;
+  horaSalida: string;
   fechaActual: string;
-  vEntrada: boolean = false;
-  vSalida: boolean = false;
-  cambiosGuardados: boolean = false;
+  modalAdvertenciaEntrada: boolean = false;
+  modalAdvertenciaSalida: boolean = false;
+  cambiosGuardadosEntrada: boolean = false;
+  cambiosGuardadosSalida: boolean = false;
   modalObservacion: boolean = false;
   resultadoVerificacion: string;
   objetoRecuperado: boolean = false;
   observacionIncidencia: string;
   semaforoInventario: boolean;
   semaforoHistorial: boolean;
+  momentoActivo: string = "Entrada";
+  cEntrada: boolean[] = [];
+  cSalida: boolean[] = [];
 
-  herramientas:[{ nombre: string, cEntrada: boolean, cSalida: boolean}];
+  herramientas: string[];
   historialHerramietnas: any[];
-  horaEntrada: string
   turnos: string[];
   cajas: string[];
 
@@ -33,7 +37,6 @@ export class HerramientasComponent implements OnInit {
     readonly loginSrv: LoginService) { }
 
   ngOnInit(): void {
-    this.horaActual = new Date().toISOString().slice(11, 16);
     this.fechaActual = new Date().toISOString().slice(0, 16);
 
     this.loginSrv.user$.subscribe(user => {
@@ -48,86 +51,74 @@ export class HerramientasComponent implements OnInit {
 
     this.dataSrv.loadHerramientasDatos().subscribe(
       herramientas => {
-        this.herramientas = herramientas?.nombre.map(nombre=> { return {nombre:nombre, cEntrada: true, cSalida: true}});
+        this.herramientas = herramientas?.nombre;
         this.historialHerramietnas = herramientas?.historialHerramientas
-        this.horaEntrada = herramientas?.horaEntrada;
         this.turnos = herramientas?.turnos;
         this.cajas = herramientas?.cajas;
+
+        for (let i = 0; i < this.herramientas.length; i++) {
+          this.cEntrada[i] = true
+          this.cSalida[i] = true
+        }
+
         this.setSemaforoHistorialIncidencia();
-        this.setSemaforoUserIncidencia();
+        this.setSemaforoUserIncidencia(this.cEntrada);
       });
   }
 
-  combrobarDatos() {
+  modalVerificacionHerramietnasEntrada() {
     if (this.semaforoInventario) {
-      return true
+      this.openModalGuardarCambioEntrada();
     } else {
-      return false
+      this.openModalAdvertenciaEntrada()
     }
   }
 
-  cEntradaChange(check: boolean, herramientaEntrada: string) {
-    for (let i = 0; i < this.herramientas.length; i++) {
-      if (this.herramientas[i].nombre == herramientaEntrada) {
-        this.herramientas[i].cEntrada = check
-        this.setSemaforoUserIncidencia()
-        return
-      }
-    }
-  }
-
-  cSalidaChange(check: boolean, herramientaEntrada: string) {
-    for (let i = 0; i < this.herramientas.length; i++) {
-      if (this.herramientas[i].nombre == herramientaEntrada) {
-        this.herramientas[i].cSalida = check
-        this.setSemaforoUserIncidencia()
-        return
-      }
-    }
-  }
-
-  openModalVerificacionEntrada(){
+  modalVerificacionHerramietnasSalida() {
     if (this.semaforoInventario) {
-      this.resultadoVerificacion = "Todos los materiales han sido devueltos"
-      document.getElementById("botonEntradaConfirmacion").style.backgroundColor = "#3596c3";
-      document.getElementById("botonEntradaConfirmacion").style.borderColor = "#3596c3";
-      this.vEntrada = true
+      this.openModalGuardarCambioSalida();
     } else {
-      this.resultadoVerificacion = "Atención, incidencias encontradas con el inventario de herramientas"
-      document.getElementById("botonEntradaConfirmacion").style.backgroundColor = "red";
-      document.getElementById("botonEntradaConfirmacion").style.borderColor = "red";
-      this.vEntrada = true
+      this.openModalAdvertenciaSalida()
     }
   }
 
-  closeModalVerificacionEntrada() {
-    this.vEntrada = false
+  openModalGuardarCambioEntrada() {
+    this.closeModalAdvertenciaEntrada()
+    this.cambiosGuardadosEntrada = true;
   }
 
-  openModalVerificacionSalida() {
-    for (let i = 0; i < this.herramientas.length; i++) {
-      if (!this.herramientas[i].cEntrada && this.herramientas[i].cSalida) {
-        this.objetoRecuperado = true
-        break
-      }
-    }
-
-    if (this.semaforoInventario) {
-      this.resultadoVerificacion = "Todos los materiales han sido devueltos"
-      document.getElementById("botonSalidaConfirmacion").style.backgroundColor = "#3596c3";
-      document.getElementById("botonSalidaConfirmacion").style.borderColor = "#3596c3";
-      this.vSalida = true
-    } else {
-      this.resultadoVerificacion = "Atención, incidencias encontradas con el inventario de herramientas"
-      document.getElementById("botonSalidaConfirmacion").style.backgroundColor = "red";
-      document.getElementById("botonSalidaConfirmacion").style.borderColor = "red";
-      this.vSalida = true
-    }
+  closeModalGuardarCambioEntrada() {
+    this.horaEntrada = new Date().toISOString().slice(11, 16);
+    this.momentoActivo = "Salida"
+    this.setSemaforoUserIncidencia(this.cSalida)
+    this.cambiosGuardadosEntrada = false;
   }
 
-  closeModalVerificacionSalida() {
-    this.vSalida = false
-    this.objetoRecuperado = false
+  openModalGuardarCambioSalida() {
+    this.closeModalAdvertenciaSalida()
+    this.cambiosGuardadosSalida = true;
+  }
+
+  closeModalGuardarCambioSalida() {
+    this.horaSalida = new Date().toISOString().slice(11, 16);
+    this.momentoActivo = "Finalizado"
+    this.cambiosGuardadosSalida = false;
+  }
+
+  openModalAdvertenciaEntrada() {
+    this.modalAdvertenciaEntrada = true
+  }
+
+  closeModalAdvertenciaEntrada() {
+    this.modalAdvertenciaEntrada = false
+  }
+
+  openModalAdvertenciaSalida() {
+    this.modalAdvertenciaSalida = true
+  }
+
+  closeModalAdvertenciaSalida() {
+    this.modalAdvertenciaSalida = false
   }
 
   openModalObservacion(observacionIncidencia: string) {
@@ -139,29 +130,30 @@ export class HerramientasComponent implements OnInit {
     this.modalObservacion = false;
   }
 
-  openModalGuardarCambio() {
-    console.log("hola")
-    this.cambiosGuardados = true;
-  }
 
-  closeModalGuardarCambio() {
-    this.cambiosGuardados = false;
-  }
-
-  guardarDatosEntradaModal(){
-    this.closeModalVerificacionEntrada()
-    console.log("hola")
-    this.openModalGuardarCambio()
-  }
-
-  guardarDatosSalidaModal(){
-    this.closeModalVerificacionSalida()
-    this.openModalGuardarCambio()
-  }
-
-  setSemaforoUserIncidencia() {
+  cEntradaChange(check: boolean, herramientaEntrada: string) {
     for (let i = 0; i < this.herramientas.length; i++) {
-      if (!this.herramientas[i].cEntrada || !this.herramientas[i].cSalida) {
+      if (this.herramientas[i] == herramientaEntrada) {
+        this.cEntrada[i] = check
+        this.setSemaforoUserIncidencia(this.cEntrada)
+        return
+      }
+    }
+  }
+
+  cSalidaChange(check: boolean, herramientaEntrada: string) {
+    for (let i = 0; i < this.herramientas.length; i++) {
+      if (this.herramientas[i] == herramientaEntrada) {
+        this.cSalida[i] = check
+        this.setSemaforoUserIncidencia(this.cSalida)
+        return
+      }
+    }
+  }
+
+  setSemaforoUserIncidencia(checks: boolean[]) {
+    for (let i = 0; i < checks.length; i++) {
+      if (!checks[i]) {
         this.semaforoInventario = false
         return
       }
@@ -182,7 +174,7 @@ export class HerramientasComponent implements OnInit {
   setVentana(ventana: string) {
     this.ventana = ventana
     this.setSemaforoHistorialIncidencia();
-    this.setSemaforoUserIncidencia();
+    this.setSemaforoUserIncidencia(this.cEntrada);
   }
 
   formatDateDDMMYYYY(fecha: string): string {

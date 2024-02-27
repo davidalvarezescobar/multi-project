@@ -1,6 +1,7 @@
 {
     "visitas": [
         {
+            "nombre_visitante": "Juan Pérez",
             "nombre_visitado": "Oficina 1",
             "fecha": "21-02-2024",
             "vehiculo": true,
@@ -8,6 +9,7 @@
             "matricula": "ABC123"
         },
         {
+            "nombre_visitante": "María López",
             "nombre_visitado": "Almacén",
             "fecha": "21-02-2024",
             "vehiculo": false,
@@ -15,6 +17,7 @@
             "matricula": ""
         },
         {
+            "nombre_visitante": "Carlos García",
             "nombre_visitado": "Sala de Reuniones",
             "fecha": "21-02-2024",
             "vehiculo": true,
@@ -22,6 +25,7 @@
             "matricula": "XYZ789"
         },
         {
+            "nombre_visitante": "Ana Martínez",
             "nombre_visitado": "Recepción",
             "fecha": "21-02-2024",
             "vehiculo": false,
@@ -29,6 +33,7 @@
             "matricula": ""
         },
         {
+            "nombre_visitante": "Pedro Ramírez",
             "nombre_visitado": "Oficina 2",
             "fecha": "21-02-2024",
             "vehiculo": true,
@@ -36,6 +41,7 @@
             "matricula": "DEF456"
         },
         {
+            "nombre_visitante": "Laura Sánchez",
             "nombre_visitado": "Área de Producción",
             "fecha": "21-02-2024",
             "vehiculo": false,
@@ -43,6 +49,7 @@
             "matricula": ""
         },
         {
+            "nombre_visitante": "Manuel Rodríguez",
             "nombre_visitado": "Laboratorio",
             "fecha": "21-02-2024",
             "vehiculo": true,
@@ -50,6 +57,7 @@
             "matricula": "GHI789"
         },
         {
+            "nombre_visitante": "Elena Fernández",
             "nombre_visitado": "Gerencia",
             "fecha": "21-02-2024",
             "vehiculo": false,
@@ -57,6 +65,7 @@
             "matricula": ""
         },
         {
+            "nombre_visitante": "Luisa Gómez",
             "nombre_visitado": "Centro de Investigación",
             "fecha": "21-02-2024",
             "vehiculo": true,
@@ -64,6 +73,7 @@
             "matricula": "JKL321"
         },
         {
+            "nombre_visitante": "Mario Torres",
             "nombre_visitado": "Bodega",
             "fecha": "21-02-2024",
             "vehiculo": false,

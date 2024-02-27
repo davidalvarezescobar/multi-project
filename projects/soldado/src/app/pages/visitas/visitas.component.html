@@ -4,7 +4,16 @@
     <fieldset>
         <div class="filtros">
             <label>
+                Visitante:
+                <input type="text">
+            </label>
+            <label *ngIf="tipoUsuario=='Admin'">
                 Destino:
+                <input type="text">
+            </label>
+
+            <label class="short" *ngIf="tipoUsuario=='Admin'">
+                Matrícula:
                 <input type="text">
             </label>
             <label class="short">
@@ -21,7 +30,8 @@
         <table>
             <thead>
                 <tr>
-                    <th scope="col">Destino</th>
+                    <th scope="col">Visitante</th>
+                    <th scope="col" *ngIf="tipoUsuario=='Admin'">Destino</th>
                     <th scope="col">Fecha</th>
                     <th scope="col">Vehiculo</th>
                     <th scope="col">Modelo</th>
@@ -31,7 +41,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let visita of visitas">
-                    <td><input type="text" [value]="visita.nombre_visitante" [readonly]="tipoUsuario=='User'"
+                    <td *ngIf="tipoUsuario=='Admin'"><input type="text" [value]="visita.nombre_visitante"
                             class="tabla-input"></td>
                     <td><input type="text" [value]="visita.nombre_visitado" [readonly]="tipoUsuario=='User'"
                             class="tabla-input"></td>

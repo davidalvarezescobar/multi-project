@@ -1,7 +1,6 @@
 {
-    "horaEntrada": "08:30",
     "turnos": ["Mañana", "Tarde", "Noche"],
-    "cajas": ["Caja 1", "Caja 2", "Caja 2"],
+    "cajas": ["Cajón 1", "Cajón 2", "Cajón 3"],
     "nombre": ["Destornillador", "Martillo", "Llave ajustable", "Alicates de punta", "Sierra de mano", "Cinta métrica", "Nivel de burbuja", "Llave inglesa", "Cuchillo de uso general", "Linterna de trabajo", "Taladro eléctrico"],
     "historialHerramientas": [
         {
@@ -14,7 +13,7 @@
             "estadoEntrada": true,
             "hora_inventario_salida": "12:00",
             "estadoSalida": false,
-            "observacionIncidencia": ""
+            "observacionIncidencia": "No hay observaciones"
         },
         {
             "turno": "Tarde",
@@ -38,7 +37,7 @@
             "estadoEntrada": true,
             "hora_inventario_salida": "00:00",
             "estadoSalida": true,
-            "observacionIncidencia": ""
+            "observacionIncidencia": "No hay observaciones"
         },
         {
             "turno": "Mañana",
@@ -50,7 +49,7 @@
             "estadoEntrada": true,
             "hora_inventario_salida": "12:00",
             "estadoSalida": true,
-            "observacionIncidencia": ""
+            "observacionIncidencia": "No hay observaciones"
         },
         {
             "turno": "Tarde",
@@ -62,7 +61,7 @@
             "estadoEntrada": true,
             "hora_inventario_salida": "18:00",
             "estadoSalida": true,
-            "observacionIncidencia": ""
+            "observacionIncidencia": "No hay observaciones"
         },
         {
             "turno": "Noche",
@@ -74,7 +73,7 @@
             "estadoEntrada": true,
             "hora_inventario_salida": "00:00",
             "estadoSalida": true,
-            "observacionIncidencia": ""
+            "observacionIncidencia": "No hay observaciones"
         },
         {
             "turno": "Mañana",
@@ -86,7 +85,7 @@
             "estadoEntrada": true,
             "hora_inventario_salida": "12:00",
             "estadoSalida": true,
-            "observacionIncidencia": ""
+            "observacionIncidencia": "No hay observaciones"
         },
         {
             "turno": "Tarde",
@@ -98,7 +97,7 @@
             "estadoEntrada": true,
             "hora_inventario_salida": "18:00",
             "estadoSalida": true,
-            "observacionIncidencia": ""
+            "observacionIncidencia": "No hay observaciones"
         },
         {
             "turno": "Noche",
@@ -110,7 +109,7 @@
             "estadoEntrada": true,
             "hora_inventario_salida": "00:00",
             "estadoSalida": true,
-            "observacionIncidencia": ""
+            "observacionIncidencia": "No hay observaciones"
         },
         {
             "turno": "Mañana",
@@ -122,7 +121,7 @@
             "estadoEntrada": true,
             "hora_inventario_salida": "12:00",
             "estadoSalida": true,
-            "observacionIncidencia": ""
+            "observacionIncidencia": "No hay observaciones"
         },
         {
             "turno": "Tarde",
@@ -134,7 +133,7 @@
             "estadoEntrada": true,
             "hora_inventario_salida": "18:00",
             "estadoSalida": true,
-            "observacionIncidencia": ""
+            "observacionIncidencia": "No hay observaciones"
         },
         {
             "turno": "Noche",
@@ -146,7 +145,7 @@
             "estadoEntrada": true,
             "hora_inventario_salida": "00:00",
             "estadoSalida": true,
-            "observacionIncidencia": ""
+            "observacionIncidencia": "No hay observaciones"
         },
         {
             "turno": "Mañana",
@@ -158,7 +157,7 @@
             "estadoEntrada": true,
             "hora_inventario_salida": "12:00",
             "estadoSalida": true,
-            "observacionIncidencia": ""
+            "observacionIncidencia": "No hay observaciones"
         },
         {
             "turno": "Tarde",
@@ -170,7 +169,7 @@
             "estadoEntrada": true,
             "hora_inventario_salida": "18:00",
             "estadoSalida": true,
-            "observacionIncidencia": ""
+            "observacionIncidencia": "No hay observaciones"
         },
         {
             "turno": "Noche",
@@ -182,7 +181,7 @@
             "estadoEntrada": true,
             "hora_inventario_salida": "00:00",
             "estadoSalida": true,
-            "observacionIncidencia": ""
+            "observacionIncidencia": "No hay observaciones"
         }
     ]
 }
