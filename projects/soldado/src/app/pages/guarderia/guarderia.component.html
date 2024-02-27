@@ -3,36 +3,38 @@
 
 <div>
     <div *ngIf="ventana === 'historial'">
-        <form>
-            <fieldset>
-                <div class="fecha-turno">
-                    <label for="nombre">
-                        Nombre del niño/a:
-                        <br>
-                        <select id="nombre" required>
-                            <option value="" selected>Seleccione nombre</option>
-                            <option *ngFor="let name of nombres" [value]="name">{{ name }}</option>
-                        </select>
-                    </label>
-                    <label class="short">
-                        Desde:
-                        <input type="date" [value]="formatDateDDMMYYYY(fechaActual)">
-                    </label>
-                    <label class="short">
-                        Hasta:
-                        <input type="date" [value]="formatDateDDMMYYYY(fechaActual)">
-                    </label>
-                    <label for="fruit">
-                        Turno:
-                        <select id="fruit" required>
-                            <option value="" selected>Seleccione turno</option>
-                            <option *ngFor="let turno of turnos" [value]="turno">{{ turno }}</option>
-                        </select>
-                    </label>
-                    <a style="margin-top: 8px;" href="javascript:void(0)" role="button" type="button">Buscar</a>
-                </div>
-            </fieldset>
-        </form>
+        <details class="details">
+            <summary>Filtros:</summary>
+            <form>
+                <fieldset>
+                    <div class="filtros">
+                        <label for="nombre">
+                            Nombre del niño/a:
+                            <br>
+                            <select id="nombre" required>
+                                <option value="" selected>Seleccione nombre</option>
+                                <option *ngFor="let name of nombres" [value]="name">{{ name }}</option>
+                            </select>
+                        </label>
+                        <label class="short">
+                            Desde:
+                            <input type="date" [value]="formatDateDDMMYYYY(fechaActual)">
+                        </label>
+                        <label class="short">
+                            Hasta:
+                            <input type="date" [value]="formatDateDDMMYYYY(fechaActual)">
+                        </label>
+                        <label for="fruit">
+                            Turno:
+                            <select id="fruit" required>
+                                <option value="" selected>Seleccione turno</option>
+                                <option *ngFor="let turno of turnos" [value]="turno">{{ turno }}</option>
+                            </select>
+                        </label>
+                    </div>
+                </fieldset>
+            </form>
+        </details>
 
         <div class="lista-historial">
             <figure>
@@ -97,10 +99,10 @@
             </label>
             <label for="autorizacion_recogida">
                 <input type="checkbox" id="autorizacion_recogida" name="autorizacion_recogida"
-                    [checked]="reserva?.autorizacion === true">
+                    [checked]="reserva?.autorizacion === true" #salidaCheckbox (change)="cAutorizadoChange(salidaCheckbox.checked)">
                 Autorización Recogida
-                <input type="text" id="nombre" class="persona-autorizada" name="nombre"
-                    placeholder="Introduzca persona autorizada" [value]="reserva?.autorizado">
+                <input type="text" id="nombreAutorizado" class="persona-autorizada" name="nombre"
+                    placeholder="Introduzca persona autorizada" [value]="reserva?.autorizado" [disabled] = "!autorizado">
             </label>
         </div>
         <a href="javascript:void(0)" (click)="monitorDatos()" id="monitorDatos" role="button" class="monitor-button"

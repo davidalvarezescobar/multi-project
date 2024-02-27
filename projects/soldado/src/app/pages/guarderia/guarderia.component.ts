@@ -15,6 +15,7 @@ export class GuarderiaComponent implements OnInit {
   nuevaReserva = true; //controla si estamos creando una nueva reserva o no.
   alergiasSeleccionadas: boolean[] = [];   //Son las alergias que se seleccionan
   guardar = false;  //bandera para el modal de guardar datos
+  autorizado = false; //controla si estamos creando una nueva reserva o no.
 
   nombres: string[];
   estados: string[];
@@ -42,7 +43,7 @@ export class GuarderiaComponent implements OnInit {
         this.deposiciones = datos?.deposiciones;
         this.alergias = datos?.alergias;
         this.reservas = datos?.reservas;
-        });
+      });
 
     if (this.tipoUsuario == "Admin") {
       this.setVentana("historial")
@@ -92,14 +93,14 @@ export class GuarderiaComponent implements OnInit {
     this.alergiasSeleccionadas[index] = !this.alergiasSeleccionadas[index];
   }
 
-  setNewReserva(){
+  setNewReserva() {
     this.nuevaReserva = true
     this.reserva = undefined;
     this.alergiasSeleccionadas = []
     this.setVentana("datos");
-      setTimeout(() => {
-        this.padresDatos()
-      }, 1);
+    setTimeout(() => {
+      this.padresDatos()
+    }, 1);
   }
 
   setEditReserva(reserva: any) {
@@ -118,6 +119,10 @@ export class GuarderiaComponent implements OnInit {
     } else {
       console.log("Hubo algún error");
     }
+  }
+
+  cAutorizadoChange(check) {
+    this.autorizado = check
   }
 
   formatDateDDMMYYYY(fecha: string): string {
