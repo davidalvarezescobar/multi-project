@@ -1,4 +1,4 @@
-<h5 *ngIf="ventana === 'datos'">Guardería: Registro de información diaria</h5>
+<h5 *ngIf="ventana === 'datos'">Guardería: Registro diaria</h5>
 <h5 *ngIf="ventana === 'historial'">Guardería: Histórico de información diaria</h5>
 
 <div>
@@ -78,20 +78,20 @@
             <label for="nombre">
                 Nombre del niño/a:
                 <select id="nombre" required>
-                    <option>Selecciona un nombre</option>
+                    <option>Seleccione un nombre</option>
                     <option *ngFor="let name of nombres" [value]="name" [selected]="reserva?.nombre === name">
                         {{name}}</option>
                 </select>
             </label>
             <label class="short">
-                Fecha de entrada:
-                <input type="datetime-local"
-                    [value]="reserva ? formatDateDDMMYYYYHHMM(reserva.fechaEntrada) : fechaActual">
+                Fecha:
+                <input type="date"
+                    [value]="reserva ? formatDateDDMMYYYY(reserva.fechaEntrada) : fechaActual">
             </label>
             <label for="fruit">
                 Turno:
                 <select id="fruit" required [value]="reserva?.turno">
-                    <option>Selecciona un turno</option>
+                    <option>Seleccione un turno</option>
                     <option *ngFor="let turno of turnos" [value]="turno">{{ turno }}</option>
                 </select>
             </label>
@@ -100,7 +100,7 @@
                     [checked]="reserva?.autorizacion === true">
                 Autorización Recogida
                 <input type="text" id="nombre" class="persona-autorizada" name="nombre"
-                    placeholder="Introduzca su nombre" [value]="reserva?.autorizado">
+                    placeholder="Introduzca persona autorizada" [value]="reserva?.autorizado">
             </label>
         </div>
         <a href="javascript:void(0)" (click)="monitorDatos()" id="monitorDatos" role="button" class="monitor-button"
