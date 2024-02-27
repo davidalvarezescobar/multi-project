@@ -1,5 +1,5 @@
 <h5 *ngIf="ventana === 'datos'">Guardería: Registro diaria</h5>
-<h5 *ngIf="ventana === 'historial'">Guardería: Histórico de información diaria</h5>
+<h5 *ngIf="ventana === 'historial'">Guardería: Histórico información diaria</h5>
 
 <div>
     <div *ngIf="ventana === 'historial'">
@@ -10,7 +10,7 @@
                         Nombre del niño/a:
                         <br>
                         <select id="nombre" required>
-                            <option value="" selected>Selecciona nombre</option>
+                            <option value="" selected>Seleccione nombre</option>
                             <option *ngFor="let name of nombres" [value]="name">{{ name }}</option>
                         </select>
                     </label>
@@ -25,7 +25,7 @@
                     <label for="fruit">
                         Turno:
                         <select id="fruit" required>
-                            <option value="" selected>Selecciona turno</option>
+                            <option value="" selected>Seleccione turno</option>
                             <option *ngFor="let turno of turnos" [value]="turno">{{ turno }}</option>
                         </select>
                     </label>
