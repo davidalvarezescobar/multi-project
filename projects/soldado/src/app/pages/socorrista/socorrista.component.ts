@@ -15,12 +15,8 @@ export class SocorristaComponent {
   ngOnInit(): void {}
 
   piscinas: any = [
-    {
-      nombre: 'Maestranza',
-    },
-    {
-      nombre: 'Base',
-    },
+      'Maestranza',
+      'Base'
   ];
   closeModal() {
     this.showModal = false;

@@ -28,14 +28,14 @@ fieldset {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   margin-bottom: 1rem;
-  row-gap: .7rem;
+  row-gap: 0.7rem;
   column-gap: 1.2rem;
   & label {
     display: flex;
     align-items: center;
     justify-content: space-between;
     & input {
-      margin-left: .3rem;
+      margin-left: 0.3rem;
     }
   }
 }
@@ -45,11 +45,9 @@ fieldset {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
-
   }
 }
 .observaciones-container {
-
 }
 .footer {
   display: flex;
@@ -65,4 +63,9 @@ input {
 }
 select {
   margin: 0;
+}
+details {
+  background: #e1e1e152;
+  padding: 0.5rem;
+  border-radius: 4px;
 }
