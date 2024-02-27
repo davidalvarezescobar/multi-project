@@ -1,40 +1,39 @@
-<div class="cabecera-herramientas-container">
-    <div>
-        <h5 *ngIf="ventana === 'inventario'">Inventario de herramientas para control de FOD</h5>
-        <h5 *ngIf="ventana === 'historial'">Histórico de inventario de herramientas para control de FOD</h5>
-    </div>
-
-    <a style="margin-top: 6px;" href="javascript:void(0)" role="button" type="button"
-        (click)="setVentana('historial')">Histórico</a>
-</div>
+<h5 *ngIf="ventana === 'inventario'">Inventario de herramientas para control de FOD</h5>
+<h5 *ngIf="ventana === 'historial'">Histórico de inventario de herramientas para control de FOD</h5>
 
 <div *ngIf="ventana === 'inventario'">
-    <div class="filtros-semaforo">
-        <div class="filtros fecha-turno-caja">
-            <label class="short">
-                <strong>Fecha:</strong>
-                <input type="date" [value]="formatDateDDMMYYYY(fechaActual)">
-            </label>
+    <details>
+        <summary>Filtros:</summary>
+        <form>
+            <fieldset>
+                <div class="filtros">
+                    <label class="short" style="max-width: 90px;">
+                        <strong>Fecha:</strong>
+                        <input type="text" [value]="formatDateConMesEscritoDDMM(fechaActual)"
+                            style="border: none; pointer-events: none;" readonly>
+                    </label>
 
-            <label for="turno" class="short">
-                <strong>Turno:</strong>
-                <select id="turno" required>
-                    <option value="" selected>Selecciona turno</option>
-                    <option *ngFor="let turno of turnos">{{ turno }}</option>
-                </select>
-            </label>
+                    <label for="turno" class="short">
+                        <strong>Turno:</strong>
+                        <select id="turno" required>
+                            <option value="" selected>Selecciona turno</option>
+                            <option *ngFor="let turno of turnos">{{ turno }}</option>
+                        </select>
+                    </label>
 
-            <label class="short">
-                <strong>Cajón de herramientas:</strong>
-                <select id="caja" required>
-                    <option *ngFor="let caja of cajas">{{ caja }}</option>
-                </select>
-            </label>
-        </div>
-        <div class="semaforo">
-            <i class="semaforo-inventario-green fa-solid fa-circle" *ngIf="semaforoInventario"></i>
-            <i class="semaforo-inventario-red fa-solid fa-circle" *ngIf="!semaforoInventario"></i>
-        </div>
+                    <label class="short">
+                        <strong>Cajón de herramientas:</strong>
+                        <select id="caja" required>
+                            <option *ngFor="let caja of cajas">{{ caja }}</option>
+                        </select>
+                    </label>
+                </div>
+            </fieldset>
+        </form>
+    </details>
+    <div class="semaforo">
+        <i class="semaforo-inventario-green fa-solid fa-circle" *ngIf="semaforoInventario"></i>
+        <i class="semaforo-inventario-red fa-solid fa-circle" *ngIf="!semaforoInventario"></i>
     </div>
 
     <div class="tablas-herramientas">
@@ -43,29 +42,27 @@
                 <thead>
                     <tr>
                         <th scope="col">Herramienta</th>
-                        <th scope="col">Entrada: <strong>{{horaEntrada}}</strong></th>
-                        <th scope="col">Salida: <strong>{{horaSalida}}</strong></th>
-                        <th scope="col">Observaciones:</th>
+                        <th class="colSecDatos" scope="col">Entrada: <strong>{{horaEntrada}}</strong></th>
+                        <th class="colSecDatos" scope="col">Salida: <strong>{{horaSalida}}</strong></th>
+                        <th class="colSecDatos" scope="col">Observaciones:</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let herramienta of herramientas; let i = index"
                         [class.herramientas-error]="!cEntrada[i] || !cSalida[i]">
                         <td>{{ herramienta }}</td>
-                        <td>
+                        <td class="colSecDatos">
                             <input type="checkbox" #entradaCheckbox class="checkbox-column-herramientas"
-                                [checked]="cEntrada[i]"
-                                (change)="cEntradaChange(entradaCheckbox.checked, herramienta)"
+                                [checked]="cEntrada[i]" (change)="cEntradaChange(entradaCheckbox.checked, herramienta)"
                                 [disabled]="momentoActivo!='Entrada'">
                         </td>
-                        <td>
+                        <td class="colSecDatos">
                             <input type="checkbox" #salidaCheckbox class="checkbox-column-herramientas"
-                                [checked]="cSalida[i]"
-                                (change)="cSalidaChange(salidaCheckbox.checked, herramienta)"
+                                [checked]="cSalida[i]" (change)="cSalidaChange(salidaCheckbox.checked, herramienta)"
                                 [disabled]="momentoActivo!='Salida'">
                         </td>
-                        <td>
-                            <input type="text" class="tabla-input">
+                        <td class="colSecDatos">
+                            <a href="javascript:void(0)" (click)="openModalObservacionDatos()"><i class="eye"></i></a>
                         </td>
                     </tr>
 
@@ -81,34 +78,32 @@
             </table>
         </figure>
     </div>
+    <footer>
+        <a href="javascript:void(0)" role="button" type="button" (click)="setVentana('historial')">Histórico</a>
+    </footer>
 </div>
 
 <div *ngIf="ventana === 'historial'">
-    <div>
-        <div class="Filtros-container">
-            <div class="fecha-semaforo-historial">
-                <label class="short">
-                    <strong>Fecha:</strong>
-                    <input type="datetime-local" [value]="fechaActual">
-                </label>
-                <div>
-                    <i class="semaforo-historico-green fa-solid fa-circle fa-2xl" *ngIf="semaforoHistorial"></i>
-                    <i class="semaforo-historico-red fa-solid fa-circle fa-2xl" *ngIf="!semaforoHistorial"></i>
-                </div>
-            </div>
-            <label class="short">
-                <strong>Turno:</strong>
-                <select id="turno" required>
-                    <option value="" selected>Selecciona turno</option>
-                    <option *ngFor="let turno of turnos">{{ turno }}</option>
-                </select>
-            </label>
-            <div class="caja-incidencias-conformidad-botones">
-                <div class="caja-incidencias-conformidad">
+    <details>
+        <summary>Filtros:</summary>
+        <form>
+            <fieldset>
+                <div class="filtros">
                     <label class="short">
-                        <strong>Caja de herramientas:</strong>
+                        <strong>Fecha:</strong>
+                        <input type="date" [value]="formatDateDDMMYYYY(fechaActual)">
+                    </label>
+                    <label class="short">
+                        <strong>Turno:</strong>
+                        <select id="turno" required>
+                            <option value="" selected>Seleccione turno</option>
+                            <option *ngFor="let turno of turnos">{{ turno }}</option>
+                        </select>
+                    </label>
+                    <label class="short">
+                        <strong>Cajón de herramientas:</strong>
                         <select id="caja" required>
-                            <option value="" selected>Selecciona una caja</option>
+                            <option value="" selected>Seleccione una caja</option>
                             <option *ngFor="let caja of cajas">{{ caja }}</option>
                         </select>
                     </label>
@@ -116,16 +111,18 @@
                         <strong>Incidencias: </strong>
                         <input type="checkbox" id="incidencias-historico" name="incidencias-historico">
                     </label>
-                    <label>
+                    <label id="conformidad-label">
                         <strong>Conformidad: </strong>
                         <input type="checkbox" id="conformidad-historico" name="conformidad-historico">
                     </label>
                 </div>
-                <div>
-                    <a href="javascript:void(0)" role="button" type="button">Buscar</a>
-                </div>
-            </div>
-        </div>
+            </fieldset>
+        </form>
+    </details>
+
+    <div class="semaforo">
+        <i class="semaforo-historico-green fa-solid fa-circle" *ngIf="semaforoHistorial"></i>
+        <i class="semaforo-historico-red fa-solid fa-circle" *ngIf="!semaforoHistorial"></i>
     </div>
 
     <div class="tablas-herramientas-historico-container">
@@ -159,7 +156,8 @@
                         <td>{{ fila.hora_inventario_salida }}</td>
                         <td><input type="checkbox" class="checkbox-column-herramientas-historial" min="0" max="20"
                                 [checked]="fila.estadoSalida"></td>
-                        <td><a href="javascript:void(0)" (click)="openModalObservacion(fila.observacionIncidencia)"><i
+                        <td><a href="javascript:void(0)"
+                                (click)="openModalObservacionHistorico(fila.observacionIncidencia)"><i
                                     class="eye"></i></a>
                         </td>
                     </tr>
@@ -249,15 +247,29 @@
     </article>
 </dialog>
 
-<dialog id="modal-guardar" [attr.open]="modalObservacion">
+<dialog id="modal-guardar" [attr.open]="modalObservacionHistorial">
     <article>
         <header>
-            <a (click)="closeModalObservacion()" aria-label="Close" class="close"></a>
+            <a (click)="closeModalObservacionHistorico()" aria-label="Close" class="close"></a>
             <span>Observacion</span>
         </header>
         <div class="modal-container">
             <strong *ngIf="observacionIncidencia != ''">{{observacionIncidencia}}<br><br></strong>
-            <a href="javascript:void(0)" (click)="closeModalObservacion()" role="button" type="button">Volver</a>
+            <a href="javascript:void(0)" (click)="closeModalObservacionHistorico()" role="button"
+                type="button">Volver</a>
+        </div>
+    </article>
+</dialog>
+
+<dialog id="modal-guardar" [attr.open]="modalObservacionDatos">
+    <article>
+        <header>
+            <a (click)="closeModalObservacionDatos()" aria-label="Close" class="close"></a>
+            <span>Observacion</span>
+        </header>
+        <div class="modal-container">
+            <textarea placeholder="Introduzca su observacion" id="" cols="30" rows="10"></textarea>
+            <a href="javascript:void(0)" (click)="closeModalObservacionDatos()" role="button" type="button">guardar</a>
         </div>
     </article>
 </dialog>

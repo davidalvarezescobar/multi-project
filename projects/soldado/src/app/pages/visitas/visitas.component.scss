@@ -31,4 +31,11 @@ footer {
     align-items: center;
     flex-wrap: wrap;
     column-gap: 40px;
+    width: 80%;
+}
+
+details {
+    background: #e1e1e152;
+    padding: 0.5rem;
+    border-radius: 4px;
 }

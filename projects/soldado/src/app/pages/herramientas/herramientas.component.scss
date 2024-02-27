@@ -1,8 +1,7 @@
-.filtros-semaforo {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
+details {
+    background: #e1e1e152;
+    padding: 0.5rem;
+    border-radius: 4px;
 }
 
 .filtros {
@@ -11,25 +10,13 @@
     flex-wrap: wrap;
     column-gap: 40px;
     width: 80%;
-    margin-bottom: 5px;
 }
 
-.caja-incidencias-conformidad {
+.semaforo {
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    column-gap: 40px;
-}
-
-.fecha-semaforo-historial {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
-
-    label {
-        width: 250px;
-    }
+    justify-content: flex-end;
 }
 
 .guardar-herramientas {
@@ -41,33 +28,14 @@
 .tablas-herramientas {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    margin-top: 5px;
+
     & figure {
         max-height: 20em;
     }
 }
 
-.tablas-herramientas th,
-.tablas-herramientas td {
+.colSecDatos{
     text-align: center;
-    padding: 8px;
-}
-
-.tabla-input {
-    background-color: transparent;
-    outline: none;
-    font-family: inherit;
-    font-size: inherit;
-    padding: 0;
-    margin: 0;
-    width: 100%;
-}
-
-.caja-incidencias-conformidad-botones {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 }
 
 .tablas-herramientas-historico-container {
@@ -77,13 +45,6 @@
     & figure {
         max-height: 20rem;
     }
-}
-
-.cabecera-herramientas-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
 }
 
 .cabecera-herramientas-container a {
@@ -108,6 +69,12 @@ footer {
     flex-wrap: wrap;
     justify-content: center;
     gap: 20px
+}
+
+@media (max-width: 455px) {
+    #conformidad-label {
+        margin-top: 20px;
+    }
 }
 
 .checkbox-column-herramientas {

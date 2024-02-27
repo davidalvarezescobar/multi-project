@@ -17,7 +17,8 @@ export class HerramientasComponent implements OnInit {
   modalAdvertenciaSalida: boolean = false;
   cambiosGuardadosEntrada: boolean = false;
   cambiosGuardadosSalida: boolean = false;
-  modalObservacion: boolean = false;
+  modalObservacionHistorial: boolean = false;
+  modalObservacionDatos: boolean = false;
   resultadoVerificacion: string;
   objetoRecuperado: boolean = false;
   observacionIncidencia: string;
@@ -90,7 +91,7 @@ export class HerramientasComponent implements OnInit {
   closeModalGuardarCambioEntrada() {
     this.horaEntrada = new Date().toISOString().slice(11, 16);
     this.momentoActivo = "Salida"
-    this.cSalida = this.cEntrada
+    this.cSalida = this.cEntrada.slice()
     this.setSemaforoUserIncidencia(this.cSalida)
     this.cambiosGuardadosEntrada = false;
   }
@@ -122,15 +123,22 @@ export class HerramientasComponent implements OnInit {
     this.modalAdvertenciaSalida = false
   }
 
-  openModalObservacion(observacionIncidencia: string) {
+  openModalObservacionDatos() {
+    this.modalObservacionDatos = true
+  }
+
+  closeModalObservacionDatos() {
+    this.modalObservacionDatos = false
+  }
+
+  openModalObservacionHistorico(observacionIncidencia: string) {
     this.observacionIncidencia = observacionIncidencia
-    this.modalObservacion = true;
+    this.modalObservacionHistorial = true;
   }
 
-  closeModalObservacion() {
-    this.modalObservacion = false;
+  closeModalObservacionHistorico() {
+    this.modalObservacionHistorial = false;
   }
-
 
   cEntradaChange(check: boolean, herramientaEntrada: string) {
     for (let i = 0; i < this.herramientas.length; i++) {
@@ -185,5 +193,16 @@ export class HerramientasComponent implements OnInit {
     const mes = partesFecha[1];
     const año = partesFecha[0];
     return `${año}-${mes}-${dia}`;
+  }
+
+
+  formatDateConMesEscritoDDMM(fecha) {
+    const fechaSinTiempo = fecha.split('T')[0];
+    const partesFecha = fechaSinTiempo.split('-');
+    const dia = partesFecha[2];
+    const mesNumerico = parseInt(partesFecha[1], 10);
+    const meses = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+    const mes = meses[mesNumerico - 1];
+    return `${dia}-${mes}`;
   }
 }

@@ -1,29 +1,31 @@
 <h5>Visitas</h5>
 
-<form>
-    <fieldset>
-        <div class="filtros">
-            <label *ngIf="tipoUsuario=='Admin'">
-                Visitante:
-                <input type="text">
-            </label>
-            <label>
-                Destino:
-                <input type="text">
-            </label>
+<details>
+    <summary>Filtros:</summary>
+    <form>
+        <fieldset>
+            <div class="filtros">
+                <label *ngIf="tipoUsuario=='Admin'">
+                    Visitante:
+                    <input type="text" placeholder="Introduzca visitante">
+                </label>
+                <label>
+                    Destino:
+                    <input type="text" placeholder="Introduzca destino">
+                </label>
 
-            <label class="short" *ngIf="tipoUsuario=='Admin'">
-                Matrícula:
-                <input type="text">
-            </label>
-            <label class="short">
-                Fecha:
-                <input type="date">
-            </label>
-            <a style="margin-top: 8px;" href="javascript:void(0)" role="button" type="button">Buscar</a>
-        </div>
-    </fieldset>
-</form>
+                <label class="short" *ngIf="tipoUsuario=='Admin'">
+                    Matrícula:
+                    <input type="text" placeholder="Introduzca matricula">
+                </label>
+                <label class="short">
+                    Fecha:
+                    <input type="date">
+                </label>
+            </div>
+        </fieldset>
+    </form>
+</details>
 
 <div class="tabla-historico-visitas">
     <figure>
@@ -45,7 +47,7 @@
                             class="tabla-input"></td>
                     <td><input type="text" [value]="visita.nombre_visitado" [readonly]="tipoUsuario=='User'"
                             class="tabla-input"></td>
-                    <td><input type="text" [value]="visita.fecha" [readonly]="tipoUsuario=='User'" class="tabla-input">
+                    <td><input type="text" [value]="formatDateConMesEscritoDDMM(visita.fecha)" [readonly]="tipoUsuario=='User'" class="tabla-input">
                     </td>
                     <td><input type="checkbox" [checked]="visita.vehiculo" [disabled]="tipoUsuario=='User'"></td>
                     <td><input type="text" [value]="visita.modelo" [readonly]="tipoUsuario=='User'" class="tabla-input">
