@@ -8,15 +8,23 @@
     flex-wrap: wrap;
     column-gap: 40px;
 
-    label {
-        width: 250px;
+    > * {
+        flex: 1;
+        min-width: 200px;
     }
+    // label {
+    //     width: 250px;
+    // }
 }
 
 .details {
     background: #e1e1e152;
-    padding: 0.5rem;
+    padding: 16px;
     border-radius: 4px;
+    form,
+    fieldset {
+        margin-bottom: 0;
+    }
 }
 
 .filtros {
@@ -25,27 +33,39 @@
     flex-wrap: wrap;
     column-gap: 40px;
     width: 80%;
+
+    > * {
+        flex: 1;
+        min-width: 200px;
+    }
 }
 
 footer {
     display: flex;
     justify-content: flex-end;
     gap: 20px;
-    margin-top: 5px;
+    margin-top: 35px;
 }
 
 .modal-alta-container {
     text-align: center;
 }
 
-.datos-Extra-container {
+.datos-extra-container {
     display: flex;
     align-items: center;
     column-gap: 40px;
     margin-left: 3%;
+    margin-bottom: 10px;
     a {
         margin-top: 7px;
     }
+}
+
+.pissiesta {
+    display: flex;
+    margin-left: 3%;
+    margin-bottom: 16px;
 }
 
 .padres-button,
@@ -113,7 +133,7 @@ footer {
 }
 
 .persona-autorizada {
-    width: 150%;
+    // width: 150%;
 }
 
 .pis-siesta-checkbox[disabled] {
@@ -137,4 +157,8 @@ footer {
     display: inline-block;
     width: 33px;
     height: 33px;
+}
+
+.table-container {
+    margin: 10px 3% 16px 3%;
 }

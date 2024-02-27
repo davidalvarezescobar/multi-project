@@ -10,17 +10,13 @@
                     <div class="filtros">
                         <label for="nombre">
                             Nombre del niño/a:
-                            <br>
-                            <select id="nombre" required>
-                                <option value="" selected>Seleccione nombre</option>
-                                <option *ngFor="let name of nombres" [value]="name">{{ name }}</option>
-                            </select>
+                            <input type="text">
                         </label>
-                        <label class="short">
+                        <label>
                             Desde:
                             <input type="date" [value]="formatDateDDMMYYYY(fechaActual)">
                         </label>
-                        <label class="short">
+                        <label>
                             Hasta:
                             <input type="date" [value]="formatDateDDMMYYYY(fechaActual)">
                         </label>
@@ -79,13 +75,14 @@
         <div class="fecha-turno">
             <label for="nombre">
                 Nombre del niño/a:
-                <select id="nombre" required>
+                <input type="text" placeholder="Introduzca un nombre">
+                <!-- <select id="nombre" required>
                     <option>Seleccione un nombre</option>
                     <option *ngFor="let name of nombres" [value]="name" [selected]="reserva?.nombre === name">
                         {{name}}</option>
-                </select>
+                </select> -->
             </label>
-            <label class="short">
+            <label>
                 Fecha:
                 <input type="date"
                     [value]="reserva ? formatDateDDMMYYYY(reserva.fechaEntrada) : fechaActual">
@@ -110,8 +107,8 @@
         <a href="javascript:void(0)" (click)="padresDatos()" id="padresDatos" role="button" class="padres-button"
             type="button">Padres</a>
         <div class="monitor-data-container" *ngIf="ventanaDatos === 'monitor'">
-            <div class="">
-                <figure>
+            <div>
+                <figure class="table-container">
                     <table>
                         <thead>
                             <tr>
@@ -168,7 +165,7 @@
                     </table>
                 </figure>
             </div>
-            <div class="datos-Extra-container">
+            <div class="datos-extra-container">
                 <div class="deposiciones-container">
                     <label for="deposiciones">Deposiciones:</label>
                     <select id="deposiciones" [value]="reserva?.deposiciones">
@@ -177,18 +174,16 @@
                             [selected]="reserva?.deposiciones === deposicion">{{ deposicion }}</option>
                     </select>
                 </div>
-                <div class="pis-container">
-                    <label>
-                        Pis:
-                        <input type="checkbox" id="pis" name="pis" [checked]="reserva?.pis">
-                    </label>
-                </div>
-                <div class="siesta-container">
-                    <label>
-                        Siesta:
-                        <input type="checkbox" id="siesta" name="siesta" [checked]="reserva?.siesta">
-                    </label>
-                </div>
+            </div>
+            <div class="pissiesta">
+                <label>
+                    Pis:
+                    <input type="checkbox" id="pis" name="pis" [checked]="reserva?.pis">
+                </label>
+                <label>
+                    Siesta:
+                    <input type="checkbox" id="siesta" name="siesta" [checked]="reserva?.siesta">
+                </label>
             </div>
             <div class="observaciones-Monitor-container">
                 <label for="observaciones-Monitor">Observaciones:</label>
