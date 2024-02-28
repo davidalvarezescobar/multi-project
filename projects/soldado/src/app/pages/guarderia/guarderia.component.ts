@@ -61,24 +61,33 @@ export class GuarderiaComponent implements OnInit {
 
   monitorDatos() {
     this.ventanaDatos = "monitor";
-    document.getElementById("monitorDatos").style.backgroundColor = "#3596c3";
-    document.getElementById("monitorDatos").style.color = "white";
-    document.getElementById("monitorDatos").style.borderBottom = "1px solid #3596c3";
+    // document.getElementById("monitorDatos").style.backgroundColor = "#3596c3";
+    // document.getElementById("monitorDatos").style.color = "white";
+    document.getElementById("monitorDatos").style.borderBottom = "3px solid #3596c3";
+    document.getElementById("monitorDatos").style.fontWeight = "600";
+    
+    // document.getElementById("monitorDatos").style.borderBottom = "white";
 
-    document.getElementById("padresDatos").style.backgroundColor = "white";
-    document.getElementById("padresDatos").style.color = "#3596c3";
+    // document.getElementById("padresDatos").style.backgroundColor = "white";
+    // document.getElementById("padresDatos").style.color = "#3596c3";
     document.getElementById("padresDatos").style.borderBottom = "none";
+    document.getElementById("padresDatos").style.fontWeight = "400";
+    // document.getElementById("padresDatos").style.borderBottom = "1px solid #3596c3";
   }
 
   padresDatos() {
     this.ventanaDatos = "padres";
-    document.getElementById("padresDatos").style.backgroundColor = "#3596c3";
-    document.getElementById("padresDatos").style.color = "white";
-    document.getElementById("padresDatos").style.borderBottom = "1px solid #3596c3";
+    // document.getElementById("padresDatos").style.backgroundColor = "#3596c3";
+    // document.getElementById("padresDatos").style.color = "white";
+    document.getElementById("padresDatos").style.borderBottom = "3px solid #3596c3";
+    document.getElementById("padresDatos").style.fontWeight = "600";
+    // document.getElementById("padresDatos").style.borderBottom = "white";
 
-    document.getElementById("monitorDatos").style.backgroundColor = "white";
-    document.getElementById("monitorDatos").style.color = "#3596c3";
+    // document.getElementById("monitorDatos").style.backgroundColor = "white";
+    // document.getElementById("monitorDatos").style.color = "#3596c3";
     document.getElementById("monitorDatos").style.borderBottom = "none";
+    document.getElementById("monitorDatos").style.fontWeight = "400";
+    // document.getElementById("monitorDatos").style.borderBottom = "1px solid #3596c3";
   }
 
   openModalGuardar() {

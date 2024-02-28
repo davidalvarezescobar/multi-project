@@ -7,11 +7,13 @@
     align-items: center;
     flex-wrap: wrap;
     column-gap: 40px;
+    margin-bottom: 20px;
 
-    > * {
+    >* {
         flex: 1;
         min-width: 200px;
     }
+
     // label {
     //     width: 250px;
     // }
@@ -21,6 +23,8 @@
     background: #e1e1e152;
     padding: 16px;
     border-radius: 4px;
+    margin-bottom: 35px;
+
     form,
     fieldset {
         margin-bottom: 0;
@@ -34,7 +38,7 @@
     column-gap: 40px;
     width: 80%;
 
-    > * {
+    >* {
         flex: 1;
         min-width: 200px;
     }
@@ -57,6 +61,7 @@ footer {
     column-gap: 40px;
     margin-left: 3%;
     margin-bottom: 10px;
+
     a {
         margin-top: 7px;
     }
@@ -75,19 +80,21 @@ footer {
 
 .monitor-data-container {
     border: 1px solid #3596c3;
+    border-radius: 6px;
 }
 
 .padres-data-container {
     border: 1px solid #3596c3;
+    border-radius: 6px;
 }
 
 .alergias-container {
     display: flex;
     align-items: center;
     margin-left: 3%;
-    margin-top: 5px;
+    margin-top: 12px;
     gap: 20px;
-    min-width: 100%;
+    // min-width: 100%;
 
     &__elegidas {
         margin-top: 4px;
@@ -107,6 +114,7 @@ footer {
     overflow: hidden;
     text-overflow: ellipsis;
     gap: 2rem;
+
     & figure {
         max-height: 20rem;
     }
@@ -161,4 +169,21 @@ footer {
 
 .table-container {
     margin: 10px 3% 16px 3%;
+}
+
+.tabs {
+    padding-left: 20px;
+
+    >a {
+        width: 140px;
+        padding-bottom: 4px;
+        background-color: #fff;
+        border: none;
+        color: rgb(65, 84, 98);
+        font-size: 17px;
+
+        &:focus {
+            box-shadow: none;
+        }
+    }
 }

@@ -97,10 +97,12 @@
                     placeholder="Introduzca persona autorizada" [value]="reserva?.autorizado" [disabled] = "!autorizado">
             </label>
         </div>
-        <a href="javascript:void(0)" (click)="monitorDatos()" id="monitorDatos" role="button" class="monitor-button"
-            type="button">Monitor</a>
-        <a href="javascript:void(0)" (click)="padresDatos()" id="padresDatos" role="button" class="padres-button"
-            type="button">Padres</a>
+        <div class="tabs">
+            <a href="javascript:void(0)" (click)="monitorDatos()" id="monitorDatos" role="button" class="monitor-button"
+                type="button">Monitor</a>
+            <a href="javascript:void(0)" (click)="padresDatos()" id="padresDatos" role="button" class="padres-button"
+                type="button">Padres</a>
+        </div>
         <div class="monitor-data-container" *ngIf="ventanaDatos === 'monitor'">
             <div>
                 <figure class="table-container">
