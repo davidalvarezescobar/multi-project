@@ -10,7 +10,11 @@
                     <div class="filtros">
                         <label for="nombre">
                             Nombre del niño/a:
-                            <input type="text">
+                            <select [value]="reserva?.nombre">
+                                <option value="" selected>Seleccione nombre</option>
+                                <option *ngFor="let nombre of nombres" [value]="nombre"
+                                    [selected]="reserva?.nombre === nombre">{{ nombre }}</option>
+                            </select>
                         </label>
                         <label>
                             Desde:
@@ -52,16 +56,15 @@
                     <tbody>
                         <tr *ngFor="let reserva of reservas">
                             <th scope="row">{{reserva.nombre}}</th>
-                            <td>{{formatDateDDMMYYYY(reserva.fechaEntrada)}}</td>
+                            <td>{{formatDateConMesEscritoDDMM(reserva.fechaEntrada)}}</td>
                             <td>{{reserva.turno}}</td>
                             <td>{{reserva.desayuno}}</td>
                             <td>{{reserva.almuerzo}}</td>
                             <td>{{reserva.merienda}}</td>
                             <td>{{reserva.deposiciones}}</td>
-                            <td><input type="checkbox" class="pis-siesta-checkbox" id="pis" name="pis"
-                                    [checked]="reserva.pis" disabled></td>
-                            <td><input type="checkbox" class="pis-siesta-checkbox" id="siesta" name="siesta"
-                                    [checked]="reserva.siesta" disabled></td>
+                            <td><i class="pis-siesta-checkbox" *ngIf="reserva.pis" class="fa-solid fa-check"></i></td>
+                            <td><i class="pis-siesta-checkbox" *ngIf="reserva.siesta" class="fa-solid fa-check"></i>
+                            </td>
                             <td><a href="javascript:void(0)" (click)="setEditReserva(reserva)"><i
                                         class="pencil"></i></a></td>
                         </tr>
@@ -75,26 +78,32 @@
         <div class="fecha-turno">
             <label for="nombre">
                 Nombre del niño/a:
-                <input type="text" placeholder="Introduzca un nombre">
+                <select>
+                    <option value="" selected>Seleccione nombre</option>
+                    <option *ngFor="let nombre of nombres" [value]="nombre" [selected]="reserva?.nombre === nombre">{{
+                        nombre }}</option>
+                </select>
             </label>
             <label>
                 Fecha:
                 <input type="date"
-                    [value]="reserva ? formatDateDDMMYYYY(reserva.fechaEntrada) : fechaActual">
+                    [value]="reserva ? formatDateDDMMYYYY(reserva.fechaEntrada) : formatDateDDMMYYYY(fechaActual)">
             </label>
             <label for="fruit">
                 Turno:
-                <select id="fruit" required [value]="reserva?.turno">
+                <select id="fruit">
                     <option>Seleccione un turno</option>
-                    <option *ngFor="let turno of turnos" [value]="turno">{{ turno }}</option>
+                    <option *ngFor="let turno of turnos" [selected]="reserva?.turno === turno" [value]="turno">{{ turno
+                        }}</option>
                 </select>
             </label>
             <label for="autorizacion_recogida">
                 <input type="checkbox" id="autorizacion_recogida" name="autorizacion_recogida"
-                    [checked]="reserva?.autorizacion === true" #salidaCheckbox (change)="cAutorizadoChange(salidaCheckbox.checked)">
+                    [checked]="reserva?.autorizacion === true" #salidaCheckbox
+                    (change)="cAutorizadoChange(salidaCheckbox.checked)">
                 Autorización Recogida
-                <input type="text" id="nombreAutorizado" class="persona-autorizada" name="nombre"
-                    placeholder="Introduzca persona autorizada" [value]="reserva?.autorizado" [disabled] = "!autorizado">
+                <input type="text" id="nombreAutorizado" name="nombre" placeholder="Introduzca persona autorizada"
+                    [value]="reserva?.autorizado" [disabled]="!autorizado">
             </label>
         </div>
         <div class="tabs">
@@ -190,27 +199,28 @@
         </div>
 
         <div class="padres-data-container" *ngIf="ventanaDatos == 'padres'">
-            <div class="alergias-container">
+            <div class="intolerancias-container">
                 <label>
                     Intolerancias:
                     <details role="list">
                         <summary aria-haspopup="listbox">
                             Intolerancias</summary>
                         <ul role="listbox">
-                            <li *ngFor="let alergia of alergias; let i = index">
+                            <li *ngFor="let intolerancia of intolerancias; let i = index">
                                 <label>
                                     <input type="checkbox" aria-label="intolerancias" (change)="toggleVisibilidad(i)"
-                                        [checked]="alergiasSeleccionadas[i]">
-                                    {{alergia}}
+                                        [checked]="intoleranciasSeleccionadas[i]">
+                                    {{intolerancia}}
                                 </label>
                             </li>
                         </ul>
                     </details>
                 </label>
 
-                <div class="alergias-container__elegidas">
-                    <a href="javascript:void(0)" [hidden]="!alergiasSeleccionadas[i]"
-                        *ngFor="let alergia of alergias; let i = index" role="button" class="outline">{{alergia}}</a>
+                <div class="intolerancias-container__elegidas">
+                    <a href="javascript:void(0)" [hidden]="!intoleranciasSeleccionadas[i]"
+                        *ngFor="let intolerancia of intolerancias; let i = index" role="button"
+                        class="outline">{{intolerancia}}</a>
                 </div>
             </div>
 

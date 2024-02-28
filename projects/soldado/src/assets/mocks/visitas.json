@@ -1,81 +1,81 @@
 {
     "visitas": [
         {
-            "nombre_visitante": "Juan Pérez",
-            "nombre_visitado": "Oficina 1",
-            "fecha": "21-02-2024",
+            "nombre_visitante": "Juan Pérez Pérez",
+            "nombre_visitado": "Taller",
+            "fecha": "2024-02-21",
             "vehiculo": true,
             "modelo": "Toyota Corolla",
             "matricula": "ABC123"
         },
         {
-            "nombre_visitante": "María López",
-            "nombre_visitado": "Almacén",
-            "fecha": "21-02-2024",
+            "nombre_visitante": "María López López",
+            "nombre_visitado": "Intendencia",
+            "fecha": "2024-02-21",
             "vehiculo": false,
             "modelo": "",
             "matricula": ""
         },
         {
-            "nombre_visitante": "Carlos García",
-            "nombre_visitado": "Sala de Reuniones",
-            "fecha": "21-02-2024",
+            "nombre_visitante": "Carlos García García",
+            "nombre_visitado": "Comandante García",
+            "fecha": "2024-02-28",
             "vehiculo": true,
             "modelo": "Ford Focus",
             "matricula": "XYZ789"
         },
         {
-            "nombre_visitante": "Ana Martínez",
-            "nombre_visitado": "Recepción",
-            "fecha": "21-02-2024",
-            "vehiculo": false,
-            "modelo": "",
-            "matricula": ""
-        },
-        {
-            "nombre_visitante": "Pedro Ramírez",
-            "nombre_visitado": "Oficina 2",
-            "fecha": "21-02-2024",
+            "nombre_visitante": "Pedro Ramírez Ramírez",
+            "nombre_visitado": "Pabellón Oficiales",
+            "fecha": "2024-03-04",
             "vehiculo": true,
             "modelo": "Honda Civic",
             "matricula": "DEF456"
         },
         {
-            "nombre_visitante": "Laura Sánchez",
-            "nombre_visitado": "Área de Producción",
-            "fecha": "21-02-2024",
-            "vehiculo": false,
-            "modelo": "",
-            "matricula": ""
-        },
-        {
-            "nombre_visitante": "Manuel Rodríguez",
-            "nombre_visitado": "Laboratorio",
-            "fecha": "21-02-2024",
+            "nombre_visitante": "Manuel Rodríguez Rodríguez",
+            "nombre_visitado": "Hangares",
+            "fecha": "2024-03-04",
             "vehiculo": true,
             "modelo": "Chevrolet Spark",
             "matricula": "GHI789"
         },
         {
-            "nombre_visitante": "Elena Fernández",
-            "nombre_visitado": "Gerencia",
-            "fecha": "21-02-2024",
+            "nombre_visitante": "Elena Fernández Fernández",
+            "nombre_visitado": "Teniente Gutiérrez",
+            "fecha": "2024-03-05",
             "vehiculo": false,
             "modelo": "",
             "matricula": ""
         },
         {
-            "nombre_visitante": "Luisa Gómez",
-            "nombre_visitado": "Centro de Investigación",
-            "fecha": "21-02-2024",
+            "nombre_visitante": "Luisa Gómez Gómez",
+            "nombre_visitado": "Hangar OTAN",
+            "fecha": "2024-03-05",
             "vehiculo": true,
             "modelo": "Volkswagen Golf",
             "matricula": "JKL321"
         },
         {
-            "nombre_visitante": "Mario Torres",
-            "nombre_visitado": "Bodega",
-            "fecha": "21-02-2024",
+            "nombre_visitante": "Jorge Pereira Hernández",
+            "nombre_visitado": "Capitán Otálora",
+            "fecha": "2024-03-05",
+            "vehiculo": true,
+            "modelo": "Mitsubitshi",
+            "matricula": "6419GCK"
+        },
+        {
+            "nombre_visitante": "Laura Sánchez Sánchez",
+            "nombre_visitado": "Edificio Principal",
+            "fecha": "2024-03-05",
+            "vehiculo": false,
+            "modelo": "",
+            "matricula": ""
+        },
+        {
+            "nombre_visitante": "Mario Torres Torres",
+            "nombre_visitado": "Almacén ropa",
+            "fecha": "2024-03-06",
             "vehiculo": false,
             "modelo": "",
             "matricula": ""

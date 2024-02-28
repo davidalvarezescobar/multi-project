@@ -49,7 +49,7 @@
                             class="tabla-input"></td>
                     <td><input type="text" [value]="formatDateConMesEscritoDDMM(visita.fecha)" [readonly]="tipoUsuario=='User'" class="tabla-input">
                     </td>
-                    <td><input type="checkbox" [checked]="visita.vehiculo" [disabled]="tipoUsuario=='User'"></td>
+                    <td><i class="pis-siesta-checkbox" *ngIf="visita.vehiculo" class="fa-solid fa-check"></i></td>
                     <td><input type="text" [value]="visita.modelo" [readonly]="tipoUsuario=='User'" class="tabla-input">
                     </td>
                     <td><input type="text" [value]="visita.matricula" [readonly]="tipoUsuario=='User'"

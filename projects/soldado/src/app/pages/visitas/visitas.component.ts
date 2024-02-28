@@ -38,15 +38,6 @@ export class VisitasComponent implements OnInit {
     this.showModal = false
   }
 
-  formatDateDDMMYYYY(fecha: string): string {
-    const fechaSinTiempo = fecha.split('T')[0];
-    const partesFecha = fechaSinTiempo.split('-');
-    const dia = partesFecha[2];
-    const mes = partesFecha[1];
-    const año = partesFecha[0];
-    return `${año}-${mes}-${dia}`;
-  }
-
   formatDateConMesEscritoDDMM(fecha) {
     const fechaSinTiempo = fecha.split('T')[0];
     const partesFecha = fechaSinTiempo.split('-');

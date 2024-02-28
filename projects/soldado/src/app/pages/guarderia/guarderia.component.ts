@@ -13,7 +13,7 @@ export class GuarderiaComponent implements OnInit {
   ventana: string;  //controla el cambio de ventana y en cual estas
   ventanaDatos: string; //controla si estas viendo la parte de Monitor y Padres de la ventana datos
   nuevaReserva = true; //controla si estamos creando una nueva reserva o no.
-  alergiasSeleccionadas: boolean[] = [];   //Son las alergias que se seleccionan
+  intoleranciasSeleccionadas: boolean[] = [];   //Son las intolerancias que se seleccionan
   guardar = false;  //bandera para el modal de guardar datos
   autorizado = false; //controla si estamos creando una nueva reserva o no.
 
@@ -21,7 +21,7 @@ export class GuarderiaComponent implements OnInit {
   estados: string[];
   turnos: string[];
   deposiciones: string[];
-  alergias: string[];
+  intolerancias: string[];
   reservas: any[];
   reserva: any;
 
@@ -41,7 +41,7 @@ export class GuarderiaComponent implements OnInit {
         this.estados = datos?.estados;
         this.turnos = datos?.turnos;
         this.deposiciones = datos?.deposiciones;
-        this.alergias = datos?.alergias;
+        this.intolerancias = datos?.intolerancias;
         this.reservas = datos?.reservas;
       });
 
@@ -61,33 +61,18 @@ export class GuarderiaComponent implements OnInit {
 
   monitorDatos() {
     this.ventanaDatos = "monitor";
-    // document.getElementById("monitorDatos").style.backgroundColor = "#3596c3";
-    // document.getElementById("monitorDatos").style.color = "white";
     document.getElementById("monitorDatos").style.borderBottom = "3px solid #3596c3";
     document.getElementById("monitorDatos").style.fontWeight = "600";
-    
-    // document.getElementById("monitorDatos").style.borderBottom = "white";
-
-    // document.getElementById("padresDatos").style.backgroundColor = "white";
-    // document.getElementById("padresDatos").style.color = "#3596c3";
     document.getElementById("padresDatos").style.borderBottom = "none";
     document.getElementById("padresDatos").style.fontWeight = "400";
-    // document.getElementById("padresDatos").style.borderBottom = "1px solid #3596c3";
   }
 
   padresDatos() {
     this.ventanaDatos = "padres";
-    // document.getElementById("padresDatos").style.backgroundColor = "#3596c3";
-    // document.getElementById("padresDatos").style.color = "white";
     document.getElementById("padresDatos").style.borderBottom = "3px solid #3596c3";
     document.getElementById("padresDatos").style.fontWeight = "600";
-    // document.getElementById("padresDatos").style.borderBottom = "white";
-
-    // document.getElementById("monitorDatos").style.backgroundColor = "white";
-    // document.getElementById("monitorDatos").style.color = "#3596c3";
     document.getElementById("monitorDatos").style.borderBottom = "none";
     document.getElementById("monitorDatos").style.fontWeight = "400";
-    // document.getElementById("monitorDatos").style.borderBottom = "1px solid #3596c3";
   }
 
   openModalGuardar() {
@@ -99,13 +84,13 @@ export class GuarderiaComponent implements OnInit {
   }
 
   toggleVisibilidad(index: number) {
-    this.alergiasSeleccionadas[index] = !this.alergiasSeleccionadas[index];
+    this.intoleranciasSeleccionadas[index] = !this.intoleranciasSeleccionadas[index];
   }
 
   setNewReserva() {
     this.nuevaReserva = true
     this.reserva = undefined;
-    this.alergiasSeleccionadas = []
+    this.intoleranciasSeleccionadas = []
     this.setVentana("datos");
     setTimeout(() => {
       this.padresDatos()
@@ -115,7 +100,8 @@ export class GuarderiaComponent implements OnInit {
   setEditReserva(reserva: any) {
     this.nuevaReserva = false
     this.reserva = reserva;
-    this.alergiasSeleccionadas = [reserva.alergiaLeche, reserva.alergiaHuevo, reserva.alergiaGluten, reserva.alergiaMarisco, reserva.alergiaLatex, reserva.alergiaOtros]
+    this.intoleranciasSeleccionadas = [reserva.intoleranciaLeche, reserva.intoleranciaHuevo, reserva.intoleranciaGluten]
+    this.autorizado = reserva.autorizacion
     this.setVentana("datos");
     if (this.tipoUsuario === "Admin") {
       setTimeout(() => {
@@ -140,18 +126,16 @@ export class GuarderiaComponent implements OnInit {
     const dia = partesFecha[2];
     const mes = partesFecha[1];
     const año = partesFecha[0];
-    console.log(`${año}-${mes}-${dia}`)
     return `${año}-${mes}-${dia}`;
   }
-  formatDateDDMMYYYYHHMM(fecha: string): string {
-    const partes = fecha.split('T');
-    const fechaPartes = partes[0].split('-');
-    const dia = fechaPartes[0];
-    const mes = fechaPartes[1];
-    const año = fechaPartes[2];
-    const horaPartes = partes[1].split(':');
-    const hora = horaPartes[0];
-    const minutos = horaPartes[1];
-    return `${año}-${mes}-${dia} ${hora}:${minutos}`;
+
+  formatDateConMesEscritoDDMM(fecha) {
+    const fechaSinTiempo = fecha.split('T')[0];
+    const partesFecha = fechaSinTiempo.split('-');
+    const dia = partesFecha[2];
+    const mesNumerico = parseInt(partesFecha[1], 10);
+    const meses = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+    const mes = meses[mesNumerico - 1];
+    return `${dia}-${mes}`;
   }
 }

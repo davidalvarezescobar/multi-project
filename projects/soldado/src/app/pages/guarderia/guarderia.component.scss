@@ -13,10 +13,6 @@
         flex: 1;
         min-width: 200px;
     }
-
-    // label {
-    //     width: 250px;
-    // }
 }
 
 .details {
@@ -88,13 +84,12 @@ footer {
     border-radius: 6px;
 }
 
-.alergias-container {
+.intolerancias-container {
     display: flex;
     align-items: center;
     margin-left: 3%;
     margin-top: 12px;
     gap: 20px;
-    // min-width: 100%;
 
     &__elegidas {
         margin-top: 4px;
@@ -138,10 +133,6 @@ footer {
 
 .modal-container {
     text-align: center;
-}
-
-.persona-autorizada {
-    // width: 150%;
 }
 
 .pis-siesta-checkbox[disabled] {

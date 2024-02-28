@@ -201,7 +201,7 @@ export class HerramientasComponent implements OnInit {
     const partesFecha = fechaSinTiempo.split('-');
     const dia = partesFecha[2];
     const mesNumerico = parseInt(partesFecha[1], 10);
-    const meses = ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic'];
+    const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
     const mes = meses[mesNumerico - 1];
     return `${dia}-${mes}`;
   }

@@ -7,7 +7,7 @@
         <form>
             <fieldset>
                 <div class="filtros">
-                    <label class="short" style="max-width: 90px;">
+                    <label class="short" style="max-width: 150px;">
                         <strong>Fecha:</strong>
                         <input type="text" [value]="formatDateConMesEscritoDDMM(fechaActual)"
                             style="border: none; pointer-events: none;" readonly>
@@ -68,10 +68,10 @@
 
                     <tr class="guardar-herramientas">
                         <td></td>
-                        <td><button (click)="modalVerificacionHerramietnasEntrada()"
-                                [disabled]="momentoActivo!='Entrada'">Guardar</button></td>
-                        <td><button (click)="modalVerificacionHerramietnasSalida()"
-                                [disabled]="momentoActivo!='Salida'">Guardar</button></td>
+                        <td class="colSecDatos"><button (click)="modalVerificacionHerramietnasEntrada()"
+                                [disabled]="momentoActivo!='Entrada'" role="button" style="max-width: 100px;">Guardar</button></td>
+                        <td class="colSecDatos"><button (click)="modalVerificacionHerramietnasSalida()"
+                                [disabled]="momentoActivo!='Salida'" role="button" style="max-width: 100px;">Guardar</button></td>
                         <td></td>
                     </tr>
                 </tbody>
@@ -150,13 +150,13 @@
                         <td>{{ fila.herramienta }}</td>
                         <td *ngIf="tipoUsuario != 'User'">{{ fila.operario }}</td>
                         <td>{{ fila.oficial_al_mando }}</td>
-                        <td>{{ fila.hora_inventario_entrada }}</td>
-                        <td><input type="checkbox" class="checkbox-column-herramientas-historial" min="0" max="20"
+                        <td class="colSecDatos">{{ fila.hora_inventario_entrada }}</td>
+                        <td class="colSecDatos"><input type="checkbox" class="checkbox-column-herramientas-historial" min="0" max="20"
                                 [checked]="fila.estadoEntrada"></td>
-                        <td>{{ fila.hora_inventario_salida }}</td>
-                        <td><input type="checkbox" class="checkbox-column-herramientas-historial" min="0" max="20"
+                        <td class="colSecDatos">{{ fila.hora_inventario_salida }}</td>
+                        <td class="colSecDatos"><input type="checkbox" class="checkbox-column-herramientas-historial" min="0" max="20"
                                 [checked]="fila.estadoSalida"></td>
-                        <td><a href="javascript:void(0)"
+                        <td class="colSecDatos"><a href="javascript:void(0)"
                                 (click)="openModalObservacionHistorico(fila.observacionIncidencia)"><i
                                     class="eye"></i></a>
                         </td>
@@ -173,11 +173,10 @@
 
 <dialog id="modal-guardar" [attr.open]="modalAdvertenciaEntrada">
     <article>
-
-        <head>
+        <header>
             <a (click)="closeModalAdvertenciaEntrada()" aria-label="Close" class="close"></a>
             <span>Error en la operación de inventario</span>
-        </head>
+        </header>
         <div class="modal-container">
             <i class="fa-solid fa-triangle-exclamation fa-2xl" style="color: #ffea00;"></i><br><br>
             <strong>Atención, incidencias encontradas con el inventario de herramientas</strong><br><br>
@@ -198,11 +197,10 @@
 
 <dialog id="modal-guardar" [attr.open]="modalAdvertenciaSalida">
     <article>
-
-        <head>
+        <header>
             <a (click)="closeModalAdvertenciaSalida()" aria-label="Close" class="close"></a>
             <span>Error en la operación de inventario</span>
-        </head>
+        </header>
         <div class="modal-container">
             <i class="fa-solid fa-triangle-exclamation fa-2xl" style="color: #ffea00;"></i><br><br>
             <strong>Atención, incidencias encontradas con el inventario de herramientas</strong><br><br>
@@ -269,7 +267,7 @@
         </header>
         <div class="modal-container">
             <textarea placeholder="Introduzca su observacion" id="" cols="30" rows="10"></textarea>
-            <a href="javascript:void(0)" (click)="closeModalObservacionDatos()" role="button" type="button">guardar</a>
+            <a href="javascript:void(0)" (click)="closeModalObservacionDatos()" role="button" type="button">Guardar</a>
         </div>
     </article>
 </dialog>
