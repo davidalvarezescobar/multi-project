@@ -10,7 +10,6 @@
       <summary aria-haspopup="listbox" role="link">{{currUser | async}}</summary>
       <ul role="listbox">
         <li *ngFor="let user of users" (click)="changeUser(user); combo.open=false" ><a>{{user}}</a></li>
-        <li routerLink="/datos"><a>Datos</a></li>
       </ul>
     </details>
 
@@ -57,6 +56,12 @@
       <summary>Control visitas</summary>
       <ul (click)="hideMenu()">
         <li routerLink="/visitas" routerLinkActive="active">Gestión visitas</li>
+      </ul>
+    </details>
+    <details routerLinkActive="active" #informacion [attr.open]="informacion.classList.contains('active') ? '' : null">
+      <summary>Información</summary>
+      <ul (click)="hideMenu()">
+        <li routerLink="/datos" routerLinkActive="active">Información detallada</li>
       </ul>
     </details>
   </aside>

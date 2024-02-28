@@ -4,8 +4,6 @@ import { AparcamientosAdminGuard } from './guards/aparcamientos-admin.guard';
 import { AparcamientosGuard } from './guards/aparcamientos.guard';
 import { ComedorAdminGuard } from './guards/comedor-admin.guard';
 import { ComedorGuard } from './guards/comedor.guard';
-import { DatosAdminGuard } from './guards/datos-admin.guard';
-import { DatosGuard } from './guards/datos.guard';
 import { AparcamientosAdminComponent } from './pages/aparcamientos-admin/aparcamientos-admin.component';
 import { AparcamientosAltaComponent } from './pages/aparcamientos-alta/aparcamientos-alta.component';
 import { AparcamientosComponent } from './pages/aparcamientos/aparcamientos.component';
@@ -18,7 +16,6 @@ import { ComedorAdminComponent } from './pages/comedor-admin/comedor-admin.compo
 import { ComedorHistoricoAdminComponent } from './pages/comedor-historico-admin/comedor-historico-admin.component';
 import { ComedorHistoricoComponent } from './pages/comedor-historico/comedor-historico.component';
 import { ComedorAltaComponent } from './pages/comedor/comedor.component';
-import { DatosAdminComponent } from './pages/datos-admin/datos-admin.component';
 import { DatosComponent } from './pages/datos/datos.component';
 import { FichajeAltaComponent } from './pages/fichaje-alta/fichaje-alta.component';
 import { FichajeComponent } from './pages/fichaje/fichaje.component';
@@ -36,12 +33,12 @@ import { SalasAltaComponent } from './pages/salas-alta/salas-alta.component';
 import { SalasDisponibilidadComponent } from './pages/salas-disponibilidad/salas-disponibilidad.component';
 import { SalasHistoricoComponent } from './pages/salas-historico/salas-historico.component';
 import { SalasComponent } from './pages/salas/salas.component';
+import { SocorristaHistoricoComponent } from './pages/socorrista-historico/socorrista-historico.component';
+import { SocorristaComponent } from './pages/socorrista/socorrista.component';
 import { TurnosAltaComponent } from './pages/turnos-alta/turnos-alta.component';
 import { TurnosComponent } from './pages/turnos/turnos.component';
 import { VisitasAltaComponent } from './pages/visitas-alta/visitas-alta.component';
 import { VisitasComponent } from './pages/visitas/visitas.component';
-import { SocorristaComponent } from './pages/socorrista/socorrista.component';
-import { SocorristaHistoricoComponent } from './pages/socorrista-historico/socorrista-historico.component';
 
 const routes: Routes = [
   { path: 'comedor/historico',  component: ComedorHistoricoComponent, canActivate: [ComedorGuard] },
@@ -76,8 +73,7 @@ const routes: Routes = [
   { path: 'fichaje/alta',  component: FichajeAltaComponent },
   { path: 'turnos',  component: TurnosComponent },
   { path: 'turnos/alta',  component: TurnosAltaComponent },
-  { path: 'datos',  component: DatosComponent, canActivate: [DatosGuard]},
-  { path: 'datos-admin',  component: DatosAdminComponent, canActivate: [DatosAdminGuard]},
+  { path: 'datos',  component: DatosComponent},
   { path: '',   component: CartasComponent},
   { path: '**', component: NotFoundComponent }
 ];

@@ -8,27 +8,32 @@
 
 .card {
     width: 150px;
-    height: 100%;
-    border-color: #838383;
-    margin-right: 10%;
-    margin-left: 10%;
-    margin-top: 4%;
-    border: 5px solid black;
-    border-radius: 8px;
+
+    margin-top: 20px;
+    margin-left: 20px;
+    border-bottom: 5px solid #3596c3;
+    border-top: 1px solid #3596c3;;
+    border-left: 1px solid #3596c3;
+    border-right: 5px solid #3596c3;
     display: flex;
     flex-direction: column;
     text-align: center;
 }
 
 .card:hover {
-    background-color: #f0f0f0;
+    background-color: #dddddd;
+    border-bottom: 5px solid #08769b;
+    border-top: 1px solid #08769b;
+    border-left: 1px solid #08769b;
+    border-right: 5px solid #08769b;
     cursor: pointer;
 }
 
 .headCard {
-    width: 100%;
+    width: 95%;
     height: auto;
     max-height: 80px;
+    margin-top: 5px;
 }
 
 #serviceName {

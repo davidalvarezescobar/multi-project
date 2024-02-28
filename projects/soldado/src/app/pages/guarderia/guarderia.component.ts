@@ -88,17 +88,18 @@ export class GuarderiaComponent implements OnInit {
   }
 
   setNewReserva() {
-    this.nuevaReserva = true
+    this.nuevaReserva = true;
     this.reserva = undefined;
-    this.intoleranciasSeleccionadas = []
+    this.autorizado = false;
+    this.intoleranciasSeleccionadas = [];
     this.setVentana("datos");
     setTimeout(() => {
-      this.padresDatos()
+      this.padresDatos();
     }, 1);
   }
 
   setEditReserva(reserva: any) {
-    this.nuevaReserva = false
+    this.nuevaReserva = false;
     this.reserva = reserva;
     this.intoleranciasSeleccionadas = [reserva.intoleranciaLeche, reserva.intoleranciaHuevo, reserva.intoleranciaGluten]
     this.autorizado = reserva.autorizacion

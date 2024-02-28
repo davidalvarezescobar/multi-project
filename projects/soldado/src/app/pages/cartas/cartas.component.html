@@ -2,10 +2,11 @@
 
 <figure>
   <div class="card-container">
-    <div *ngFor="let quickService of quickServices" class="card">
+    <div *ngFor="let quickService of quickServices; let i = index" class="card" (mouseout)="changeImage(false, i)"
+      (mouseover)="changeImage(true, i)">
       <div routerLink="{{quickService.url}}">
-        <img class="headCard" src="assets/cartas-imagen/{{quickService.image}}" alt="No image">
-        <label id="serviceName">{{ quickService.nombre }}</label>
+        <img class="headCard" [src]="imageSources[i]" alt="No image">
+        <p id="serviceName">{{ quickService.nombre }}</p>
       </div>
     </div>
   </div>

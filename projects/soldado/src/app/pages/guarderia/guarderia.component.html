@@ -72,6 +72,10 @@
                 </table>
             </figure>
         </div>
+        <footer>
+            <a href="javascript:void(0)" *ngIf="tipoUsuario=='User'" (click)="setNewReserva()" role="button"
+                type="button">Volver</a>
+        </footer>
     </div>
 
     <div *ngIf="ventana === 'datos'">
