@@ -7,7 +7,9 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./aparcamientos.component.scss']
 })
 export class AparcamientosComponent implements OnInit {
-  showModal = false;
+  showModalMapa = false;
+  showModalGuardar = false;
+
   form: FormGroup;
   aparcamientos = ['aparcamiento 1', 'aparcamiento 2', 'aparcamiento 3', 'aparcamiento 4'];
   plazas = ['plaza 1','plaza 2','plaza 3','plaza 4','plaza 5','plaza 6','plaza 7','plaza 8',];
@@ -30,11 +32,11 @@ export class AparcamientosComponent implements OnInit {
   }
 
   openModal() {
-    this.showModal = true;
+    this.showModalMapa = true;
   }
 
   closeModal() {
-    this.showModal = false;
+    this.showModalMapa = false;
   }
 
   selectPlaza() {
@@ -49,4 +51,11 @@ export class AparcamientosComponent implements OnInit {
     }, 1500);
   }
 
+  openModalGuardar() {
+    this.showModalGuardar = true;
+  }
+
+  closeModalGuardar() {
+    this.showModalGuardar = false;
+  }
 }

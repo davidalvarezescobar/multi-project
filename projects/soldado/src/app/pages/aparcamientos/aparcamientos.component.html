@@ -42,14 +42,14 @@
                 <option value="" disabled selected>Selecciona una plaza</option>
                 <option *ngFor="let plaza of plazas" [value]="plaza">{{plaza}}</option>
             </select>
-            <a class="guardar" href="javascript:void(0)" role="button" type="button">Guardar</a>
+            <a class="guardar" href="javascript:void(0)" (click)="openModalGuardar()" role="button" type="button">Guardar</a>
         </label>
     </figure>
 </ng-container>
 
 
 <!-- Modal de mapa -->
-<dialog id="modal-pago" [attr.open]="showModal">
+<dialog id="modal-mapa" [attr.open]="showModalMapa">
     <article>
         <header>
             <a (click)="closeModal()" aria-label="Close" class="close"></a>
@@ -60,65 +60,15 @@
     </article>
 </dialog>
 
-<!-- <figure>
-    <table>
-        <thead>
-            <tr>
-                <th scope="col">Base</th>
-                <th scope="col">Aparcamiento</th>
-                <th scope="col">Plaza</th>
-                <th scope="col">Nombre Completo</th>
-                <th scope="col">Fecha</th>
-                <th scope="col">Turno</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">Los Llanos</th>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-            </tr>
-            <tr>
-                <th scope="row">Torrejón de Ardoz</th>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-            </tr>
-            <tr>
-                <th scope="row">Zaragoza</th>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-            </tr>
-            <tr>
-                <th scope="row">Morón</th>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-            </tr>
-            <tr>
-                <th scope="row">Matacán</th>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-                <td>Cell</td>
-            </tr>
-        </tbody>
-    </table>
-</figure>
-
-<footer>
-    <a routerLink="/aparcamientos/alta" role="button" type="button">Alta</a>
-    <a href="javascript:void(0)" role="button" type="button">Editar</a>
-    <a href="javascript:void(0)" role="button" type="button">Eliminar</a>
-</footer> -->
+<dialog id="modal-guardar" [attr.open]="showModalGuardar">
+    <article>
+        <header>
+            <a (click)="closeModalGuardar()" aria-label="Close" class="close"></a>
+            <span>Confirmación de reserva de aparcamiento</span>
+        </header>
+        <div class="modal-container">
+            <i class="fa-solid fa-check fa-2xl" style="color: #189100;"></i><br><br>
+            <strong>Se ha registrado la plaza correctamente</strong>
+        </div>
+    </article>
+</dialog>

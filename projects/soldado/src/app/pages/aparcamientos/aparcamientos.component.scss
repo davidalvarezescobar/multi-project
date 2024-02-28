@@ -73,7 +73,7 @@ figure {
     }
 }
 
-dialog {
+#modal-mapa {
     article {
         position: relative;
         padding-bottom: 10px;
@@ -99,6 +99,12 @@ dialog {
         top: 60%;
         left: 50%;
         transform: translate(-50%, -50%);
+    }
+}
+
+#modal-guardar {
+    .modal-container {
+        text-align: center;
     }
 }
 
