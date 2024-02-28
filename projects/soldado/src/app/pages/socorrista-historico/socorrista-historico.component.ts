@@ -22,7 +22,7 @@ export class SocorristaHistoricoComponent {
       nivelAgua: true,
       nivelCloro: false,
       nivelph: true,
-      botellas: 19
+      botellas: 1
     },
     {
       ubicacion: 'Base',
@@ -36,7 +36,7 @@ export class SocorristaHistoricoComponent {
       nivelAgua: false,
       nivelCloro: true,
       nivelph: false,
-      botellas: 19
+      botellas: 4
     },
     {
       ubicacion: 'Maestranza',
@@ -50,7 +50,7 @@ export class SocorristaHistoricoComponent {
       nivelAgua: true,
       nivelCloro: false,
       nivelph: false,
-      botellas: 19
+      botellas: 2
     },
   ];
 }
