@@ -1,7 +1,7 @@
 .datos-body {
   display: flex;
   flex-wrap: wrap;
-  gap: min(25%, 50px);
+  gap: 25%;
 }
 
 .datos-body p {
@@ -33,6 +33,6 @@
 }
 
 .datos-texto p {
-  font-size: 20px;
+  font-size: 14px;
   color: black;
 }
