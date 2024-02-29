@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LoginService } from '../../services/login.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,11 +9,20 @@ import { Router } from '@angular/router';
 })
 export class SocorristaComponent {
 
+  tipoUsuario: string;  //si es admin o user
   showModal = false;
 
-  constructor(private router: Router) {}
+  constructor(readonly loginSrv: LoginService,
+    readonly router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.loginSrv.user$.subscribe(user => {
+      this.tipoUsuario = user
+      if(this.tipoUsuario  === 'Admin') {
+        this.router.navigateByUrl('/socorrista/historico')
+      }
+    });
+  }
 
   piscinas: any = [
       'Maestranza',
