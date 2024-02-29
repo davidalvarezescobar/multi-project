@@ -172,8 +172,12 @@ fieldset {
   width: 35px;
   height: 35px;
 }
-details {
-  background: #e1e1e152;
-  padding: 0.5rem;
-  border-radius: 4px;
+.pabellon-td {
+  min-width: 9rem;
+}
+.sala-td {
+  min-width: 9rem;
+}
+.recursos-td {
+  min-width: 11rem;
 }

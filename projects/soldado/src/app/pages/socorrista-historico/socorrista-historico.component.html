@@ -44,7 +44,7 @@
     <tbody>
       <tr *ngFor="let row of rows">
         <td scope="row">{{ row.ubicacion }}</td>
-        <td scope="row">{{ row.fecha }}</td>
+        <td class="fecha-td" scope="row">{{ row.fecha }}</td>
         <td scope="row">{{ row.horaEntrada }}</td>
         <td scope="row">{{ row.horaSalida }}</td>
         <td class="align-center" scope="row"><i *ngIf="row.entorno" class="fa-solid fa-check"></i></td>

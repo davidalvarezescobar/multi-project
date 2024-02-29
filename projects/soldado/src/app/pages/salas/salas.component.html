@@ -1,59 +1,40 @@
 <h5>Salas: Petición de reserva</h5>
 
-<details>
-  <summary>Filtros</summary>
-  <div class="main-container">
-    <div class="date-container">
-      <div class="date-form-container">
-        <div class="grid-date-container">
-          <label class="day-label">Día:</label>
-          <input class="day-input" type="date" name="date" aria-label="Date" />
-
-          <label class="hour-from-label">De:</label>
-          <input
-            class="hour-from-input"
-            type="time"
-            name="time"
-            aria-label="Time"
-          />
-
-          <label class="hour-to-label">A:</label>
-          <input
-            class="hour-to-input"
-            type="time"
-            name="time"
-            aria-label="Time"
-          />
-        </div>
+<div class="main-container">
+  <div class="date-container">
+    <div class="date-form-container">
+      <div class="grid-date-container">
+        <label class="day-label">Día:</label>
+        <input class="day-input" type="date" name="date" aria-label="Date" />
       </div>
     </div>
-    <fieldset>
-      <div class="resources-filter">
-        <label htmlFor="Proyector"
-          ><input
-            type="checkbox"
-            id="Proyector"
-            name="Proyector"
-          />Proyector</label
-        >
-
-        <label htmlFor="camaraconf"
-          ><input type="checkbox" id="camaraconf" name="camaraconf" />Cámara
-          Conferencia</label
-        >
-        <label htmlFor="tv"><input type="checkbox" id="tv" name="tv" />TV</label>
-
-        <label htmlFor="telefono"
-          ><input type="checkbox" id="telefono" name="telefono" />Teléfono</label
-        >
-
-        <label htmlFor="pc"
-          ><input type="checkbox" id="pc" name="pc" />PC/Portátil</label
-        >
-      </div>
-    </fieldset>
   </div>
-</details>
+  <fieldset>
+    <div class="resources-filter">
+      <label htmlFor="Proyector"
+        ><input
+          type="checkbox"
+          id="Proyector"
+          name="Proyector"
+        />Proyector</label
+      >
+
+      <label htmlFor="camaraconf"
+        ><input type="checkbox" id="camaraconf" name="camaraconf" />Cámara
+        Conferencia</label
+      >
+      <label htmlFor="tv"><input type="checkbox" id="tv" name="tv" />TV</label>
+
+      <label htmlFor="telefono"
+        ><input type="checkbox" id="telefono" name="telefono" />Teléfono</label
+      >
+
+      <label htmlFor="pc"
+        ><input type="checkbox" id="pc" name="pc" />PC/Portátil</label
+      >
+    </div>
+  </fieldset>
+</div>
 
 <div class="table-form-container">
   <div class="table-container">
@@ -79,10 +60,10 @@
                 }"
               ></i>
             </td>
-            <td scope="row">{{ sala.pabellon }}</td>
-            <td scope="row">{{ sala.sala }}</td>
+            <td class="pabellon-td" scope="row">{{ sala.pabellon }}</td>
+            <td class="sala-td" scope="row">{{ sala.sala }}</td>
             <td scope="row">{{ sala.capacidad }}</td>
-            <td scope="row">
+            <td class="recursos-td" scope="row">
               <a
                 class="anchor-tooltip"
                 *ngIf="sala.proyector"

@@ -5,14 +5,14 @@ import { Component } from '@angular/core';
   templateUrl: './socorrista-historico.component.html',
   styleUrls: ['./socorrista-historico.component.scss']
 })
-export class SocorristaHistoricoComponent {
+export class SocorristaHistoricoComponent  {
 
   piscinas: any = ['Maestranza', 'Base'];
 
   rows: any = [
     {
       ubicacion: 'Maestranza',
-      fecha: '18 de Agosto',
+      fecha: '18-Ago',
       horaEntrada: '11:30',
       horaSalida: '12:59',
       entorno: true,
@@ -26,7 +26,7 @@ export class SocorristaHistoricoComponent {
     },
     {
       ubicacion: 'Base',
-      fecha: '18 de Agosto',
+      fecha: '18-Ago',
       horaEntrada: '11:30',
       horaSalida: '12:59',
       entorno: true,
@@ -40,7 +40,7 @@ export class SocorristaHistoricoComponent {
     },
     {
       ubicacion: 'Maestranza',
-      fecha: '18 de Agosto',
+      fecha: '18-Ago',
       horaEntrada: '11:30',
       horaSalida: '12:59',
       entorno: false,

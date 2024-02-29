@@ -37,9 +37,13 @@ select {
 }
 details {
   background: #e1e1e152;
-  padding: 0.5rem;
+  padding: 1rem;
   border-radius: 4px;
 }
+
 .align-center {
   text-align: center;
+}
+.fecha-td {
+  min-width: 5rem;
 }
