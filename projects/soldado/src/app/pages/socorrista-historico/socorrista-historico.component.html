@@ -11,6 +11,13 @@
             <option *ngFor="let piscina of piscinas">{{ piscina }}</option>
           </select>
         </label>
+        <label class="selector">
+          Socorrista:
+          <select>
+            <option value="" disabled selected>Selecciona un socorrista</option>
+            <option *ngFor="let soc of socorristas">{{ soc }}</option>
+          </select>
+        </label>
         <label class="short">
           Fecha hasta:
           <input type="date" />
@@ -27,6 +34,7 @@
     <thead>
       <tr>
         <th scope="col">Piscina</th>
+        <th scope="col">Socorrista</th>
         <th scope="col">Fecha</th>
         <th scope="col">Entrada</th>
         <th scope="col">Salida</th>
@@ -44,6 +52,7 @@
     <tbody>
       <tr *ngFor="let row of rows">
         <td scope="row">{{ row.ubicacion }}</td>
+        <td class="socorrista-td" scope="row">{{ row.socorrista }}</td>
         <td class="fecha-td" scope="row">{{ row.fecha }}</td>
         <td scope="row">{{ row.horaEntrada }}</td>
         <td scope="row">{{ row.horaSalida }}</td>

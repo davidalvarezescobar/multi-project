@@ -1,37 +1,43 @@
 <h5>Piscina</h5>
 
 <form class="form-container">
+  <div class="date-search-container">
     <label class="selector">
-        Piscina:
-        <select>
-            <option value="" disabled selected>Selecciona una piscina</option>
-            <option *ngFor="let piscina of piscinas">{{piscina.nombre}}</option>
-        </select>
+      Piscina:
+      <select>
+        <option value="" disabled selected>Selecciona una piscina</option>
+        <option *ngFor="let piscina of piscinas">{{ piscina.nombre }}</option>
+      </select>
     </label>
-    <div class="date-search-container">
-        <label>
-            Fecha:
-            <input type="date">
-        </label>
-        <a href="javascript:void(0)" (click)="openModal()" role="button" type="button">Guardar</a>
-    </div>
+
+    <label>
+      Fecha:
+      <input type="date" />
+    </label>
+  </div>
+  <a href="javascript:void(0)" (click)="openModal()" role="button" type="button"
+    >Guardar</a
+  >
 </form>
 <dialog id="modal-pago" [attr.open]="showModal">
   <article class="modal-container">
-      <header>
-          <a (click)="closeModal()" aria-label="Close" class="close"></a>
-          <span>Petición piscina</span>
-      </header>
-      <div class="modal-data">
-          <div class="title-container">
-              <h4>Petición de acceso a la piscina realizado correctamente</h4>
-          </div>
+    <header>
+      <a (click)="closeModal()" aria-label="Close" class="close"></a>
+      <span>Petición piscina</span>
+    </header>
+    <div class="modal-data">
+      <div class="title-container">
+        <h4>Petición de acceso a la piscina realizado correctamente</h4>
       </div>
-      <div class="footer">
-          <a  (click)="continuar()" href="javascript:void(0)" role="button"
-              type="button">Continuar</a>
-
-      </div>
-
+    </div>
+    <div class="footer">
+      <a
+        (click)="continuar()"
+        href="javascript:void(0)"
+        role="button"
+        type="button"
+        >Continuar</a
+      >
+    </div>
   </article>
 </dialog>

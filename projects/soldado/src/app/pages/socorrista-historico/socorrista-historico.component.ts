@@ -8,6 +8,10 @@ import { Component } from '@angular/core';
 export class SocorristaHistoricoComponent  {
 
   piscinas: any = ['Maestranza', 'Base'];
+  socorristas: any = [
+    'Juan Cano',
+    'Jesús López'
+  ]
 
   rows: any = [
     {
@@ -15,6 +19,7 @@ export class SocorristaHistoricoComponent  {
       fecha: '18-Ago',
       horaEntrada: '11:30',
       horaSalida: '12:59',
+      socorrista: 'Juan Cano',
       entorno: true,
       limpiafondos: true,
       cesped: false,
@@ -29,6 +34,7 @@ export class SocorristaHistoricoComponent  {
       fecha: '18-Ago',
       horaEntrada: '11:30',
       horaSalida: '12:59',
+      socorrista: 'Jesús López',
       entorno: true,
       limpiafondos: true,
       cesped: false,
@@ -43,6 +49,7 @@ export class SocorristaHistoricoComponent  {
       fecha: '18-Ago',
       horaEntrada: '11:30',
       horaSalida: '12:59',
+      socorrista: 'Juan Cano',
       entorno: false,
       limpiafondos: true,
       cesped: false,

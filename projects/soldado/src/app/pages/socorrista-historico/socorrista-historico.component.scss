@@ -16,7 +16,7 @@ fieldset {
       gap: 1rem;
 
       label {
-          width: 20rem;
+          max-width: 16rem;
       }
   }
   & a {
@@ -46,4 +46,7 @@ details {
 }
 .fecha-td {
   min-width: 5rem;
+}
+.socorrista-td {
+  min-width: 7rem;
 }

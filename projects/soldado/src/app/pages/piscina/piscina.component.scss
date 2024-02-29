@@ -1,18 +1,24 @@
 .form-container {
-    display: flex;
-    flex-direction: column;
-    gap: .8rem;
+  display: flex;
+  gap: 0.8rem;
+  justify-content: space-between;
+  align-items: end;
+  flex-wrap: wrap;
     & .selector {
         max-width: 30rem;
+    }
+    & a {
+      height: 2.8rem;
     }
 }
 .date-search-container {
     display: flex;
-    justify-content: space-between;
-    align-items: end;
     flex-wrap: wrap;
-    max-width: 30rem;
     gap: 1rem;
+    & label {
+      width: 17rem;
+    }
+
 }
 td {
     cursor: pointer;
@@ -58,4 +64,7 @@ input {
       justify-content: end;
   }
 
+}
+select {
+  margin: 0;
 }
