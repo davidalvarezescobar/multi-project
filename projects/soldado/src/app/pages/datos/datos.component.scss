@@ -1,21 +1,38 @@
 .datos-body {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
-  align-items: center;
+  gap: min(25%, 50px);
 }
 
-.datos-texto {
+.datos-body p {
+  margin: 5px 0;
+}
+
+.rango {
   display: flex;
-  align-items: center;
-  flex-direction: column;
+  flex-wrap: wrap;
+  column-gap: 5px;
 }
 
-h1,
-h6 {
-  margin: 0;
+.rango img {
+  max-width: 300px;
 }
 
-img {
-  min-width: 300px;
+.rango strong,
+.datos-texto strong {
+  font-size: 25px;
+  color: black;
+}
+
+.rango strong{
+  margin-top: 14px;
+}
+
+.datos-texto{
+  margin-top: 10px;
+}
+
+.datos-texto p {
+  font-size: 20px;
+  color: black;
 }
